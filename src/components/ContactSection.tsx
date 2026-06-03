@@ -34,13 +34,13 @@ export function ContactSection() {
       <div className="container mx-auto max-w-7xl relative z-10">
         <div className="text-center mb-16">
           <div className="inline-block mb-4 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-semibold tracking-wider uppercase">
-            Запись
+            Связаться с нами
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 text-balance" style={{ fontFamily: 'Cormorant Garamond, serif' }}>
-            Запишитесь <span className="text-primary">прямо сейчас</span>
+            Получите <span className="text-primary">бесплатный расчёт</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto text-pretty leading-relaxed">
-            Оставьте заявку, и мы свяжемся с вами в течение 15 минут, чтобы подобрать удобное время и программу.
+            Оставьте заявку, и наш менеджер свяжется с вами в течение 15 минут, чтобы обсудить проект и рассчитать стоимость.
           </p>
         </div>
 
@@ -48,7 +48,7 @@ export function ContactSection() {
           <div className="lg:col-span-2">
             <Card className="border-none shadow-xl bg-background">
               <CardHeader>
-                <CardTitle className="text-2xl" style={{ fontFamily: 'Cormorant Garamond, serif' }}>Оставить заявку</CardTitle>
+                <CardTitle className="text-2xl" style={{ fontFamily: 'Cormorant Garamond, serif' }}>Оставьте заявку на расчёт</CardTitle>
               </CardHeader>
               <CardContent>
                 <form onSubmit={handleSubmit} className="space-y-6">
@@ -92,20 +92,20 @@ export function ContactSection() {
                     />
                   </div>
                   <div className="space-y-2">
-                    <label htmlFor="message" className="text-sm font-medium">Какая процедура вас интересует?</label>
+                    <label htmlFor="message" className="text-sm font-medium">Что хотите построить?</label>
                     <Textarea
                       id="message"
                       name="message"
                       value={formData.message}
                       onChange={handleChange}
-                      placeholder="Например: классический массаж, тайский, СПА-программа..."
+                      placeholder="Например: финская сауна 5×4 м, хамам, банный комплекс..."
                       rows={4}
                       className="transition-all focus:scale-[1.02]"
                     />
                   </div>
                   <Button type="submit" size="lg" className="w-full sm:w-auto group">
                     <Send className="mr-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                    Записаться
+                    Отправить заявку
                   </Button>
                 </form>
               </CardContent>
@@ -122,7 +122,7 @@ export function ContactSection() {
                   <div>
                     <h3 className="font-semibold mb-1">Телефон</h3>
                     <p className="text-sm text-muted-foreground">+7 (495) 000-00-00</p>
-                    <p className="text-xs text-primary mt-1">Звоните, мы ответим!</p>
+                    <p className="text-xs text-primary mt-1">Пн–Вс, 9:00–20:00</p>
                   </div>
                 </div>
               </CardContent>
@@ -150,7 +150,8 @@ export function ContactSection() {
                   </div>
                   <div>
                     <h3 className="font-semibold mb-1">Адрес</h3>
-                    <p className="text-sm text-muted-foreground">Москва, укажите ваш адрес</p>
+                    <p className="text-sm text-muted-foreground">Москва и вся Россия</p>
+                    <p className="text-xs text-primary mt-1">Выезжаем в любой регион</p>
                   </div>
                 </div>
               </CardContent>
@@ -165,8 +166,8 @@ export function ContactSection() {
                   <div>
                     <h3 className="font-semibold mb-1">Часы работы</h3>
                     <p className="text-sm text-muted-foreground">
-                      Ежедневно: 9:00 — 22:00<br />
-                      Без выходных
+                      Пн–Пт: 9:00 — 20:00<br />
+                      Сб–Вс: 10:00 — 18:00
                     </p>
                   </div>
                 </div>

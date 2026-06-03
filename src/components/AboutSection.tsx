@@ -2,19 +2,19 @@ import { Card, CardContent } from "@/components/ui/card"
 import { CheckCircle2, Sparkles } from "lucide-react"
 
 const values = [
-  { title: "Профессионализм", description: "Все мастера — дипломированные специалисты с опытом от 5 лет и регулярным повышением квалификации" },
-  { title: "Индивидуальный подход", description: "Каждый сеанс начинается с консультации, чтобы подобрать оптимальную программу именно для вас" },
-  { title: "Премиум материалы", description: "Используем только сертифицированную косметику и натуральные масла ведущих мировых брендов" },
-  { title: "Атмосфера уюта", description: "Мягкое освещение, ароматерапия и расслабляющая музыка — каждая деталь продумана для вашего комфорта" },
-  { title: "Безопасность", description: "Строгое соблюдение санитарных норм, стерильные инструменты и индивидуальные расходники для каждого клиента" },
-  { title: "Результат", description: "Ощутимый эффект уже после первого посещения — наши клиенты возвращаются снова и снова" },
+  { title: "Опыт и экспертиза", description: "Более 10 лет строим сауны и хамамы — знаем все нюансы от фундамента до финишной отделки" },
+  { title: "Работа под ключ", description: "Проектирование, строительство, инженерные системы, отделка и запуск — всё в одних руках" },
+  { title: "Качественные материалы", description: "Используем только проверенных поставщиков: финская древесина, турецкий мрамор, немецкое оборудование" },
+  { title: "Индивидуальный проект", description: "Каждый объект проектируется с нуля под ваш участок, бюджет и пожелания по стилю" },
+  { title: "Гарантия 5 лет", description: "Даём письменную гарантию на конструктив и оборудование, оперативно устраняем любые замечания" },
+  { title: "Соблюдение сроков", description: "Фиксируем сроки в договоре и соблюдаем их — за 10 лет не сорвали ни одной сдачи объекта" },
 ]
 
 const stats = [
-  { number: "10+", label: "Лет опыта" },
-  { number: "500+", label: "Довольных клиентов" },
-  { number: "20+", label: "Видов процедур" },
-  { number: "15", label: "Мастеров в команде" },
+  { number: "10+", label: "Лет на рынке" },
+  { number: "200+", label: "Объектов построено" },
+  { number: "3", label: "Вида объектов" },
+  { number: "5 лет", label: "Гарантия" },
 ]
 
 export function AboutSection() {
@@ -27,19 +27,19 @@ export function AboutSection() {
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-2 mb-4 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-semibold tracking-wider uppercase">
             <Sparkles className="h-4 w-4" />
-            О студии GeniusSPA
+            О компании GeniusSPA
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 text-balance" style={{ fontFamily: 'Cormorant Garamond, serif' }}>
-            Место, где тело и душа{" "}
+            Строим не просто бани —{" "}
             <span className="text-primary relative">
-              обретают гармонию
+              создаём пространство
               <svg className="absolute -bottom-2 left-0 w-full" height="8" viewBox="0 0 200 8" fill="none">
                 <path d="M0 4C50 2 150 6 200 4" stroke="currentColor" strokeWidth="2" className="text-primary" />
               </svg>
             </span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto text-pretty leading-relaxed">
-            GeniusSPA — это премиальная студия массажа и СПА-процедур в самом сердце Москвы. Мы создали пространство, где каждый клиент получает персональное внимание, профессиональный уход и настоящий отдых от городской суеты.
+            GeniusSPA — строительная компания с 10-летним опытом возведения финских саун, русских бань и турецких хамамов. Работаем по всей России: от небольшой бани на даче до многозонного банного комплекса для ресторана или отеля.
           </p>
         </div>
 

@@ -10,7 +10,7 @@ export function Footer() {
               <span className="text-primary">✦ </span>GeniusSPA
             </h3>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              Премиальная студия массажа и СПА-процедур в Москве. Пространство истинного отдыха для вашего тела и души.
+              Строительство финских саун, русских бань и турецких хамамов под ключ. Работаем по всей России.
             </p>
             <p className="text-xs text-muted-foreground mt-4">© 2025 GeniusSPA. Все права защищены.</p>
           </div>
@@ -20,7 +20,7 @@ export function Footer() {
             <ul className="space-y-2">
               <li>
                 <a href="#about" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                  О студии
+                  О компании
                 </a>
               </li>
               <li>
@@ -30,7 +30,7 @@ export function Footer() {
               </li>
               <li>
                 <a href="#portfolio" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                  СПА-программы
+                  Наши объекты
                 </a>
               </li>
               <li>
@@ -40,7 +40,7 @@ export function Footer() {
               </li>
               <li>
                 <a href="#contact" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                  Запись
+                  Получить расчёт
                 </a>
               </li>
             </ul>
@@ -79,7 +79,7 @@ export function Footer() {
             </div>
             <div className="mt-6">
               <p className="text-sm text-muted-foreground">Режим работы:</p>
-              <p className="text-sm font-medium mt-1">Ежедневно 9:00 — 22:00</p>
+              <p className="text-sm font-medium mt-1">Пн–Пт 9:00–20:00, Сб–Вс 10:00–18:00</p>
             </div>
           </div>
         </div>
