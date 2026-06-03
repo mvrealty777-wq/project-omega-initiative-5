@@ -8,13 +8,13 @@ const products = [
     badge: "от 950 ₽/м²",
   },
   {
-    image: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/9eeff464-1ea6-4fef-80b2-b76f3650b20d.jpg",
-    title: "Электрокаменка",
+    image: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/e08da2a7-1279-4af5-98ed-64307591fad3.jpg",
+    title: "Электрокаменка Harvia",
     text: "Электрические печи Harvia, EOS, SAWO с пультом управления для саун от 3 до 20 м².",
     badge: "от 28 000 ₽",
   },
   {
-    image: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/bf2b4d3f-4b20-4fbe-9f62-a8f6c145ec49.jpg",
+    image: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/7b13132b-a528-4985-9f9d-8ad1773105c8.jpg",
     title: "Дровяная печь",
     text: "Чугунные и стальные печи-каменки для бани и сауны со стеклянной дверцей и баком.",
     badge: "от 32 000 ₽",

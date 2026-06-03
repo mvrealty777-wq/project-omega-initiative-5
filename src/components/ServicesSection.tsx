@@ -23,7 +23,7 @@ export function ServicesSection() {
               className="group bg-white rounded-2xl overflow-hidden border border-border shadow-sm hover:shadow-2xl transition-all duration-300 hover:-translate-y-1.5 flex flex-col"
             >
               {/* Wide image with badge */}
-              <Link to={`/uslugi/${service.slug}`} className="relative h-52 sm:h-60 lg:h-64 overflow-hidden block">
+              <Link to={`/uslugi/${service.slug}`} className="relative h-64 sm:h-72 lg:h-80 overflow-hidden block">
                 <img
                   src={service.image}
                   alt={service.cardTitle}
