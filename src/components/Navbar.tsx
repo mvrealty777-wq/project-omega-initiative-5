@@ -1,6 +1,7 @@
 import { Logo } from "@/components/Logo"
 import { MobileMenu } from "@/components/MobileMenu"
 import { Phone } from "lucide-react"
+import Icon from "@/components/ui/icon"
 import { useState, useEffect } from "react"
 
 export function Navbar() {
@@ -28,9 +29,9 @@ export function Navbar() {
 
           <div className="hidden md:flex items-center gap-7">
             {[
-              { href: "#about", label: "О компании" },
-              { href: "#services", label: "Услуги" },
+              { href: "#services", label: "Строительство" },
               { href: "#portfolio", label: "Портфолио" },
+              { href: "#about", label: "О компании" },
               { href: "#pricing", label: "Цены" },
               { href: "#contact", label: "Контакты" },
             ].map((item) => (
@@ -46,12 +47,27 @@ export function Navbar() {
           </div>
 
           <div className="hidden md:flex items-center gap-3">
-            <a href="tel:+74950000000" className="flex items-center gap-2 text-sm font-semibold text-foreground hover:text-primary transition-colors">
-              <Phone className="h-4 w-4 text-primary" />
-              +7 (495) 000-00-00
-            </a>
+            <div className="flex flex-col items-end">
+              <a href="tel:88003026753" className="flex items-center gap-2 text-sm font-bold text-foreground hover:text-primary transition-colors">
+                <Phone className="h-4 w-4 text-primary" />
+                8 800 302-67-53
+              </a>
+              <span className="text-[11px] text-primary font-semibold">Звоните, бесплатно!</span>
+            </div>
+            <div className="flex items-center gap-1.5">
+              <a href="https://wa.me/88003026753" target="_blank" rel="noopener noreferrer"
+                className="w-9 h-9 rounded-lg flex items-center justify-center text-white transition-transform hover:scale-105"
+                style={{ background: '#25D366' }} aria-label="WhatsApp">
+                <Icon name="MessageCircle" className="h-4.5 w-4.5" fallback="Phone" />
+              </a>
+              <a href="https://t.me/geniusspa" target="_blank" rel="noopener noreferrer"
+                className="w-9 h-9 rounded-lg flex items-center justify-center text-white transition-transform hover:scale-105"
+                style={{ background: '#27A7E7' }} aria-label="Telegram">
+                <Icon name="Send" className="h-4 w-4" fallback="Phone" />
+              </a>
+            </div>
             <a href="#contact" className="btn-green text-sm px-5 py-2.5">
-              Получить расчёт
+              Перезвоните мне
             </a>
           </div>
 

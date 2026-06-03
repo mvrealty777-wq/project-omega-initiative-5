@@ -11,8 +11,8 @@ const values = [
 
 const stats = [
   { number: "10+", label: "Лет на рынке", emoji: "📅" },
-  { number: "200+", label: "Объектов построено", emoji: "🏗️" },
-  { number: "3", label: "Вида объектов", emoji: "🌲" },
+  { number: "400+", label: "Объектов построено", emoji: "🏗️" },
+  { number: "6", label: "Видов услуг", emoji: "🛠️" },
   { number: "5 лет", label: "Гарантия", emoji: "🛡️" },
 ]
 

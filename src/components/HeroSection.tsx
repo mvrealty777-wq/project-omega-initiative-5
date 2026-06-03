@@ -1,138 +1,126 @@
-import { ArrowRight, CheckCircle, Star } from "lucide-react"
+import type React from "react"
+import { useState } from "react"
+import { Input } from "@/components/ui/input"
+import { CheckCircle, Send } from "lucide-react"
 
-const stats = [
-  { value: "10+", label: "лет опыта" },
-  { value: "200+", label: "объектов сдано" },
-  { value: "5 лет", label: "гарантия" },
-  { value: "100%", label: "под ключ" },
+const benefits = [
+  { text: "Бесплатный расчёт сметы", emoji: "💰" },
+  { text: "Дизайн-проект и 3D-визуализация", emoji: "📊" },
+  { text: "Фиксированная цена и сроки в договоре", emoji: "📝" },
+  { text: "Строим по ГОСТам и нормам пожарной безопасности", emoji: "🔥" },
 ]
 
 export function HeroSection() {
+  const [formData, setFormData] = useState({ name: "", phone: "" })
+  const [sent, setSent] = useState(false)
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    setSent(true)
+  }
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }))
+  }
+
   return (
-    <section className="relative min-h-[92vh] flex items-center overflow-hidden bg-white">
-      {/* Background pattern */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute inset-0 bg-grid-pattern opacity-[0.04]" />
-        <div className="absolute top-0 right-0 w-[55%] h-full bg-gradient-to-l from-green-50 to-transparent" />
-        <div
-          className="absolute w-[500px] h-[500px] rounded-full blur-3xl"
-          style={{ background: 'hsl(145 63% 32% / 0.07)', top: '10%', right: '5%' }}
+    <section className="relative overflow-hidden">
+      {/* Background image */}
+      <div className="absolute inset-0">
+        <img
+          src="https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/68a45e60-98ed-4c22-baa0-f4bacff2a65a.jpg"
+          alt="Хаммам со звёздным небом"
+          className="w-full h-full object-cover"
         />
-        <div
-          className="absolute w-[300px] h-[300px] rounded-full blur-3xl"
-          style={{ background: 'hsl(145 63% 32% / 0.06)', bottom: '10%', left: '10%' }}
-        />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/65 to-black/40" />
       </div>
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-16">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Left column */}
-          <div>
-            <div className="section-badge mb-6 animate-fade-in-up">
-              <Star className="w-3.5 h-3.5" />
-              Строительство саун и хамамов под ключ
-            </div>
-
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-16 lg:py-24">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+          {/* Left — headline */}
+          <div className="text-white">
             <h1
-              className="text-4xl sm:text-5xl lg:text-6xl font-black leading-[1.1] tracking-tight mb-6 animate-fade-in-up animate-delay-100 text-foreground"
+              className="text-3xl sm:text-4xl lg:text-5xl font-black leading-tight mb-5 animate-fade-in-up"
               style={{ fontFamily: 'Montserrat, sans-serif' }}
             >
-              Строим сауны<br />
-              и хамамы,{" "}
-              <span className="relative text-primary">
-                которые нравятся
-                <svg className="absolute -bottom-1 left-0 w-full" height="6" viewBox="0 0 300 6" fill="none">
-                  <path d="M0 3C75 1 225 5 300 3" stroke="currentColor" strokeWidth="3" strokeLinecap="round"/>
-                </svg>
+              ХАММАМ или САУНА{" "}
+              <span className="text-green-400">«ПОД КЛЮЧ»</span>
+              <span className="block text-2xl sm:text-3xl lg:text-4xl mt-3 font-bold">
+                Строительство и отделка саун и бань по всей России
               </span>
             </h1>
 
-            <p className="text-lg text-muted-foreground leading-relaxed mb-8 max-w-lg animate-fade-in-up animate-delay-200">
-              Проектируем и строим финские сауны, русские бани и турецкие хамамы для частных домов и коммерческих объектов. Полный цикл работ — от эскиза до сдачи.
+            <p className="text-lg text-white/80 leading-relaxed mb-8 max-w-lg animate-fade-in-up animate-delay-100">
+              Полный комплекс услуг — от проектирования до выполнения отделочных работ и установки оборудования 👌
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 mb-10 animate-fade-in-up animate-delay-200">
-              <a href="#contact" className="btn-green text-base">
-                Получить расчёт бесплатно
-                <ArrowRight className="w-4 h-4" />
-              </a>
-              <a href="#portfolio" className="btn-green-outline text-base">
-                Наши объекты
-              </a>
-            </div>
-
-            <div className="flex flex-wrap gap-4 animate-fade-in-up animate-delay-300">
-              {[
-                "Бесплатный выезд на замер",
-                "Гарантия 5 лет",
-                "Фиксированная смета",
-              ].map((item) => (
-                <div key={item} className="flex items-center gap-1.5 text-sm text-muted-foreground">
-                  <CheckCircle className="w-4 h-4 text-primary flex-shrink-0" />
+            <div className="flex flex-wrap gap-x-6 gap-y-3 animate-fade-in-up animate-delay-200">
+              {["Более 400 объектов", "10+ лет опыта", "Гарантия 5 лет"].map((item) => (
+                <div key={item} className="flex items-center gap-2 text-white/90 text-sm font-medium">
+                  <CheckCircle className="w-4 h-4 text-green-400 flex-shrink-0" />
                   {item}
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Right column — visual */}
-          <div className="relative animate-fade-in-up animate-delay-200">
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl" style={{ aspectRatio: '4/3' }}>
-              <div
-                className="w-full h-full"
-                style={{
-                  background: 'linear-gradient(135deg, hsl(145 30% 15%) 0%, hsl(145 20% 8%) 100%)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  fontSize: '8rem',
-                  lineHeight: 1,
-                }}
-              >
-                🌲
-              </div>
-              <div className="absolute inset-0 img-overlay" />
-              <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                <p className="font-bold text-xl" style={{ fontFamily: 'Montserrat, sans-serif' }}>Финская сауна</p>
-                <p className="text-white/80 text-sm">Подмосковье — сдано за 45 дней</p>
-              </div>
-            </div>
+          {/* Right — form card */}
+          <div className="lg:justify-self-end w-full max-w-md animate-fade-in-up animate-delay-200">
+            <div className="bg-white rounded-2xl shadow-2xl p-7">
+              {sent ? (
+                <div className="text-center py-10">
+                  <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"
+                    style={{ background: 'hsl(145 63% 32% / 0.12)' }}>
+                    <CheckCircle className="w-8 h-8 text-primary" />
+                  </div>
+                  <h3 className="text-xl font-bold text-foreground mb-2" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                    Заявка принята!
+                  </h3>
+                  <p className="text-muted-foreground text-sm">
+                    Перезвоним в течение 15 минут и подготовим расчёт сметы.
+                  </p>
+                </div>
+              ) : (
+                <>
+                  <h2 className="text-2xl font-black text-foreground mb-1" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                    Хотите быстро<br />просчитать проект?
+                  </h2>
+                  <p className="text-sm text-muted-foreground mb-5">
+                    Вы получите просчёт в 3-х различных вариантах по цене
+                  </p>
 
-            {/* Floating badge */}
-            <div className="absolute -top-4 -right-4 bg-white rounded-2xl shadow-xl p-4 border border-border">
-              <div className="flex items-center gap-2">
-                <div className="w-10 h-10 rounded-xl flex items-center justify-center text-xl" style={{ background: 'hsl(145 63% 32% / 0.12)' }}>
-                  🏆
-                </div>
-                <div>
-                  <p className="font-bold text-sm text-foreground">Топ-1 в Москве</p>
-                  <p className="text-xs text-muted-foreground">по отзывам клиентов</p>
-                </div>
-              </div>
-            </div>
+                  <ul className="space-y-2.5 mb-6">
+                    {benefits.map((b) => (
+                      <li key={b.text} className="flex items-start gap-2 text-sm text-foreground/80">
+                        <span className="text-base flex-shrink-0">{b.emoji}</span>
+                        <span>{b.text}</span>
+                      </li>
+                    ))}
+                  </ul>
 
-            <div className="absolute -bottom-4 -left-4 bg-white rounded-2xl shadow-xl p-4 border border-border">
-              <div className="flex items-center gap-2">
-                <div className="w-10 h-10 rounded-xl flex items-center justify-center text-xl" style={{ background: 'hsl(145 63% 32% / 0.12)' }}>
-                  ⚡
-                </div>
-                <div>
-                  <p className="font-bold text-sm text-foreground">Срок 30–90 дней</p>
-                  <p className="text-xs text-muted-foreground">от замера до сдачи</p>
-                </div>
-              </div>
+                  <form onSubmit={handleSubmit} className="space-y-3">
+                    <div>
+                      <label htmlFor="hero-name" className="text-sm font-medium text-foreground">Имя</label>
+                      <Input id="hero-name" name="name" value={formData.name} onChange={handleChange}
+                        placeholder="Ваше имя" className="h-11 rounded-xl border-border mt-1" />
+                    </div>
+                    <div>
+                      <label htmlFor="hero-phone" className="text-sm font-medium text-foreground">Телефон *</label>
+                      <Input id="hero-phone" name="phone" type="tel" required value={formData.phone} onChange={handleChange}
+                        placeholder="+7 900 123-45-67" className="h-11 rounded-xl border-border mt-1" />
+                    </div>
+                    <button type="submit" className="btn-green w-full justify-center text-sm">
+                      <Send className="w-4 h-4" />
+                      Отправить заявку и получить смету
+                    </button>
+                  </form>
+                  <p className="text-[11px] text-muted-foreground text-center mt-3">
+                    Нажимая кнопку, вы соглашаетесь с политикой обработки данных
+                  </p>
+                </>
+              )}
             </div>
           </div>
-        </div>
-
-        {/* Stats row */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-16 pt-10 border-t border-border animate-fade-in-up animate-delay-300">
-          {stats.map((s) => (
-            <div key={s.value} className="text-center">
-              <p className="text-3xl sm:text-4xl font-black text-primary mb-1" style={{ fontFamily: 'Montserrat, sans-serif' }}>{s.value}</p>
-              <p className="text-sm text-muted-foreground">{s.label}</p>
-            </div>
-          ))}
         </div>
       </div>
     </section>

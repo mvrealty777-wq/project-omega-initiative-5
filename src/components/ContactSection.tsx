@@ -5,10 +5,10 @@ import { Textarea } from "@/components/ui/textarea"
 import { Send, Phone, Mail, MapPin, Clock, CheckCircle } from "lucide-react"
 
 const contacts = [
-  { icon: Phone, label: "Телефон", value: "+7 (495) 000-00-00", sub: "Пн–Вс, 9:00–20:00", href: "tel:+74950000000" },
+  { icon: Phone, label: "Телефон", value: "8 800 302-67-53", sub: "Звонок бесплатный по России", href: "tel:88003026753" },
   { icon: Mail, label: "E-mail", value: "info@geniusspa.ru", sub: "Ответим в течение часа", href: "mailto:info@geniusspa.ru" },
-  { icon: MapPin, label: "География", value: "Москва и вся Россия", sub: "Выезжаем в любой регион", href: undefined },
-  { icon: Clock, label: "Часы работы", value: "Пн–Пт: 9:00–20:00", sub: "Сб–Вс: 10:00–18:00", href: undefined },
+  { icon: MapPin, label: "География", value: "По всей России", sub: "Выезжаем в любой регион", href: undefined },
+  { icon: Clock, label: "Часы работы", value: "Ежедневно: 9:00–21:00", sub: "Без выходных", href: undefined },
 ]
 
 export function ContactSection() {

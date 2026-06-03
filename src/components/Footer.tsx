@@ -1,5 +1,6 @@
 import { Logo } from "@/components/Logo"
 import { Phone, Mail } from "lucide-react"
+import Icon from "@/components/ui/icon"
 
 const navLinks = [
   { href: "#about", label: "О компании" },
@@ -10,12 +11,12 @@ const navLinks = [
 ]
 
 const services = [
-  "Финская сауна",
-  "Турецкий хамам",
-  "Русская баня",
-  "Банные комплексы",
-  "Инженерные системы",
-  "Дизайн и отделка",
+  "Строительство Хаммама",
+  "Строительство Саун",
+  "Соляные Пещеры",
+  "Строительство Бассейна",
+  "Инфракрасные сауны",
+  "Оборудование для бань",
 ]
 
 export function Footer() {
@@ -51,9 +52,9 @@ export function Footer() {
               Строительство финских саун, русских бань и турецких хамамов под ключ. Работаем по всей России с 2014 года.
             </p>
             <div className="flex flex-col gap-2">
-              <a href="tel:+74950000000" className="flex items-center gap-2 text-sm text-white/70 hover:text-white transition-colors">
+              <a href="tel:88003026753" className="flex items-center gap-2 text-sm text-white/70 hover:text-white transition-colors">
                 <Phone className="w-4 h-4 text-green-400" />
-                +7 (495) 000-00-00
+                8 800 302-67-53
               </a>
               <a href="mailto:info@geniusspa.ru" className="flex items-center gap-2 text-sm text-white/70 hover:text-white transition-colors">
                 <Mail className="w-4 h-4 text-green-400" />
@@ -100,20 +101,31 @@ export function Footer() {
               Режим работы
             </h4>
             <div className="space-y-2 text-sm text-white/60">
-              <p>Пн–Пт: 9:00 — 20:00</p>
-              <p>Сб–Вс: 10:00 — 18:00</p>
+              <p>Ежедневно: 9:00 — 21:00</p>
+              <p>Без выходных</p>
               <div className="mt-4 pt-4 border-t border-white/10">
-                <p className="text-white/40 text-xs">Мы в соцсетях:</p>
-                <div className="flex gap-3 mt-2">
-                  {["VK", "TG", "WA"].map((s) => (
-                    <a
-                      key={s}
-                      href="#"
-                      className="w-8 h-8 rounded-lg flex items-center justify-center text-xs font-bold bg-white/10 hover:bg-green-600 transition-colors text-white/70 hover:text-white"
-                    >
-                      {s}
-                    </a>
-                  ))}
+                <p className="text-white/40 text-xs mb-2">Напишите нам:</p>
+                <div className="flex gap-3">
+                  <a
+                    href="https://wa.me/88003026753"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-3 h-9 rounded-lg flex items-center gap-1.5 text-xs font-semibold text-white transition-transform hover:scale-105"
+                    style={{ background: '#25D366' }}
+                  >
+                    <Icon name="MessageCircle" className="w-4 h-4" fallback="Phone" />
+                    WhatsApp
+                  </a>
+                  <a
+                    href="https://t.me/geniusspa"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-3 h-9 rounded-lg flex items-center gap-1.5 text-xs font-semibold text-white transition-transform hover:scale-105"
+                    style={{ background: '#27A7E7' }}
+                  >
+                    <Icon name="Send" className="w-3.5 h-3.5" fallback="Phone" />
+                    Telegram
+                  </a>
                 </div>
               </div>
             </div>
