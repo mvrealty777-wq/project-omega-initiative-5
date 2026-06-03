@@ -3,6 +3,7 @@ import { Link } from "react-router-dom"
 import { Navbar } from "@/components/Navbar"
 import { Footer } from "@/components/Footer"
 import { FloatingContacts } from "@/components/FloatingContacts"
+import { BanyaDecor } from "@/components/BanyaDecor"
 import { ContactSection } from "@/components/ContactSection"
 import Icon from "@/components/ui/icon"
 import { CheckCircle2, ArrowRight, Phone } from "lucide-react"
@@ -18,7 +19,9 @@ export function ServicePageTemplate({ service }: Props) {
   }, [service.slug])
 
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen banya-bg relative overflow-hidden">
+      <BanyaDecor />
+      <div className="relative z-10">
       <Navbar />
 
       {/* Hero */}
@@ -176,6 +179,7 @@ export function ServicePageTemplate({ service }: Props) {
       <ContactSection />
       <Footer />
       <FloatingContacts />
+      </div>
     </main>
   )
 }

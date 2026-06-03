@@ -7,6 +7,8 @@ import { AboutSection } from "@/components/AboutSection"
 import { PortfolioSection } from "@/components/PortfolioSection"
 import { VideoWorksSection } from "@/components/VideoWorksSection"
 import { EquipmentBrandsSection } from "@/components/EquipmentBrandsSection"
+import { EquipmentChoiceSection } from "@/components/EquipmentChoiceSection"
+import { Project3DSection } from "@/components/Project3DSection"
 import { SurveyorCtaSection } from "@/components/SurveyorCtaSection"
 import { ReputationSection } from "@/components/ReputationSection"
 import { ProcessSection } from "@/components/ProcessSection"
@@ -29,9 +31,11 @@ export default function Index() {
         <ReadySection />
         <PortfolioSection />
         <FullCycleSection />
+        <Project3DSection />
         <AboutSection />
         <VideoWorksSection />
         <EquipmentBrandsSection />
+        <EquipmentChoiceSection />
         <SurveyorCtaSection />
         <ReputationSection />
         <ProcessSection />

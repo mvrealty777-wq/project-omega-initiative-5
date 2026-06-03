@@ -1,6 +1,7 @@
 import type React from "react"
 import { useState } from "react"
 import { Input } from "@/components/ui/input"
+import { Venok } from "@/components/icons/Venok"
 import { CheckCircle, Send } from "lucide-react"
 
 const benefits = [
@@ -54,17 +55,20 @@ export function HeroSection() {
               Полный комплекс услуг — от проектирования до выполнения отделочных работ и установки оборудования 👌
             </p>
 
-            <div className="grid grid-cols-3 gap-3 sm:gap-4 max-w-lg animate-fade-in-up animate-delay-200">
+            <div className="grid grid-cols-3 gap-2.5 sm:gap-4 max-w-lg animate-fade-in-up animate-delay-200">
               {[
                 { number: "400+", label: "объектов сдано" },
                 { number: "10+", label: "лет опыта" },
                 { number: "5 лет", label: "гарантия" },
               ].map((item) => (
-                <div key={item.label} className="rounded-xl bg-white/10 backdrop-blur-sm border border-white/15 px-3 py-4 text-center">
-                  <div className="text-2xl sm:text-3xl font-black text-green-400" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                    {item.number}
+                <div key={item.label} className="relative rounded-xl bg-white/10 backdrop-blur-sm border border-white/15 px-2 py-3.5 sm:py-4 text-center overflow-hidden">
+                  <Venok className="absolute inset-0 w-full h-full text-green-400/25 px-1.5 py-1.5" />
+                  <div className="relative">
+                    <div className="text-xl sm:text-3xl font-black text-green-400" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                      {item.number}
+                    </div>
+                    <div className="text-[10px] sm:text-xs text-white/75 mt-0.5 leading-tight">{item.label}</div>
                   </div>
-                  <div className="text-[11px] sm:text-xs text-white/75 mt-1 leading-tight">{item.label}</div>
                 </div>
               ))}
             </div>

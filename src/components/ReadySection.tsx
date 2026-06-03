@@ -45,8 +45,8 @@ export function ReadySection() {
           <div className="relative">
             <div className="rounded-2xl overflow-hidden shadow-xl">
               <img
-                src="https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/4384e557-d15c-4d4c-a166-4bb8cae4fc8c.jpg"
-                alt="Хаммам с классическими турецкими арками"
+                src="https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/b6c32134-97f3-415b-a900-6e3820b49444.jpg"
+                alt="Премиальная сауна под ключ"
                 className="w-full h-full object-cover"
               />
             </div>

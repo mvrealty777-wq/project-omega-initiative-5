@@ -1,4 +1,5 @@
 import Icon from "@/components/ui/icon"
+import { Venok } from "@/components/icons/Venok"
 
 const values = [
   { icon: "Award", title: "Опыт и экспертиза", description: "Более 10 лет строим сауны и хамамы — знаем все нюансы от фундамента до отделки" },
@@ -18,13 +19,13 @@ const stats = [
 
 export function AboutSection() {
   return (
-    <section id="about" className="py-14 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 section-glass-tint">
+    <section id="about" className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 section-glass-tint">
       <div className="container mx-auto max-w-6xl">
         {/* Header */}
         <div className="text-center mb-12">
           <div className="section-badge mb-5 mx-auto">О компании GeniusSPA</div>
           <h2
-            className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-foreground mb-4 leading-tight"
+            className="text-3xl sm:text-4xl lg:text-5xl font-black text-foreground mb-4 leading-tight"
             style={{ fontFamily: 'Montserrat, sans-serif' }}
           >
             Почему клиенты <span className="text-primary">выбирают нас?</span>
@@ -57,14 +58,14 @@ export function AboutSection() {
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 rounded-2xl overflow-hidden p-6 sm:p-8"
           style={{ background: 'linear-gradient(135deg, hsl(145 63% 32%), hsl(145 70% 22%))' }}>
           {stats.map((stat, index) => (
-            <div key={index} className="text-center text-white flex flex-col items-center">
-              <div className="w-12 h-12 rounded-xl bg-white/15 flex items-center justify-center mb-3">
-                <Icon name={stat.icon} className="w-6 h-6 text-white" fallback="Check" />
+            <div key={index} className="relative text-center text-white flex flex-col items-center justify-center py-2">
+              <Venok className="absolute inset-0 mx-auto h-full text-white/20" />
+              <div className="relative">
+                <div className="text-4xl sm:text-5xl font-black mb-1" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                  {stat.number}
+                </div>
+                <div className="text-sm text-white/80 font-medium">{stat.label}</div>
               </div>
-              <div className="text-4xl sm:text-5xl font-black mb-1" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                {stat.number}
-              </div>
-              <div className="text-sm text-white/80 font-medium">{stat.label}</div>
             </div>
           ))}
         </div>

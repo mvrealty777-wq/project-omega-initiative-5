@@ -90,7 +90,7 @@
 /* ───── Green button with 3D shadow effect ───── */
 @layer components {
   .btn-green {
-    @apply inline-flex items-center gap-2 px-7 py-4 rounded-xl font-semibold text-white text-base transition-all duration-200 cursor-pointer select-none;
+    @apply inline-flex items-center gap-2 px-5 py-3 sm:px-7 sm:py-4 rounded-xl font-semibold text-white text-base transition-all duration-200 cursor-pointer select-none;
     background: linear-gradient(145deg, hsl(145 65% 38%), hsl(145 70% 28%));
     box-shadow:
       0 4px 0 hsl(145 70% 20%),
@@ -114,7 +114,7 @@
   }
 
   .btn-green-outline {
-    @apply inline-flex items-center gap-2 px-7 py-4 rounded-xl font-semibold text-base transition-all duration-200 cursor-pointer select-none;
+    @apply inline-flex items-center gap-2 px-5 py-3 sm:px-7 sm:py-4 rounded-xl font-semibold text-base transition-all duration-200 cursor-pointer select-none;
     color: hsl(145 63% 32%);
     background: white;
     border: 2px solid hsl(145 63% 32%);

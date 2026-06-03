@@ -34,12 +34,12 @@ const faqs = [
 
 export function FaqSection() {
   return (
-    <section id="faq" className="py-14 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 section-glass-tint">
+    <section id="faq" className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 section-glass-tint">
       <div className="container mx-auto max-w-3xl">
         <div className="text-center mb-12">
           <div className="section-badge mb-5 mx-auto">Вопросы и ответы</div>
           <h2
-            className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-foreground mb-4"
+            className="text-3xl sm:text-4xl lg:text-5xl font-black text-foreground mb-4"
             style={{ fontFamily: 'Montserrat, sans-serif' }}
           >
             Частые <span className="text-primary">вопросы</span>

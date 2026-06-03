@@ -25,39 +25,42 @@ const cycleItems = [
 
 export function FullCycleSection() {
   return (
-    <section className="py-14 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 section-glass-tint">
+    <section className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 section-glass-tint">
       <div className="container mx-auto max-w-6xl">
-        <div className="text-center mb-14">
-          <div className="section-badge mb-5 mx-auto">Полный цикл</div>
+        <div className="text-center mb-9 sm:mb-12">
+          <div className="section-badge mb-4 mx-auto">Полный цикл</div>
           <h2
-            className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-foreground mb-4"
+            className="text-3xl sm:text-4xl lg:text-5xl font-black text-foreground mb-3"
             style={{ fontFamily: 'Montserrat, sans-serif' }}
           >
             Выполним <span className="text-primary">полный цикл работ</span>
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto text-base leading-relaxed">
-            От первого эскиза до запуска готового объекта — всё в одних руках. Вам не нужно искать
-            подрядчиков, согласовывать этапы и контролировать качество. Мы берём это на себя.
+          <p className="text-muted-foreground max-w-2xl mx-auto text-sm sm:text-base leading-relaxed">
+            От первого эскиза до запуска готового объекта — всё в одних руках. Без поиска подрядчиков
+            и контроля качества. Мы берём это на себя.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
+          {/* Соединительная линия */}
+          <div className="hidden lg:block absolute top-9 left-[12.5%] right-[12.5%] h-0.5 bg-gradient-to-r from-primary/40 via-primary/40 to-primary/40" />
+
           {cycleItems.map((item, index) => (
             <div
               key={index}
-              className="relative bg-white rounded-2xl p-7 border border-border shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+              className="relative bg-white rounded-2xl p-5 sm:p-6 border border-border shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 text-center"
             >
-              <span className="absolute top-6 right-7 text-5xl font-black text-primary/10" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                {String(index + 1).padStart(2, '0')}
-              </span>
-              <div className="w-16 h-16 rounded-2xl flex items-center justify-center mb-5"
+              <div className="relative z-10 mx-auto w-[72px] h-[72px] rounded-2xl flex items-center justify-center mb-4 shadow-lg"
                 style={{ background: 'linear-gradient(135deg, hsl(145 63% 36%), hsl(145 70% 26%))' }}>
                 <Icon name={item.icon} className="w-8 h-8 text-white" fallback="Wrench" />
+                <span className="absolute -top-2 -right-2 w-7 h-7 rounded-full bg-white border-2 border-primary flex items-center justify-center text-xs font-black text-primary" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                  {index + 1}
+                </span>
               </div>
-              <h3 className="font-bold text-xl text-foreground mb-3" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+              <h3 className="font-bold text-base sm:text-lg text-foreground mb-2" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                 {item.title}
               </h3>
-              <p className="text-base text-muted-foreground leading-relaxed">{item.text}</p>
+              <p className="text-[13px] sm:text-sm text-muted-foreground leading-relaxed">{item.text}</p>
             </div>
           ))}
         </div>

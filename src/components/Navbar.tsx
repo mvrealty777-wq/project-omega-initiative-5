@@ -1,5 +1,6 @@
 import { Logo } from "@/components/Logo"
 import { MobileMenu } from "@/components/MobileMenu"
+import { MaxIcon } from "@/components/icons/MaxIcon"
 import { Phone, ChevronDown } from "lucide-react"
 import Icon from "@/components/ui/icon"
 import { Link } from "react-router-dom"
@@ -110,6 +111,11 @@ export function Navbar() {
                 className="w-9 h-9 rounded-lg flex items-center justify-center text-white transition-transform hover:scale-105"
                 style={{ background: '#27A7E7' }} aria-label="Telegram">
                 <Icon name="Send" className="h-4 w-4" fallback="Phone" />
+              </a>
+              <a href="https://max.ru/geniusspa" target="_blank" rel="noopener noreferrer"
+                className="w-9 h-9 rounded-lg flex items-center justify-center text-white transition-transform hover:scale-105"
+                style={{ background: 'linear-gradient(135deg, #8B5CF6, #6366F1)' }} aria-label="МАКС">
+                <MaxIcon className="h-5 w-5" />
               </a>
             </div>
             <a href="/#contact" className="btn-green text-sm px-5 py-2.5">

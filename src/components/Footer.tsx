@@ -1,4 +1,5 @@
 import { Logo } from "@/components/Logo"
+import { MaxIcon } from "@/components/icons/MaxIcon"
 import { Phone, Mail } from "lucide-react"
 import Icon from "@/components/ui/icon"
 
@@ -125,6 +126,16 @@ export function Footer() {
                   >
                     <Icon name="Send" className="w-3.5 h-3.5" fallback="Phone" />
                     Telegram
+                  </a>
+                  <a
+                    href="https://max.ru/geniusspa"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-3 h-9 rounded-lg flex items-center gap-1.5 text-xs font-semibold text-white transition-transform hover:scale-105"
+                    style={{ background: 'linear-gradient(135deg, #8B5CF6, #6366F1)' }}
+                  >
+                    <MaxIcon className="w-4 h-4" />
+                    МАКС
                   </a>
                 </div>
               </div>

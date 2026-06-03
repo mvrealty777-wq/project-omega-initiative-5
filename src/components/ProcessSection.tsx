@@ -33,7 +33,7 @@ const steps = [
 
 export function ProcessSection() {
   return (
-    <section className="py-14 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 section-glass relative overflow-hidden">
+    <section className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 section-glass relative overflow-hidden">
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute inset-0 bg-grid-pattern opacity-[0.04]" />
       </div>
@@ -42,7 +42,7 @@ export function ProcessSection() {
         <div className="text-center mb-14">
           <div className="section-badge mb-5 mx-auto">Как мы работаем</div>
           <h2
-            className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-foreground text-balance"
+            className="text-3xl sm:text-4xl lg:text-5xl font-black text-foreground text-balance"
             style={{ fontFamily: 'Montserrat, sans-serif' }}
           >
             От заявки до готовой<br />

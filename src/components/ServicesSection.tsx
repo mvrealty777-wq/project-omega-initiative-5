@@ -5,10 +5,10 @@ import Icon from "@/components/ui/icon"
 
 export function ServicesSection() {
   return (
-    <section id="services" className="py-14 sm:py-20 lg:py-28 px-4 sm:px-6 lg:px-8 section-glass-tint">
+    <section id="services" className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 section-glass-tint">
       <div className="container mx-auto max-w-7xl">
         <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-foreground mb-5" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-foreground mb-5" style={{ fontFamily: 'Montserrat, sans-serif' }}>
             Наши специалисты <span className="text-primary">выполнят</span>
           </h2>
           <p className="text-muted-foreground text-lg sm:text-xl max-w-2xl mx-auto">
@@ -29,9 +29,15 @@ export function ServicesSection() {
                   alt={service.cardTitle}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/55 to-transparent" />
-                <span className="absolute bottom-4 left-4 text-xs font-semibold px-4 py-2 rounded-full text-white shadow-md"
-                  style={{ background: 'hsl(145 63% 32%)' }}>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+                {/* Иконка-категория */}
+                <span className="absolute top-4 left-4 w-11 h-11 rounded-xl flex items-center justify-center bg-white/95 shadow-lg backdrop-blur-sm">
+                  <Icon name={service.icon} className="w-5.5 h-5.5 text-primary" fallback="Hammer" />
+                </span>
+                {/* Стеклянная подпись */}
+                <span className="absolute bottom-4 left-4 right-4 inline-flex items-center gap-2 text-[13px] font-bold px-4 py-2.5 rounded-xl text-foreground shadow-lg"
+                  style={{ background: 'hsl(0 0% 100% / 0.92)', backdropFilter: 'blur(6px)', fontFamily: 'Montserrat, sans-serif' }}>
+                  <Icon name="CircleCheckBig" className="w-4 h-4 text-primary flex-shrink-0" fallback="Check" />
                   {service.badge}
                 </span>
               </Link>
@@ -48,13 +54,32 @@ export function ServicesSection() {
                 </p>
 
                 {/* Tags */}
-                <div className="flex flex-wrap gap-2 mb-7">
+                <div className="flex flex-wrap gap-2 mb-5">
                   {service.tags.map((tag, i) => (
                     <span key={i} className="inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-full bg-gray-100 text-foreground/70 border border-border">
                       <Icon name={tag.icon} className="w-3.5 h-3.5 text-primary" />
                       {tag.label}
                     </span>
                   ))}
+                </div>
+
+                {/* Инфографика */}
+                <div className="grid grid-cols-3 gap-2 mb-6 rounded-xl border border-border bg-secondary/40 p-3">
+                  <div className="text-center">
+                    <div className="flex justify-center mb-1"><Icon name="Wallet" className="w-4 h-4 text-primary" fallback="Tag" /></div>
+                    <p className="text-[13px] font-black text-foreground leading-none" style={{ fontFamily: 'Montserrat, sans-serif' }}>{service.priceFrom.replace('от ', '')}₽</p>
+                    <p className="text-[10px] text-muted-foreground mt-0.5">цена</p>
+                  </div>
+                  <div className="text-center border-x border-border">
+                    <div className="flex justify-center mb-1"><Icon name="ListChecks" className="w-4 h-4 text-primary" fallback="Check" /></div>
+                    <p className="text-[13px] font-black text-foreground leading-none" style={{ fontFamily: 'Montserrat, sans-serif' }}>{service.subServices.length}</p>
+                    <p className="text-[10px] text-muted-foreground mt-0.5">услуг</p>
+                  </div>
+                  <div className="text-center">
+                    <div className="flex justify-center mb-1"><Icon name="ShieldCheck" className="w-4 h-4 text-primary" fallback="Check" /></div>
+                    <p className="text-[13px] font-black text-foreground leading-none" style={{ fontFamily: 'Montserrat, sans-serif' }}>5 лет</p>
+                    <p className="text-[10px] text-muted-foreground mt-0.5">гарантия</p>
+                  </div>
                 </div>
 
                 <Link to={`/uslugi/${service.slug}`} className="btn-green w-full justify-center text-sm mt-auto">

@@ -17,7 +17,7 @@ export function ContactSection() {
   }
 
   return (
-    <section id="contact" className="py-14 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden"
+    <section id="contact" className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden"
       style={{ background: 'linear-gradient(160deg, hsl(220 25% 11%), hsl(220 30% 7%))' }}>
       {/* Decorative glow */}
       <div className="absolute -top-32 -right-32 w-96 h-96 rounded-full blur-3xl opacity-20 pointer-events-none"

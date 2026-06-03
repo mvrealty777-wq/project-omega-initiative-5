@@ -26,13 +26,13 @@ const cards = [
     text: "Специалист приедет к вам бесплатно по всей России, сделает точные замеры и оценит технические условия.",
   },
   {
-    image: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/60a2c11b-58e5-4b6c-b192-6db6f7ab73ca.jpg",
+    image: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/1d9a93e6-0139-47b7-9767-5d834fcaa6ed.jpg",
     icon: "Award",
     title: "Премиум оборудование",
     text: "Официальный партнёр Harvia, TYLÖ, EOS, HygroMatik, ASTRAL. Используем только сертифицированные материалы и оборудование.",
   },
   {
-    image: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/6111f315-b10f-4ad1-a1dc-d19ee1b1c843.jpg",
+    image: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/f72b1241-0f67-4cdd-bcc5-fccadb542983.jpg",
     icon: "Wrench",
     title: "Сервисный центр",
     text: "Собственный сервисный центр для обслуживания и ремонта. Быстрое реагирование на любые запросы клиентов.",
@@ -43,12 +43,12 @@ const brands = ["Harvia", "TYLÖ", "EOS", "Jacuzzi", "ASTRAL", "SAWO", "HygroMat
 
 export function EquipmentBrandsSection() {
   return (
-    <section className="py-14 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 section-glass-tint">
+    <section className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 section-glass-tint">
       <div className="container mx-auto max-w-7xl">
         <div className="text-center mb-12">
           <div className="section-badge mb-5 mx-auto">Оборудование и сервис</div>
           <h2
-            className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-foreground mb-4"
+            className="text-3xl sm:text-4xl lg:text-5xl font-black text-foreground mb-4"
             style={{ fontFamily: 'Montserrat, sans-serif' }}
           >
             Гарантируем лучшую цену <br className="hidden sm:block" />
@@ -100,25 +100,49 @@ export function EquipmentBrandsSection() {
         </div>
 
         {/* Bottom guarantee banner */}
-        <div className="mt-10 rounded-2xl p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-5 text-white"
-          style={{ background: 'linear-gradient(135deg, hsl(145 63% 32%), hsl(145 70% 22%))' }}>
-          <div className="flex items-center gap-4 text-center sm:text-left">
-            <div className="hidden sm:flex w-14 h-14 rounded-2xl bg-white/15 items-center justify-center flex-shrink-0">
-              <Icon name="BadgePercent" className="w-7 h-7 text-white" fallback="Tag" />
+        <div className="mt-10 relative rounded-3xl p-7 sm:p-10 overflow-hidden text-white shadow-2xl"
+          style={{ background: 'linear-gradient(135deg, hsl(145 63% 30%), hsl(150 70% 18%))' }}>
+          {/* Декоративные круги */}
+          <div className="absolute -top-16 -right-10 w-64 h-64 rounded-full bg-white/5" />
+          <div className="absolute -bottom-24 -left-12 w-72 h-72 rounded-full bg-white/5" />
+          <div className="absolute top-6 right-8 w-24 h-24 rounded-full border border-white/10" />
+
+          <div className="relative flex flex-col lg:flex-row items-center gap-7 lg:gap-10">
+            {/* Большой бейдж со скидкой */}
+            <div className="flex-shrink-0 relative">
+              <div className="w-28 h-28 sm:w-32 sm:h-32 rounded-full bg-white flex flex-col items-center justify-center shadow-xl">
+                <Icon name="BadgePercent" className="w-8 h-8 text-primary mb-0.5" fallback="Tag" />
+                <span className="text-primary font-black text-sm leading-none" style={{ fontFamily: 'Montserrat, sans-serif' }}>ЛУЧШАЯ</span>
+                <span className="text-primary font-black text-sm leading-none" style={{ fontFamily: 'Montserrat, sans-serif' }}>ЦЕНА</span>
+              </div>
             </div>
-            <div>
-              <p className="text-xl sm:text-2xl font-black" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+
+            <div className="flex-1 text-center lg:text-left">
+              <p className="text-2xl sm:text-3xl lg:text-4xl font-black mb-2" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                 Нашли дешевле? Сделаем ещё выгоднее
               </p>
-              <p className="text-sm sm:text-base text-white/80 mt-1">
+              <p className="text-sm sm:text-base text-white/80 mb-5">
                 Прямые поставки от заводов-производителей по всей России
               </p>
+              <div className="flex flex-wrap justify-center lg:justify-start gap-x-5 gap-y-2.5">
+                {[
+                  { icon: "Factory", label: "Заводские цены" },
+                  { icon: "ShieldCheck", label: "Официальная гарантия" },
+                  { icon: "Truck", label: "Доставка по РФ" },
+                ].map((f) => (
+                  <span key={f.label} className="inline-flex items-center gap-2 text-sm font-medium text-white/90">
+                    <Icon name={f.icon} className="w-4.5 h-4.5 text-green-300" fallback="Check" />
+                    {f.label}
+                  </span>
+                ))}
+              </div>
             </div>
+
+            <a href="#contact" className="bg-white text-primary font-bold px-7 py-4 rounded-xl whitespace-nowrap hover:bg-white/90 transition-colors shadow-lg flex-shrink-0 text-base"
+              style={{ fontFamily: 'Montserrat, sans-serif' }}>
+              Узнать цену
+            </a>
           </div>
-          <a href="#contact" className="bg-white text-primary font-bold px-6 py-3.5 rounded-xl whitespace-nowrap hover:bg-white/90 transition-colors shadow-lg flex-shrink-0"
-            style={{ fontFamily: 'Montserrat, sans-serif' }}>
-            Узнать цену
-          </a>
         </div>
       </div>
     </section>
