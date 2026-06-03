@@ -1,37 +1,6 @@
 import { ArrowRight } from "lucide-react"
-
-const services = [
-  {
-    image: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/68a45e60-98ed-4c22-baa0-f4bacff2a65a.jpg",
-    title: "Строительство Хаммама",
-    points: ["Проектирование хаммама", "Плановое обслуживание", "Реконструкция хаммама"],
-  },
-  {
-    image: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/bc574b96-1b7b-46c9-9b4c-7c2950015e48.jpg",
-    title: "Строительство Саун",
-    points: ["Проектирование саун", "Финские электрические сауны", "Русские дровяные бани"],
-  },
-  {
-    image: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/e2b0a2d3-e6dc-44a4-ae60-482e3be5b688.jpg",
-    title: "Соляные Пещеры",
-    points: ["Розовая Гималайская соль", "Каменная белая соль", "Галогенератор"],
-  },
-  {
-    image: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/11121246-eb64-4c70-9ba6-30cd19046423.jpg",
-    title: "Строительство Бассейна",
-    points: ["Проектирование", "Поставка оборудования", "Отделка и облицовка"],
-  },
-  {
-    image: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/d97d8191-171e-43e8-b9e3-997a9caa87ef.jpg",
-    title: "Инфракрасные сауны",
-    points: ["ИК-кабины", "Проектирование", "Монтаж и установка"],
-  },
-  {
-    image: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/09e490cf-4e62-4ee4-a5ae-0db40e9c8a31.jpg",
-    title: "Оборудование для бань",
-    points: ["Оборудование для хаммама", "Печи для сауны и бани", "Парогенераторы и автоматика"],
-  },
-]
+import { Link } from "react-router-dom"
+import { servicesData } from "@/data/servicesData"
 
 export function ServicesSection() {
   return (
@@ -46,36 +15,43 @@ export function ServicesSection() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
-          {services.map((service, index) => (
+          {servicesData.map((service) => (
             <div
-              key={index}
+              key={service.slug}
               className="group bg-white rounded-2xl overflow-hidden border border-border shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col"
             >
-              <div className="relative h-56 overflow-hidden">
+              <Link to={`/uslugi/${service.slug}`} className="relative h-56 overflow-hidden block">
                 <img
                   src={service.image}
-                  alt={service.title}
+                  alt={service.menuLabel}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-              </div>
+              </Link>
 
               <div className="p-6 flex flex-col flex-1">
-                <h3 className="font-bold text-xl text-foreground mb-4" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                  {service.title}
-                </h3>
+                <Link to={`/uslugi/${service.slug}`}>
+                  <h3 className="font-bold text-xl text-foreground mb-4 hover:text-primary transition-colors" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                    {service.menuLabel}
+                  </h3>
+                </Link>
                 <ul className="space-y-2 mb-6 flex-1">
-                  {service.points.map((point, i) => (
+                  {service.features.map((f, i) => (
                     <li key={i} className="flex items-start gap-2 text-sm text-muted-foreground">
                       <span className="text-primary font-bold mt-0.5">—</span>
-                      {point}
+                      {f.title}
                     </li>
                   ))}
                 </ul>
-                <a href="#contact" className="btn-green w-full justify-center text-sm">
-                  Рассчитать стоимость
-                  <ArrowRight className="w-4 h-4" />
-                </a>
+                <div className="flex flex-col gap-2">
+                  <Link to={`/uslugi/${service.slug}`} className="btn-green w-full justify-center text-sm">
+                    Подробнее об услуге
+                    <ArrowRight className="w-4 h-4" />
+                  </Link>
+                  <a href="#contact" className="btn-green-outline w-full justify-center text-sm">
+                    Рассчитать стоимость
+                  </a>
+                </div>
               </div>
             </div>
           ))}
