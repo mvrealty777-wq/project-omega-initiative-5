@@ -1,12 +1,11 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Check } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { Check, ArrowRight, Zap } from "lucide-react"
 
 const pricingTiers = [
   {
     name: "Баня / Сауна",
+    emoji: "🌲",
     price: "от 800 000",
-    duration: "Частный объект",
+    sub: "Частный объект до 30 м²",
     features: [
       "Финская сауна или русская баня",
       "Площадь до 30 м²",
@@ -16,11 +15,13 @@ const pricingTiers = [
       "Гарантия 5 лет",
     ],
     highlighted: false,
+    cta: "Получить расчёт",
   },
   {
     name: "Хамам",
+    emoji: "🕌",
     price: "от 1 200 000",
-    duration: "Частный объект",
+    sub: "Турецкий хамам до 20 м²",
     features: [
       "Турецкий хамам до 20 м²",
       "Мозаичная или мраморная отделка",
@@ -30,11 +31,14 @@ const pricingTiers = [
       "Гарантия 5 лет",
     ],
     highlighted: true,
+    badge: "Популярный выбор",
+    cta: "Получить расчёт",
   },
   {
     name: "Комплекс",
+    emoji: "🏨",
     price: "По запросу",
-    duration: "Коммерческий объект",
+    sub: "Коммерческий объект",
     features: [
       "Сауна + хамам + купель",
       "Зона отдыха и раздевалки",
@@ -44,96 +48,106 @@ const pricingTiers = [
       "Работа с юрлицами, договор",
     ],
     highlighted: false,
+    cta: "Обсудить проект",
   },
 ]
 
 export function PricingSection() {
   return (
-    <section id="pricing" className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-primary/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
-      </div>
-
+    <section id="pricing" className="py-24 px-4 sm:px-6 lg:px-8 bg-white">
       <div className="container mx-auto max-w-6xl">
-        <div className="text-center mb-12 space-y-4">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4 tracking-wider uppercase">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
-            </span>
-            Прозрачные цены
-          </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-balance" style={{ fontFamily: 'Cormorant Garamond, serif' }}>
-            Выберите <span className="text-primary">ваш объект</span>
+        <div className="text-center mb-14">
+          <div className="section-badge mb-5 mx-auto">Стоимость</div>
+          <h2
+            className="text-3xl sm:text-4xl md:text-5xl font-black text-foreground text-balance mb-4"
+            style={{ fontFamily: 'Montserrat, sans-serif' }}
+          >
+            Прозрачные цены без<br />
+            <span className="text-primary">скрытых платежей</span>
           </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            От компактной дачной бани до коммерческого банного комплекса — рассчитаем стоимость бесплатно
+          <p className="text-muted-foreground max-w-xl mx-auto text-sm leading-relaxed">
+            Точная стоимость — после замера и консультации. Все цены фиксируются в договоре.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
           {pricingTiers.map((tier, index) => (
-            <Card
+            <div
               key={index}
-              className={`relative group ${
+              className={`relative flex flex-col rounded-2xl border transition-all duration-300 ${
                 tier.highlighted
-                  ? "border-primary shadow-xl scale-105 bg-gradient-to-b from-background to-primary/5"
-                  : "hover:border-primary/50 hover:shadow-lg"
-              } transition-all duration-300`}
+                  ? "border-primary shadow-2xl shadow-primary/15 bg-white scale-105"
+                  : "border-border shadow-sm bg-white hover:shadow-lg hover:-translate-y-1"
+              }`}
             >
-              {tier.highlighted && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-primary to-primary/80 text-primary-foreground px-4 py-1 rounded-full text-sm font-semibold shadow-lg">
-                  Популярный выбор
+              {tier.badge && (
+                <div
+                  className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1.5 rounded-full text-xs font-bold text-white shadow-lg flex items-center gap-1.5"
+                  style={{ background: 'linear-gradient(135deg, hsl(145 63% 36%), hsl(145 70% 26%))' }}
+                >
+                  <Zap className="w-3 h-3" />
+                  {tier.badge}
                 </div>
               )}
-              <CardHeader className="text-center pb-8">
-                <CardTitle className="text-2xl mb-2" style={{ fontFamily: 'Cormorant Garamond, serif' }}>{tier.name}</CardTitle>
-                <p className="text-sm text-muted-foreground">{tier.duration}</p>
-                <div className="mt-4">
-                  <span className="text-4xl font-bold" style={{ fontFamily: 'Cormorant Garamond, serif' }}>
+
+              <div className={`p-7 border-b ${tier.highlighted ? 'border-primary/20' : 'border-border'}`}>
+                <div className="flex items-center gap-3 mb-4">
+                  <span className="text-3xl">{tier.emoji}</span>
+                  <h3 className="font-bold text-xl text-foreground" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                    {tier.name}
+                  </h3>
+                </div>
+                <div className="mb-1">
+                  <span
+                    className="text-3xl font-black text-foreground"
+                    style={{ fontFamily: 'Montserrat, sans-serif' }}
+                  >
                     {tier.price === "По запросу" ? (
-                      <span className="text-3xl">{tier.price}</span>
+                      <span className="text-2xl text-primary">{tier.price}</span>
                     ) : (
                       <>
-                        <span className="text-lg font-normal text-muted-foreground">от </span>
                         {tier.price}
-                        <span className="text-lg font-normal text-muted-foreground"> ₽</span>
+                        <span className="text-base font-normal text-muted-foreground ml-1">₽</span>
                       </>
                     )}
                   </span>
                 </div>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-3 mb-8">
-                  {tier.features.map((feature, featureIndex) => (
-                    <li key={featureIndex} className="flex items-start gap-3 group/item">
-                      <Check className="h-5 w-5 text-primary flex-shrink-0 mt-0.5 group-hover/item:scale-110 transition-transform" />
-                      <span className="text-sm leading-relaxed">{feature}</span>
+                <p className="text-xs text-muted-foreground">{tier.sub}</p>
+              </div>
+
+              <div className="p-7 flex flex-col flex-1">
+                <ul className="space-y-3 flex-1 mb-7">
+                  {tier.features.map((feature, i) => (
+                    <li key={i} className="flex items-start gap-3">
+                      <div className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"
+                        style={{ background: 'hsl(145 63% 32% / 0.12)' }}>
+                        <Check className="w-3 h-3 text-primary" />
+                      </div>
+                      <span className="text-sm text-muted-foreground leading-relaxed">{feature}</span>
                     </li>
                   ))}
                 </ul>
-                <Button
-                  variant={tier.highlighted ? "default" : "outline"}
-                  className={`w-full ${tier.highlighted ? "shadow-lg shadow-primary/20" : ""}`}
-                  asChild
-                >
-                  <a href="#contact">
-                    {tier.price === "По запросу" ? "Обсудить проект" : "Получить расчёт"}
+
+                {tier.highlighted ? (
+                  <a href="#contact" className="btn-green text-sm text-center justify-center w-full">
+                    {tier.cta}
+                    <ArrowRight className="w-4 h-4" />
                   </a>
-                </Button>
-              </CardContent>
-            </Card>
+                ) : (
+                  <a href="#contact" className="btn-green-outline text-sm text-center justify-center w-full">
+                    {tier.cta}
+                    <ArrowRight className="w-4 h-4" />
+                  </a>
+                )}
+              </div>
+            </div>
           ))}
         </div>
 
-        <div className="mt-12 text-center">
-          <p className="text-sm text-muted-foreground">
-            Все цены ориентировочные. Точная стоимость зависит от площади, материалов и комплектации —{" "}
-            <span className="text-primary font-semibold">расчёт бесплатно</span>{" "}
-            после замера и консультации
-          </p>
-        </div>
+        <p className="text-center text-xs text-muted-foreground mt-10">
+          Все цены ориентировочные. Точная стоимость — после{" "}
+          <span className="text-primary font-semibold">бесплатного выезда и замера</span>.
+        </p>
       </div>
     </section>
   )

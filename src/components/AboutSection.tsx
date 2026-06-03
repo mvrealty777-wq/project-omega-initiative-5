@@ -1,78 +1,74 @@
-import { Card, CardContent } from "@/components/ui/card"
-import { CheckCircle2, Sparkles } from "lucide-react"
+import { CheckCircle2 } from "lucide-react"
 
 const values = [
   { title: "Опыт и экспертиза", description: "Более 10 лет строим сауны и хамамы — знаем все нюансы от фундамента до финишной отделки" },
   { title: "Работа под ключ", description: "Проектирование, строительство, инженерные системы, отделка и запуск — всё в одних руках" },
-  { title: "Качественные материалы", description: "Используем только проверенных поставщиков: финская древесина, турецкий мрамор, немецкое оборудование" },
+  { title: "Качественные материалы", description: "Финская древесина, турецкий мрамор, немецкое оборудование — только проверенные поставщики" },
   { title: "Индивидуальный проект", description: "Каждый объект проектируется с нуля под ваш участок, бюджет и пожелания по стилю" },
-  { title: "Гарантия 5 лет", description: "Даём письменную гарантию на конструктив и оборудование, оперативно устраняем любые замечания" },
-  { title: "Соблюдение сроков", description: "Фиксируем сроки в договоре и соблюдаем их — за 10 лет не сорвали ни одной сдачи объекта" },
+  { title: "Гарантия 5 лет", description: "Письменная гарантия на конструктив и оборудование, оперативно устраняем любые замечания" },
+  { title: "Соблюдение сроков", description: "Фиксируем сроки в договоре и соблюдаем их — за 10 лет не сорвали ни одной сдачи" },
 ]
 
 const stats = [
-  { number: "10+", label: "Лет на рынке" },
-  { number: "200+", label: "Объектов построено" },
-  { number: "3", label: "Вида объектов" },
-  { number: "5 лет", label: "Гарантия" },
+  { number: "10+", label: "Лет на рынке", emoji: "📅" },
+  { number: "200+", label: "Объектов построено", emoji: "🏗️" },
+  { number: "3", label: "Вида объектов", emoji: "🌲" },
+  { number: "5 лет", label: "Гарантия", emoji: "🛡️" },
 ]
 
 export function AboutSection() {
   return (
-    <section id="about" className="py-20 px-4 sm:px-6 lg:px-8 relative">
-      <div className="absolute top-20 left-10 w-72 h-72 bg-primary/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-20 right-10 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
-
-      <div className="container mx-auto max-w-7xl relative z-10">
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 mb-4 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-semibold tracking-wider uppercase">
-            <Sparkles className="h-4 w-4" />
-            О компании GeniusSPA
-          </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 text-balance" style={{ fontFamily: 'Cormorant Garamond, serif' }}>
-            Строим не просто бани —{" "}
-            <span className="text-primary relative">
-              создаём пространство
-              <svg className="absolute -bottom-2 left-0 w-full" height="8" viewBox="0 0 200 8" fill="none">
-                <path d="M0 4C50 2 150 6 200 4" stroke="currentColor" strokeWidth="2" className="text-primary" />
-              </svg>
-            </span>
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto text-pretty leading-relaxed">
-            GeniusSPA — строительная компания с 10-летним опытом возведения финских саун, русских бань и турецких хамамов. Работаем по всей России: от небольшой бани на даче до многозонного банного комплекса для ресторана или отеля.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-          {values.map((value, index) => (
-            <Card
-              key={index}
-              className="border-none shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group"
+    <section id="about" className="py-24 px-4 sm:px-6 lg:px-8 bg-gray-50">
+      <div className="container mx-auto max-w-7xl">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          {/* Left */}
+          <div>
+            <div className="section-badge mb-5">О компании GeniusSPA</div>
+            <h2
+              className="text-3xl sm:text-4xl md:text-5xl font-black text-foreground mb-6 leading-tight"
+              style={{ fontFamily: 'Montserrat, sans-serif' }}
             >
-              <CardContent className="p-6">
-                <div className="flex items-start gap-3">
-                  <CheckCircle2 className="h-6 w-6 text-primary flex-shrink-0 mt-1 group-hover:scale-110 transition-transform" />
+              Строим не просто бани —<br />
+              <span className="text-primary">создаём пространство</span>
+            </h2>
+            <p className="text-muted-foreground leading-relaxed mb-6 text-base">
+              GeniusSPA — строительная компания с 10-летним опытом возведения финских саун, русских бань и турецких хамамов. Работаем по всей России: от небольшой бани на даче до многозонного банного комплекса для ресторана или отеля.
+            </p>
+            <p className="text-muted-foreground leading-relaxed mb-8 text-base">
+              Мы не привлекаем субподрядчиков — весь цикл от проекта до сдачи выполняет наша собственная команда. Это гарантирует качество, сроки и единую ответственность.
+            </p>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {values.map((value, index) => (
+                <div key={index} className="flex items-start gap-3 bg-white rounded-xl p-4 border border-border shadow-sm hover:shadow-md transition-shadow">
+                  <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
                   <div>
-                    <h3 className="font-semibold text-lg mb-2 group-hover:text-primary transition-colors" style={{ fontFamily: 'Cormorant Garamond, serif' }}>
-                      {value.title}
-                    </h3>
-                    <p className="text-muted-foreground text-sm leading-relaxed">{value.description}</p>
+                    <p className="font-semibold text-sm text-foreground mb-0.5" style={{ fontFamily: 'Montserrat, sans-serif' }}>{value.title}</p>
+                    <p className="text-xs text-muted-foreground leading-relaxed">{value.description}</p>
                   </div>
                 </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-          {stats.map((stat, index) => (
-            <div key={index} className="text-center group cursor-default">
-              <div className="text-4xl md:text-5xl font-bold text-primary mb-2 group-hover:scale-110 transition-transform" style={{ fontFamily: 'Cormorant Garamond, serif' }}>
-                {stat.number}
-              </div>
-              <div className="text-muted-foreground font-medium">{stat.label}</div>
+              ))}
             </div>
-          ))}
+          </div>
+
+          {/* Right — stats */}
+          <div className="grid grid-cols-2 gap-4">
+            {stats.map((stat, index) => (
+              <div
+                key={index}
+                className="bg-white rounded-2xl p-8 border border-border shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 text-center"
+              >
+                <div className="text-4xl mb-3">{stat.emoji}</div>
+                <div
+                  className="text-4xl font-black text-primary mb-1"
+                  style={{ fontFamily: 'Montserrat, sans-serif' }}
+                >
+                  {stat.number}
+                </div>
+                <div className="text-sm text-muted-foreground font-medium">{stat.label}</div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

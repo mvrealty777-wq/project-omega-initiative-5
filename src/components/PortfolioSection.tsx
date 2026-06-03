@@ -1,88 +1,125 @@
-import { Card, CardContent } from "@/components/ui/card"
+import { ArrowRight, MapPin, Clock } from "lucide-react"
 
-const programs = [
+const projects = [
   {
-    title: "Финская сауна на даче",
-    category: "Частный объект",
     emoji: "🪵",
-    duration: "Срок: 45 дней",
-    description:
-      "Классическая финская сауна 6×4 м из профилированного бруса с предбанником и моечной. Печь Harvia, вагонка из абаши, стеклянная дверь. Сдана под ключ в Подмосковье.",
-    tags: ["Брус", "Финская сауна", "Harvia", "Под ключ"],
+    title: "Финская сауна на даче",
+    location: "Подмосковье, Истринский район",
+    duration: "45 дней",
+    category: "Частный объект",
+    description: "Классическая финская сауна 6×4 м из профилированного бруса с предбанником и моечной. Печь Harvia, вагонка из абаши, стеклянная дверь.",
+    tags: ["Брус", "Harvia", "Абаши", "Под ключ"],
+    accent: "from-amber-100 to-orange-50",
+    badge: "bg-orange-100 text-orange-700",
   },
   {
-    title: "Хамам в загородном доме",
-    category: "Частный объект",
     emoji: "🕌",
-    duration: "Срок: 60 дней",
-    description:
-      "Турецкий хамам 12 м² с мозаичной облицовкой, мраморным чебеком и системой влажного пара. Парогенератор Clio, подогрев пола и стен, кессонный свод с эффектом «звёздного неба».",
-    tags: ["Мозаика", "Мрамор", "Парогенератор", "Хамам"],
-  },
-  {
-    title: "Банный комплекс для отеля",
-    category: "Коммерческий объект",
-    emoji: "🏨",
-    duration: "Срок: 90 дней",
-    description:
-      "Банный комплекс 80 м² для загородного отеля: финская сауна, хамам, ледяная купель и зона отдыха с баром. Проектирование, строительство и сертификация объекта под ключ.",
-    tags: ["Комплекс", "Коммерция", "Сауна + Хамам", "Купель"],
-  },
-  {
-    title: "Русская баня из бревна",
+    title: "Хамам в загородном доме",
+    location: "Рублёво-Успенское шоссе",
+    duration: "60 дней",
     category: "Частный объект",
+    description: "Турецкий хамам 12 м² с мозаичной облицовкой, мраморным чебеком и системой влажного пара. Парогенератор Clio, кессонный свод со звёздным небом.",
+    tags: ["Мозаика", "Мрамор", "Clio", "Хамам"],
+    accent: "from-blue-100 to-cyan-50",
+    badge: "bg-blue-100 text-blue-700",
+  },
+  {
+    emoji: "🏨",
+    title: "Банный комплекс для отеля",
+    location: "Тверская область, отель «Лесной»",
+    duration: "90 дней",
+    category: "Коммерческий объект",
+    description: "Банный комплекс 80 м² для загородного отеля: финская сауна, хамам, ледяная купель и зона отдыха с баром. Проектирование и сертификация.",
+    tags: ["Сауна + Хамам", "Купель", "Коммерция"],
+    accent: "from-purple-100 to-indigo-50",
+    badge: "bg-purple-100 text-purple-700",
+  },
+  {
     emoji: "🔥",
-    duration: "Срок: 30 дней",
-    description:
-      "Традиционная рубленая баня из оцилиндрованного бревна диаметром 200 мм. Кирпичная печь-каменка, просторный предбанник, купель из лиственницы. Построена в Тверской области.",
-    tags: ["Бревно", "Кирпичная печь", "Купель", "Русская баня"],
+    title: "Русская баня из бревна",
+    location: "Тверская область",
+    duration: "30 дней",
+    category: "Частный объект",
+    description: "Традиционная рубленая баня из оцилиндрованного бревна ∅200 мм. Кирпичная печь-каменка, просторный предбанник, купель из лиственницы.",
+    tags: ["Бревно", "Кирпичная печь", "Купель"],
+    accent: "from-green-100 to-emerald-50",
+    badge: "bg-green-100 text-green-700",
   },
 ]
 
 export function PortfolioSection() {
   return (
-    <section id="portfolio" className="py-20 px-4 sm:px-6 lg:px-8">
+    <section id="portfolio" className="py-24 px-4 sm:px-6 lg:px-8 bg-gray-50">
       <div className="container mx-auto max-w-7xl">
-        <div className="text-center mb-16">
-          <div className="inline-block mb-4 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-semibold tracking-wider uppercase">
-            Наши объекты
+        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between mb-14 gap-6">
+          <div>
+            <div className="section-badge mb-4">Наши объекты</div>
+            <h2
+              className="text-3xl sm:text-4xl md:text-5xl font-black text-foreground text-balance"
+              style={{ fontFamily: 'Montserrat, sans-serif' }}
+            >
+              Построенные <span className="text-primary">проекты</span>
+            </h2>
           </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 text-balance" style={{ fontFamily: 'Cormorant Garamond, serif' }}>
-            Построенные объекты
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto text-pretty leading-relaxed">
-            Каждый проект — это уникальное решение под запрос клиента. Вот несколько примеров наших последних работ.
+          <p className="text-muted-foreground max-w-sm text-sm leading-relaxed">
+            Каждый проект — уникальное решение под запрос клиента. За 10 лет сдали более 200 объектов.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {programs.map((program, index) => (
-            <Card
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {projects.map((project, index) => (
+            <div
               key={index}
-              className="group overflow-hidden border-none shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+              className="group bg-white rounded-2xl overflow-hidden border border-border shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
             >
-              <div className="relative overflow-hidden h-48 bg-gradient-to-br from-primary/10 via-primary/5 to-background flex items-center justify-center">
-                <div className="text-8xl group-hover:scale-110 transition-transform duration-500">
-                  {program.emoji}
-                </div>
-                <div className="absolute top-4 right-4 bg-primary/90 text-primary-foreground px-3 py-1 rounded-full text-xs font-semibold">
-                  {program.duration}
+              {/* Visual header */}
+              <div className={`relative h-44 bg-gradient-to-br ${project.accent} flex items-center justify-center`}>
+                <span className="text-8xl group-hover:scale-110 transition-transform duration-500 select-none">{project.emoji}</span>
+                <div className="absolute top-4 left-4">
+                  <span className={`text-xs font-semibold px-3 py-1 rounded-full ${project.badge}`}>
+                    {project.category}
+                  </span>
                 </div>
               </div>
-              <CardContent className="p-6">
-                <p className="text-sm text-primary font-semibold mb-2 tracking-wide uppercase">{program.category}</p>
-                <h3 className="text-xl font-bold mb-2" style={{ fontFamily: 'Cormorant Garamond, serif' }}>{program.title}</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed mb-4">{program.description}</p>
+
+              {/* Content */}
+              <div className="p-6">
+                <div className="flex items-start justify-between gap-3 mb-3">
+                  <h3 className="font-bold text-lg text-foreground leading-tight" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                    {project.title}
+                  </h3>
+                </div>
+
+                <div className="flex flex-wrap gap-4 mb-3 text-xs text-muted-foreground">
+                  <span className="flex items-center gap-1.5">
+                    <MapPin className="w-3.5 h-3.5 text-primary" />
+                    {project.location}
+                  </span>
+                  <span className="flex items-center gap-1.5">
+                    <Clock className="w-3.5 h-3.5 text-primary" />
+                    Сдан за {project.duration}
+                  </span>
+                </div>
+
+                <p className="text-sm text-muted-foreground leading-relaxed mb-4">{project.description}</p>
+
                 <div className="flex flex-wrap gap-2">
-                  {program.tags.map((tag, tagIndex) => (
-                    <span key={tagIndex} className="text-xs px-2 py-1 rounded-full bg-primary/10 text-primary font-medium">
+                  {project.tags.map((tag, i) => (
+                    <span key={i} className="text-xs px-3 py-1 rounded-full bg-primary/8 text-primary font-medium border border-primary/15">
                       {tag}
                     </span>
                   ))}
                 </div>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
           ))}
+        </div>
+
+        <div className="mt-10 text-center">
+          <a href="#contact" className="btn-green-outline inline-flex mx-auto">
+            Обсудить ваш проект
+            <ArrowRight className="w-4 h-4" />
+          </a>
         </div>
       </div>
     </section>

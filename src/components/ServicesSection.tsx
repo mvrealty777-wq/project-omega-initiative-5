@@ -1,76 +1,97 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import Icon from "@/components/ui/icon"
+import { ArrowRight } from "lucide-react"
 
 const services = [
   {
     icon: "Flame",
+    emoji: "🌲",
     title: "Финская сауна",
-    description:
-      "Строим классические финские сауны с сухим паром: сруб, вагонка из термодерева, финские печи Harvia и Narvi. Проектируем под любую площадь — от компактной 4 м² до просторного семейного варианта.",
+    description: "Классическая сухая сауна с температурой 80–100 °C. Строим из отборного финского бруса, оснащаем печами Harvia, Narvi или Huum.",
+    color: "from-amber-50 to-orange-50",
+    accent: "hsl(30 90% 55%)",
   },
   {
     icon: "Droplets",
+    emoji: "🕌",
     title: "Турецкий хамам",
-    description:
-      "Хамамы с влажным паром, мозаичной облицовкой и подогревом чебека. Проектируем систему парогенерации, кессонное перекрытие и всю инженерию. Отделка турецким и марокканским мрамором.",
+    description: "Влажный пар 100% и температура 40–55 °C. Мозаика, мрамор, подогрев чебека и стен, кессонный свод — всё «под ключ».",
+    color: "from-blue-50 to-cyan-50",
+    accent: "hsl(200 80% 50%)",
   },
   {
     icon: "TreePine",
+    emoji: "♨️",
     title: "Русская баня",
-    description:
-      "Традиционная русская баня с мягким «живым» паром. Строим из бревна и бруса, оснащаем кирпичными и металлическими печами, предбанником и моечной — всё по старорусским канонам.",
+    description: "Традиционная баня с мягким «живым» паром. Бревно или брус, кирпичная каменка, купель из лиственницы — всё по канонам.",
+    color: "from-green-50 to-emerald-50",
+    accent: "hsl(145 63% 36%)",
   },
   {
     icon: "Layers",
+    emoji: "🏨",
     title: "Банные комплексы",
-    description:
-      "Проектируем и строим многозонные банные комплексы для коммерческих объектов: сауна + хамам + купель + зона отдыха. Опыт работы с ресторанами, отелями и загородными клубами.",
+    description: "Многозонные объекты для отелей, ресторанов и загородных клубов: сауна + хамам + купель + зона отдыха.",
+    color: "from-purple-50 to-indigo-50",
+    accent: "hsl(260 60% 55%)",
   },
   {
     icon: "Wrench",
+    emoji: "⚙️",
     title: "Инженерные системы",
-    description:
-      "Полный цикл инженерии: вентиляция, канализация, водоснабжение, электрика, парогенераторы и печное оборудование. Монтируем и пуско-наладочные работы проводим своими силами.",
+    description: "Вентиляция, канализация, водоснабжение, электрика, парогенераторы и печи — монтируем своими силами без субподрядчиков.",
+    color: "from-slate-50 to-gray-50",
+    accent: "hsl(220 15% 45%)",
   },
   {
     icon: "Palette",
+    emoji: "🎨",
     title: "Дизайн и отделка",
-    description:
-      "Авторский дизайн интерьеров в любом стиле: скандинавский минимализм, классическая русская баня, восточный хамам. Работаем с деревом, мрамором, мозаикой и натуральным камнем.",
+    description: "Авторский интерьер в любом стиле: скандинавский минимализм, восточный хамам, классическая русская баня. Работаем с деревом, мрамором, мозаикой.",
+    color: "from-rose-50 to-pink-50",
+    accent: "hsl(340 70% 55%)",
   },
 ]
 
 export function ServicesSection() {
   return (
-    <section id="services" className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/5 animate-pulse" />
-
-      <div className="container mx-auto max-w-7xl relative z-10">
-        <div className="inline-block mb-4 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-semibold mx-auto block w-fit tracking-wider uppercase">
-          Что мы строим
+    <section id="services" className="py-24 px-4 sm:px-6 lg:px-8 bg-white">
+      <div className="container mx-auto max-w-7xl">
+        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between mb-14 gap-6">
+          <div>
+            <div className="section-badge mb-4">Наши специализации</div>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-foreground text-balance" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+              Что мы <span className="text-primary">строим</span>
+            </h2>
+          </div>
+          <p className="text-muted-foreground max-w-sm leading-relaxed text-sm">
+            Полный цикл работ без привлечения субподрядчиков. Один договор — одна ответственность.
+          </p>
         </div>
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-4 text-balance" style={{ fontFamily: 'Cormorant Garamond, serif' }}>
-          Наши <span className="text-primary">специализации</span>
-        </h2>
-        <p className="text-center text-muted-foreground mb-12 max-w-3xl mx-auto text-pretty leading-relaxed text-lg">
-          Строим любые виды банных объектов — от небольшой дачной бани до коммерческого СПА-комплекса. Полный цикл работ без привлечения субподрядчиков.
-        </p>
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((service, index) => (
-            <Card
+            <div
               key={index}
-              className="group hover:border-primary transition-all duration-300 hover:shadow-xl hover:-translate-y-2 bg-background/50 backdrop-blur-sm"
+              className={`group relative bg-gradient-to-br ${service.color} rounded-2xl p-6 border border-border/60 card-hover cursor-default`}
             >
-              <CardHeader>
-                <div className="mb-4 inline-flex p-3 rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300 group-hover:scale-110 group-hover:rotate-3">
-                  <Icon name={service.icon} fallback="Sparkles" className="h-6 w-6" />
+              <div className="flex items-start justify-between mb-4">
+                <div
+                  className="w-12 h-12 rounded-xl flex items-center justify-center text-2xl shadow-sm"
+                  style={{ background: 'white' }}
+                >
+                  {service.emoji}
                 </div>
-                <CardTitle className="text-xl group-hover:text-primary transition-colors" style={{ fontFamily: 'Cormorant Garamond, serif' }}>{service.title}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <CardDescription className="text-base leading-relaxed">{service.description}</CardDescription>
-              </CardContent>
-            </Card>
+                <ArrowRight
+                  className="w-5 h-5 opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:translate-x-1"
+                  style={{ color: service.accent }}
+                />
+              </div>
+              <h3 className="font-bold text-lg text-foreground mb-2" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                {service.title}
+              </h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                {service.description}
+              </p>
+            </div>
           ))}
         </div>
       </div>

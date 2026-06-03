@@ -1,178 +1,143 @@
 import type React from "react"
 import { useState } from "react"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { Mail, Phone, MapPin, Send, Clock } from "lucide-react"
+import { Send, Phone, Mail, MapPin, Clock, CheckCircle } from "lucide-react"
+
+const contacts = [
+  { icon: Phone, label: "Телефон", value: "+7 (495) 000-00-00", sub: "Пн–Вс, 9:00–20:00", href: "tel:+74950000000" },
+  { icon: Mail, label: "E-mail", value: "info@geniusspa.ru", sub: "Ответим в течение часа", href: "mailto:info@geniusspa.ru" },
+  { icon: MapPin, label: "География", value: "Москва и вся Россия", sub: "Выезжаем в любой регион", href: undefined },
+  { icon: Clock, label: "Часы работы", value: "Пн–Пт: 9:00–20:00", sub: "Сб–Вс: 10:00–18:00", href: undefined },
+]
 
 export function ContactSection() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    message: "",
-  })
+  const [formData, setFormData] = useState({ name: "", phone: "", email: "", message: "" })
+  const [sent, setSent] = useState(false)
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    console.log("[GeniusSPA] Form submitted:", formData)
+    setSent(true)
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData((prev) => ({
-      ...prev,
-      [e.target.name]: e.target.value,
-    }))
+    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }))
   }
 
   return (
-    <section id="contact" className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/30 relative overflow-hidden">
-      <div className="absolute top-20 right-10 w-72 h-72 bg-primary/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-20 left-10 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
-
-      <div className="container mx-auto max-w-7xl relative z-10">
-        <div className="text-center mb-16">
-          <div className="inline-block mb-4 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-semibold tracking-wider uppercase">
-            Связаться с нами
-          </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 text-balance" style={{ fontFamily: 'Cormorant Garamond, serif' }}>
+    <section id="contact" className="py-24 px-4 sm:px-6 lg:px-8 bg-gray-50">
+      <div className="container mx-auto max-w-7xl">
+        <div className="text-center mb-14">
+          <div className="section-badge mb-5 mx-auto">Связаться с нами</div>
+          <h2
+            className="text-3xl sm:text-4xl md:text-5xl font-black text-foreground text-balance mb-4"
+            style={{ fontFamily: 'Montserrat, sans-serif' }}
+          >
             Получите <span className="text-primary">бесплатный расчёт</span>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto text-pretty leading-relaxed">
-            Оставьте заявку, и наш менеджер свяжется с вами в течение 15 минут, чтобы обсудить проект и рассчитать стоимость.
+          <p className="text-muted-foreground max-w-xl mx-auto text-sm leading-relaxed">
+            Оставьте заявку — перезвоним в течение 15 минут и обсудим ваш проект. Выезд на замер бесплатно.
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          <div className="lg:col-span-2">
-            <Card className="border-none shadow-xl bg-background">
-              <CardHeader>
-                <CardTitle className="text-2xl" style={{ fontFamily: 'Cormorant Garamond, serif' }}>Оставьте заявку на расчёт</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <form onSubmit={handleSubmit} className="space-y-6">
+          {/* Form */}
+          <div className="lg:col-span-2 bg-white rounded-2xl border border-border shadow-sm p-8">
+            {sent ? (
+              <div className="flex flex-col items-center justify-center h-full text-center py-12">
+                <div className="w-16 h-16 rounded-full flex items-center justify-center mb-4"
+                  style={{ background: 'hsl(145 63% 32% / 0.12)' }}>
+                  <CheckCircle className="w-8 h-8 text-primary" />
+                </div>
+                <h3 className="text-xl font-bold text-foreground mb-2" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                  Заявка отправлена!
+                </h3>
+                <p className="text-muted-foreground text-sm">
+                  Мы перезвоним вам в течение 15 минут. Спасибо!
+                </p>
+              </div>
+            ) : (
+              <>
+                <h3 className="text-xl font-bold text-foreground mb-6" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                  Оставьте заявку на расчёт
+                </h3>
+                <form onSubmit={handleSubmit} className="space-y-5">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <label htmlFor="name" className="text-sm font-medium">Имя *</label>
-                      <Input
-                        id="name"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        placeholder="Ваше имя"
-                        required
-                        className="transition-all focus:scale-[1.02]"
-                      />
+                    <div className="space-y-1.5">
+                      <label htmlFor="name" className="text-sm font-medium text-foreground">Ваше имя *</label>
+                      <Input id="name" name="name" value={formData.name} onChange={handleChange}
+                        placeholder="Александр" required className="h-11 rounded-xl border-border" />
                     </div>
-                    <div className="space-y-2">
-                      <label htmlFor="phone" className="text-sm font-medium">Телефон *</label>
-                      <Input
-                        id="phone"
-                        name="phone"
-                        type="tel"
-                        value={formData.phone}
-                        onChange={handleChange}
-                        placeholder="+7 900 123-45-67"
-                        required
-                        className="transition-all focus:scale-[1.02]"
-                      />
+                    <div className="space-y-1.5">
+                      <label htmlFor="phone" className="text-sm font-medium text-foreground">Телефон *</label>
+                      <Input id="phone" name="phone" type="tel" value={formData.phone} onChange={handleChange}
+                        placeholder="+7 900 123-45-67" required className="h-11 rounded-xl border-border" />
                     </div>
                   </div>
-                  <div className="space-y-2">
-                    <label htmlFor="email" className="text-sm font-medium">E-mail</label>
-                    <Input
-                      id="email"
-                      name="email"
-                      type="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      placeholder="your@email.ru"
-                      className="transition-all focus:scale-[1.02]"
-                    />
+                  <div className="space-y-1.5">
+                    <label htmlFor="email" className="text-sm font-medium text-foreground">E-mail</label>
+                    <Input id="email" name="email" type="email" value={formData.email} onChange={handleChange}
+                      placeholder="your@email.ru" className="h-11 rounded-xl border-border" />
                   </div>
-                  <div className="space-y-2">
-                    <label htmlFor="message" className="text-sm font-medium">Что хотите построить?</label>
-                    <Textarea
-                      id="message"
-                      name="message"
-                      value={formData.message}
-                      onChange={handleChange}
-                      placeholder="Например: финская сауна 5×4 м, хамам, банный комплекс..."
-                      rows={4}
-                      className="transition-all focus:scale-[1.02]"
-                    />
+                  <div className="space-y-1.5">
+                    <label htmlFor="message" className="text-sm font-medium text-foreground">Что хотите построить?</label>
+                    <Textarea id="message" name="message" value={formData.message} onChange={handleChange}
+                      placeholder="Например: финская сауна 6×4 м, хамам 12 м², банный комплекс для отеля..."
+                      rows={4} className="rounded-xl border-border resize-none" />
                   </div>
-                  <Button type="submit" size="lg" className="w-full sm:w-auto group">
-                    <Send className="mr-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                  <button type="submit" className="btn-green w-full sm:w-auto justify-center text-base">
+                    <Send className="w-4 h-4" />
                     Отправить заявку
-                  </Button>
+                  </button>
                 </form>
-              </CardContent>
-            </Card>
+              </>
+            )}
           </div>
 
-          <div className="space-y-6">
-            <Card className="border-none shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group">
-              <CardContent className="p-6">
-                <div className="flex items-start gap-4">
-                  <div className="p-3 rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300 group-hover:scale-110">
-                    <Phone className="h-5 w-5" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold mb-1">Телефон</h3>
-                    <p className="text-sm text-muted-foreground">+7 (495) 000-00-00</p>
-                    <p className="text-xs text-primary mt-1">Пн–Вс, 9:00–20:00</p>
-                  </div>
+          {/* Contacts */}
+          <div className="flex flex-col gap-4">
+            {contacts.map((c, i) => (
+              <div key={i} className="bg-white rounded-2xl border border-border shadow-sm p-5 flex items-start gap-4 hover:shadow-md transition-shadow">
+                <div
+                  className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
+                  style={{ background: 'hsl(145 63% 32% / 0.10)' }}
+                >
+                  <c.icon className="w-5 h-5 text-primary" />
                 </div>
-              </CardContent>
-            </Card>
+                <div>
+                  <p className="text-xs text-muted-foreground mb-0.5">{c.label}</p>
+                  {c.href ? (
+                    <a href={c.href} className="font-semibold text-sm text-foreground hover:text-primary transition-colors">
+                      {c.value}
+                    </a>
+                  ) : (
+                    <p className="font-semibold text-sm text-foreground">{c.value}</p>
+                  )}
+                  <p className="text-xs text-muted-foreground mt-0.5">{c.sub}</p>
+                </div>
+              </div>
+            ))}
 
-            <Card className="border-none shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group">
-              <CardContent className="p-6">
-                <div className="flex items-start gap-4">
-                  <div className="p-3 rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300 group-hover:scale-110">
-                    <Mail className="h-5 w-5" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold mb-1">E-mail</h3>
-                    <p className="text-sm text-muted-foreground">info@geniusspa.ru</p>
-                  </div>
+            {/* Trust block */}
+            <div
+              className="rounded-2xl p-5 text-white"
+              style={{ background: 'linear-gradient(135deg, hsl(145 63% 32%), hsl(145 70% 24%))' }}
+            >
+              <p className="font-bold text-sm mb-3" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                Почему выбирают нас?
+              </p>
+              {[
+                "Бесплатная консультация",
+                "Выезд на замер без оплаты",
+                "Фиксированная смета в договоре",
+                "Гарантия 5 лет на объект",
+              ].map((item) => (
+                <div key={item} className="flex items-center gap-2 text-sm text-white/90 mb-1.5 last:mb-0">
+                  <CheckCircle className="w-3.5 h-3.5 text-white/70 flex-shrink-0" />
+                  {item}
                 </div>
-              </CardContent>
-            </Card>
-
-            <Card className="border-none shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group">
-              <CardContent className="p-6">
-                <div className="flex items-start gap-4">
-                  <div className="p-3 rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300 group-hover:scale-110">
-                    <MapPin className="h-5 w-5" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold mb-1">Адрес</h3>
-                    <p className="text-sm text-muted-foreground">Москва и вся Россия</p>
-                    <p className="text-xs text-primary mt-1">Выезжаем в любой регион</p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="border-none shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group">
-              <CardContent className="p-6">
-                <div className="flex items-start gap-4">
-                  <div className="p-3 rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300 group-hover:scale-110">
-                    <Clock className="h-5 w-5" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold mb-1">Часы работы</h3>
-                    <p className="text-sm text-muted-foreground">
-                      Пн–Пт: 9:00 — 20:00<br />
-                      Сб–Вс: 10:00 — 18:00
-                    </p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+              ))}
+            </div>
           </div>
         </div>
       </div>

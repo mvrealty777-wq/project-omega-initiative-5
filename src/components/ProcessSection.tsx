@@ -1,78 +1,93 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Lightbulb, PaletteIcon, Rocket, ArrowRight } from "lucide-react"
-import { Fragment } from "react"
+import { ArrowRight } from "lucide-react"
 
 const steps = [
   {
-    icon: Lightbulb,
-    title: "Концепция и планирование",
-    description:
-      "Вместе обсуждаем вашу идею, цели и видение сайта. Разрабатываем четкий план, соответствующий вашим пожеланиям, с правильной структурой и функциональностью.",
+    emoji: "📋",
     number: "01",
+    title: "Заявка и консультация",
+    description: "Оставляете заявку — мы перезваниваем в течение 15 минут. Обсуждаем ваши пожелания, площадь, бюджет и сроки.",
   },
   {
-    icon: PaletteIcon,
-    title: "Разработка и дизайн",
-    description:
-      "Наши разработчики и дизайнеры приступают к созданию сайта. Фокусируемся на стильном дизайне, удобном для пользователей и технически безупречном.",
+    emoji: "📐",
     number: "02",
+    title: "Выезд и проект",
+    description: "Бесплатно выезжаем на замер. Разрабатываем проект, подбираем материалы и оборудование, согласовываем фиксированную смету.",
   },
   {
-    icon: Rocket,
-    title: "Тестирование и запуск",
-    description:
-      "Тщательно тестируем сайт для обеспечения оптимальной производительности. После вашего одобрения запускаем проект и остаемся на связи для поддержки.",
+    emoji: "🏗️",
     number: "03",
+    title: "Строительство",
+    description: "Возводим объект строго по проекту и смете. Регулярно отправляем фотоотчёты с объекта — вы всегда знаете, как идёт работа.",
+  },
+  {
+    emoji: "🎉",
+    number: "04",
+    title: "Сдача под ключ",
+    description: "Проводим пуско-наладку, обучаем вас работе с оборудованием и передаём все гарантийные документы. Объект готов к использованию.",
   },
 ]
 
 export function ProcessSection() {
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/30 relative overflow-hidden">
-      <div className="absolute inset-0 bg-grid-pattern opacity-5" />
+    <section className="py-24 px-4 sm:px-6 lg:px-8 bg-white relative overflow-hidden">
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute inset-0 bg-grid-pattern opacity-[0.04]" />
+      </div>
 
       <div className="container mx-auto max-w-7xl relative z-10">
-        <div className="text-center mb-16">
-          <div className="inline-block mb-4 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-semibold">
-            Наш процесс
-          </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 text-balance">
-            От <span className="text-primary">идеи</span> к <span className="text-primary">результату</span>
+        <div className="text-center mb-14">
+          <div className="section-badge mb-5 mx-auto">Как мы работаем</div>
+          <h2
+            className="text-3xl sm:text-4xl md:text-5xl font-black text-foreground text-balance"
+            style={{ fontFamily: 'Montserrat, sans-serif' }}
+          >
+            От заявки до готовой<br />
+            <span className="text-primary">сауны — 4 шага</span>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto text-pretty leading-relaxed">
-            В три простых шага превращаем вашу идею в мощное онлайн-присутствие, приносящее результат.
-          </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 relative">
+          {/* Connector line (desktop) */}
+          <div className="hidden lg:block absolute top-14 left-[12.5%] right-[12.5%] h-0.5 bg-gradient-to-r from-primary/20 via-primary/50 to-primary/20 z-0" />
+
           {steps.map((step, index) => (
-            <Fragment key={index}>
-              <Card
-                className="relative overflow-hidden group hover:shadow-xl transition-all duration-300 hover:-translate-y-2 bg-background"
+            <div key={index} className="relative flex flex-col items-center text-center group">
+              {/* Step circle */}
+              <div
+                className="relative z-10 w-20 h-20 rounded-2xl flex items-center justify-center text-3xl mb-5 shadow-md border-2 border-white bg-white group-hover:scale-110 transition-transform duration-300"
+                style={{ boxShadow: '0 4px 20px hsl(145 63% 32% / 0.15)' }}
               >
-                <div className="absolute top-0 right-0 text-[120px] font-bold bg-gradient-to-br from-primary/10 to-primary/5 bg-clip-text text-transparent leading-none p-4">
-                  {step.number}
-                </div>
-                <CardHeader>
-                  <div className="mb-4 inline-flex p-3 rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300 w-fit group-hover:scale-110 group-hover:rotate-6">
-                    <step.icon className="h-6 w-6" />
-                  </div>
-                  <CardTitle className="text-xl group-hover:text-primary transition-colors">{step.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground leading-relaxed">{step.description}</p>
-                </CardContent>
-              </Card>
+                {step.emoji}
+              </div>
+
+              {/* Arrow between (desktop) */}
               {index < steps.length - 1 && (
-                <div
-                  className="hidden md:flex items-center justify-center absolute top-1/2 -translate-y-1/2"
-                  style={{ left: `${(index + 1) * 33.33 - 4}%` }}
-                >
-                  <ArrowRight className="h-8 w-8 text-primary animate-pulse" />
-                </div>
+                <ArrowRight className="hidden lg:block absolute top-7 -right-3 z-20 w-5 h-5 text-primary" />
               )}
-            </Fragment>
+
+              <div
+                className="text-xs font-black tracking-widest text-primary/60 mb-2 uppercase"
+                style={{ fontFamily: 'Montserrat, sans-serif' }}
+              >
+                Шаг {step.number}
+              </div>
+              <h3
+                className="font-bold text-base text-foreground mb-2"
+                style={{ fontFamily: 'Montserrat, sans-serif' }}
+              >
+                {step.title}
+              </h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">{step.description}</p>
+            </div>
           ))}
+        </div>
+
+        {/* CTA */}
+        <div className="mt-14 text-center">
+          <a href="#contact" className="btn-green text-base mx-auto inline-flex">
+            Начать прямо сейчас — бесплатная консультация
+            <ArrowRight className="w-4 h-4" />
+          </a>
         </div>
       </div>
     </section>
