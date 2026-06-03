@@ -24,9 +24,9 @@ export default function Index() {
       <HeroSection />
       <ServicesSection />
       <ReadySection />
+      <PortfolioSection />
       <FullCycleSection />
       <AboutSection />
-      <PortfolioSection />
       <VideoWorksSection />
       <EquipmentBrandsSection />
       <SurveyorCtaSection />

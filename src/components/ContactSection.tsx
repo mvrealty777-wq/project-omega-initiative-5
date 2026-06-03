@@ -1,18 +1,10 @@
 import type React from "react"
 import { useState } from "react"
 import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { Send, Phone, Mail, MapPin, Clock, CheckCircle } from "lucide-react"
-
-const contacts = [
-  { icon: Phone, label: "Телефон", value: "8 800 302-67-53", sub: "Звонок бесплатный по России", href: "tel:88003026753" },
-  { icon: Mail, label: "E-mail", value: "info@geniusspa.ru", sub: "Ответим в течение часа", href: "mailto:info@geniusspa.ru" },
-  { icon: MapPin, label: "География", value: "По всей России", sub: "Выезжаем в любой регион", href: undefined },
-  { icon: Clock, label: "Часы работы", value: "Ежедневно: 9:00–21:00", sub: "Без выходных", href: undefined },
-]
+import { Phone, Mail, CheckCircle, MessageCircle, Send } from "lucide-react"
 
 export function ContactSection() {
-  const [formData, setFormData] = useState({ name: "", phone: "", email: "", message: "" })
+  const [formData, setFormData] = useState({ time: "", phone: "" })
   const [sent, setSent] = useState(false)
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -20,123 +12,137 @@ export function ContactSection() {
     setSent(true)
   }
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }))
   }
 
   return (
-    <section id="contact" className="py-14 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 bg-gray-50">
-      <div className="container mx-auto max-w-7xl">
-        <div className="text-center mb-14">
-          <div className="section-badge mb-5 mx-auto">Связаться с нами</div>
-          <h2
-            className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-foreground text-balance mb-4"
-            style={{ fontFamily: 'Montserrat, sans-serif' }}
-          >
-            Получите <span className="text-primary">бесплатный расчёт</span>
-          </h2>
-          <p className="text-muted-foreground max-w-xl mx-auto text-sm leading-relaxed">
-            Оставьте заявку — перезвоним в течение 15 минут и обсудим ваш проект. Выезд на замер бесплатно.
-          </p>
-        </div>
+    <section id="contact" className="py-14 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden"
+      style={{ background: 'linear-gradient(160deg, hsl(220 25% 11%), hsl(220 30% 7%))' }}>
+      {/* Decorative glow */}
+      <div className="absolute -top-32 -right-32 w-96 h-96 rounded-full blur-3xl opacity-20 pointer-events-none"
+        style={{ background: 'hsl(145 63% 40%)' }} />
+      <div className="absolute -bottom-32 -left-32 w-96 h-96 rounded-full blur-3xl opacity-10 pointer-events-none"
+        style={{ background: 'hsl(145 63% 50%)' }} />
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Form */}
-          <div className="lg:col-span-2 bg-white rounded-2xl border border-border shadow-sm p-8">
-            {sent ? (
-              <div className="flex flex-col items-center justify-center h-full text-center py-12">
-                <div className="w-16 h-16 rounded-full flex items-center justify-center mb-4"
-                  style={{ background: 'hsl(145 63% 32% / 0.12)' }}>
-                  <CheckCircle className="w-8 h-8 text-primary" />
-                </div>
-                <h3 className="text-xl font-bold text-foreground mb-2" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                  Заявка отправлена!
-                </h3>
-                <p className="text-muted-foreground text-sm">
-                  Мы перезвоним вам в течение 15 минут. Спасибо!
-                </p>
-              </div>
-            ) : (
-              <>
-                <h3 className="text-xl font-bold text-foreground mb-6" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                  Оставьте заявку на расчёт
-                </h3>
-                <form onSubmit={handleSubmit} className="space-y-5">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div className="space-y-1.5">
-                      <label htmlFor="name" className="text-sm font-medium text-foreground">Ваше имя *</label>
-                      <Input id="name" name="name" value={formData.name} onChange={handleChange}
-                        placeholder="Александр" required className="h-11 rounded-xl border-border" />
-                    </div>
-                    <div className="space-y-1.5">
-                      <label htmlFor="phone" className="text-sm font-medium text-foreground">Телефон *</label>
-                      <Input id="phone" name="phone" type="tel" value={formData.phone} onChange={handleChange}
-                        placeholder="+7 900 123-45-67" required className="h-11 rounded-xl border-border" />
-                    </div>
-                  </div>
-                  <div className="space-y-1.5">
-                    <label htmlFor="email" className="text-sm font-medium text-foreground">E-mail</label>
-                    <Input id="email" name="email" type="email" value={formData.email} onChange={handleChange}
-                      placeholder="your@email.ru" className="h-11 rounded-xl border-border" />
-                  </div>
-                  <div className="space-y-1.5">
-                    <label htmlFor="message" className="text-sm font-medium text-foreground">Что хотите построить?</label>
-                    <Textarea id="message" name="message" value={formData.message} onChange={handleChange}
-                      placeholder="Например: финская сауна 6×4 м, хамам 12 м², банный комплекс для отеля..."
-                      rows={4} className="rounded-xl border-border resize-none" />
-                  </div>
-                  <button type="submit" className="btn-green w-full sm:w-auto justify-center text-base">
-                    <Send className="w-4 h-4" />
-                    Отправить заявку
-                  </button>
-                </form>
-              </>
-            )}
+      <div className="container mx-auto max-w-6xl relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-[300px_1fr] gap-10 lg:gap-14 items-center">
+          {/* Left — manager */}
+          <div className="flex flex-col items-center text-center">
+            <div className="relative">
+              <img
+                src="https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/e945840f-329e-4470-89ea-02b9c5894c0b.jpg"
+                alt="Руководитель отдела продаж"
+                className="w-44 h-44 sm:w-52 sm:h-52 rounded-full object-cover border-4 shadow-2xl"
+                style={{ borderColor: 'hsl(145 63% 40%)' }}
+              />
+              <span className="absolute bottom-3 right-3 w-6 h-6 rounded-full border-4 animate-pulse"
+                style={{ background: 'hsl(145 63% 45%)', borderColor: 'hsl(220 25% 11%)' }} />
+            </div>
+            <p className="mt-5 text-xl font-black text-white" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+              Иван, руководитель отдела продаж
+            </p>
+            <p className="text-sm font-semibold mt-1" style={{ color: 'hsl(145 63% 50%)' }}>
+              GeniusSPA
+            </p>
           </div>
 
-          {/* Contacts */}
-          <div className="flex flex-col gap-4">
-            {contacts.map((c, i) => (
-              <div key={i} className="bg-white rounded-2xl border border-border shadow-sm p-5 flex items-start gap-4 hover:shadow-md transition-shadow">
-                <div
-                  className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
-                  style={{ background: 'hsl(145 63% 32% / 0.10)' }}
-                >
-                  <c.icon className="w-5 h-5 text-primary" />
+          {/* Right — content */}
+          <div>
+            <h2
+              className="text-3xl sm:text-4xl lg:text-5xl font-black text-white leading-tight mb-8"
+              style={{ fontFamily: 'Montserrat, sans-serif' }}
+            >
+              Давайте начнём наше знакомство с<br className="hidden sm:block" />{" "}
+              <span style={{ color: 'hsl(145 63% 50%)' }}>бесплатной консультации</span>
+            </h2>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
+              {/* Messengers */}
+              <div>
+                <div className="flex items-center gap-2 mb-3">
+                  <span className="w-2.5 h-2.5 rounded-full" style={{ background: 'hsl(145 63% 50%)' }} />
+                  <span className="text-white/90 font-medium">Пишите, мы онлайн:</span>
                 </div>
-                <div>
-                  <p className="text-xs text-muted-foreground mb-0.5">{c.label}</p>
-                  {c.href ? (
-                    <a href={c.href} className="font-semibold text-sm text-foreground hover:text-primary transition-colors">
-                      {c.value}
-                    </a>
-                  ) : (
-                    <p className="font-semibold text-sm text-foreground">{c.value}</p>
-                  )}
-                  <p className="text-xs text-muted-foreground mt-0.5">{c.sub}</p>
+                <div className="flex gap-3">
+                  <a href="https://wa.me/79810779725" target="_blank" rel="noopener noreferrer"
+                    className="w-12 h-12 rounded-full flex items-center justify-center bg-[#25D366] hover:scale-110 transition-transform shadow-lg">
+                    <MessageCircle className="w-6 h-6 text-white" />
+                  </a>
+                  <a href="https://t.me/geniusspa" target="_blank" rel="noopener noreferrer"
+                    className="w-12 h-12 rounded-full flex items-center justify-center bg-[#229ED9] hover:scale-110 transition-transform shadow-lg">
+                    <Send className="w-5 h-5 text-white" />
+                  </a>
+                  <a href="mailto:info@geniusspa.ru"
+                    className="w-12 h-12 rounded-full flex items-center justify-center bg-white/15 hover:bg-white/25 hover:scale-110 transition-all shadow-lg">
+                    <Mail className="w-5 h-5 text-white" />
+                  </a>
                 </div>
               </div>
-            ))}
 
-            {/* Trust block */}
-            <div
-              className="rounded-2xl p-5 text-white"
-              style={{ background: 'linear-gradient(135deg, hsl(145 63% 32%), hsl(145 70% 24%))' }}
-            >
-              <p className="font-bold text-sm mb-3" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                Почему выбирают нас?
-              </p>
-              {[
-                "Бесплатная консультация",
-                "Выезд на замер без оплаты",
-                "Фиксированная смета в договоре",
-                "Гарантия 5 лет на объект",
-              ].map((item) => (
-                <div key={item} className="flex items-center gap-2 text-sm text-white/90 mb-1.5 last:mb-0">
-                  <CheckCircle className="w-3.5 h-3.5 text-white/70 flex-shrink-0" />
-                  {item}
+              {/* Phone */}
+              <div>
+                <div className="flex items-center gap-2 mb-3">
+                  <span className="w-2.5 h-2.5 rounded-full" style={{ background: 'hsl(145 63% 50%)' }} />
+                  <span className="text-white/90 font-medium">Звоните прямо сейчас:</span>
                 </div>
-              ))}
+                <a href="tel:+79810779725" className="flex items-center gap-2.5 group">
+                  <Phone className="w-6 h-6" style={{ color: 'hsl(145 63% 50%)' }} />
+                  <span className="text-2xl sm:text-3xl font-black text-white group-hover:text-primary transition-colors"
+                    style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                    +7 981 077 97 25
+                  </span>
+                </a>
+              </div>
+            </div>
+
+            {/* Callback form */}
+            <div className="rounded-2xl p-6 sm:p-7 border border-white/10"
+              style={{ background: 'hsl(220 20% 15% / 0.6)', backdropFilter: 'blur(8px)' }}>
+              {sent ? (
+                <div className="flex items-center gap-4 py-2">
+                  <div className="w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0"
+                    style={{ background: 'hsl(145 63% 32% / 0.25)' }}>
+                    <CheckCircle className="w-6 h-6" style={{ color: 'hsl(145 63% 55%)' }} />
+                  </div>
+                  <div>
+                    <p className="text-white font-bold text-lg" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                      Заявка принята!
+                    </p>
+                    <p className="text-white/70 text-sm">Перезвоним вам в указанное время.</p>
+                  </div>
+                </div>
+              ) : (
+                <>
+                  <p className="text-white/85 mb-4 text-base">
+                    Или просто введите ваш телефон, мы перезвоним когда вам будет удобно
+                  </p>
+                  <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3">
+                    <Input
+                      name="time"
+                      value={formData.time}
+                      onChange={handleChange}
+                      placeholder="Удобное время для звонка"
+                      className="h-14 rounded-xl bg-white/5 border-white/15 text-white placeholder:text-white/40 focus-visible:ring-primary"
+                    />
+                    <Input
+                      name="phone"
+                      type="tel"
+                      required
+                      value={formData.phone}
+                      onChange={handleChange}
+                      placeholder="Ваш номер телефона *"
+                      className="h-14 rounded-xl bg-white/5 border-white/15 text-white placeholder:text-white/40 focus-visible:ring-primary"
+                    />
+                    <button type="submit" className="btn-green h-14 px-8 justify-center whitespace-nowrap text-base flex-shrink-0">
+                      Перезвоните
+                    </button>
+                  </form>
+                  <p className="text-white/40 text-xs mt-3">
+                    Вы соглашаетесь с условиями обработки персональных данных
+                  </p>
+                </>
+              )}
             </div>
           </div>
         </div>

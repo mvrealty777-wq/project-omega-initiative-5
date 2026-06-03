@@ -139,7 +139,7 @@ export function PortfolioSection() {
               onClick={() => openProject(project)}
               className="group bg-white rounded-2xl overflow-hidden border border-border shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col text-left"
             >
-              <div className="relative h-52 overflow-hidden">
+              <div className="relative h-60 sm:h-64 lg:h-72 overflow-hidden">
                 <img
                   src={project.images[0]}
                   alt={project.title}
