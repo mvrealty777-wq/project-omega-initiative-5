@@ -13,12 +13,12 @@ const clients = [
 
 export function ReputationSection() {
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
+    <section className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 bg-white">
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-12">
           <div className="section-badge mb-5 mx-auto">Нам доверяют</div>
           <h2
-            className="text-5xl sm:text-6xl md:text-7xl font-black text-foreground mb-4"
+            className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-foreground mb-4"
             style={{ fontFamily: 'Montserrat, sans-serif' }}
           >
             Проверенная <span className="text-primary">репутация</span>

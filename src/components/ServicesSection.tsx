@@ -1,13 +1,14 @@
 import { ArrowRight } from "lucide-react"
 import { Link } from "react-router-dom"
 import { servicesData } from "@/data/servicesData"
+import Icon from "@/components/ui/icon"
 
 export function ServicesSection() {
   return (
-    <section id="services" className="py-28 px-4 sm:px-6 lg:px-8 bg-gray-50">
+    <section id="services" className="py-14 sm:py-20 lg:py-28 px-4 sm:px-6 lg:px-8 bg-gray-50">
       <div className="container mx-auto max-w-7xl">
         <div className="text-center mb-16">
-          <h2 className="text-5xl sm:text-6xl md:text-7xl font-black text-foreground mb-5" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+          <h2 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-foreground mb-5" style={{ fontFamily: 'Montserrat, sans-serif' }}>
             Наши специалисты <span className="text-primary">выполнят</span>
           </h2>
           <p className="text-muted-foreground text-lg sm:text-xl max-w-2xl mx-auto">
@@ -15,14 +16,14 @@ export function ServicesSection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 lg:gap-8">
           {servicesData.map((service) => (
             <div
               key={service.slug}
               className="group bg-white rounded-2xl overflow-hidden border border-border shadow-sm hover:shadow-2xl transition-all duration-300 hover:-translate-y-1.5 flex flex-col"
             >
               {/* Wide image with badge */}
-              <Link to={`/uslugi/${service.slug}`} className="relative h-64 overflow-hidden block">
+              <Link to={`/uslugi/${service.slug}`} className="relative h-52 sm:h-60 lg:h-64 overflow-hidden block">
                 <img
                   src={service.image}
                   alt={service.cardTitle}
@@ -49,8 +50,9 @@ export function ServicesSection() {
                 {/* Tags */}
                 <div className="flex flex-wrap gap-2 mb-7">
                   {service.tags.map((tag, i) => (
-                    <span key={i} className="text-xs font-medium px-3 py-1.5 rounded-full bg-gray-100 text-foreground/70 border border-border">
-                      {tag}
+                    <span key={i} className="inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-full bg-gray-100 text-foreground/70 border border-border">
+                      <Icon name={tag.icon} className="w-3.5 h-3.5 text-primary" />
+                      {tag.label}
                     </span>
                   ))}
                 </div>

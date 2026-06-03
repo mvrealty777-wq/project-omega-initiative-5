@@ -47,12 +47,12 @@ const testimonials = [
 
 export function TestimonialsSection() {
   return (
-    <section className="py-24 px-4 sm:px-6 lg:px-8 bg-gray-50">
+    <section className="py-14 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 bg-gray-50">
       <div className="container mx-auto max-w-7xl">
         <div className="text-center mb-14">
           <div className="section-badge mb-5 mx-auto">Отзывы</div>
           <h2
-            className="text-5xl sm:text-6xl md:text-7xl font-black text-foreground text-balance mb-4"
+            className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-foreground text-balance mb-4"
             style={{ fontFamily: 'Montserrat, sans-serif' }}
           >
             Что говорят <span className="text-primary">наши клиенты</span>

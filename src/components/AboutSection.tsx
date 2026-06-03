@@ -10,21 +10,21 @@ const values = [
 ]
 
 const stats = [
-  { number: "10+", label: "Лет на рынке" },
-  { number: "400+", label: "Объектов построено" },
-  { number: "8", label: "Видов услуг" },
-  { number: "5 лет", label: "Гарантия" },
+  { icon: "CalendarDays", number: "10+", label: "Лет на рынке" },
+  { icon: "Home", number: "400+", label: "Объектов построено" },
+  { icon: "LayoutGrid", number: "8", label: "Видов услуг" },
+  { icon: "ShieldCheck", number: "5 лет", label: "Гарантия" },
 ]
 
 export function AboutSection() {
   return (
-    <section id="about" className="py-24 px-4 sm:px-6 lg:px-8 bg-gray-50">
+    <section id="about" className="py-14 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 bg-gray-50">
       <div className="container mx-auto max-w-6xl">
         {/* Header */}
         <div className="text-center mb-12">
           <div className="section-badge mb-5 mx-auto">О компании GeniusSPA</div>
           <h2
-            className="text-5xl sm:text-6xl md:text-7xl font-black text-foreground mb-4 leading-tight"
+            className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-foreground mb-4 leading-tight"
             style={{ fontFamily: 'Montserrat, sans-serif' }}
           >
             Почему клиенты <span className="text-primary">выбирают нас?</span>
@@ -54,10 +54,13 @@ export function AboutSection() {
         </div>
 
         {/* Stats strip */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 rounded-2xl overflow-hidden p-8"
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 rounded-2xl overflow-hidden p-6 sm:p-8"
           style={{ background: 'linear-gradient(135deg, hsl(145 63% 32%), hsl(145 70% 22%))' }}>
           {stats.map((stat, index) => (
-            <div key={index} className="text-center text-white">
+            <div key={index} className="text-center text-white flex flex-col items-center">
+              <div className="w-12 h-12 rounded-xl bg-white/15 flex items-center justify-center mb-3">
+                <Icon name={stat.icon} className="w-6 h-6 text-white" fallback="Check" />
+              </div>
               <div className="text-4xl sm:text-5xl font-black mb-1" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                 {stat.number}
               </div>

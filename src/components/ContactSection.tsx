@@ -25,12 +25,12 @@ export function ContactSection() {
   }
 
   return (
-    <section id="contact" className="py-24 px-4 sm:px-6 lg:px-8 bg-gray-50">
+    <section id="contact" className="py-14 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 bg-gray-50">
       <div className="container mx-auto max-w-7xl">
         <div className="text-center mb-14">
           <div className="section-badge mb-5 mx-auto">Связаться с нами</div>
           <h2
-            className="text-5xl sm:text-6xl md:text-7xl font-black text-foreground text-balance mb-4"
+            className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-foreground text-balance mb-4"
             style={{ fontFamily: 'Montserrat, sans-serif' }}
           >
             Получите <span className="text-primary">бесплатный расчёт</span>

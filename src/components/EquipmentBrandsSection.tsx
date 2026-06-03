@@ -33,11 +33,11 @@ const cards = [
 
 export function EquipmentBrandsSection() {
   return (
-    <section className="py-24 px-4 sm:px-6 lg:px-8 bg-white">
+    <section className="py-14 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 bg-white">
       <div className="container mx-auto max-w-7xl">
         <div className="text-center mb-14">
           <h2
-            className="text-5xl sm:text-6xl md:text-7xl font-black text-foreground mb-4"
+            className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-foreground mb-4"
             style={{ fontFamily: 'Montserrat, sans-serif' }}
           >
             Гарантируем лучшую цену <br className="hidden sm:block" />

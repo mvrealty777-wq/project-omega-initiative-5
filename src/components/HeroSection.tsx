@@ -54,11 +54,17 @@ export function HeroSection() {
               Полный комплекс услуг — от проектирования до выполнения отделочных работ и установки оборудования 👌
             </p>
 
-            <div className="flex flex-wrap gap-x-6 gap-y-3 animate-fade-in-up animate-delay-200">
-              {["Более 400 объектов", "10+ лет опыта", "Гарантия 5 лет"].map((item) => (
-                <div key={item} className="flex items-center gap-2 text-white/90 text-sm font-medium">
-                  <CheckCircle className="w-4 h-4 text-green-400 flex-shrink-0" />
-                  {item}
+            <div className="grid grid-cols-3 gap-3 sm:gap-4 max-w-lg animate-fade-in-up animate-delay-200">
+              {[
+                { number: "400+", label: "объектов сдано" },
+                { number: "10+", label: "лет опыта" },
+                { number: "5 лет", label: "гарантия" },
+              ].map((item) => (
+                <div key={item.label} className="rounded-xl bg-white/10 backdrop-blur-sm border border-white/15 px-3 py-4 text-center">
+                  <div className="text-2xl sm:text-3xl font-black text-green-400" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                    {item.number}
+                  </div>
+                  <div className="text-[11px] sm:text-xs text-white/75 mt-1 leading-tight">{item.label}</div>
                 </div>
               ))}
             </div>
