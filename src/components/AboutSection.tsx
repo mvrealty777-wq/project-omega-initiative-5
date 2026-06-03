@@ -2,19 +2,19 @@ import { Card, CardContent } from "@/components/ui/card"
 import { CheckCircle2, Sparkles } from "lucide-react"
 
 const values = [
-  { title: "Качество", description: "Высококлассные решения, соответствующие самым высоким стандартам" },
-  { title: "Доступность", description: "Профессиональные сайты по честным и прозрачным ценам" },
-  { title: "Прозрачность", description: "Четкая коммуникация без скрытых платежей" },
-  { title: "Клиентоориентированность", description: "Ваши цели и пожелания всегда в приоритете" },
-  { title: "Масштабируемость", description: "Сайты, которые растут вместе с вашим бизнесом" },
-  { title: "Гибкость", description: "Быстрая адаптация под меняющиеся потребности" },
+  { title: "Профессионализм", description: "Все мастера — дипломированные специалисты с опытом от 5 лет и регулярным повышением квалификации" },
+  { title: "Индивидуальный подход", description: "Каждый сеанс начинается с консультации, чтобы подобрать оптимальную программу именно для вас" },
+  { title: "Премиум материалы", description: "Используем только сертифицированную косметику и натуральные масла ведущих мировых брендов" },
+  { title: "Атмосфера уюта", description: "Мягкое освещение, ароматерапия и расслабляющая музыка — каждая деталь продумана для вашего комфорта" },
+  { title: "Безопасность", description: "Строгое соблюдение санитарных норм, стерильные инструменты и индивидуальные расходники для каждого клиента" },
+  { title: "Результат", description: "Ощутимый эффект уже после первого посещения — наши клиенты возвращаются снова и снова" },
 ]
 
 const stats = [
-  { number: "50+", label: "Проектов" },
-  { number: "45+", label: "Довольных клиентов" },
-  { number: "30+", label: "Созданных логотипов" },
-  { number: "3+", label: "Года опыта" },
+  { number: "10+", label: "Лет опыта" },
+  { number: "500+", label: "Довольных клиентов" },
+  { number: "20+", label: "Видов процедур" },
+  { number: "15", label: "Мастеров в команде" },
 ]
 
 export function AboutSection() {
@@ -25,21 +25,21 @@ export function AboutSection() {
 
       <div className="container mx-auto max-w-7xl relative z-10">
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 mb-4 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-semibold">
+          <div className="inline-flex items-center gap-2 mb-4 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-semibold tracking-wider uppercase">
             <Sparkles className="h-4 w-4" />
-            О CodeCraft
+            О студии GeniusSPA
           </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 text-balance">
-            Качество, которое{" "}
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 text-balance" style={{ fontFamily: 'Cormorant Garamond, serif' }}>
+            Место, где тело и душа{" "}
             <span className="text-primary relative">
-              впечатляет
+              обретают гармонию
               <svg className="absolute -bottom-2 left-0 w-full" height="8" viewBox="0 0 200 8" fill="none">
                 <path d="M0 4C50 2 150 6 200 4" stroke="currentColor" strokeWidth="2" className="text-primary" />
               </svg>
             </span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto text-pretty leading-relaxed">
-            Создание сайта не должно быть дорогим. Мы разрабатываем индивидуальные решения, которые идеально соответствуют пожеланиям каждого клиента.
+            GeniusSPA — это премиальная студия массажа и СПА-процедур в самом сердце Москвы. Мы создали пространство, где каждый клиент получает персональное внимание, профессиональный уход и настоящий отдых от городской суеты.
           </p>
         </div>
 
@@ -53,7 +53,7 @@ export function AboutSection() {
                 <div className="flex items-start gap-3">
                   <CheckCircle2 className="h-6 w-6 text-primary flex-shrink-0 mt-1 group-hover:scale-110 transition-transform" />
                   <div>
-                    <h3 className="font-semibold text-lg mb-2 group-hover:text-primary transition-colors">
+                    <h3 className="font-semibold text-lg mb-2 group-hover:text-primary transition-colors" style={{ fontFamily: 'Cormorant Garamond, serif' }}>
                       {value.title}
                     </h3>
                     <p className="text-muted-foreground text-sm leading-relaxed">{value.description}</p>
@@ -67,7 +67,7 @@ export function AboutSection() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           {stats.map((stat, index) => (
             <div key={index} className="text-center group cursor-default">
-              <div className="text-4xl md:text-5xl font-bold text-primary mb-2 group-hover:scale-110 transition-transform">
+              <div className="text-4xl md:text-5xl font-bold text-primary mb-2 group-hover:scale-110 transition-transform" style={{ fontFamily: 'Cormorant Garamond, serif' }}>
                 {stat.number}
               </div>
               <div className="text-muted-foreground font-medium">{stat.label}</div>

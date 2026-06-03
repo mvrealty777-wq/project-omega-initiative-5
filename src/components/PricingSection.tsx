@@ -1,42 +1,46 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Check } from "lucide-react"
-import { QuoteFormDialog } from "@/components/QuoteFormDialog"
+import { Button } from "@/components/ui/button"
 
 const pricingTiers = [
   {
-    name: "Базовый",
-    price: "99 900",
+    name: "Стандарт",
+    price: "3 500",
+    duration: "60 мин",
     features: [
-      "До 5 страниц",
-      "Адаптивный дизайн",
-      "Базовая SEO-оптимизация",
-      "Форма обратной связи",
-      "1 месяц поддержки",
+      "Классический массаж (60 мин)",
+      "Консультация мастера",
+      "Ароматическое масло на выбор",
+      "Травяной чай в подарок",
+      "Комфортная раздевалка",
     ],
     highlighted: false,
   },
   {
-    name: "Про",
-    price: "249 900",
+    name: "Премиум",
+    price: "7 500",
+    duration: "120 мин",
     features: [
-      "До 15 страниц",
-      "Премиум-дизайн",
-      "Расширенная SEO-оптимизация",
-      "Интеграция CMS",
-      "Функционал e-commerce",
-      "3 месяца поддержки",
+      "Массаж на выбор (90 мин)",
+      "Экспресс-уход для лица",
+      "Ароматерапия",
+      "Скраб-пилинг в подарок",
+      "Приоритетная запись",
+      "Травяной чай и фрукты",
     ],
     highlighted: true,
   },
   {
-    name: "Индивидуальный",
+    name: "Люкс",
     price: "По запросу",
+    duration: "от 3 часов",
     features: [
-      "Неограниченно страниц",
-      "Кастомный функционал",
-      "API-интеграции",
-      "Персональный менеджер",
-      "6 месяцев поддержки",
+      "Полная СПА-программа",
+      "Персональный мастер",
+      "Обёртывание + пилинг",
+      "Массаж лица и тела",
+      "Шампанское и угощения",
+      "Выезд на дом или в офис",
     ],
     highlighted: false,
   },
@@ -52,18 +56,18 @@ export function PricingSection() {
 
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-12 space-y-4">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4 tracking-wider uppercase">
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
             </span>
             Прозрачные цены
           </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-balance">
-            Выберите <span className="text-primary">идеальный тариф</span> для вашего проекта
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-balance" style={{ fontFamily: 'Cormorant Garamond, serif' }}>
+            Выберите <span className="text-primary">свою программу</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            От стартапов до крупного бизнеса — у нас есть подходящее решение
+            От одиночного сеанса до роскошного СПА-дня — найдите идеальный вариант для себя
           </p>
         </div>
 
@@ -79,13 +83,14 @@ export function PricingSection() {
             >
               {tier.highlighted && (
                 <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-primary to-primary/80 text-primary-foreground px-4 py-1 rounded-full text-sm font-semibold shadow-lg">
-                  Популярный
+                  Популярный выбор
                 </div>
               )}
               <CardHeader className="text-center pb-8">
-                <CardTitle className="text-2xl mb-2">{tier.name}</CardTitle>
+                <CardTitle className="text-2xl mb-2" style={{ fontFamily: 'Cormorant Garamond, serif' }}>{tier.name}</CardTitle>
+                <p className="text-sm text-muted-foreground">{tier.duration}</p>
                 <div className="mt-4">
-                  <span className="text-4xl font-bold">
+                  <span className="text-4xl font-bold" style={{ fontFamily: 'Cormorant Garamond, serif' }}>
                     {tier.price === "По запросу" ? (
                       <span className="text-3xl">{tier.price}</span>
                     ) : (
@@ -107,13 +112,15 @@ export function PricingSection() {
                     </li>
                   ))}
                 </ul>
-                <QuoteFormDialog
-                  packageName={tier.name}
+                <Button
                   variant={tier.highlighted ? "default" : "outline"}
                   className={`w-full ${tier.highlighted ? "shadow-lg shadow-primary/20" : ""}`}
+                  asChild
                 >
-                  {tier.price === "По запросу" ? "Связаться с нами" : "Выбрать тариф"}
-                </QuoteFormDialog>
+                  <a href="#contact">
+                    {tier.price === "По запросу" ? "Связаться с нами" : "Записаться"}
+                  </a>
+                </Button>
               </CardContent>
             </Card>
           ))}
@@ -121,8 +128,10 @@ export function PricingSection() {
 
         <div className="mt-12 text-center">
           <p className="text-sm text-muted-foreground">
-            Все тарифы включают <span className="text-primary font-semibold">бесплатную настройку хостинга</span> и{" "}
-            <span className="text-primary font-semibold">SSL-сертификат</span>
+            Все процедуры выполняются{" "}
+            <span className="text-primary font-semibold">сертифицированными мастерами</span>{" "}
+            с использованием{" "}
+            <span className="text-primary font-semibold">профессиональной косметики</span>
           </p>
         </div>
       </div>

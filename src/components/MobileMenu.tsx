@@ -7,11 +7,11 @@ export function MobileMenu() {
   const [open, setOpen] = useState(false)
 
   const menuItems = [
-    { href: "#about", label: "О нас" },
+    { href: "#about", label: "О студии" },
     { href: "#services", label: "Услуги" },
-    { href: "#portfolio", label: "Портфолио" },
-    { href: "#pricing", label: "Тарифы" },
-    { href: "#contact", label: "Контакты" },
+    { href: "#portfolio", label: "СПА-программы" },
+    { href: "#pricing", label: "Цены" },
+    { href: "#contact", label: "Запись" },
   ]
 
   return (

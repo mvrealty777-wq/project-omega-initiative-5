@@ -27,19 +27,19 @@ export function Navbar() {
           </a>
 
           <div className="hidden md:flex items-center gap-8">
-            <a href="#about" className="text-sm font-medium hover:text-primary transition-colors">
+            <a href="#about" className="text-sm font-medium hover:text-primary transition-colors tracking-wide">
               О нас
             </a>
-            <a href="#services" className="text-sm font-medium hover:text-primary transition-colors">
+            <a href="#services" className="text-sm font-medium hover:text-primary transition-colors tracking-wide">
               Услуги
             </a>
-            <a href="#portfolio" className="text-sm font-medium hover:text-primary transition-colors">
-              Портфолио
+            <a href="#portfolio" className="text-sm font-medium hover:text-primary transition-colors tracking-wide">
+              Программы
             </a>
-            <a href="#pricing" className="text-sm font-medium hover:text-primary transition-colors">
-              Тарифы
+            <a href="#pricing" className="text-sm font-medium hover:text-primary transition-colors tracking-wide">
+              Цены
             </a>
-            <a href="#contact" className="text-sm font-medium hover:text-primary transition-colors">
+            <a href="#contact" className="text-sm font-medium hover:text-primary transition-colors tracking-wide">
               Контакты
             </a>
           </div>

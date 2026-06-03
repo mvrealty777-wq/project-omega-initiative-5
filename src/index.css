@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -13,19 +13,19 @@
     --card-foreground: 240 10% 10%;
     --popover: 0 0% 100%;
     --popover-foreground: 240 10% 10%;
-    --primary: 350 100% 50%; /* Bright red #FF0035 */
+    --primary: 38 60% 45%; /* Gold #B8922A */
     --primary-foreground: 0 0% 100%;
-    --secondary: 240 5% 95%;
-    --secondary-foreground: 240 10% 10%;
-    --muted: 240 5% 96%;
-    --muted-foreground: 240 5% 45%;
-    --accent: 350 100% 50%;
+    --secondary: 30 20% 95%;
+    --secondary-foreground: 30 10% 15%;
+    --muted: 30 15% 96%;
+    --muted-foreground: 30 5% 45%;
+    --accent: 38 60% 45%;
     --accent-foreground: 0 0% 100%;
-    --destructive: 350 100% 50%;
+    --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
-    --border: 240 5% 90%;
-    --input: 240 5% 90%;
-    --ring: 350 100% 50%;
+    --border: 30 10% 88%;
+    --input: 30 10% 88%;
+    --ring: 38 60% 45%;
     --radius: 0.5rem;
     --chart-1: 350 100% 50%;
     --chart-2: 240 5% 35%;
@@ -50,19 +50,19 @@
     --card-foreground: 0 0% 98%;
     --popover: 240 10% 11%;
     --popover-foreground: 0 0% 98%;
-    --primary: 350 100% 50%; /* Bright red #FF0035 */
+    --primary: 38 65% 52%; /* Gold */
     --primary-foreground: 0 0% 100%;
-    --secondary: 240 10% 22%; /* #38405F */
+    --secondary: 30 10% 18%;
     --secondary-foreground: 0 0% 98%;
-    --muted: 240 10% 26%; /* #59546C */
-    --muted-foreground: 240 5% 55%; /* #8B939C */
-    --accent: 350 100% 50%;
+    --muted: 30 8% 20%;
+    --muted-foreground: 30 5% 60%;
+    --accent: 38 65% 52%;
     --accent-foreground: 0 0% 100%;
-    --destructive: 350 100% 50%;
+    --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
-    --border: 240 10% 22%;
-    --input: 240 10% 22%;
-    --ring: 350 100% 50%;
+    --border: 30 8% 22%;
+    --input: 30 8% 22%;
+    --ring: 38 65% 52%;
     --chart-1: 350 100% 50%;
     --chart-2: 240 10% 35%;
     --chart-3: 240 10% 45%;
@@ -85,7 +85,14 @@
   }
 
   body {
-    @apply bg-background text-foreground font-sans antialiased;
+    @apply bg-background text-foreground antialiased;
+    font-family: "Inter", sans-serif;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: "Cormorant Garamond", serif;
   }
 }
 

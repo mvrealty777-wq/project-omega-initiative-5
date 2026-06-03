@@ -1,4 +1,4 @@
-import { Github, Linkedin, Twitter } from "lucide-react"
+import Icon from "@/components/ui/icon"
 
 export function Footer() {
   return (
@@ -6,18 +6,21 @@ export function Footer() {
       <div className="container mx-auto max-w-6xl">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
-            <h3 className="text-xl font-bold mb-4">CodeCraft</h3>
+            <h3 className="text-xl font-bold mb-4" style={{ fontFamily: 'Cormorant Garamond, serif' }}>
+              <span className="text-primary">✦ </span>GeniusSPA
+            </h3>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              2025 CodeCraft. Все права защищены.
+              Премиальная студия массажа и СПА-процедур в Москве. Пространство истинного отдыха для вашего тела и души.
             </p>
+            <p className="text-xs text-muted-foreground mt-4">© 2025 GeniusSPA. Все права защищены.</p>
           </div>
 
           <div>
-            <h4 className="font-semibold mb-4">Навигация</h4>
+            <h4 className="font-semibold mb-4 tracking-wide">Навигация</h4>
             <ul className="space-y-2">
               <li>
                 <a href="#about" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                  О нас
+                  О студии
                 </a>
               </li>
               <li>
@@ -27,47 +30,56 @@ export function Footer() {
               </li>
               <li>
                 <a href="#portfolio" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                  Портфолио
+                  СПА-программы
+                </a>
+              </li>
+              <li>
+                <a href="#pricing" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                  Цены
                 </a>
               </li>
               <li>
                 <a href="#contact" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                  Контакты
+                  Запись
                 </a>
               </li>
             </ul>
           </div>
 
           <div>
-            <h4 className="font-semibold mb-4">Мы в соцсетях</h4>
+            <h4 className="font-semibold mb-4 tracking-wide">Мы в соцсетях</h4>
             <div className="flex gap-4">
               <a
-                href="https://linkedin.com"
+                href="https://instagram.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-primary transition-colors"
+                aria-label="Instagram"
               >
-                <Linkedin className="h-5 w-5" />
-                <span className="sr-only">LinkedIn</span>
+                <Icon name="Instagram" fallback="Globe" className="h-5 w-5" />
               </a>
               <a
-                href="https://github.com"
+                href="https://vk.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-primary transition-colors"
+                aria-label="ВКонтакте"
               >
-                <Github className="h-5 w-5" />
-                <span className="sr-only">GitHub</span>
+                <Icon name="MessageCircle" fallback="Globe" className="h-5 w-5" />
               </a>
               <a
-                href="https://twitter.com"
+                href="https://t.me"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-primary transition-colors"
+                aria-label="Telegram"
               >
-                <Twitter className="h-5 w-5" />
-                <span className="sr-only">Twitter</span>
+                <Icon name="Send" fallback="Globe" className="h-5 w-5" />
               </a>
+            </div>
+            <div className="mt-6">
+              <p className="text-sm text-muted-foreground">Режим работы:</p>
+              <p className="text-sm font-medium mt-1">Ежедневно 9:00 — 22:00</p>
             </div>
           </div>
         </div>
