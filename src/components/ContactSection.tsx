@@ -31,8 +31,8 @@ export function ContactSection() {
           <div className="flex flex-col items-center text-center">
             <div className="relative">
               <img
-                src="https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/e945840f-329e-4470-89ea-02b9c5894c0b.jpg"
-                alt="Руководитель отдела продаж"
+                src="https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/bucket/78493e82-414d-4da2-9529-452d6e1e37f8.png"
+                alt="Александр, руководитель отдела продаж"
                 className="w-44 h-44 sm:w-52 sm:h-52 rounded-full object-cover border-4 shadow-2xl"
                 style={{ borderColor: 'hsl(145 63% 40%)' }}
               />
@@ -40,7 +40,7 @@ export function ContactSection() {
                 style={{ background: 'hsl(145 63% 45%)', borderColor: 'hsl(220 25% 11%)' }} />
             </div>
             <p className="mt-5 text-xl font-black text-white" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-              Иван, руководитель отдела продаж
+              Александр, руководитель отдела продаж
             </p>
             <p className="text-sm font-semibold mt-1" style={{ color: 'hsl(145 63% 50%)' }}>
               GeniusSPA
