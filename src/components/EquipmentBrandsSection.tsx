@@ -12,7 +12,7 @@ export function EquipmentBrandsSection() {
             Официальные поставщики
           </div>
           <h2
-            className="text-3xl sm:text-4xl md:text-5xl font-black text-foreground mb-4"
+            className="text-4xl sm:text-5xl md:text-6xl font-black text-foreground mb-4"
             style={{ fontFamily: 'Montserrat, sans-serif' }}
           >
             Гарантируем лучшую цену <span className="text-primary">на оборудование</span>

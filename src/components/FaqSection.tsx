@@ -39,12 +39,12 @@ export function FaqSection() {
         <div className="text-center mb-12">
           <div className="section-badge mb-5 mx-auto">Вопросы и ответы</div>
           <h2
-            className="text-3xl sm:text-4xl md:text-5xl font-black text-foreground mb-4"
+            className="text-4xl sm:text-5xl md:text-6xl font-black text-foreground mb-4"
             style={{ fontFamily: 'Montserrat, sans-serif' }}
           >
             Частые <span className="text-primary">вопросы</span>
           </h2>
-          <p className="text-muted-foreground text-sm">
+          <p className="text-muted-foreground text-base">
             Не нашли ответ? Звоните{" "}
             <a href="tel:88003026753" className="text-primary font-semibold hover:underline">8 800 302-67-53</a>{" "}
             — ответим на любой вопрос.

@@ -59,7 +59,7 @@ export function PricingSection() {
         <div className="text-center mb-14">
           <div className="section-badge mb-5 mx-auto">Стоимость</div>
           <h2
-            className="text-3xl sm:text-4xl md:text-5xl font-black text-foreground text-balance mb-4"
+            className="text-4xl sm:text-5xl md:text-6xl font-black text-foreground text-balance mb-4"
             style={{ fontFamily: 'Montserrat, sans-serif' }}
           >
             Прозрачные цены без<br />

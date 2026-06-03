@@ -40,7 +40,7 @@ export function HeroSection() {
           {/* Left — headline */}
           <div className="text-white">
             <h1
-              className="text-3xl sm:text-4xl lg:text-5xl font-black leading-tight mb-5 animate-fade-in-up"
+              className="text-4xl sm:text-5xl lg:text-6xl font-black leading-tight mb-5 animate-fade-in-up"
               style={{ fontFamily: 'Montserrat, sans-serif' }}
             >
               ХАММАМ или САУНА{" "}
@@ -50,7 +50,7 @@ export function HeroSection() {
               </span>
             </h1>
 
-            <p className="text-lg text-white/80 leading-relaxed mb-8 max-w-lg animate-fade-in-up animate-delay-100">
+            <p className="text-lg sm:text-xl text-white/80 leading-relaxed mb-8 max-w-lg animate-fade-in-up animate-delay-100">
               Полный комплекс услуг — от проектирования до выполнения отделочных работ и установки оборудования 👌
             </p>
 

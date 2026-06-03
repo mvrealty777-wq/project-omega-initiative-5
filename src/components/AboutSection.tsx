@@ -25,7 +25,7 @@ export function AboutSection() {
           <div>
             <div className="section-badge mb-5">О компании GeniusSPA</div>
             <h2
-              className="text-3xl sm:text-4xl md:text-5xl font-black text-foreground mb-6 leading-tight"
+              className="text-4xl sm:text-5xl md:text-6xl font-black text-foreground mb-6 leading-tight"
               style={{ fontFamily: 'Montserrat, sans-serif' }}
             >
               Почему клиенты<br />
