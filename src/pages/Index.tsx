@@ -7,7 +7,7 @@ import { AboutSection } from "@/components/AboutSection"
 import { PortfolioSection } from "@/components/PortfolioSection"
 import { VideoWorksSection } from "@/components/VideoWorksSection"
 import { EquipmentBrandsSection } from "@/components/EquipmentBrandsSection"
-import { SaunaSchemeSection } from "@/components/SaunaSchemeSection"
+import { EquipmentChoiceSection } from "@/components/EquipmentChoiceSection"
 import { Project3DSection } from "@/components/Project3DSection"
 import { SurveyorCtaSection } from "@/components/SurveyorCtaSection"
 import { ReputationSection } from "@/components/ReputationSection"
@@ -35,7 +35,7 @@ export default function Index() {
         <AboutSection />
         <VideoWorksSection />
         <EquipmentBrandsSection />
-        <SaunaSchemeSection />
+        <EquipmentChoiceSection />
         <SurveyorCtaSection />
         <ReputationSection />
         <ProcessSection />

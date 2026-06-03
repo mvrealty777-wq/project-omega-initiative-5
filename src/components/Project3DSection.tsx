@@ -4,9 +4,9 @@ import { Input } from "@/components/ui/input"
 import Icon from "@/components/ui/icon"
 
 const gallery = [
-  "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/930b364e-096d-45a2-8eea-d631d1cf38cb.jpg",
-  "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/01ff79a5-40cb-4d3c-aeee-c77a892866a2e.jpg",
-  "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/fe5bc93c-a4a8-46c7-b15d-149884af6a38.jpg",
+  { src: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/36d84774-a9b9-44bf-964e-4bda7bab7a1e.jpg", tag: "Сауна" },
+  { src: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/a9216446-6746-4155-a352-9c5e9add83e2.jpg", tag: "Хаммам" },
+  { src: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/af08db9a-9608-430f-93b9-d23036440b9a.jpg", tag: "Чертёж проекта" },
 ]
 
 const visualTypes = ["Сауны", "Турецкой бани", "Соляной комнаты", "Комнаты отдыха", "и др."]
@@ -49,9 +49,16 @@ export function Project3DSection() {
         {/* Карточка блока */}
         <div className="bg-white rounded-3xl border border-border shadow-xl overflow-hidden grid grid-cols-1 lg:grid-cols-2">
           {/* Left — галерея примеров */}
-          <div className="p-4 sm:p-5 lg:p-6 bg-secondary/30">
-            <div className="rounded-2xl overflow-hidden shadow-lg mb-3 aspect-[4/3]">
-              <img src={gallery[active]} alt="Пример 3D-проекта сауны" className="w-full h-full object-cover" />
+          <div className="p-4 sm:p-5 lg:p-6"
+            style={{ background: 'linear-gradient(160deg, hsl(150 30% 96%), hsl(150 20% 92%))' }}>
+            <div className="relative rounded-2xl overflow-hidden shadow-xl mb-3 aspect-[4/3] ring-1 ring-black/5">
+              <img src={gallery[active].src} alt={`3D-проект — ${gallery[active].tag}`} className="w-full h-full object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
+              <span className="absolute top-3 left-3 inline-flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-full text-white shadow-md"
+                style={{ background: 'hsl(145 63% 30% / 0.95)', backdropFilter: 'blur(4px)', fontFamily: 'Montserrat, sans-serif' }}>
+                <Icon name="Box" className="w-3.5 h-3.5" fallback="Sparkles" />
+                3D-проект · {gallery[active].tag}
+              </span>
             </div>
             <div className="grid grid-cols-3 gap-3">
               {gallery.map((img, i) => (
@@ -59,13 +66,17 @@ export function Project3DSection() {
                   key={i}
                   type="button"
                   onClick={() => setActive(i)}
-                  className={`rounded-xl overflow-hidden aspect-[4/3] border-2 transition-all ${active === i ? 'border-primary shadow-md' : 'border-transparent opacity-70 hover:opacity-100'}`}
+                  className={`relative rounded-xl overflow-hidden aspect-[4/3] border-2 transition-all ${active === i ? 'border-primary shadow-md scale-[1.02]' : 'border-transparent opacity-65 hover:opacity-100'}`}
                 >
-                  <img src={img} alt={`Пример ${i + 1}`} className="w-full h-full object-cover" />
+                  <img src={img.src} alt={img.tag} className="w-full h-full object-cover" />
+                  <span className="absolute bottom-0 inset-x-0 text-[10px] font-semibold text-white text-center py-0.5 bg-black/55">{img.tag}</span>
                 </button>
               ))}
             </div>
-            <p className="text-xs text-muted-foreground mt-3 text-center">Примеры наших 3D-проектов</p>
+            <p className="text-xs text-muted-foreground mt-3 text-center flex items-center justify-center gap-1.5">
+              <Icon name="Images" className="w-3.5 h-3.5 text-primary" fallback="Image" />
+              Примеры наших 3D-проектов
+            </p>
           </div>
 
           {/* Right — текст + форма */}
