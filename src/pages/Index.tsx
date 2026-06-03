@@ -16,28 +16,32 @@ import { FaqSection } from "@/components/FaqSection"
 import { ContactSection } from "@/components/ContactSection"
 import { Footer } from "@/components/Footer"
 import { FloatingContacts } from "@/components/FloatingContacts"
+import { BanyaDecor } from "@/components/BanyaDecor"
 
 export default function Index() {
   return (
-    <main className="min-h-screen">
-      <Navbar />
-      <HeroSection />
-      <ServicesSection />
-      <ReadySection />
-      <PortfolioSection />
-      <FullCycleSection />
-      <AboutSection />
-      <VideoWorksSection />
-      <EquipmentBrandsSection />
-      <SurveyorCtaSection />
-      <ReputationSection />
-      <ProcessSection />
-      <TestimonialsSection />
-      <PricingSection />
-      <FaqSection />
-      <ContactSection />
-      <Footer />
-      <FloatingContacts />
+    <main className="min-h-screen banya-bg relative overflow-hidden">
+      <BanyaDecor />
+      <div className="relative z-10">
+        <Navbar />
+        <HeroSection />
+        <ServicesSection />
+        <ReadySection />
+        <PortfolioSection />
+        <FullCycleSection />
+        <AboutSection />
+        <VideoWorksSection />
+        <EquipmentBrandsSection />
+        <SurveyorCtaSection />
+        <ReputationSection />
+        <ProcessSection />
+        <TestimonialsSection />
+        <PricingSection />
+        <FaqSection />
+        <ContactSection />
+        <Footer />
+        <FloatingContacts />
+      </div>
     </main>
   )
 }

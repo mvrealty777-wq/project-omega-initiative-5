@@ -114,7 +114,7 @@ export function PortfolioSection() {
   }
 
   return (
-    <section id="portfolio" className="py-14 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 bg-gray-50">
+    <section id="portfolio" className="py-14 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 section-glass-tint">
       <div className="container mx-auto max-w-7xl">
         <div className="text-center mb-14">
           <h2

@@ -13,7 +13,7 @@ const clients = [
 
 export function ReputationSection() {
   return (
-    <section className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 bg-white">
+    <section className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 section-glass">
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-12">
           <div className="section-badge mb-5 mx-auto">Нам доверяют</div>

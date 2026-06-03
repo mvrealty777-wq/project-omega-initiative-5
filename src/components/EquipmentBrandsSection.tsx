@@ -43,7 +43,7 @@ const brands = ["Harvia", "TYLÖ", "EOS", "Jacuzzi", "ASTRAL", "SAWO", "HygroMat
 
 export function EquipmentBrandsSection() {
   return (
-    <section className="py-14 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 bg-gray-50">
+    <section className="py-14 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 section-glass-tint">
       <div className="container mx-auto max-w-7xl">
         <div className="text-center mb-12">
           <div className="section-badge mb-5 mx-auto">Оборудование и сервис</div>
