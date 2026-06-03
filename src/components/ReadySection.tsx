@@ -16,7 +16,7 @@ export function ReadySection() {
           <div>
             <div className="section-badge mb-5">Наш подход</div>
             <h2
-              className="text-3xl sm:text-4xl font-black text-foreground mb-5 leading-tight"
+              className="text-4xl sm:text-5xl font-black text-foreground mb-5 leading-tight"
               style={{ fontFamily: 'Montserrat, sans-serif' }}
             >
               Готовы реализовать проекты <span className="text-primary">любой сложности</span>

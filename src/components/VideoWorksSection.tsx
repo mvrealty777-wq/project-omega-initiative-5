@@ -40,7 +40,7 @@ export function VideoWorksSection() {
         <div className="text-center mb-14">
           <div className="section-badge mb-5 mx-auto">Видео-обзоры</div>
           <h2
-            className="text-4xl sm:text-5xl md:text-6xl font-black text-foreground mb-4"
+            className="text-5xl sm:text-6xl md:text-7xl font-black text-foreground mb-4"
             style={{ fontFamily: 'Montserrat, sans-serif' }}
           >
             Наши <span className="text-primary">работы</span>

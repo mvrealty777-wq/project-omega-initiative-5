@@ -39,7 +39,7 @@ export function FaqSection() {
         <div className="text-center mb-12">
           <div className="section-badge mb-5 mx-auto">Вопросы и ответы</div>
           <h2
-            className="text-4xl sm:text-5xl md:text-6xl font-black text-foreground mb-4"
+            className="text-5xl sm:text-6xl md:text-7xl font-black text-foreground mb-4"
             style={{ fontFamily: 'Montserrat, sans-serif' }}
           >
             Частые <span className="text-primary">вопросы</span>

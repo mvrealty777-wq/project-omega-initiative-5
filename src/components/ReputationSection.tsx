@@ -14,7 +14,7 @@ export function ReputationSection() {
         <div className="text-center mb-12">
           <div className="section-badge mb-5 mx-auto">Нам доверяют</div>
           <h2
-            className="text-4xl sm:text-5xl md:text-6xl font-black text-foreground mb-4"
+            className="text-5xl sm:text-6xl md:text-7xl font-black text-foreground mb-4"
             style={{ fontFamily: 'Montserrat, sans-serif' }}
           >
             Проверенная <span className="text-primary">репутация</span>

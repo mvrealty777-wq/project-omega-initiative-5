@@ -30,7 +30,7 @@ export function FullCycleSection() {
         <div className="text-center mb-14">
           <div className="section-badge mb-5 mx-auto">Полный цикл</div>
           <h2
-            className="text-4xl sm:text-5xl md:text-6xl font-black text-foreground mb-4"
+            className="text-5xl sm:text-6xl md:text-7xl font-black text-foreground mb-4"
             style={{ fontFamily: 'Montserrat, sans-serif' }}
           >
             Выполним <span className="text-primary">полный цикл работ</span>

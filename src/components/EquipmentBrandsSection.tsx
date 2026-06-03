@@ -1,31 +1,31 @@
 const cards = [
   {
-    image: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/8065142e-d8f2-4fb2-86f9-8c79c87d9623.jpg",
+    image: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/987e5a97-e8af-440e-9e38-9a91fa41da8e.jpg",
     title: "Строительство под ключ",
     text: "Берём на себя весь цикл: проект, материалы, монтаж, отделка, оборудование. Вам не нужно ни о чём беспокоиться.",
   },
   {
-    image: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/65fe6b3c-b087-4740-abe4-3d358648fb85.jpg",
+    image: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/e2a81b72-7f5b-4c2a-85d5-788303de8cc9.jpg",
     title: "Дизайн и 3D-визуализация",
     text: "Разрабатываем уникальный дизайн-проект с детальной 3D-визуализацией. Вы увидите результат ещё до начала работ.",
   },
   {
-    image: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/e0d7d464-893c-4627-b642-3e66fd445cb3.jpg",
+    image: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/60a4a4f4-163f-4897-9ac7-5d0f5308be21.jpg",
     title: "Гарантия 5 лет",
     text: "Предоставляем полную гарантию на все виды работ, материалы и оборудование. Гарантийное и постгарантийное обслуживание.",
   },
   {
-    image: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/46069af9-fb6f-4997-aef8-2f2f86292af9.jpg",
+    image: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/7bde4507-c7cf-4f9f-ac8a-72ee406957fe.jpg",
     title: "Бесплатный выезд замерщика",
     text: "Специалист приедет к вам бесплатно по всей России, сделает точные замеры и оценит технические условия.",
   },
   {
-    image: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/4c1fb026-afcf-4621-9303-3e337dc1fc2b.jpg",
+    image: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/60a2c11b-58e5-4b6c-b192-6db6f7ab73ca.jpg",
     title: "Премиум оборудование",
     text: "Официальный партнёр Harvia, TYLÖ, EOS, HygroMatik, ASTRAL. Используем только сертифицированные материалы и оборудование.",
   },
   {
-    image: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/b4897786-8a0b-4292-a9f4-a0c260e94f38.jpg",
+    image: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/6111f315-b10f-4ad1-a1dc-d19ee1b1c843.jpg",
     title: "Сервисный центр",
     text: "Собственный сервисный центр для обслуживания и ремонта. Быстрое реагирование на любые запросы клиентов.",
   },
@@ -37,7 +37,7 @@ export function EquipmentBrandsSection() {
       <div className="container mx-auto max-w-7xl">
         <div className="text-center mb-14">
           <h2
-            className="text-4xl sm:text-5xl md:text-6xl font-black text-foreground mb-4"
+            className="text-5xl sm:text-6xl md:text-7xl font-black text-foreground mb-4"
             style={{ fontFamily: 'Montserrat, sans-serif' }}
           >
             Гарантируем лучшую цену <br className="hidden sm:block" />
