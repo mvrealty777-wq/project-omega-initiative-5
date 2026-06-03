@@ -28,8 +28,8 @@ export function AboutSection() {
               className="text-3xl sm:text-4xl md:text-5xl font-black text-foreground mb-6 leading-tight"
               style={{ fontFamily: 'Montserrat, sans-serif' }}
             >
-              Строим не просто бани —<br />
-              <span className="text-primary">создаём пространство</span>
+              Почему клиенты<br />
+              <span className="text-primary">выбирают нас?</span>
             </h2>
             <p className="text-muted-foreground leading-relaxed mb-6 text-base">
               GeniusSPA — строительная компания с 10-летним опытом возведения финских саун, русских бань и турецких хамамов. Работаем по всей России: от небольшой бани на даче до многозонного банного комплекса для ресторана или отеля.
