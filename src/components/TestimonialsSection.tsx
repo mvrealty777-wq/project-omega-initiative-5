@@ -70,7 +70,7 @@ export function TestimonialsSection() {
             Что говорят <span className="text-primary">наши клиенты</span>
           </h2>
           <p className="text-muted-foreground max-w-xl mx-auto text-sm">
-            Более 200 реализованных объектов — и каждый клиент оценил результат.
+            Более 400 реализованных объектов — и каждый клиент оценил результат.
           </p>
         </div>
       </div>
