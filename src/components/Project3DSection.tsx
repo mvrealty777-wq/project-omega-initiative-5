@@ -3,17 +3,24 @@ import { useState } from "react"
 import { Input } from "@/components/ui/input"
 import Icon from "@/components/ui/icon"
 
+const gallery = [
+  "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/930b364e-096d-45a2-8eea-d631d1cf38cb.jpg",
+  "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/01ff79a5-40cb-4d3c-aeee-c77a892866a2e.jpg",
+  "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/fe5bc93c-a4a8-46c7-b15d-149884af6a38.jpg",
+]
+
 const visualTypes = ["Сауны", "Турецкой бани", "Соляной комнаты", "Комнаты отдыха", "и др."]
 
 const advantages = [
-  { icon: "Gift", title: "Правки бесплатно", text: "Дорабатываем визуализацию, пока вы не будете довольны результатом" },
-  { icon: "Sparkles", title: "Фотореалистичность", text: "3D-визуализация, неотличимая от настоящей фотографии объекта" },
-  { icon: "ScanEye", title: "Высокая детализация", text: "Прорабатываем материалы, свет и каждую деталь интерьера" },
+  { icon: "Gift", title: "Правки бесплатно" },
+  { icon: "Sparkles", title: "Фотореализм" },
+  { icon: "ScanEye", title: "Высокая детализация" },
 ]
 
 export function Project3DSection() {
   const [formData, setFormData] = useState({ name: "", phone: "" })
   const [sent, setSent] = useState(false)
+  const [active, setActive] = useState(0)
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
@@ -25,11 +32,11 @@ export function Project3DSection() {
 
   return (
     <section className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 section-glass-tint">
-      <div className="container mx-auto max-w-7xl">
-        <div className="text-center mb-9 sm:mb-12">
+      <div className="container mx-auto max-w-6xl">
+        <div className="text-center mb-8 sm:mb-10">
           <div className="section-badge mb-4 mx-auto">3D-визуализация</div>
           <h2
-            className="text-3xl sm:text-4xl lg:text-5xl font-black text-foreground mb-3 leading-tight"
+            className="text-2xl sm:text-3xl lg:text-4xl font-black text-foreground mb-3 leading-tight"
             style={{ fontFamily: 'Montserrat, sans-serif' }}
           >
             Разработка <span className="text-primary">3D-проекта</span> сауны или хамама
@@ -39,98 +46,86 @@ export function Project3DSection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 items-stretch">
-          {/* Left — image + text */}
-          <div>
-            <div className="rounded-3xl overflow-hidden shadow-2xl mb-6">
-              <img
-                src="https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/fe5bc93c-a4a8-46c7-b15d-149884af6a38.jpg"
-                alt="3D-визуализация проекта сауны"
-                className="w-full h-full object-cover"
-              />
+        {/* Карточка блока */}
+        <div className="bg-white rounded-3xl border border-border shadow-xl overflow-hidden grid grid-cols-1 lg:grid-cols-2">
+          {/* Left — галерея примеров */}
+          <div className="p-4 sm:p-5 lg:p-6 bg-secondary/30">
+            <div className="rounded-2xl overflow-hidden shadow-lg mb-3 aspect-[4/3]">
+              <img src={gallery[active]} alt="Пример 3D-проекта сауны" className="w-full h-full object-cover" />
             </div>
-            <div className="space-y-3 text-sm sm:text-base text-foreground/80 leading-relaxed">
-              <p>
-                Многие клиенты, прежде чем начинать строительство, хотят сначала увидеть то, что
-                получится в итоге — максимально реалистично и с учётом всех пожеланий.
-              </p>
-              <p>
-                Наши специалисты помогут осуществить всё задуманное. На основании ваших пожеланий и
-                технических особенностей строительства мы создадим 3D-визуализацию будущего объекта.
-              </p>
-              <p>
-                Благодаря этому можно заранее представить, как будет выглядеть объект, и внести правки
-                до начала работ — исключив дорогую переделку.
-              </p>
+            <div className="grid grid-cols-3 gap-3">
+              {gallery.map((img, i) => (
+                <button
+                  key={i}
+                  type="button"
+                  onClick={() => setActive(i)}
+                  className={`rounded-xl overflow-hidden aspect-[4/3] border-2 transition-all ${active === i ? 'border-primary shadow-md' : 'border-transparent opacity-70 hover:opacity-100'}`}
+                >
+                  <img src={img} alt={`Пример ${i + 1}`} className="w-full h-full object-cover" />
+                </button>
+              ))}
             </div>
-
-            {/* Типы визуализаций */}
-            <div className="mt-5">
-              <p className="text-sm font-bold text-foreground mb-2.5" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                Возможны визуализации:
-              </p>
-              <div className="flex flex-wrap gap-2">
-                {visualTypes.map((t) => (
-                  <span key={t} className="inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-full bg-white border border-border shadow-sm text-foreground/70">
-                    <Icon name="Check" className="w-3.5 h-3.5 text-primary" />
-                    {t}
-                  </span>
-                ))}
-              </div>
-              <p className="text-xs text-muted-foreground mt-3">
-                Услуга доступна как частным клиентам, так и организациям, занимающимся строительством и отделкой.
-              </p>
-            </div>
+            <p className="text-xs text-muted-foreground mt-3 text-center">Примеры наших 3D-проектов</p>
           </div>
 
-          {/* Right — advantages + form */}
-          <div className="flex flex-col gap-5">
-            {/* Преимущества */}
-            <div className="grid grid-cols-1 gap-3">
+          {/* Right — текст + форма */}
+          <div className="p-5 sm:p-7 lg:p-8 flex flex-col">
+            <p className="text-sm text-foreground/80 leading-relaxed mb-4">
+              Многие клиенты хотят сначала увидеть результат — реалистично и с учётом всех пожеланий.
+              На основании ваших идей и технических особенностей мы создадим визуализацию будущего объекта
+              и внесём правки <span className="font-semibold text-foreground">до начала работ</span>, исключив дорогую переделку.
+            </p>
+
+            {/* Типы визуализаций */}
+            <div className="flex flex-wrap gap-2 mb-5">
+              {visualTypes.map((t) => (
+                <span key={t} className="inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-full bg-secondary/60 border border-border text-foreground/70">
+                  <Icon name="Check" className="w-3.5 h-3.5 text-primary" />
+                  {t}
+                </span>
+              ))}
+            </div>
+
+            {/* Преимущества — компактно в ряд */}
+            <div className="grid grid-cols-3 gap-2 mb-6">
               {advantages.map((a) => (
-                <div key={a.title} className="flex items-start gap-4 bg-white rounded-2xl p-5 border border-border shadow-sm">
-                  <span className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
+                <div key={a.title} className="flex flex-col items-center text-center gap-1.5 rounded-xl bg-secondary/40 border border-border p-3">
+                  <span className="w-10 h-10 rounded-lg flex items-center justify-center"
                     style={{ background: 'linear-gradient(135deg, hsl(145 63% 36%), hsl(145 70% 26%))' }}>
-                    <Icon name={a.icon} className="w-6 h-6 text-white" fallback="Check" />
+                    <Icon name={a.icon} className="w-5 h-5 text-white" fallback="Check" />
                   </span>
-                  <div>
-                    <p className="font-bold text-base text-foreground mb-0.5" style={{ fontFamily: 'Montserrat, sans-serif' }}>{a.title}</p>
-                    <p className="text-sm text-muted-foreground leading-snug">{a.text}</p>
-                  </div>
+                  <p className="text-[11px] font-bold text-foreground leading-tight" style={{ fontFamily: 'Montserrat, sans-serif' }}>{a.title}</p>
                 </div>
               ))}
             </div>
 
             {/* Форма */}
-            <div className="rounded-2xl p-6 sm:p-7 text-white shadow-xl mt-auto"
+            <div className="rounded-2xl p-5 sm:p-6 text-white shadow-lg mt-auto"
               style={{ background: 'linear-gradient(135deg, hsl(145 63% 30%), hsl(150 70% 18%))' }}>
               {sent ? (
-                <div className="flex items-center gap-4 py-2">
-                  <Icon name="CircleCheckBig" className="w-10 h-10 text-green-300 flex-shrink-0" fallback="Check" />
+                <div className="flex items-center gap-3 py-1">
+                  <Icon name="CircleCheckBig" className="w-9 h-9 text-green-300 flex-shrink-0" fallback="Check" />
                   <div>
-                    <p className="font-bold text-lg" style={{ fontFamily: 'Montserrat, sans-serif' }}>Заявка принята!</p>
-                    <p className="text-white/80 text-sm">Свяжемся с вами и обсудим проект.</p>
+                    <p className="font-bold text-base" style={{ fontFamily: 'Montserrat, sans-serif' }}>Заявка принята!</p>
+                    <p className="text-white/80 text-sm">Свяжемся и обсудим проект.</p>
                   </div>
                 </div>
               ) : (
                 <>
-                  <p className="text-xl sm:text-2xl font-black mb-1" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                  <p className="text-lg sm:text-xl font-black mb-3" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                     Закажите 3D-проект
                   </p>
-                  <p className="text-white/80 text-sm mb-5">
-                    Оставьте контакты — рассчитаем стоимость визуализации вашего объекта
-                  </p>
-                  <form onSubmit={handleSubmit} className="space-y-3">
+                  <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-2.5">
                     <Input name="name" value={formData.name} onChange={handleChange}
                       placeholder="Ваше имя"
                       className="h-12 rounded-xl bg-white/10 border-white/20 text-white placeholder:text-white/50" />
                     <Input name="phone" type="tel" required value={formData.phone} onChange={handleChange}
                       placeholder="Телефон *"
                       className="h-12 rounded-xl bg-white/10 border-white/20 text-white placeholder:text-white/50" />
-                    <button type="submit" className="w-full h-12 rounded-xl bg-white text-primary font-bold hover:bg-white/90 transition-colors flex items-center justify-center gap-2"
+                    <button type="submit" className="h-12 px-5 rounded-xl bg-white text-primary font-bold hover:bg-white/90 transition-colors flex items-center justify-center gap-2 whitespace-nowrap flex-shrink-0"
                       style={{ fontFamily: 'Montserrat, sans-serif' }}>
                       <Icon name="Box" className="w-5 h-5" fallback="Send" />
-                      Получить 3D-проект
+                      Заказать
                     </button>
                   </form>
                 </>

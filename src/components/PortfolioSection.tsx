@@ -131,15 +131,15 @@ export function PortfolioSection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7">
           {projects.map((project, index) => (
             <button
               key={index}
               type="button"
               onClick={() => openProject(project)}
-              className="group bg-white rounded-2xl overflow-hidden border border-border shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col text-left"
+              className="group bg-white rounded-2xl overflow-hidden border border-border shadow-sm hover:shadow-2xl transition-all duration-300 hover:-translate-y-1.5 flex flex-col text-left"
             >
-              <div className="relative h-60 sm:h-64 lg:h-72 overflow-hidden">
+              <div className="relative h-64 sm:h-72 lg:h-80 overflow-hidden">
                 <img
                   src={project.images[0]}
                   alt={project.title}
