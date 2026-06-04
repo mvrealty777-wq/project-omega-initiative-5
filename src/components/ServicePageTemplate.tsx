@@ -7,7 +7,7 @@ import { BanyaDecor } from "@/components/BanyaDecor"
 import { ContactSection } from "@/components/ContactSection"
 import { ServiceHero } from "@/components/ServiceHero"
 import { ReadySection } from "@/components/ReadySection"
-import { PortfolioSection } from "@/components/PortfolioSection"
+import { ServiceCasesSection } from "@/components/ServiceCasesSection"
 import { FullCycleSection } from "@/components/FullCycleSection"
 import { Project3DSection } from "@/components/Project3DSection"
 import { AboutSection } from "@/components/AboutSection"
@@ -23,6 +23,7 @@ import Icon from "@/components/ui/icon"
 import { CheckCircle2, ArrowRight } from "lucide-react"
 import type { ServiceData } from "@/data/servicesData"
 import { getSubServices } from "@/data/servicesData"
+import { getServiceExtra } from "@/data/serviceExtras"
 
 interface Props {
   service: ServiceData
@@ -30,6 +31,7 @@ interface Props {
 
 export function ServicePageTemplate({ service }: Props) {
   const subServices = getSubServices(service)
+  const extra = getServiceExtra(service.slug)
 
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -45,7 +47,7 @@ export function ServicePageTemplate({ service }: Props) {
       <ServiceHero service={service} />
 
       {/* Intro */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 section-glass">
         <div className="container mx-auto max-w-4xl text-center">
           <h2 className="text-3xl sm:text-4xl font-black text-foreground mb-6" style={{ fontFamily: 'Montserrat, sans-serif' }}>
             {service.title}
@@ -55,7 +57,7 @@ export function ServicePageTemplate({ service }: Props) {
       </section>
 
       {/* Features */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 section-glass-tint">
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-14">
             <div className="section-badge mb-5 mx-auto">Что входит</div>
@@ -79,7 +81,7 @@ export function ServicePageTemplate({ service }: Props) {
       </section>
 
       {/* Подуслуги — направления */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 section-glass">
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-14">
             <div className="section-badge mb-5 mx-auto">Направления</div>
@@ -95,7 +97,7 @@ export function ServicePageTemplate({ service }: Props) {
               <Link
                 key={sub.subSlug}
                 to={`/uslugi/${service.slug}/${sub.subSlug}`}
-                className="group bg-gray-50 rounded-2xl p-6 border border-border hover:border-primary hover:shadow-lg transition-all duration-300 hover:-translate-y-1 flex items-center gap-4"
+                className="group bg-white rounded-2xl p-6 border border-border hover:border-primary hover:shadow-lg transition-all duration-300 hover:-translate-y-1 flex items-center gap-4"
               >
                 <span className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 transition-colors"
                   style={{ background: 'hsl(145 63% 32% / 0.1)' }}>
@@ -112,7 +114,7 @@ export function ServicePageTemplate({ service }: Props) {
       </section>
 
       {/* What we do + price */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 section-glass-tint">
         <div className="container mx-auto max-w-6xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
             <div>
@@ -169,7 +171,7 @@ export function ServicePageTemplate({ service }: Props) {
 
       {/* Gallery */}
       {service.gallery.length > 1 && (
-        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50">
+        <section className="py-20 px-4 sm:px-6 lg:px-8 section-glass">
           <div className="container mx-auto max-w-6xl">
             <div className="text-center mb-12">
               <div className="section-badge mb-5 mx-auto">Наши работы</div>
@@ -190,7 +192,9 @@ export function ServicePageTemplate({ service }: Props) {
 
       {/* Блоки как на главной */}
       <ReadySection />
-      <PortfolioSection />
+      {extra && (
+        <ServiceCasesSection title={extra.casesTitle} subtitle={extra.casesSubtitle} cases={extra.cases} />
+      )}
       <FullCycleSection />
       <Project3DSection />
       <AboutSection />
@@ -199,7 +203,11 @@ export function ServicePageTemplate({ service }: Props) {
       <SurveyorCtaSection />
       <ReputationSection />
       <ProcessSection />
-      <TestimonialsSection />
+      <TestimonialsSection
+        title={extra?.testimonialsTitle}
+        subtitle={extra?.testimonialsSubtitle}
+        items={extra?.testimonials}
+      />
       <PricingSection />
       <FaqSection />
       <ContactSection />

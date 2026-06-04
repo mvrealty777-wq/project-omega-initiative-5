@@ -7,7 +7,7 @@ import { BanyaDecor } from "@/components/BanyaDecor"
 import { ContactSection } from "@/components/ContactSection"
 import { ServiceHero } from "@/components/ServiceHero"
 import { ReadySection } from "@/components/ReadySection"
-import { PortfolioSection } from "@/components/PortfolioSection"
+import { ServiceCasesSection } from "@/components/ServiceCasesSection"
 import { FullCycleSection } from "@/components/FullCycleSection"
 import { Project3DSection } from "@/components/Project3DSection"
 import { AboutSection } from "@/components/AboutSection"
@@ -23,6 +23,7 @@ import Icon from "@/components/ui/icon"
 import { CheckCircle2, ArrowRight } from "lucide-react"
 import type { SubServiceData } from "@/data/servicesData"
 import { getSubServices } from "@/data/servicesData"
+import { getServiceExtra } from "@/data/serviceExtras"
 
 interface Props {
   sub: SubServiceData
@@ -31,6 +32,7 @@ interface Props {
 export function SubServicePageTemplate({ sub }: Props) {
   const service = sub.parent
   const siblings = getSubServices(service).filter((s) => s.subSlug !== sub.subSlug)
+  const extra = getServiceExtra(service.slug)
 
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -51,7 +53,7 @@ export function SubServicePageTemplate({ sub }: Props) {
         />
 
         {/* Intro */}
-        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
+        <section className="py-20 px-4 sm:px-6 lg:px-8 section-glass">
           <div className="container mx-auto max-w-4xl text-center">
             <h2 className="text-3xl sm:text-4xl font-black text-foreground mb-6" style={{ fontFamily: 'Montserrat, sans-serif' }}>
               {sub.title}
@@ -61,7 +63,7 @@ export function SubServicePageTemplate({ sub }: Props) {
         </section>
 
         {/* Что входит / преимущества + price */}
-        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50">
+        <section className="py-20 px-4 sm:px-6 lg:px-8 section-glass-tint">
           <div className="container mx-auto max-w-6xl">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
               <div>
@@ -118,7 +120,7 @@ export function SubServicePageTemplate({ sub }: Props) {
 
         {/* Gallery */}
         {service.gallery.length > 1 && (
-          <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
+          <section className="py-20 px-4 sm:px-6 lg:px-8 section-glass">
             <div className="container mx-auto max-w-6xl">
               <div className="text-center mb-12">
                 <div className="section-badge mb-5 mx-auto">Наши работы</div>
@@ -139,7 +141,9 @@ export function SubServicePageTemplate({ sub }: Props) {
 
         {/* Блоки как на главной */}
         <ReadySection />
-        <PortfolioSection />
+        {extra && (
+          <ServiceCasesSection title={extra.casesTitle} subtitle={extra.casesSubtitle} cases={extra.cases} />
+        )}
         <FullCycleSection />
         <Project3DSection />
         <AboutSection />
@@ -148,12 +152,16 @@ export function SubServicePageTemplate({ sub }: Props) {
         <SurveyorCtaSection />
         <ReputationSection />
         <ProcessSection />
-        <TestimonialsSection />
+        <TestimonialsSection
+          title={extra?.testimonialsTitle}
+          subtitle={extra?.testimonialsSubtitle}
+          items={extra?.testimonials}
+        />
         <PricingSection />
 
         {/* Другие услуги направления */}
         {siblings.length > 0 && (
-          <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50">
+          <section className="py-20 px-4 sm:px-6 lg:px-8 section-glass-tint">
             <div className="container mx-auto max-w-6xl">
               <div className="text-center mb-12">
                 <div className="section-badge mb-5 mx-auto">Ещё в разделе «{service.cardTitle}»</div>

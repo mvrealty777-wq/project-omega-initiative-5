@@ -1,6 +1,7 @@
 import { Star, Quote } from "lucide-react"
+import type { ServiceTestimonial } from "@/data/serviceExtras"
 
-const testimonials = [
+const defaultTestimonials = [
   {
     name: "Андрей К.",
     role: "Частный клиент, Подмосковье",
@@ -45,7 +46,14 @@ const testimonials = [
   },
 ]
 
-export function TestimonialsSection() {
+interface Props {
+  title?: string
+  subtitle?: string
+  items?: ServiceTestimonial[]
+}
+
+export function TestimonialsSection({ title, subtitle, items }: Props = {}) {
+  const testimonials = items ?? defaultTestimonials
   return (
     <section className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 section-glass-tint">
       <div className="container mx-auto max-w-7xl">
@@ -55,10 +63,10 @@ export function TestimonialsSection() {
             className="text-3xl sm:text-4xl lg:text-5xl font-black text-foreground text-balance mb-4"
             style={{ fontFamily: 'Montserrat, sans-serif' }}
           >
-            Что говорят <span className="text-primary">наши клиенты</span>
+            {title ?? (<>Что говорят <span className="text-primary">наши клиенты</span></>)}
           </h2>
           <p className="text-muted-foreground max-w-xl mx-auto text-base">
-            Более 400 реализованных объектов — и каждый клиент оценил результат.
+            {subtitle ?? "Более 400 реализованных объектов — и каждый клиент оценил результат."}
           </p>
         </div>
 
