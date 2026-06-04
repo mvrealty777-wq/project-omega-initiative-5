@@ -26,9 +26,16 @@ export function Navbar() {
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-18 py-2 items-center justify-between">
-          <Link to="/" className="hover:opacity-90 transition-opacity">
-            <Logo />
-          </Link>
+          <div className="flex items-center gap-3">
+            <Link to="/" className="hover:opacity-90 transition-opacity">
+              <Logo />
+            </Link>
+            <span className="hidden lg:inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs font-bold text-green-400"
+              style={{ background: 'rgba(34,197,94,0.1)', fontFamily: 'Montserrat, sans-serif' }}>
+              <Icon name="Landmark" className="w-4 h-4" fallback="Building2" />
+              Под ключ по всей России
+            </span>
+          </div>
 
           <div className="hidden md:flex items-center gap-7">
             {/* Строительство — dropdown */}
