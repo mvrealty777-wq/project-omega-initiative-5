@@ -31,7 +31,7 @@ export function Project3DSection() {
   }
 
   return (
-    <section className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 section-glass-tint">
+    <section className="py-10 sm:py-12 lg:py-14 px-4 sm:px-6 lg:px-8 section-glass-tint">
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-8 sm:mb-10">
           <div className="section-badge mb-4 mx-auto">3D-визуализация</div>

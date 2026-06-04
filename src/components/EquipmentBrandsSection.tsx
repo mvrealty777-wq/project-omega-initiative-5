@@ -43,9 +43,9 @@ const brands = ["Harvia", "TYLÖ", "EOS", "Jacuzzi", "ASTRAL", "SAWO", "HygroMat
 
 export function EquipmentBrandsSection() {
   return (
-    <section className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 section-glass-tint">
+    <section className="py-10 sm:py-12 lg:py-14 px-4 sm:px-6 lg:px-8 section-glass-tint">
       <div className="container mx-auto max-w-7xl">
-        <div className="text-center mb-12">
+        <div className="text-center mb-9 sm:mb-10">
           <div className="section-badge mb-5 mx-auto">Оборудование и сервис</div>
           <h2
             className="text-3xl sm:text-4xl lg:text-5xl font-black text-foreground mb-4"
@@ -60,7 +60,7 @@ export function EquipmentBrandsSection() {
         </div>
 
         {/* Brand chips */}
-        <div className="flex flex-wrap justify-center gap-2.5 sm:gap-3 mb-12">
+        <div className="flex flex-wrap justify-center gap-2.5 sm:gap-3 mb-8">
           {brands.map((brand) => (
             <span
               key={brand}
@@ -100,7 +100,7 @@ export function EquipmentBrandsSection() {
         </div>
 
         {/* Bottom guarantee banner */}
-        <div className="mt-10 relative rounded-3xl p-7 sm:p-10 overflow-hidden text-white shadow-2xl"
+        <div className="mt-8 relative rounded-3xl p-7 sm:p-10 overflow-hidden text-white shadow-2xl"
           style={{ background: 'linear-gradient(135deg, hsl(145 63% 30%), hsl(150 70% 18%))' }}>
           {/* Декоративные круги */}
           <div className="absolute -top-16 -right-10 w-64 h-64 rounded-full bg-white/5" />

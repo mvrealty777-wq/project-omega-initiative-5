@@ -33,13 +33,13 @@ const steps = [
 
 export function ProcessSection() {
   return (
-    <section className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 section-glass relative overflow-hidden">
+    <section className="py-10 sm:py-12 lg:py-14 px-4 sm:px-6 lg:px-8 section-glass relative overflow-hidden">
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute inset-0 bg-grid-pattern opacity-[0.04]" />
       </div>
 
       <div className="container mx-auto max-w-7xl relative z-10">
-        <div className="text-center mb-14">
+        <div className="text-center mb-9 sm:mb-10">
           <div className="section-badge mb-5 mx-auto">Как мы работаем</div>
           <h2
             className="text-3xl sm:text-4xl lg:text-5xl font-black text-foreground text-balance"

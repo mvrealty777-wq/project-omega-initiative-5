@@ -1,14 +1,14 @@
+User-agent: *
+Allow: /
+
+User-agent: Yandex
+Allow: /
+
 User-agent: Googlebot
 Allow: /
 
 User-agent: Bingbot
 Allow: /
 
-User-agent: Twitterbot
-Allow: /
-
-User-agent: facebookexternalhit
-Allow: /
-
-User-agent: *
-Allow: /
+Sitemap: https://geniusspa.ru/sitemap.xml
+Host: https://geniusspa.ru

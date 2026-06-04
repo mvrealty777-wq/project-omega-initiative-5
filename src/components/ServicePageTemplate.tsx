@@ -25,6 +25,7 @@ import type { ServiceData } from "@/data/servicesData"
 import { getSubServices } from "@/data/servicesData"
 import { getServiceExtra } from "@/data/serviceExtras"
 import { useSeo } from "@/hooks/useSeo"
+import { organizationSchema, breadcrumbSchema, serviceSchema } from "@/lib/schema"
 
 interface Props {
   service: ServiceData
@@ -33,11 +34,26 @@ interface Props {
 export function ServicePageTemplate({ service }: Props) {
   const subServices = getSubServices(service)
   const extra = getServiceExtra(service.slug)
+  const path = `/uslugi/${service.slug}`
 
   useSeo({
     title: extra?.seoTitle ?? `${service.heroTitle} | GeniusSPA`,
     description: extra?.seoDescription ?? service.heroSubtitle,
     image: service.image,
+    keywords: `${service.menuLabel}, ${service.cardTitle} под ключ, ${service.subServices.join(", ")}`,
+    jsonLd: [
+      organizationSchema(),
+      breadcrumbSchema([
+        { name: "Главная", path: "/" },
+        { name: service.menuLabel, path },
+      ]),
+      serviceSchema({
+        name: service.title,
+        description: extra?.seoDescription ?? service.heroSubtitle,
+        image: service.image,
+        path,
+      }),
+    ],
   })
 
   useEffect(() => {
@@ -54,7 +70,7 @@ export function ServicePageTemplate({ service }: Props) {
       <ServiceHero service={service} />
 
       {/* Intro */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 section-glass">
+      <section className="py-10 sm:py-12 lg:py-14 px-4 sm:px-6 lg:px-8 section-glass">
         <div className="container mx-auto max-w-4xl text-center">
           <h2 className="text-3xl sm:text-4xl font-black text-foreground mb-6" style={{ fontFamily: 'Montserrat, sans-serif' }}>
             {service.title}
@@ -64,9 +80,9 @@ export function ServicePageTemplate({ service }: Props) {
       </section>
 
       {/* Features */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 section-glass-tint">
+      <section className="py-10 sm:py-12 lg:py-14 px-4 sm:px-6 lg:px-8 section-glass-tint">
         <div className="container mx-auto max-w-6xl">
-          <div className="text-center mb-14">
+          <div className="text-center mb-9 sm:mb-10">
             <div className="section-badge mb-5 mx-auto">Что входит</div>
             <h2 className="text-4xl sm:text-5xl font-black text-foreground" style={{ fontFamily: 'Montserrat, sans-serif' }}>
               Наши <span className="text-primary">услуги</span>
@@ -88,9 +104,9 @@ export function ServicePageTemplate({ service }: Props) {
       </section>
 
       {/* Подуслуги — направления */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 section-glass">
+      <section className="py-10 sm:py-12 lg:py-14 px-4 sm:px-6 lg:px-8 section-glass">
         <div className="container mx-auto max-w-6xl">
-          <div className="text-center mb-14">
+          <div className="text-center mb-9 sm:mb-10">
             <div className="section-badge mb-5 mx-auto">Направления</div>
             <h2 className="text-4xl sm:text-5xl font-black text-foreground" style={{ fontFamily: 'Montserrat, sans-serif' }}>
               Выберите <span className="text-primary">услугу</span>
@@ -150,7 +166,7 @@ export function ServicePageTemplate({ service }: Props) {
       <PricingSection />
 
       {/* 11. Услуга под ключ (что входит + стоимость) */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 section-glass-tint">
+      <section className="py-10 sm:py-12 lg:py-14 px-4 sm:px-6 lg:px-8 section-glass-tint">
         <div className="container mx-auto max-w-6xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
             <div>
@@ -207,7 +223,7 @@ export function ServicePageTemplate({ service }: Props) {
 
       {/* Gallery */}
       {service.gallery.length > 1 && (
-        <section className="py-20 px-4 sm:px-6 lg:px-8 section-glass">
+        <section className="py-10 sm:py-12 lg:py-14 px-4 sm:px-6 lg:px-8 section-glass">
           <div className="container mx-auto max-w-6xl">
             <div className="text-center mb-12">
               <div className="section-badge mb-5 mx-auto">Примеры</div>

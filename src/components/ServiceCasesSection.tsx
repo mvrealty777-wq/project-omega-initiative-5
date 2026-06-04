@@ -8,9 +8,9 @@ interface Props {
 
 export function ServiceCasesSection({ title, subtitle, cases }: Props) {
   return (
-    <section className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 section-glass">
+    <section className="py-10 sm:py-12 lg:py-14 px-4 sm:px-6 lg:px-8 section-glass">
       <div className="container mx-auto max-w-7xl">
-        <div className="text-center mb-12">
+        <div className="text-center mb-9 sm:mb-10">
           <div className="section-badge mb-5 mx-auto">Наши работы</div>
           <h2
             className="text-3xl sm:text-4xl lg:text-5xl font-black text-foreground mb-4"

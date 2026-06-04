@@ -1,24 +1,19 @@
 import { Logo } from "@/components/Logo"
 import { MaxIcon } from "@/components/icons/MaxIcon"
 import { Phone, Mail } from "lucide-react"
+import { Link } from "react-router-dom"
 import Icon from "@/components/ui/icon"
+import { servicesData } from "@/data/servicesData"
 
 const navLinks = [
-  { href: "#about", label: "О компании" },
-  { href: "#services", label: "Услуги" },
-  { href: "#portfolio", label: "Портфолио" },
-  { href: "#pricing", label: "Цены" },
-  { href: "#contact", label: "Контакты" },
+  { href: "/#about", label: "О компании" },
+  { href: "/#services", label: "Услуги" },
+  { href: "/#portfolio", label: "Портфолио" },
+  { href: "/#pricing", label: "Цены" },
+  { href: "/#contact", label: "Контакты" },
 ]
 
-const services = [
-  "Строительство Хаммама",
-  "Строительство Саун",
-  "Соляные Пещеры",
-  "Строительство Бассейна",
-  "Инфракрасные сауны",
-  "Оборудование для бань",
-]
+const services = servicesData.map((s) => ({ slug: s.slug, label: s.menuLabel }))
 
 export function Footer() {
   return (
@@ -83,14 +78,14 @@ export function Footer() {
           {/* Services */}
           <div>
             <h4 className="font-bold text-sm uppercase tracking-wider mb-4 text-white/80" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-              Услуги
+              Направления
             </h4>
             <ul className="space-y-2.5">
               {services.map((s) => (
-                <li key={s}>
-                  <a href="#services" className="text-sm text-white/60 hover:text-white transition-colors">
-                    {s}
-                  </a>
+                <li key={s.slug}>
+                  <Link to={`/uslugi/${s.slug}`} className="text-sm text-white/60 hover:text-white transition-colors">
+                    {s.label}
+                  </Link>
                 </li>
               ))}
             </ul>

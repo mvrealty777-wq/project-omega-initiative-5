@@ -5,9 +5,9 @@ import Icon from "@/components/ui/icon"
 
 export function ServicesSection() {
   return (
-    <section id="services" className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 section-glass-tint">
+    <section id="services" className="py-10 sm:py-12 lg:py-14 px-4 sm:px-6 lg:px-8 section-glass-tint">
       <div className="container mx-auto max-w-7xl">
-        <div className="text-center mb-16">
+        <div className="text-center mb-9 sm:mb-10">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-foreground mb-5" style={{ fontFamily: 'Montserrat, sans-serif' }}>
             Наши специалисты <span className="text-primary">выполнят</span>
           </h2>

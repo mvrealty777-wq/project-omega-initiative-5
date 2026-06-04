@@ -54,9 +54,9 @@ const pricingTiers = [
 
 export function PricingSection() {
   return (
-    <section id="pricing" className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 section-glass">
+    <section id="pricing" className="py-10 sm:py-12 lg:py-14 px-4 sm:px-6 lg:px-8 section-glass">
       <div className="container mx-auto max-w-6xl">
-        <div className="text-center mb-14">
+        <div className="text-center mb-9 sm:mb-10">
           <div className="section-badge mb-5 mx-auto">Стоимость</div>
           <h2
             className="text-3xl sm:text-4xl lg:text-5xl font-black text-foreground text-balance mb-4"

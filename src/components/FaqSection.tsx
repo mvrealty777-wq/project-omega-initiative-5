@@ -1,3 +1,4 @@
+import { useEffect } from "react"
 import {
   Accordion,
   AccordionContent,
@@ -5,6 +6,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion"
 import Icon from "@/components/ui/icon"
+import { faqSchema } from "@/lib/schema"
 
 const faqs = [
   {
@@ -40,8 +42,19 @@ const faqs = [
 ]
 
 export function FaqSection() {
+  useEffect(() => {
+    const script = document.createElement("script")
+    script.type = "application/ld+json"
+    script.setAttribute("data-faq-jsonld", "true")
+    script.text = JSON.stringify(faqSchema(faqs.map((f) => ({ q: f.q, a: f.a }))))
+    document.head.appendChild(script)
+    return () => {
+      script.remove()
+    }
+  }, [])
+
   return (
-    <section id="faq" className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 section-glass-tint">
+    <section id="faq" className="py-10 sm:py-12 lg:py-14 px-4 sm:px-6 lg:px-8 section-glass-tint">
       <div className="container mx-auto max-w-6xl">
         <div className="grid grid-cols-1 lg:grid-cols-[0.85fr_1.15fr] gap-8 lg:gap-12 items-start">
           {/* Left — heading + graphic CTA */}

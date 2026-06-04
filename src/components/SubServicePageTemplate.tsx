@@ -25,6 +25,7 @@ import type { SubServiceData } from "@/data/servicesData"
 import { getSubServices } from "@/data/servicesData"
 import { getServiceExtra } from "@/data/serviceExtras"
 import { useSeo } from "@/hooks/useSeo"
+import { organizationSchema, breadcrumbSchema, serviceSchema } from "@/lib/schema"
 
 interface Props {
   sub: SubServiceData
@@ -34,11 +35,23 @@ export function SubServicePageTemplate({ sub }: Props) {
   const service = sub.parent
   const siblings = getSubServices(service).filter((s) => s.subSlug !== sub.subSlug)
   const extra = getServiceExtra(service.slug)
+  const path = `/uslugi/${service.slug}/${sub.subSlug}`
+  const description = `${sub.title} под ключ по всей России: проектирование, материалы, монтаж и гарантия 5 лет. Раздел «${service.cardTitle}». Бесплатный расчёт и выезд замерщика.`
 
   useSeo({
     title: `${sub.title} под ключ — ${service.cardTitle} | GeniusSPA`,
-    description: `${sub.title} под ключ по всей России: проектирование, материалы, монтаж и гарантия 5 лет. Раздел «${service.cardTitle}». Бесплатный расчёт и выезд замерщика.`,
+    description,
     image: service.image,
+    keywords: `${sub.title}, ${sub.title} под ключ, ${service.cardTitle}, ${service.menuLabel}`,
+    jsonLd: [
+      organizationSchema(),
+      breadcrumbSchema([
+        { name: "Главная", path: "/" },
+        { name: service.cardTitle, path: `/uslugi/${service.slug}` },
+        { name: sub.title, path },
+      ]),
+      serviceSchema({ name: sub.title, description, image: service.image, path }),
+    ],
   })
 
   useEffect(() => {
@@ -60,7 +73,7 @@ export function SubServicePageTemplate({ sub }: Props) {
         />
 
         {/* Intro */}
-        <section className="py-20 px-4 sm:px-6 lg:px-8 section-glass">
+        <section className="py-10 sm:py-12 lg:py-14 px-4 sm:px-6 lg:px-8 section-glass">
           <div className="container mx-auto max-w-4xl text-center">
             <h2 className="text-3xl sm:text-4xl font-black text-foreground mb-6" style={{ fontFamily: 'Montserrat, sans-serif' }}>
               {sub.title}
@@ -90,7 +103,7 @@ export function SubServicePageTemplate({ sub }: Props) {
         <PricingSection />
 
         {/* Услуга под ключ (что входит + стоимость) */}
-        <section className="py-20 px-4 sm:px-6 lg:px-8 section-glass-tint">
+        <section className="py-10 sm:py-12 lg:py-14 px-4 sm:px-6 lg:px-8 section-glass-tint">
           <div className="container mx-auto max-w-6xl">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
               <div>
@@ -147,7 +160,7 @@ export function SubServicePageTemplate({ sub }: Props) {
 
         {/* Gallery */}
         {service.gallery.length > 1 && (
-          <section className="py-20 px-4 sm:px-6 lg:px-8 section-glass">
+          <section className="py-10 sm:py-12 lg:py-14 px-4 sm:px-6 lg:px-8 section-glass">
             <div className="container mx-auto max-w-6xl">
               <div className="text-center mb-12">
                 <div className="section-badge mb-5 mx-auto">Примеры</div>
@@ -168,7 +181,7 @@ export function SubServicePageTemplate({ sub }: Props) {
 
         {/* Другие услуги направления */}
         {siblings.length > 0 && (
-          <section className="py-20 px-4 sm:px-6 lg:px-8 section-glass-tint">
+          <section className="py-10 sm:py-12 lg:py-14 px-4 sm:px-6 lg:px-8 section-glass-tint">
             <div className="container mx-auto max-w-6xl">
               <div className="text-center mb-12">
                 <div className="section-badge mb-5 mx-auto">Ещё в разделе «{service.cardTitle}»</div>
