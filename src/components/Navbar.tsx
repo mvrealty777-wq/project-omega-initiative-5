@@ -5,7 +5,7 @@ import { Phone, ChevronDown } from "lucide-react"
 import Icon from "@/components/ui/icon"
 import { Link } from "react-router-dom"
 import { useState, useEffect } from "react"
-import { servicesData } from "@/data/servicesData"
+import { servicesData, slugify } from "@/data/servicesData"
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -61,7 +61,7 @@ export function Navbar() {
                           {s.subServices.map((sub) => (
                             <li key={sub}>
                               <Link
-                                to={`/uslugi/${s.slug}`}
+                                to={`/uslugi/${s.slug}/${slugify(sub)}`}
                                 className="text-[13px] text-muted-foreground hover:text-primary transition-colors block py-0.5"
                               >
                                 {sub}

@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle, SheetDescription } from "@/components/ui/sheet"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import Icon from "@/components/ui/icon"
-import { servicesData } from "@/data/servicesData"
+import { servicesData, slugify } from "@/data/servicesData"
 
 export function MobileMenu() {
   const [open, setOpen] = useState(false)
@@ -53,7 +53,7 @@ export function MobileMenu() {
                     Все услуги →
                   </Link>
                   {s.subServices.map((sub) => (
-                    <Link key={sub} to={`/uslugi/${s.slug}`} onClick={close} className="block py-1.5 text-[13px] text-muted-foreground hover:text-primary">
+                    <Link key={sub} to={`/uslugi/${s.slug}/${slugify(sub)}`} onClick={close} className="block py-1.5 text-[13px] text-muted-foreground hover:text-primary">
                       {sub}
                     </Link>
                   ))}

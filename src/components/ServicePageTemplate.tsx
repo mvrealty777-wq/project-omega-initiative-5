@@ -5,15 +5,23 @@ import { Footer } from "@/components/Footer"
 import { FloatingContacts } from "@/components/FloatingContacts"
 import { BanyaDecor } from "@/components/BanyaDecor"
 import { ContactSection } from "@/components/ContactSection"
+import { FullCycleSection } from "@/components/FullCycleSection"
+import { ProcessSection } from "@/components/ProcessSection"
+import { ReputationSection } from "@/components/ReputationSection"
+import { TestimonialsSection } from "@/components/TestimonialsSection"
+import { FaqSection } from "@/components/FaqSection"
 import Icon from "@/components/ui/icon"
 import { CheckCircle2, ArrowRight, Phone } from "lucide-react"
 import type { ServiceData } from "@/data/servicesData"
+import { getSubServices } from "@/data/servicesData"
 
 interface Props {
   service: ServiceData
 }
 
 export function ServicePageTemplate({ service }: Props) {
+  const subServices = getSubServices(service)
+
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [service.slug])
@@ -99,6 +107,39 @@ export function ServicePageTemplate({ service }: Props) {
         </div>
       </section>
 
+      {/* Подуслуги — направления */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
+        <div className="container mx-auto max-w-6xl">
+          <div className="text-center mb-14">
+            <div className="section-badge mb-5 mx-auto">Направления</div>
+            <h2 className="text-4xl sm:text-5xl font-black text-foreground" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+              Выберите <span className="text-primary">услугу</span>
+            </h2>
+            <p className="text-lg text-muted-foreground mt-4 max-w-2xl mx-auto">
+              Каждое направление — отдельная услуга под ключ. Нажмите, чтобы узнать подробнее.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {subServices.map((sub) => (
+              <Link
+                key={sub.subSlug}
+                to={`/uslugi/${service.slug}/${sub.subSlug}`}
+                className="group bg-gray-50 rounded-2xl p-6 border border-border hover:border-primary hover:shadow-lg transition-all duration-300 hover:-translate-y-1 flex items-center gap-4"
+              >
+                <span className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 transition-colors"
+                  style={{ background: 'hsl(145 63% 32% / 0.1)' }}>
+                  <Icon name={service.icon} className="w-6 h-6 text-primary" fallback="Hammer" />
+                </span>
+                <span className="font-bold text-base text-foreground group-hover:text-primary transition-colors flex-1" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                  {sub.title}
+                </span>
+                <ArrowRight className="w-5 h-5 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all flex-shrink-0" />
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* What we do + price */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="container mx-auto max-w-6xl">
@@ -176,6 +217,11 @@ export function ServicePageTemplate({ service }: Props) {
         </section>
       )}
 
+      <FullCycleSection />
+      <ProcessSection />
+      <ReputationSection />
+      <TestimonialsSection />
+      <FaqSection />
       <ContactSection />
       <Footer />
       <FloatingContacts />

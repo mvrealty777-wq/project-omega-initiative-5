@@ -315,3 +315,45 @@ export const servicesData: ServiceData[] = [
 
 export const getServiceBySlug = (slug: string) =>
   servicesData.find((s) => s.slug === slug)
+
+// ---- Подуслуги ----
+const translitMap: Record<string, string> = {
+  а: "a", б: "b", в: "v", г: "g", д: "d", е: "e", ё: "e", ж: "zh", з: "z",
+  и: "i", й: "y", к: "k", л: "l", м: "m", н: "n", о: "o", п: "p", р: "r",
+  с: "s", т: "t", у: "u", ф: "f", х: "h", ц: "c", ч: "ch", ш: "sh", щ: "sch",
+  ъ: "", ы: "y", ь: "", э: "e", ю: "yu", я: "ya",
+}
+
+export const slugify = (text: string): string =>
+  text
+    .toLowerCase()
+    .trim()
+    .split("")
+    .map((ch) => (ch in translitMap ? translitMap[ch] : ch))
+    .join("")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "")
+
+export interface SubServiceData {
+  parent: ServiceData
+  subSlug: string
+  title: string
+  index: number
+}
+
+export const getSubServices = (service: ServiceData): SubServiceData[] =>
+  service.subServices.map((title, index) => ({
+    parent: service,
+    subSlug: slugify(title),
+    title,
+    index,
+  }))
+
+export const getSubService = (
+  slug: string,
+  subSlug: string,
+): SubServiceData | undefined => {
+  const parent = getServiceBySlug(slug)
+  if (!parent) return undefined
+  return getSubServices(parent).find((s) => s.subSlug === subSlug)
+}
