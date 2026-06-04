@@ -6,10 +6,18 @@ import { FloatingContacts } from "@/components/FloatingContacts"
 import { BanyaDecor } from "@/components/BanyaDecor"
 import { ContactSection } from "@/components/ContactSection"
 import { ServiceHero } from "@/components/ServiceHero"
+import { ReadySection } from "@/components/ReadySection"
+import { PortfolioSection } from "@/components/PortfolioSection"
 import { FullCycleSection } from "@/components/FullCycleSection"
+import { Project3DSection } from "@/components/Project3DSection"
+import { AboutSection } from "@/components/AboutSection"
+import { EquipmentBrandsSection } from "@/components/EquipmentBrandsSection"
+import { EquipmentChoiceSection } from "@/components/EquipmentChoiceSection"
+import { SurveyorCtaSection } from "@/components/SurveyorCtaSection"
 import { ProcessSection } from "@/components/ProcessSection"
 import { ReputationSection } from "@/components/ReputationSection"
 import { TestimonialsSection } from "@/components/TestimonialsSection"
+import { PricingSection } from "@/components/PricingSection"
 import { FaqSection } from "@/components/FaqSection"
 import Icon from "@/components/ui/icon"
 import { CheckCircle2, ArrowRight } from "lucide-react"
@@ -180,10 +188,19 @@ export function ServicePageTemplate({ service }: Props) {
         </section>
       )}
 
+      {/* Блоки как на главной */}
+      <ReadySection />
+      <PortfolioSection />
       <FullCycleSection />
-      <ProcessSection />
+      <Project3DSection />
+      <AboutSection />
+      <EquipmentBrandsSection />
+      <EquipmentChoiceSection />
+      <SurveyorCtaSection />
       <ReputationSection />
+      <ProcessSection />
       <TestimonialsSection />
+      <PricingSection />
       <FaqSection />
       <ContactSection />
       <Footer />
