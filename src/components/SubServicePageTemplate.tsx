@@ -5,13 +5,14 @@ import { Footer } from "@/components/Footer"
 import { FloatingContacts } from "@/components/FloatingContacts"
 import { BanyaDecor } from "@/components/BanyaDecor"
 import { ContactSection } from "@/components/ContactSection"
+import { ServiceHero } from "@/components/ServiceHero"
 import { FullCycleSection } from "@/components/FullCycleSection"
 import { ProcessSection } from "@/components/ProcessSection"
 import { ReputationSection } from "@/components/ReputationSection"
 import { TestimonialsSection } from "@/components/TestimonialsSection"
 import { FaqSection } from "@/components/FaqSection"
 import Icon from "@/components/ui/icon"
-import { CheckCircle2, ArrowRight, Phone } from "lucide-react"
+import { CheckCircle2, ArrowRight } from "lucide-react"
 import type { SubServiceData } from "@/data/servicesData"
 import { getSubServices } from "@/data/servicesData"
 
@@ -33,48 +34,13 @@ export function SubServicePageTemplate({ sub }: Props) {
       <div className="relative z-10">
         <Navbar />
 
-        {/* Hero */}
-        <section className="relative overflow-hidden">
-          <div className="absolute inset-0">
-            <img src={service.image} alt={sub.title} className="w-full h-full object-cover" />
-            <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/65 to-black/40" />
-          </div>
-
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-20 lg:py-28">
-            {/* Breadcrumbs */}
-            <nav className="flex flex-wrap items-center gap-2 text-sm text-white/60 mb-6">
-              <Link to="/" className="hover:text-white transition-colors">Главная</Link>
-              <span>/</span>
-              <Link to={`/uslugi/${service.slug}`} className="hover:text-white transition-colors">{service.cardTitle}</Link>
-              <span>/</span>
-              <span className="text-white/90">{sub.title}</span>
-            </nav>
-
-            <div className="max-w-2xl text-white">
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold text-green-400 mb-5"
-                style={{ background: 'rgba(74,222,128,0.12)' }}>
-                <Icon name={service.icon} className="w-4 h-4" fallback="Hammer" />
-                {service.cardTitle} · под ключ
-              </div>
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black leading-tight mb-5" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                {sub.title}
-              </h1>
-              <p className="text-lg sm:text-xl text-white/80 leading-relaxed mb-8">
-                {sub.title} под ключ по всей России. Проектирование, материалы, монтаж и гарантия 5 лет.
-              </p>
-              <div className="flex flex-wrap gap-3">
-                <a href="#contact" className="btn-green text-base">
-                  Получить расчёт
-                  <ArrowRight className="w-4 h-4" />
-                </a>
-                <a href="tel:88003026753" className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-white/30 text-white font-semibold hover:bg-white/10 transition-colors">
-                  <Phone className="w-4 h-4" />
-                  8 800 302-67-53
-                </a>
-              </div>
-            </div>
-          </div>
-        </section>
+        {/* Hero — как на главной */}
+        <ServiceHero
+          service={service}
+          titleOverride={sub.title}
+          subtitleOverride={`${sub.title} под ключ по всей России. Проектирование, материалы, монтаж и гарантия 5 лет.`}
+          parentCrumb={{ label: service.cardTitle, to: `/uslugi/${service.slug}` }}
+        />
 
         {/* Intro */}
         <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
