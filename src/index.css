@@ -215,35 +215,15 @@
   );
 }
 
-/* ───── Баня: атмосферный фон страницы ───── */
+/* ───── Баня: фон страницы (белый) ───── */
 .banya-bg {
   position: relative;
-  background:
-    radial-gradient(
-      ellipse 80% 60% at 15% 0%,
-      hsl(145 40% 92% / 0.7),
-      transparent 60%
-    ),
-    radial-gradient(
-      ellipse 70% 50% at 85% 25%,
-      hsl(35 60% 90% / 0.6),
-      transparent 55%
-    ),
-    radial-gradient(
-      ellipse 90% 60% at 50% 100%,
-      hsl(145 35% 90% / 0.6),
-      transparent 60%
-    ),
-    linear-gradient(180deg, hsl(40 30% 98%), hsl(145 18% 96%));
+  background: #ffffff;
 }
 
 /* Декоративный слой бани (венички, кадушки, пар) поверх фона, под контентом */
 .banya-decor {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-  pointer-events: none;
-  z-index: 0;
+  display: none;
 }
 .banya-decor > * {
   position: absolute;
@@ -291,12 +271,10 @@
   }
 }
 
-/* Полупрозрачные секции, чтобы декор просвечивал */
+/* Белые секции */
 .section-glass {
-  background: hsl(0 0% 100% / 0.72);
-  backdrop-filter: blur(2px);
+  background: #ffffff;
 }
 .section-glass-tint {
-  background: hsl(145 20% 97% / 0.72);
-  backdrop-filter: blur(2px);
+  background: #ffffff;
 }

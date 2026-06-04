@@ -24,6 +24,7 @@ import { CheckCircle2, ArrowRight } from "lucide-react"
 import type { SubServiceData } from "@/data/servicesData"
 import { getSubServices } from "@/data/servicesData"
 import { getServiceExtra } from "@/data/serviceExtras"
+import { useSeo } from "@/hooks/useSeo"
 
 interface Props {
   sub: SubServiceData
@@ -33,6 +34,12 @@ export function SubServicePageTemplate({ sub }: Props) {
   const service = sub.parent
   const siblings = getSubServices(service).filter((s) => s.subSlug !== sub.subSlug)
   const extra = getServiceExtra(service.slug)
+
+  useSeo({
+    title: `${sub.title} под ключ — ${service.cardTitle} | GeniusSPA`,
+    description: `${sub.title} под ключ по всей России: проектирование, материалы, монтаж и гарантия 5 лет. Раздел «${service.cardTitle}». Бесплатный расчёт и выезд замерщика.`,
+    image: service.image,
+  })
 
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -62,7 +69,27 @@ export function SubServicePageTemplate({ sub }: Props) {
           </div>
         </section>
 
-        {/* Что входит / преимущества + price */}
+        {/* Блоки как на главной — в порядке главной страницы */}
+        <ReadySection />
+        {extra && (
+          <ServiceCasesSection title={extra.casesTitle} subtitle={extra.casesSubtitle} cases={extra.cases} />
+        )}
+        <FullCycleSection />
+        <Project3DSection />
+        <AboutSection />
+        <EquipmentBrandsSection />
+        <EquipmentChoiceSection />
+        <SurveyorCtaSection />
+        <ReputationSection />
+        <ProcessSection />
+        <TestimonialsSection
+          title={extra?.testimonialsTitle}
+          subtitle={extra?.testimonialsSubtitle}
+          items={extra?.testimonials}
+        />
+        <PricingSection />
+
+        {/* Услуга под ключ (что входит + стоимость) */}
         <section className="py-20 px-4 sm:px-6 lg:px-8 section-glass-tint">
           <div className="container mx-auto max-w-6xl">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
@@ -123,7 +150,7 @@ export function SubServicePageTemplate({ sub }: Props) {
           <section className="py-20 px-4 sm:px-6 lg:px-8 section-glass">
             <div className="container mx-auto max-w-6xl">
               <div className="text-center mb-12">
-                <div className="section-badge mb-5 mx-auto">Наши работы</div>
+                <div className="section-badge mb-5 mx-auto">Примеры</div>
                 <h2 className="text-4xl sm:text-5xl font-black text-foreground" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                   Примеры <span className="text-primary">объектов</span>
                 </h2>
@@ -138,26 +165,6 @@ export function SubServicePageTemplate({ sub }: Props) {
             </div>
           </section>
         )}
-
-        {/* Блоки как на главной */}
-        <ReadySection />
-        {extra && (
-          <ServiceCasesSection title={extra.casesTitle} subtitle={extra.casesSubtitle} cases={extra.cases} />
-        )}
-        <FullCycleSection />
-        <Project3DSection />
-        <AboutSection />
-        <EquipmentBrandsSection />
-        <EquipmentChoiceSection />
-        <SurveyorCtaSection />
-        <ReputationSection />
-        <ProcessSection />
-        <TestimonialsSection
-          title={extra?.testimonialsTitle}
-          subtitle={extra?.testimonialsSubtitle}
-          items={extra?.testimonials}
-        />
-        <PricingSection />
 
         {/* Другие услуги направления */}
         {siblings.length > 0 && (

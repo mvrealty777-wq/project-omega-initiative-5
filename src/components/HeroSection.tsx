@@ -2,13 +2,14 @@ import type React from "react"
 import { useState } from "react"
 import { Input } from "@/components/ui/input"
 import { Venok } from "@/components/icons/Venok"
+import Icon from "@/components/ui/icon"
 import { CheckCircle, Send } from "lucide-react"
 
 const benefits = [
-  { text: "Бесплатный расчёт сметы", emoji: "💰" },
-  { text: "Дизайн-проект и 3D-визуализация", emoji: "📊" },
-  { text: "Фиксированная цена и сроки в договоре", emoji: "📝" },
-  { text: "Строим по ГОСТам и нормам пожарной безопасности", emoji: "🔥" },
+  { text: "Бесплатный расчёт сметы", icon: "Wallet", from: "hsl(145 63% 42%)", to: "hsl(145 70% 28%)" },
+  { text: "Дизайн-проект и 3D-визуализация", icon: "Box", from: "hsl(210 80% 55%)", to: "hsl(220 80% 42%)" },
+  { text: "Фиксированная цена и сроки в договоре", icon: "FileSignature", from: "hsl(38 92% 55%)", to: "hsl(28 90% 45%)" },
+  { text: "Строим по ГОСТам и нормам пожарной безопасности", icon: "ShieldCheck", from: "hsl(0 75% 58%)", to: "hsl(355 75% 45%)" },
 ]
 
 export function HeroSection() {
@@ -99,10 +100,18 @@ export function HeroSection() {
                     Вы получите просчёт в 3-х различных вариантах по цене
                   </p>
 
-                  <ul className="space-y-2.5 mb-6">
+                  <ul className="space-y-3 mb-6">
                     {benefits.map((b) => (
-                      <li key={b.text} className="flex items-start gap-2 text-sm text-foreground/80">
-                        <span className="text-base flex-shrink-0">{b.emoji}</span>
+                      <li key={b.text} className="flex items-center gap-3 text-sm font-medium text-foreground/85">
+                        <span
+                          className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 shadow-md"
+                          style={{
+                            background: `linear-gradient(135deg, ${b.from}, ${b.to})`,
+                            boxShadow: `0 4px 10px -2px ${b.to}55, inset 0 1px 0 rgba(255,255,255,0.35)`,
+                          }}
+                        >
+                          <Icon name={b.icon} className="w-5 h-5 text-white" fallback="Check" />
+                        </span>
                         <span>{b.text}</span>
                       </li>
                     ))}

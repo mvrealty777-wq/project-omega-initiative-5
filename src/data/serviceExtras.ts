@@ -15,6 +15,8 @@ export interface ServiceCase {
 }
 
 interface ServiceExtra {
+  seoTitle: string
+  seoDescription: string
   testimonialsTitle: string
   testimonialsSubtitle: string
   testimonials: ServiceTestimonial[]
@@ -44,6 +46,8 @@ const blueBadge = "bg-sky-700 text-white"
 
 export const serviceExtras: Record<string, ServiceExtra> = {
   hammam: {
+    seoTitle: "Строительство хаммама под ключ — турецкие бани | GeniusSPA",
+    seoDescription: "Строим турецкие хаммамы под ключ по всей России: мозаика, мрамор, парогенераторы, звёздное небо. Проект, отделка, оборудование. Гарантия 5 лет. Расчёт бесплатно.",
     testimonialsTitle: "Отзывы о строительстве хаммамов",
     testimonialsSubtitle: "Турецкие бани под ключ — мнения наших клиентов",
     testimonials: [
@@ -60,6 +64,8 @@ export const serviceExtras: Record<string, ServiceExtra> = {
     ],
   },
   sauna: {
+    seoTitle: "Строительство саун и бань под ключ — финские, русские | GeniusSPA",
+    seoDescription: "Строим финские сауны, русские бани и стеклянные парные под ключ. Качественная древесина, печи Harvia, EOS, SAWO. Проект, монтаж, гарантия 5 лет. По всей России.",
     testimonialsTitle: "Отзывы о строительстве саун и бань",
     testimonialsSubtitle: "Финские сауны и русские бани — мнения клиентов",
     testimonials: [
@@ -76,6 +82,8 @@ export const serviceExtras: Record<string, ServiceExtra> = {
     ],
   },
   "salt-cave": {
+    seoTitle: "Зоны для впечатлений — соляные комнаты, флоатинг, криосауна | GeniusSPA",
+    seoDescription: "Создаём соляные комнаты, флоат-камеры, криосауны и паровые бани под ключ. Галогенераторы, фибероптика, оздоровление и релакс. Проект и монтаж по всей России.",
     testimonialsTitle: "Отзывы о зонах для впечатлений",
     testimonialsSubtitle: "Соляные комнаты, флоатинг и криосауны",
     testimonials: [
@@ -92,6 +100,8 @@ export const serviceExtras: Record<string, ServiceExtra> = {
     ],
   },
   pool: {
+    seoTitle: "Строительство бассейнов под ключ — крытые и spa | GeniusSPA",
+    seoDescription: "Строим крытые и spa-бассейны любой формы под ключ. Чаша, гидроизоляция, фильтрация, подогрев, гидромассаж и отделка. Проект и оборудование. По всей России.",
     testimonialsTitle: "Отзывы о строительстве бассейнов",
     testimonialsSubtitle: "Крытые и spa-бассейны под ключ",
     testimonials: [
@@ -108,6 +118,8 @@ export const serviceExtras: Record<string, ServiceExtra> = {
     ],
   },
   "infrared-sauna": {
+    seoTitle: "Инфракрасные сауны под ключ — ИК-кабины для дома и spa | GeniusSPA",
+    seoDescription: "Изготавливаем и монтируем инфракрасные сауны под размер: кедр, липа, керамические излучатели. Мягкий прогрев, экономия энергии. Проект, монтаж по всей России.",
     testimonialsTitle: "Отзывы об инфракрасных саунах",
     testimonialsSubtitle: "ИК-кабины для дома и spa",
     testimonials: [
@@ -124,6 +136,8 @@ export const serviceExtras: Record<string, ServiceExtra> = {
     ],
   },
   equipment: {
+    seoTitle: "Оборудование для бань и саун — печи, парогенераторы | GeniusSPA",
+    seoDescription: "Печи Harvia, EOS, SAWO, парогенераторы, автоматика и аксессуары для саун, бань и хаммамов. Прямые поставки, лучшая цена, монтаж и гарантия. По всей России.",
     testimonialsTitle: "Отзывы об оборудовании",
     testimonialsSubtitle: "Печи, парогенераторы и автоматика",
     testimonials: [
@@ -140,6 +154,8 @@ export const serviceExtras: Record<string, ServiceExtra> = {
     ],
   },
   "bath-complex": {
+    seoTitle: "Строительство банных комплексов под ключ | GeniusSPA",
+    seoDescription: "Строим банные комплексы под ключ для дома, отелей и баз отдыха: сауна, хаммам, бассейн, комната отдыха. Проект, строительство, интерьеры. Гарантия 5 лет.",
     testimonialsTitle: "Отзывы о банных комплексах",
     testimonialsSubtitle: "Комплексы для дома и бизнеса",
     testimonials: [
@@ -156,6 +172,8 @@ export const serviceExtras: Record<string, ServiceExtra> = {
     ],
   },
   "salt-cave-room": {
+    seoTitle: "Строительство соляных пещер под ключ — галокамеры | GeniusSPA",
+    seoDescription: "Строим соляные пещеры из гималайской и каменной соли с галогенератором. Подсветка, климат-контроль, оздоровление дыхания. Под ключ для дома, spa и медцентров.",
     testimonialsTitle: "Отзывы о соляных пещерах",
     testimonialsSubtitle: "Галокамеры для дома и spa",
     testimonials: [
@@ -172,6 +190,8 @@ export const serviceExtras: Record<string, ServiceExtra> = {
     ],
   },
   cooling: {
+    seoTitle: "Системы охлаждения для бань — купели, ледяные фонтаны | GeniusSPA",
+    seoDescription: "Купели из нержавейки, ледяные фонтаны, снежные комнаты и душ впечатлений под ключ. Контрастные процедуры для бань и spa. Проект и монтаж по всей России.",
     testimonialsTitle: "Отзывы о системах охлаждения",
     testimonialsSubtitle: "Купели, ледяные фонтаны, снежные комнаты",
     testimonials: [

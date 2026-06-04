@@ -19,8 +19,13 @@ import { ContactSection } from "@/components/ContactSection"
 import { Footer } from "@/components/Footer"
 import { FloatingContacts } from "@/components/FloatingContacts"
 import { BanyaDecor } from "@/components/BanyaDecor"
+import { useSeo } from "@/hooks/useSeo"
 
 export default function Index() {
+  useSeo({
+    title: "GeniusSPA — строительство саун, бань и хаммамов под ключ",
+    description: "Строим сауны, бани, хаммамы, бассейны и банные комплексы под ключ по всей России. Проект, отделка, оборудование. 400+ объектов, гарантия 5 лет. Расчёт бесплатно.",
+  })
   return (
     <main className="min-h-screen banya-bg relative overflow-hidden">
       <BanyaDecor />

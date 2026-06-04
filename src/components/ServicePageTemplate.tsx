@@ -24,6 +24,7 @@ import { CheckCircle2, ArrowRight } from "lucide-react"
 import type { ServiceData } from "@/data/servicesData"
 import { getSubServices } from "@/data/servicesData"
 import { getServiceExtra } from "@/data/serviceExtras"
+import { useSeo } from "@/hooks/useSeo"
 
 interface Props {
   service: ServiceData
@@ -32,6 +33,12 @@ interface Props {
 export function ServicePageTemplate({ service }: Props) {
   const subServices = getSubServices(service)
   const extra = getServiceExtra(service.slug)
+
+  useSeo({
+    title: extra?.seoTitle ?? `${service.heroTitle} | GeniusSPA`,
+    description: extra?.seoDescription ?? service.heroSubtitle,
+    image: service.image,
+  })
 
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -113,14 +120,43 @@ export function ServicePageTemplate({ service }: Props) {
         </div>
       </section>
 
-      {/* What we do + price */}
+      {/* Блоки как на главной — в порядке главной страницы */}
+      {/* 1. Наш подход */}
+      <ReadySection />
+      {/* 2. Наши работы */}
+      {extra && (
+        <ServiceCasesSection title={extra.casesTitle} subtitle={extra.casesSubtitle} cases={extra.cases} />
+      )}
+      {/* 3. Полный цикл работ */}
+      <FullCycleSection />
+      {/* 4. 3D-проект */}
+      <Project3DSection />
+      {/* 5. Почему выбирают нас */}
+      <AboutSection />
+      {/* 6 + 7. Лучшая цена + «нашли дешевле» */}
+      <EquipmentBrandsSection />
+      {/* 8. Выбор оборудования и материалов */}
+      <EquipmentChoiceSection />
+      {/* 9. Заявка на замерщика */}
+      <SurveyorCtaSection />
+      <ReputationSection />
+      <ProcessSection />
+      <TestimonialsSection
+        title={extra?.testimonialsTitle}
+        subtitle={extra?.testimonialsSubtitle}
+        items={extra?.testimonials}
+      />
+      {/* 10. Прозрачные цены */}
+      <PricingSection />
+
+      {/* 11. Услуга под ключ (что входит + стоимость) */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 section-glass-tint">
         <div className="container mx-auto max-w-6xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
             <div>
-              <div className="section-badge mb-5">Преимущества</div>
+              <div className="section-badge mb-5">Что входит</div>
               <h2 className="text-4xl sm:text-5xl font-black text-foreground mb-8 leading-tight" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                Почему выбирают <span className="text-primary">нас</span>
+                Услуга <span className="text-primary">под ключ</span>
               </h2>
               <ul className="space-y-5">
                 {service.works.map((w, i) => (
@@ -174,7 +210,7 @@ export function ServicePageTemplate({ service }: Props) {
         <section className="py-20 px-4 sm:px-6 lg:px-8 section-glass">
           <div className="container mx-auto max-w-6xl">
             <div className="text-center mb-12">
-              <div className="section-badge mb-5 mx-auto">Наши работы</div>
+              <div className="section-badge mb-5 mx-auto">Примеры</div>
               <h2 className="text-4xl sm:text-5xl font-black text-foreground" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                 Примеры <span className="text-primary">объектов</span>
               </h2>
@@ -190,25 +226,7 @@ export function ServicePageTemplate({ service }: Props) {
         </section>
       )}
 
-      {/* Блоки как на главной */}
-      <ReadySection />
-      {extra && (
-        <ServiceCasesSection title={extra.casesTitle} subtitle={extra.casesSubtitle} cases={extra.cases} />
-      )}
-      <FullCycleSection />
-      <Project3DSection />
-      <AboutSection />
-      <EquipmentBrandsSection />
-      <EquipmentChoiceSection />
-      <SurveyorCtaSection />
-      <ReputationSection />
-      <ProcessSection />
-      <TestimonialsSection
-        title={extra?.testimonialsTitle}
-        subtitle={extra?.testimonialsSubtitle}
-        items={extra?.testimonials}
-      />
-      <PricingSection />
+      {/* 12. Частые вопросы */}
       <FaqSection />
       <ContactSection />
       <Footer />
