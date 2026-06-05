@@ -17,6 +17,12 @@ const advantages = [
   { icon: "ScanEye", title: "Высокая детализация" },
 ]
 
+const stats = [
+  { value: "3D", label: "Фотореализм" },
+  { value: "∞", label: "Правок бесплатно" },
+  { value: "2–4", label: "Дня на проект" },
+]
+
 export function Project3DSection() {
   const [formData, setFormData] = useState({ name: "", phone: "" })
   const [sent, setSent] = useState(false)
@@ -31,23 +37,41 @@ export function Project3DSection() {
   }
 
   return (
-    <section className="py-10 sm:py-12 lg:py-14 px-4 sm:px-6 lg:px-8 section-glass-tint">
-      <div className="container mx-auto max-w-6xl">
-        <div className="text-center mb-8 sm:mb-10">
-          <div className="section-badge mb-4 mx-auto">3D-визуализация</div>
+    <section className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden"
+      style={{ background: 'linear-gradient(165deg, hsl(220 27% 11%), hsl(222 32% 7%))' }}>
+      <div className="absolute -top-28 right-0 w-[26rem] h-[26rem] rounded-full blur-3xl opacity-20 pointer-events-none"
+        style={{ background: 'hsl(145 63% 42%)' }} />
+      <div className="absolute -bottom-32 -left-20 w-[28rem] h-[28rem] rounded-full blur-3xl opacity-10 pointer-events-none"
+        style={{ background: 'hsl(200 70% 50%)' }} />
+      <div className="absolute inset-0 bg-grid-pattern opacity-[0.05] pointer-events-none" />
+
+      <div className="container mx-auto max-w-6xl relative z-10">
+        <div className="text-center mb-9 sm:mb-12">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-sm font-semibold tracking-wide uppercase mb-5 mx-auto text-green-300 border border-green-400/20"
+            style={{ background: 'hsl(145 63% 42% / 0.12)' }}>
+            3D-визуализация
+          </div>
           <h2
-            className="text-2xl sm:text-3xl lg:text-4xl font-black text-foreground mb-3 leading-tight"
+            className="text-3xl sm:text-4xl lg:text-5xl font-black text-white mb-4 leading-tight"
             style={{ fontFamily: 'Montserrat, sans-serif' }}
           >
-            Разработка <span className="text-primary">3D-проекта</span> сауны или хамама
+            Разработка <span className="text-green-400">3D-проекта</span> сауны или хамама
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto text-sm sm:text-base leading-relaxed">
+          <p className="text-white/60 max-w-2xl mx-auto text-base leading-relaxed mb-7">
             Увидьте будущий объект ещё до начала строительства — реалистично и со всеми вашими пожеланиями.
           </p>
+          <div className="flex flex-wrap justify-center gap-3 sm:gap-4">
+            {stats.map((s) => (
+              <div key={s.label} className="px-5 py-3 rounded-2xl border border-white/10 bg-white/[0.04] backdrop-blur-sm text-center min-w-[110px]">
+                <div className="text-2xl sm:text-3xl font-black text-green-400 leading-none mb-1" style={{ fontFamily: 'Montserrat, sans-serif' }}>{s.value}</div>
+                <div className="text-[11px] text-white/55 font-medium uppercase tracking-wide">{s.label}</div>
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* Карточка блока */}
-        <div className="bg-white rounded-3xl border border-border shadow-xl overflow-hidden grid grid-cols-1 lg:grid-cols-2">
+        <div className="bg-white rounded-3xl border border-white/10 shadow-2xl overflow-hidden grid grid-cols-1 lg:grid-cols-2">
           {/* Left — галерея примеров */}
           <div className="p-4 sm:p-5 lg:p-6"
             style={{ background: 'linear-gradient(160deg, hsl(150 30% 96%), hsl(150 20% 92%))' }}>

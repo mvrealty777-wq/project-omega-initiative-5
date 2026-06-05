@@ -12,6 +12,7 @@ import { Project3DSection } from "@/components/Project3DSection"
 import { SurveyorCtaSection } from "@/components/SurveyorCtaSection"
 import { ReputationSection } from "@/components/ReputationSection"
 import { ProcessSection } from "@/components/ProcessSection"
+import { BuildTimelineSection } from "@/components/BuildTimelineSection"
 import { TestimonialsSection } from "@/components/TestimonialsSection"
 import { PricingSection } from "@/components/PricingSection"
 import { FaqSection } from "@/components/FaqSection"
@@ -30,7 +31,7 @@ export default function Index() {
     jsonLd: [organizationSchema()],
   })
   return (
-    <main className="min-h-screen banya-bg relative overflow-hidden">
+    <main className="min-h-screen banya-bg relative overflow-x-clip">
       <BanyaDecor />
       <div className="relative z-10">
         <Navbar />
@@ -47,6 +48,7 @@ export default function Index() {
         <SurveyorCtaSection />
         <ReputationSection />
         <ProcessSection />
+        <BuildTimelineSection />
         <TestimonialsSection />
         <PricingSection />
         <FaqSection />

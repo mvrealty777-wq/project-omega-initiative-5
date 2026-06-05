@@ -5,49 +5,63 @@
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
-  <url>
-    <loc>https://geniusspa.ru/uslugi/hammam</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://geniusspa.ru/uslugi/sauna</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://geniusspa.ru/uslugi/salt-cave</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://geniusspa.ru/uslugi/pool</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://geniusspa.ru/uslugi/infrared-sauna</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://geniusspa.ru/uslugi/equipment</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://geniusspa.ru/uslugi/bath-complex</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://geniusspa.ru/uslugi/salt-cave-room</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://geniusspa.ru/uslugi/cooling</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
+
+  <url><loc>https://geniusspa.ru/uslugi/hammam</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://geniusspa.ru/uslugi/hammam/tureckaya-banya-hamam</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://geniusspa.ru/uslugi/hammam/stroitelstvo-hamamov</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://geniusspa.ru/uslugi/hammam/otdelka-hamamov</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://geniusspa.ru/uslugi/hammam/interery-hamamov</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://geniusspa.ru/uslugi/hammam/oborudovanie-dlya-hamamov</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+  <url><loc>https://geniusspa.ru/uslugi/sauna</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://geniusspa.ru/uslugi/sauna/finskie-sauny</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://geniusspa.ru/uslugi/sauna/russkaya-banya</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://geniusspa.ru/uslugi/sauna/steklyannye-sauny</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://geniusspa.ru/uslugi/sauna/infrakrasnye-sauny</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://geniusspa.ru/uslugi/sauna/stroitelstvo-saun</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://geniusspa.ru/uslugi/sauna/otdelka-parnyh</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://geniusspa.ru/uslugi/sauna/interery-saun</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+  <url><loc>https://geniusspa.ru/uslugi/salt-cave</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://geniusspa.ru/uslugi/salt-cave/solyanye-komnaty</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://geniusspa.ru/uslugi/salt-cave/floating</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://geniusspa.ru/uslugi/salt-cave/kriosauna</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://geniusspa.ru/uslugi/salt-cave/parovye-bani</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+  <url><loc>https://geniusspa.ru/uslugi/pool</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://geniusspa.ru/uslugi/pool/stroitelstvo-basseynov</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://geniusspa.ru/uslugi/pool/proektirovanie-basseynov</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://geniusspa.ru/uslugi/pool/otdelka-basseynov</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://geniusspa.ru/uslugi/pool/oborudovanie-dlya-basseynov</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+  <url><loc>https://geniusspa.ru/uslugi/infrared-sauna</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://geniusspa.ru/uslugi/infrared-sauna/ik-kabiny-pod-klyuch</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://geniusspa.ru/uslugi/infrared-sauna/proektirovanie-ik-saun</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://geniusspa.ru/uslugi/infrared-sauna/montazh-i-ustanovka</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://geniusspa.ru/uslugi/infrared-sauna/izgotovlenie-pod-razmer</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+  <url><loc>https://geniusspa.ru/uslugi/equipment</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://geniusspa.ru/uslugi/equipment/pechi-dlya-saun-i-ban</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://geniusspa.ru/uslugi/equipment/parogeneratory</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://geniusspa.ru/uslugi/equipment/oborudovanie-dlya-hamama</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://geniusspa.ru/uslugi/equipment/avtomatika-i-pulty</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://geniusspa.ru/uslugi/equipment/aksessuary</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+  <url><loc>https://geniusspa.ru/uslugi/bath-complex</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://geniusspa.ru/uslugi/bath-complex/stroitelstvo-bannyh-kompleksov</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://geniusspa.ru/uslugi/bath-complex/proektirovanie-bannyh-kompleksov</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://geniusspa.ru/uslugi/bath-complex/interery-bannyh-kompleksov</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://geniusspa.ru/uslugi/bath-complex/komnata-otdyha</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+  <url><loc>https://geniusspa.ru/uslugi/salt-cave-room</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://geniusspa.ru/uslugi/salt-cave-room/rozovaya-gimalayskaya-sol</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://geniusspa.ru/uslugi/salt-cave-room/kamennaya-belaya-sol</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://geniusspa.ru/uslugi/salt-cave-room/galogenerator</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://geniusspa.ru/uslugi/salt-cave-room/podsvetka-i-klimat</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+  <url><loc>https://geniusspa.ru/uslugi/cooling</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://geniusspa.ru/uslugi/cooling/kupeli</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://geniusspa.ru/uslugi/cooling/ledyanye-fontany</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://geniusspa.ru/uslugi/cooling/snezhnye-komnaty</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://geniusspa.ru/uslugi/cooling/dush-vpechatleniy</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
 </urlset>

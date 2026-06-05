@@ -8,6 +8,8 @@ import { ContactSection } from "@/components/ContactSection"
 import { ServiceHero } from "@/components/ServiceHero"
 import { ReadySection } from "@/components/ReadySection"
 import { ServiceCasesSection } from "@/components/ServiceCasesSection"
+import { ServiceTurnkeySection } from "@/components/ServiceTurnkeySection"
+import { BuildTimelineSection } from "@/components/BuildTimelineSection"
 import { FullCycleSection } from "@/components/FullCycleSection"
 import { Project3DSection } from "@/components/Project3DSection"
 import { AboutSection } from "@/components/AboutSection"
@@ -61,7 +63,7 @@ export function ServicePageTemplate({ service }: Props) {
   }, [service.slug])
 
   return (
-    <main className="min-h-screen banya-bg relative overflow-hidden">
+    <main className="min-h-screen banya-bg relative overflow-x-clip">
       <BanyaDecor />
       <div className="relative z-10">
       <Navbar />
@@ -157,6 +159,7 @@ export function ServicePageTemplate({ service }: Props) {
       <SurveyorCtaSection />
       <ReputationSection />
       <ProcessSection />
+      <BuildTimelineSection />
       <TestimonialsSection
         title={extra?.testimonialsTitle}
         subtitle={extra?.testimonialsSubtitle}
@@ -166,60 +169,7 @@ export function ServicePageTemplate({ service }: Props) {
       <PricingSection />
 
       {/* 11. Услуга под ключ (что входит + стоимость) */}
-      <section className="py-10 sm:py-12 lg:py-14 px-4 sm:px-6 lg:px-8 section-glass-tint">
-        <div className="container mx-auto max-w-6xl">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-            <div>
-              <div className="section-badge mb-5">Что входит</div>
-              <h2 className="text-4xl sm:text-5xl font-black text-foreground mb-8 leading-tight" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                Услуга <span className="text-primary">под ключ</span>
-              </h2>
-              <ul className="space-y-5">
-                {service.works.map((w, i) => (
-                  <li key={i} className="flex items-start gap-4">
-                    <CheckCircle2 className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
-                    <div>
-                      <p className="font-bold text-lg text-foreground mb-1" style={{ fontFamily: 'Montserrat, sans-serif' }}>{w.title}</p>
-                      <p className="text-base text-muted-foreground leading-relaxed">{w.text}</p>
-                    </div>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Price card */}
-            <div className="lg:sticky lg:top-24">
-              <div className="rounded-2xl border border-primary shadow-xl shadow-primary/10 overflow-hidden">
-                <div className="p-8 bg-gray-900 text-white">
-                  <p className="text-white/60 text-sm mb-2">Стоимость работ</p>
-                  <p className="text-4xl font-black mb-1" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                    {service.priceFrom === "По запросу" ? (
-                      <span className="text-green-400">{service.priceFrom}</span>
-                    ) : (
-                      <>{service.priceFrom} <span className="text-xl font-normal text-white/60">₽</span></>
-                    )}
-                  </p>
-                  <p className="text-white/60 text-sm">{service.priceNote}</p>
-                </div>
-                <div className="p-8 bg-white">
-                  <ul className="space-y-3 mb-7">
-                    {["Бесплатный выезд и замер", "Фиксированная цена в договоре", "Дизайн-проект и 3D-визуализация", "Гарантия 5 лет"].map((item) => (
-                      <li key={item} className="flex items-center gap-3 text-base text-foreground/80">
-                        <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0" />
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                  <a href="#contact" className="btn-green w-full justify-center text-base">
-                    Рассчитать стоимость
-                    <ArrowRight className="w-4 h-4" />
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <ServiceTurnkeySection service={service} />
 
       {/* Gallery */}
       {service.gallery.length > 1 && (

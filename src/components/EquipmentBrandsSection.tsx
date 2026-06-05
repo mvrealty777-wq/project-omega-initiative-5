@@ -2,37 +2,37 @@ import Icon from "@/components/ui/icon"
 
 const cards = [
   {
-    image: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/987e5a97-e8af-440e-9e38-9a91fa41da8e.jpg",
+    image: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/033178db-5e79-4aec-b186-7d77bb86a892.jpg",
     icon: "Hammer",
     title: "Строительство под ключ",
     text: "Берём на себя весь цикл: проект, материалы, монтаж, отделка, оборудование. Вам не нужно ни о чём беспокоиться.",
   },
   {
-    image: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/e2a81b72-7f5b-4c2a-85d5-788303de8cc9.jpg",
+    image: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/e81a9bb5-78db-4658-9428-b84d20ab1011.jpg",
     icon: "Box",
     title: "Дизайн и 3D-визуализация",
     text: "Разрабатываем уникальный дизайн-проект с детальной 3D-визуализацией. Вы увидите результат ещё до начала работ.",
   },
   {
-    image: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/60a4a4f4-163f-4897-9ac7-5d0f5308be21.jpg",
+    image: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/09c8d356-2430-44e5-8306-455f9975a670.jpg",
     icon: "ShieldCheck",
     title: "Гарантия 5 лет",
     text: "Предоставляем полную гарантию на все виды работ, материалы и оборудование. Гарантийное и постгарантийное обслуживание.",
   },
   {
-    image: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/7bde4507-c7cf-4f9f-ac8a-72ee406957fe.jpg",
+    image: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/56eeb1e9-8225-495f-9198-98a6b444bb21.jpg",
     icon: "MapPin",
     title: "Бесплатный выезд замерщика",
     text: "Специалист приедет к вам бесплатно по всей России, сделает точные замеры и оценит технические условия.",
   },
   {
-    image: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/1d9a93e6-0139-47b7-9767-5d834fcaa6ed.jpg",
+    image: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/1a3ddb93-6269-4317-9e18-b58d210c901e.jpg",
     icon: "Award",
     title: "Премиум оборудование",
     text: "Официальный партнёр Harvia, TYLÖ, EOS, HygroMatik, ASTRAL. Используем только сертифицированные материалы и оборудование.",
   },
   {
-    image: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/f72b1241-0f67-4cdd-bcc5-fccadb542983.jpg",
+    image: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/d596455c-d3b0-42da-8561-a00382738d8f.jpg",
     icon: "Wrench",
     title: "Сервисный центр",
     text: "Собственный сервисный центр для обслуживания и ремонта. Быстрое реагирование на любые запросы клиентов.",
