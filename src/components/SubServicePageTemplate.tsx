@@ -9,6 +9,7 @@ import { ServiceHero } from "@/components/ServiceHero"
 import { ReadySection } from "@/components/ReadySection"
 import { ServiceCasesSection } from "@/components/ServiceCasesSection"
 import { ServiceTurnkeySection } from "@/components/ServiceTurnkeySection"
+import { BuildTimelineSection } from "@/components/BuildTimelineSection"
 import { FullCycleSection } from "@/components/FullCycleSection"
 import { Project3DSection } from "@/components/Project3DSection"
 import { AboutSection } from "@/components/AboutSection"
@@ -25,6 +26,7 @@ import { CheckCircle2, ArrowRight } from "lucide-react"
 import type { SubServiceData } from "@/data/servicesData"
 import { getSubServices } from "@/data/servicesData"
 import { getServiceExtra } from "@/data/serviceExtras"
+import { getServiceContent } from "@/data/serviceContent"
 import { useSeo } from "@/hooks/useSeo"
 import { organizationSchema, breadcrumbSchema, serviceSchema } from "@/lib/schema"
 
@@ -36,6 +38,7 @@ export function SubServicePageTemplate({ sub }: Props) {
   const service = sub.parent
   const siblings = getSubServices(service).filter((s) => s.subSlug !== sub.subSlug)
   const extra = getServiceExtra(service.slug)
+  const content = getServiceContent(service.slug)
   const path = `/uslugi/${service.slug}/${sub.subSlug}`
   const description = `${sub.title} под ключ по всей России: проектирование, материалы, монтаж и гарантия 5 лет. Раздел «${service.cardTitle}». Бесплатный расчёт и выезд замерщика.`
 
@@ -88,20 +91,52 @@ export function SubServicePageTemplate({ sub }: Props) {
         {extra && (
           <ServiceCasesSection title={extra.casesTitle} subtitle={extra.casesSubtitle} cases={extra.cases} />
         )}
-        <FullCycleSection />
+        <FullCycleSection
+          title={content?.fullCycle.title}
+          subtitle={content?.fullCycle.subtitle}
+          items={content?.fullCycle.items}
+        />
         <Project3DSection />
-        <AboutSection />
+        <AboutSection
+          subtitle={content?.about.subtitle}
+          values={content?.about.values}
+          stats={content?.about.stats}
+        />
         <EquipmentBrandsSection />
-        <EquipmentChoiceSection />
+        <EquipmentChoiceSection
+          title={content?.equipmentChoice.title}
+          titleAccent={content?.equipmentChoice.titleAccent}
+          subtitle={content?.equipmentChoice.subtitle}
+          cta={content?.equipmentChoice.cta}
+          products={content?.equipmentChoice.products}
+          features={content?.equipmentChoice.features}
+        />
         <SurveyorCtaSection />
         <ReputationSection />
-        <ProcessSection />
+        <ProcessSection
+          badge={content?.process.badge}
+          title={content?.process.title}
+          titleAccent={content?.process.titleAccent}
+          steps={content?.process.steps}
+        />
+        <BuildTimelineSection
+          title={content?.timeline.title}
+          titleAccent={content?.timeline.titleAccent}
+          subtitle={content?.timeline.subtitle}
+          rows={content?.timeline.rows}
+          note={content?.timeline.note}
+        />
         <TestimonialsSection
           title={extra?.testimonialsTitle}
           subtitle={extra?.testimonialsSubtitle}
           items={extra?.testimonials}
         />
-        <PricingSection />
+        <PricingSection
+          title={content?.pricing.title}
+          titleAccent={content?.pricing.titleAccent}
+          subtitle={content?.pricing.subtitle}
+          tiers={content?.pricing.tiers}
+        />
 
         {/* Услуга под ключ (что входит + стоимость) */}
         <ServiceTurnkeySection service={service} title={sub.title} />

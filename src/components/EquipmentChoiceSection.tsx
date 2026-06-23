@@ -1,6 +1,7 @@
 import Icon from "@/components/ui/icon"
+import type { ChoiceProduct, ChoiceFeature } from "@/data/serviceContent"
 
-const products = [
+const defaultProducts: ChoiceProduct[] = [
   {
     image: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/988d1b04-f34f-4a60-b1c2-5dd6af04601f.jpg",
     title: "Вагонка для сауны",
@@ -21,13 +22,24 @@ const products = [
   },
 ]
 
-const features = [
+const defaultFeatures: ChoiceFeature[] = [
   { icon: "BadgeCheck", text: "Только сертифицированное оборудование" },
   { icon: "Truck", text: "Доставка и монтаж по всей России" },
   { icon: "Wallet", text: "Прямые поставки — лучшая цена" },
 ]
 
-export function EquipmentChoiceSection() {
+interface Props {
+  title?: string
+  titleAccent?: string
+  subtitle?: string
+  cta?: string
+  products?: ChoiceProduct[]
+  features?: ChoiceFeature[]
+}
+
+export function EquipmentChoiceSection({ title, titleAccent, subtitle, cta, products: productsProp, features: featuresProp }: Props = {}) {
+  const products = productsProp ?? defaultProducts
+  const features = featuresProp ?? defaultFeatures
   return (
     <section className="py-10 sm:py-12 lg:py-14 px-4 sm:px-6 lg:px-8 section-glass">
       <div className="container mx-auto max-w-6xl">
@@ -37,10 +49,10 @@ export function EquipmentChoiceSection() {
             className="text-2xl sm:text-3xl lg:text-4xl font-black text-foreground mb-3 leading-tight"
             style={{ fontFamily: 'Montserrat, sans-serif' }}
           >
-            Выбор оборудования и <span className="text-primary">материалов для сауны</span>
+            {title ?? "Выбор оборудования и"} <span className="text-primary">{titleAccent ?? "материалов для сауны"}</span>
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto text-sm sm:text-base">
-            Всё оборудование и материалы у нас в продаже! Подберём комплектацию под ваш проект и бюджет.
+            {subtitle ?? "Всё оборудование и материалы у нас в продаже! Подберём комплектацию под ваш проект и бюджет."}
           </p>
         </div>
 
@@ -73,7 +85,7 @@ export function EquipmentChoiceSection() {
             ))}
           </div>
           <a href="#contact" className="btn-green whitespace-nowrap flex-shrink-0">
-            Подобрать оборудование
+            {cta ?? "Подобрать оборудование"}
             <Icon name="ArrowRight" className="w-4 h-4" fallback="ChevronRight" />
           </a>
         </div>

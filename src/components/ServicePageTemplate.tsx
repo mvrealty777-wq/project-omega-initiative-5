@@ -26,6 +26,7 @@ import { CheckCircle2, ArrowRight } from "lucide-react"
 import type { ServiceData } from "@/data/servicesData"
 import { getSubServices } from "@/data/servicesData"
 import { getServiceExtra } from "@/data/serviceExtras"
+import { getServiceContent } from "@/data/serviceContent"
 import { useSeo } from "@/hooks/useSeo"
 import { organizationSchema, breadcrumbSchema, serviceSchema } from "@/lib/schema"
 
@@ -36,6 +37,7 @@ interface Props {
 export function ServicePageTemplate({ service }: Props) {
   const subServices = getSubServices(service)
   const extra = getServiceExtra(service.slug)
+  const content = getServiceContent(service.slug)
   const path = `/uslugi/${service.slug}`
 
   useSeo({
@@ -146,27 +148,58 @@ export function ServicePageTemplate({ service }: Props) {
         <ServiceCasesSection title={extra.casesTitle} subtitle={extra.casesSubtitle} cases={extra.cases} />
       )}
       {/* 3. Полный цикл работ */}
-      <FullCycleSection />
+      <FullCycleSection
+        title={content?.fullCycle.title}
+        subtitle={content?.fullCycle.subtitle}
+        items={content?.fullCycle.items}
+      />
       {/* 4. 3D-проект */}
       <Project3DSection />
       {/* 5. Почему выбирают нас */}
-      <AboutSection />
+      <AboutSection
+        subtitle={content?.about.subtitle}
+        values={content?.about.values}
+        stats={content?.about.stats}
+      />
       {/* 6 + 7. Лучшая цена + «нашли дешевле» */}
       <EquipmentBrandsSection />
       {/* 8. Выбор оборудования и материалов */}
-      <EquipmentChoiceSection />
+      <EquipmentChoiceSection
+        title={content?.equipmentChoice.title}
+        titleAccent={content?.equipmentChoice.titleAccent}
+        subtitle={content?.equipmentChoice.subtitle}
+        cta={content?.equipmentChoice.cta}
+        products={content?.equipmentChoice.products}
+        features={content?.equipmentChoice.features}
+      />
       {/* 9. Заявка на замерщика */}
       <SurveyorCtaSection />
       <ReputationSection />
-      <ProcessSection />
-      <BuildTimelineSection />
+      <ProcessSection
+        badge={content?.process.badge}
+        title={content?.process.title}
+        titleAccent={content?.process.titleAccent}
+        steps={content?.process.steps}
+      />
+      <BuildTimelineSection
+        title={content?.timeline.title}
+        titleAccent={content?.timeline.titleAccent}
+        subtitle={content?.timeline.subtitle}
+        rows={content?.timeline.rows}
+        note={content?.timeline.note}
+      />
       <TestimonialsSection
         title={extra?.testimonialsTitle}
         subtitle={extra?.testimonialsSubtitle}
         items={extra?.testimonials}
       />
       {/* 10. Прозрачные цены */}
-      <PricingSection />
+      <PricingSection
+        title={content?.pricing.title}
+        titleAccent={content?.pricing.titleAccent}
+        subtitle={content?.pricing.subtitle}
+        tiers={content?.pricing.tiers}
+      />
 
       {/* 11. Услуга под ключ (что входит + стоимость) */}
       <ServiceTurnkeySection service={service} />

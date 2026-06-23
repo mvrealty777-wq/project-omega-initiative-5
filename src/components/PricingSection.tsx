@@ -1,6 +1,7 @@
 import { Check, ArrowRight, Zap } from "lucide-react"
+import type { PricingTier } from "@/data/serviceContent"
 
-const pricingTiers = [
+const defaultTiers: PricingTier[] = [
   {
     name: "Баня / Сауна",
     image: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/987e5a97-e8af-440e-9e38-9a91fa41da8e.jpg",
@@ -52,7 +53,15 @@ const pricingTiers = [
   },
 ]
 
-export function PricingSection() {
+interface Props {
+  title?: string
+  titleAccent?: string
+  subtitle?: string
+  tiers?: PricingTier[]
+}
+
+export function PricingSection({ title, titleAccent, subtitle, tiers: tiersProp }: Props = {}) {
+  const pricingTiers = tiersProp ?? defaultTiers
   return (
     <section id="pricing" className="py-10 sm:py-12 lg:py-14 px-4 sm:px-6 lg:px-8 section-glass">
       <div className="container mx-auto max-w-6xl">
@@ -62,11 +71,11 @@ export function PricingSection() {
             className="text-3xl sm:text-4xl lg:text-5xl font-black text-foreground text-balance mb-4"
             style={{ fontFamily: 'Montserrat, sans-serif' }}
           >
-            Прозрачные цены без<br />
-            <span className="text-primary">скрытых платежей</span>
+            {title ?? "Прозрачные цены без"}<br />
+            <span className="text-primary">{titleAccent ?? "скрытых платежей"}</span>
           </h2>
           <p className="text-muted-foreground max-w-xl mx-auto text-lg leading-relaxed">
-            Точная стоимость — после замера и консультации. Все цены фиксируются в договоре.
+            {subtitle ?? "Точная стоимость — после замера и консультации. Все цены фиксируются в договоре."}
           </p>
         </div>
 

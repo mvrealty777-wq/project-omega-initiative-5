@@ -1,7 +1,8 @@
 import { ArrowRight } from "lucide-react"
 import Icon from "@/components/ui/icon"
+import type { ProcessStep } from "@/data/serviceContent"
 
-const steps = [
+const defaultSteps: ProcessStep[] = [
   {
     icon: "PhoneCall",
     number: "01",
@@ -32,7 +33,15 @@ const steps = [
   },
 ]
 
-export function ProcessSection() {
+interface Props {
+  badge?: string
+  title?: string
+  titleAccent?: string
+  steps?: ProcessStep[]
+}
+
+export function ProcessSection({ badge, title, titleAccent, steps: stepsProp }: Props = {}) {
+  const steps = stepsProp ?? defaultSteps
   return (
     <section className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden"
       style={{ background: 'linear-gradient(165deg, hsl(220 27% 10%), hsl(220 32% 7%))' }}>
@@ -47,14 +56,14 @@ export function ProcessSection() {
         <div className="text-center mb-12 sm:mb-16">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-sm font-semibold tracking-wide uppercase mb-5 mx-auto text-green-300 border border-green-400/20"
             style={{ background: 'hsl(145 63% 42% / 0.12)' }}>
-            Как мы работаем
+            {badge ?? "Как мы работаем"}
           </div>
           <h2
             className="text-3xl sm:text-4xl lg:text-5xl font-black text-white text-balance"
             style={{ fontFamily: 'Montserrat, sans-serif' }}
           >
-            От заявки до готовой<br />
-            <span className="text-green-400">сауны — 4 шага</span>
+            {title ?? "От заявки до готовой"}<br />
+            <span className="text-green-400">{titleAccent ?? "сауны — 4 шага"}</span>
           </h2>
         </div>
 

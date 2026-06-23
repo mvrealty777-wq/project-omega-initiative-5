@@ -1,6 +1,7 @@
 import Icon from "@/components/ui/icon"
+import type { TimelineRow } from "@/data/serviceContent"
 
-const rows = [
+const defaultRows: TimelineRow[] = [
   { icon: "Boxes", work: "Монтаж сборных саун", term: "1–2 дня" },
   { icon: "Flame", work: "Парная с электрокаменкой, объём до 10 м³", term: "5–8 дней" },
   { icon: "Flame", work: "Парная с каменкой, объём до 15 м³", term: "8–11 дней" },
@@ -9,17 +10,26 @@ const rows = [
   { icon: "Landmark", work: "Турецкая баня (конструктив + оборудование, без отделки)", term: "от 10 дней" },
 ]
 
-export function BuildTimelineSection() {
+interface Props {
+  title?: string
+  titleAccent?: string
+  subtitle?: string
+  rows?: TimelineRow[]
+  note?: string
+}
+
+export function BuildTimelineSection({ title, titleAccent, subtitle, rows: rowsProp, note }: Props = {}) {
+  const rows = rowsProp ?? defaultRows
   return (
     <section className="py-10 sm:py-12 lg:py-14 px-4 sm:px-6 lg:px-8 section-glass-tint">
       <div className="container mx-auto max-w-5xl">
         <div className="text-center mb-9 sm:mb-10">
           <div className="section-badge mb-5 mx-auto">Сроки</div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-foreground mb-4" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-            Сроки строительства <span className="text-primary">саун</span>
+            {title ?? "Сроки строительства"} <span className="text-primary">{titleAccent ?? "саун"}</span>
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto text-base leading-relaxed">
-            Указаны примерные сроки с момента начала строительных работ (не с момента подписания договора).
+            {subtitle ?? "Указаны примерные сроки с момента начала строительных работ (не с момента подписания договора)."}
           </p>
         </div>
 
@@ -57,7 +67,7 @@ export function BuildTimelineSection() {
 
         <p className="text-sm text-muted-foreground mt-5 flex items-start gap-2 max-w-3xl mx-auto">
           <Icon name="Info" className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" fallback="Info" />
-          Сроки зависят от готовности помещения к строительству, сложности конструкций и дизайнерских решений.
+          {note ?? "Сроки зависят от готовности помещения к строительству, сложности конструкций и дизайнерских решений."}
         </p>
       </div>
     </section>

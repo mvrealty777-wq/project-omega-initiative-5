@@ -1,7 +1,8 @@
 import Icon from "@/components/ui/icon"
 import { Venok } from "@/components/icons/Venok"
+import type { AboutValue, AboutStat } from "@/data/serviceContent"
 
-const values = [
+const defaultValues: AboutValue[] = [
   { icon: "Award", title: "Опыт и экспертиза", description: "Более 10 лет строим сауны и хамамы — знаем все нюансы от фундамента до отделки" },
   { icon: "KeyRound", title: "Работа под ключ", description: "Проект, строительство, инженерия, отделка и запуск — всё в одних руках" },
   { icon: "Gem", title: "Качественные материалы", description: "Финская древесина, турецкий мрамор — только проверенные поставщики" },
@@ -10,14 +11,22 @@ const values = [
   { icon: "Clock", title: "Соблюдение сроков", description: "Фиксируем сроки в договоре — за 10 лет не сорвали ни одной сдачи" },
 ]
 
-const stats = [
+const defaultStats: AboutStat[] = [
   { icon: "CalendarDays", number: "10+", label: "Лет на рынке" },
   { icon: "Home", number: "400+", label: "Объектов построено" },
   { icon: "LayoutGrid", number: "8", label: "Видов услуг" },
   { icon: "ShieldCheck", number: "5 лет", label: "Гарантия" },
 ]
 
-export function AboutSection() {
+interface Props {
+  subtitle?: string
+  values?: AboutValue[]
+  stats?: AboutStat[]
+}
+
+export function AboutSection({ subtitle, values: valuesProp, stats: statsProp }: Props = {}) {
+  const values = valuesProp ?? defaultValues
+  const stats = statsProp ?? defaultStats
   return (
     <section id="about" className="py-10 sm:py-12 lg:py-14 px-4 sm:px-6 lg:px-8 section-glass-tint">
       <div className="container mx-auto max-w-6xl">
@@ -31,7 +40,7 @@ export function AboutSection() {
             Почему клиенты <span className="text-primary">выбирают нас?</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto leading-relaxed">
-            Собственная команда без субподрядчиков — гарантия качества, сроков и единой ответственности за результат.
+            {subtitle ?? "Собственная команда без субподрядчиков — гарантия качества, сроков и единой ответственности за результат."}
           </p>
         </div>
 

@@ -1,6 +1,7 @@
 import Icon from "@/components/ui/icon"
+import type { CycleItem } from "@/data/serviceContent"
 
-const cycleItems = [
+const defaultItems: CycleItem[] = [
   {
     icon: "PencilRuler",
     title: "Проектирование",
@@ -23,7 +24,14 @@ const cycleItems = [
   },
 ]
 
-export function FullCycleSection() {
+interface Props {
+  title?: string
+  subtitle?: string
+  items?: CycleItem[]
+}
+
+export function FullCycleSection({ title, subtitle, items }: Props = {}) {
+  const cycleItems = items ?? defaultItems
   return (
     <section className="py-10 sm:py-12 lg:py-14 px-4 sm:px-6 lg:px-8 section-glass-tint">
       <div className="container mx-auto max-w-6xl">
@@ -33,11 +41,10 @@ export function FullCycleSection() {
             className="text-3xl sm:text-4xl lg:text-5xl font-black text-foreground mb-3"
             style={{ fontFamily: 'Montserrat, sans-serif' }}
           >
-            Выполним <span className="text-primary">полный цикл работ</span>
+            Выполним <span className="text-primary">{title ?? "полный цикл работ"}</span>
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto text-sm sm:text-base leading-relaxed">
-            От первого эскиза до запуска готового объекта — всё в одних руках. Без поиска подрядчиков
-            и контроля качества. Мы берём это на себя.
+            {subtitle ?? "От первого эскиза до запуска готового объекта — всё в одних руках. Без поиска подрядчиков и контроля качества. Мы берём это на себя."}
           </p>
         </div>
 
