@@ -28,12 +28,24 @@ export function Footer() {
               </p>
               <p className="text-white/60 text-sm">Бесплатная консультация и выезд на замер</p>
             </div>
-            <a
-              href="#contact"
-              className="btn-green text-base flex-shrink-0"
-            >
-              Получить расчёт бесплатно
-            </a>
+            <div className="flex flex-col sm:flex-row items-center gap-3 flex-shrink-0">
+              <a
+                href="#contact"
+                className="btn-green text-base"
+              >
+                Получить расчёт бесплатно
+              </a>
+              <a
+                href="https://vam-vdom.ru/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-base font-bold text-white px-6 py-3 rounded-xl shadow-lg hover:scale-105 transition-transform"
+                style={{ background: 'linear-gradient(135deg, hsl(38 92% 50%), hsl(28 90% 45%))', fontFamily: 'Montserrat, sans-serif' }}
+              >
+                <Icon name="ShoppingCart" className="w-5 h-5" fallback="Store" />
+                Интернет-магазин
+              </a>
+            </div>
           </div>
         </div>
       </div>
