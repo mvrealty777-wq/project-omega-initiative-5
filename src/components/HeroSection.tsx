@@ -2,8 +2,15 @@ import type React from "react"
 import { useState } from "react"
 import { Input } from "@/components/ui/input"
 import { Venok } from "@/components/icons/Venok"
+import { MaxIcon } from "@/components/icons/MaxIcon"
 import Icon from "@/components/ui/icon"
 import { CheckCircle, Send } from "lucide-react"
+
+const messengers = [
+  { id: "max", label: "МАКС", color: "linear-gradient(135deg, #8B5CF6, #6366F1)", solid: "#7C3AED" },
+  { id: "telegram", label: "Telegram", icon: "Send", color: "#27A7E7", solid: "#27A7E7" },
+  { id: "whatsapp", label: "WhatsApp", icon: "MessageCircle", color: "#25D366", solid: "#25D366" },
+]
 
 const benefits = [
   { text: "Бесплатный расчёт сметы", icon: "Wallet", from: "hsl(145 63% 42%)", to: "hsl(145 70% 28%)" },
@@ -15,6 +22,8 @@ const benefits = [
 export function HeroSection() {
   const [formData, setFormData] = useState({ name: "", phone: "" })
   const [sent, setSent] = useState(false)
+  const [useMessenger, setUseMessenger] = useState(false)
+  const [messenger, setMessenger] = useState("telegram")
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
@@ -88,7 +97,9 @@ export function HeroSection() {
                     Заявка принята!
                   </h3>
                   <p className="text-muted-foreground text-sm">
-                    Перезвоним в течение 15 минут и подготовим расчёт сметы.
+                    {useMessenger
+                      ? `Напишем вам в ${messengers.find((m) => m.id === messenger)?.label} в течение 15 минут и подготовим расчёт сметы.`
+                      : "Перезвоним в течение 15 минут и подготовим расчёт сметы."}
                   </p>
                 </div>
               ) : (
@@ -128,9 +139,57 @@ export function HeroSection() {
                       <Input id="hero-phone" name="phone" type="tel" required value={formData.phone} onChange={handleChange}
                         placeholder="+7 900 123-45-67" className="h-11 rounded-xl border-border mt-1" />
                     </div>
+
+                    {/* Чекбокс: написать в мессенджер вместо звонка */}
+                    <label className="flex items-start gap-2.5 cursor-pointer select-none rounded-xl bg-secondary/40 border border-border p-3 hover:border-primary/40 transition-colors">
+                      <span className="relative flex-shrink-0 mt-0.5">
+                        <input
+                          type="checkbox"
+                          checked={useMessenger}
+                          onChange={(e) => setUseMessenger(e.target.checked)}
+                          className="peer sr-only"
+                        />
+                        <span className="w-5 h-5 rounded-md border-2 border-border flex items-center justify-center transition-colors peer-checked:bg-primary peer-checked:border-primary">
+                          <Icon name="Check" className={`w-3.5 h-3.5 text-white transition-opacity ${useMessenger ? 'opacity-100' : 'opacity-0'}`} />
+                        </span>
+                      </span>
+                      <span className="text-sm font-medium text-foreground leading-snug">
+                        Напишите мне в мессенджер вместо звонка
+                      </span>
+                    </label>
+
+                    {/* Выбор мессенджера */}
+                    {useMessenger && (
+                      <div className="grid grid-cols-3 gap-2 animate-fade-in-up">
+                        {messengers.map((m) => {
+                          const isActive = messenger === m.id
+                          return (
+                            <button
+                              key={m.id}
+                              type="button"
+                              onClick={() => setMessenger(m.id)}
+                              className={`relative flex flex-col items-center justify-center gap-1.5 rounded-xl border-2 py-2.5 transition-all ${
+                                isActive ? 'border-transparent text-white shadow-md' : 'border-border bg-white text-foreground/70 hover:border-primary/40'
+                              }`}
+                              style={isActive ? { background: m.color } : undefined}
+                            >
+                              {m.id === 'max' ? (
+                                <MaxIcon className="w-5 h-5" />
+                              ) : (
+                                <Icon name={m.icon as string} className="w-5 h-5" fallback="MessageCircle" />
+                              )}
+                              <span className="text-xs font-semibold" style={{ fontFamily: 'Montserrat, sans-serif' }}>{m.label}</span>
+                            </button>
+                          )
+                        })}
+                      </div>
+                    )}
+
                     <button type="submit" className="btn-green w-full justify-center text-sm">
                       <Send className="w-4 h-4" />
-                      Отправить заявку и получить смету
+                      {useMessenger
+                        ? `Написать в ${messengers.find((m) => m.id === messenger)?.label}`
+                        : "Отправить заявку и получить смету"}
                     </button>
                   </form>
                   <p className="text-[11px] text-muted-foreground text-center mt-3">
