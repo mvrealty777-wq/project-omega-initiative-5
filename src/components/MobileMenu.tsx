@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle, SheetDescription } from "@/components/ui/sheet"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import Icon from "@/components/ui/icon"
+import { LeadDialog } from "@/components/LeadDialog"
 import { servicesData, slugify } from "@/data/servicesData"
 
 export function MobileMenu() {
@@ -74,13 +75,27 @@ export function MobileMenu() {
                 {item.label}
               </a>
             ))}
+
+            {/* Интернет-магазин — выделенная ссылка */}
             <a
-              href="/#contact"
+              href="https://vam-vdom.ru/"
+              target="_blank"
+              rel="noopener noreferrer"
               onClick={close}
-              className="btn-green justify-center mt-3 mx-4"
+              className="flex items-center gap-2.5 text-base font-bold text-white py-3 px-4 rounded-lg mt-1 shadow-md"
+              style={{ background: 'linear-gradient(135deg, hsl(38 92% 50%), hsl(28 90% 45%))', fontFamily: 'Montserrat, sans-serif' }}
             >
-              Получить расчёт
+              <Icon name="ShoppingCart" className="w-5 h-5" fallback="Store" />
+              Интернет-магазин
             </a>
+
+            <div className="mt-3 mx-4">
+              <LeadDialog source="Мобильное меню — получить расчёт" title="Получить расчёт">
+                <button type="button" className="btn-green justify-center w-full">
+                  Получить расчёт
+                </button>
+              </LeadDialog>
+            </div>
           </div>
         </nav>
       </SheetContent>

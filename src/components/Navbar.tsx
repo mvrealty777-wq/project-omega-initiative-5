@@ -1,6 +1,7 @@
 import { Logo } from "@/components/Logo"
 import { MobileMenu } from "@/components/MobileMenu"
 import { MaxIcon } from "@/components/icons/MaxIcon"
+import { LeadDialog } from "@/components/LeadDialog"
 import { Phone, ChevronDown } from "lucide-react"
 import Icon from "@/components/ui/icon"
 import { Link } from "react-router-dom"
@@ -91,6 +92,18 @@ export function Navbar() {
                 <span className="absolute -bottom-0.5 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full rounded-full" />
               </a>
             ))}
+
+            {/* Интернет-магазин — выделенная ссылка */}
+            <a
+              href="https://vam-vdom.ru/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-sm font-bold text-white px-3.5 py-1.5 rounded-lg shadow-md hover:scale-105 transition-transform"
+              style={{ background: 'linear-gradient(135deg, hsl(38 92% 50%), hsl(28 90% 45%))', fontFamily: 'Montserrat, sans-serif' }}
+            >
+              <Icon name="ShoppingCart" className="w-4 h-4" fallback="Store" />
+              Магазин
+            </a>
           </div>
 
           <div className="hidden md:flex items-center gap-3">
@@ -118,9 +131,11 @@ export function Navbar() {
                 <MaxIcon className="h-5 w-5" />
               </a>
             </div>
-            <a href="/#contact" className="btn-green text-sm px-5 py-2.5">
-              Перезвоните мне
-            </a>
+            <LeadDialog source="Шапка — перезвоните мне" title="Перезвоните мне">
+              <button type="button" className="btn-green text-sm px-5 py-2.5">
+                Перезвоните мне
+              </button>
+            </LeadDialog>
           </div>
 
           <MobileMenu />
