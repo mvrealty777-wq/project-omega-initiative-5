@@ -2,19 +2,20 @@ import type React from "react"
 import { useState } from "react"
 import { Input } from "@/components/ui/input"
 import Icon from "@/components/ui/icon"
+import { MaxIcon } from "@/components/icons/MaxIcon"
 
 const gallery = [
   { src: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/36d84774-a9b9-44bf-964e-4bda7bab7a1e.jpg", tag: "Сауна" },
   { src: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/a9216446-6746-4155-a352-9c5e9add83e2.jpg", tag: "Хаммам" },
-  { src: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/af08db9a-9608-430f-93b9-d23036440b9a.jpg", tag: "Чертёж проекта" },
+  { src: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/806491d7-4ffe-4e9e-8c4e-71d22ac9af98.jpg", tag: "3D-чертёж сауны" },
 ]
 
 const visualTypes = ["Сауны", "Турецкой бани", "Соляной комнаты", "Комнаты отдыха", "и др."]
 
 const advantages = [
-  { icon: "Gift", title: "Правки бесплатно" },
-  { icon: "Sparkles", title: "Фотореализм" },
-  { icon: "ScanEye", title: "Высокая детализация" },
+  { icon: "Gift", title: "Правки бесплатно", desc: "Меняем проект, пока он не понравится" },
+  { icon: "Sparkles", title: "Фотореализм", desc: "Видно реальный результат заранее" },
+  { icon: "ScanEye", title: "Высокая детализация", desc: "Точные размеры и материалы" },
 ]
 
 const stats = [
@@ -121,24 +122,31 @@ export function Project3DSection() {
               ))}
             </div>
 
-            {/* Преимущества — компактно в ряд */}
-            <div className="grid grid-cols-3 gap-2 mb-6">
+            {/* Преимущества */}
+            <div className="space-y-2.5 mb-6">
               {advantages.map((a) => (
-                <div key={a.title} className="flex flex-col items-center text-center gap-1.5 rounded-xl bg-secondary/40 border border-border p-3">
-                  <span className="w-10 h-10 rounded-lg flex items-center justify-center"
-                    style={{ background: 'linear-gradient(135deg, hsl(145 63% 36%), hsl(145 70% 26%))' }}>
+                <div key={a.title} className="flex items-center gap-3.5 rounded-2xl bg-secondary/40 border border-border p-3 hover:border-primary/30 hover:bg-secondary/60 transition-all duration-300">
+                  <span className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0 shadow-md"
+                    style={{ background: 'linear-gradient(135deg, hsl(145 63% 40%), hsl(150 70% 24%))', boxShadow: '0 4px 12px -2px hsl(145 63% 40% / 0.45)' }}>
                     <Icon name={a.icon} className="w-5 h-5 text-white" fallback="Check" />
                   </span>
-                  <p className="text-[11px] font-bold text-foreground leading-tight" style={{ fontFamily: 'Montserrat, sans-serif' }}>{a.title}</p>
+                  <div className="min-w-0">
+                    <p className="text-sm font-bold text-foreground leading-tight" style={{ fontFamily: 'Montserrat, sans-serif' }}>{a.title}</p>
+                    <p className="text-xs text-muted-foreground mt-0.5">{a.desc}</p>
+                  </div>
                 </div>
               ))}
             </div>
 
             {/* Форма */}
-            <div className="rounded-2xl p-5 sm:p-6 text-white shadow-lg mt-auto"
-              style={{ background: 'linear-gradient(135deg, hsl(145 63% 30%), hsl(150 70% 18%))' }}>
+            <div className="relative rounded-2xl p-5 sm:p-6 text-white shadow-xl mt-auto overflow-hidden"
+              style={{ background: 'linear-gradient(135deg, hsl(145 63% 30%), hsl(150 72% 16%))' }}>
+              {/* Декоративные элементы */}
+              <div className="absolute -top-10 -right-10 w-36 h-36 rounded-full bg-white/10 pointer-events-none" />
+              <div className="absolute -bottom-12 -left-8 w-32 h-32 rounded-full bg-white/5 pointer-events-none" />
+
               {sent ? (
-                <div className="flex items-center gap-3 py-1">
+                <div className="relative flex items-center gap-3 py-1">
                   <Icon name="CircleCheckBig" className="w-9 h-9 text-green-300 flex-shrink-0" fallback="Check" />
                   <div>
                     <p className="font-bold text-base" style={{ fontFamily: 'Montserrat, sans-serif' }}>Заявка принята!</p>
@@ -146,24 +154,50 @@ export function Project3DSection() {
                   </div>
                 </div>
               ) : (
-                <>
-                  <p className="text-lg sm:text-xl font-black mb-3" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                    Закажите 3D-проект
-                  </p>
-                  <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-2.5">
+                <div className="relative">
+                  <div className="flex items-center gap-3 mb-1">
+                    <span className="w-11 h-11 rounded-xl bg-white/15 flex items-center justify-center flex-shrink-0 backdrop-blur-sm">
+                      <Icon name="Box" className="w-6 h-6 text-white" fallback="Sparkles" />
+                    </span>
+                    <div>
+                      <p className="text-lg sm:text-xl font-black leading-tight" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                        Закажите 3D-проект
+                      </p>
+                      <p className="text-white/70 text-xs">Бесплатно рассчитаем и покажем визуализацию</p>
+                    </div>
+                  </div>
+
+                  <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-2.5 mt-4">
                     <Input name="name" value={formData.name} onChange={handleChange}
                       placeholder="Ваше имя"
                       className="h-12 rounded-xl bg-white/10 border-white/20 text-white placeholder:text-white/50" />
                     <Input name="phone" type="tel" required value={formData.phone} onChange={handleChange}
                       placeholder="Телефон *"
                       className="h-12 rounded-xl bg-white/10 border-white/20 text-white placeholder:text-white/50" />
-                    <button type="submit" className="h-12 px-5 rounded-xl bg-white text-primary font-bold hover:bg-white/90 transition-colors flex items-center justify-center gap-2 whitespace-nowrap flex-shrink-0"
+                    <button type="submit" className="h-12 px-5 rounded-xl bg-white text-primary font-bold hover:bg-white/90 transition-colors flex items-center justify-center gap-2 whitespace-nowrap flex-shrink-0 shadow-lg"
                       style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                      <Icon name="Box" className="w-5 h-5" fallback="Send" />
+                      <Icon name="Send" className="w-5 h-5" fallback="Send" />
                       Заказать
                     </button>
                   </form>
-                </>
+
+                  {/* Мессенджеры */}
+                  <div className="flex items-center flex-wrap gap-2 mt-4 pt-4 border-t border-white/15">
+                    <span className="text-sm text-white/75">Или напишите нам:</span>
+                    <a href="https://t.me/geniusspa" target="_blank" rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 h-9 px-3.5 rounded-lg text-sm font-semibold text-white transition-transform hover:scale-105"
+                      style={{ background: '#27A7E7' }}>
+                      <Icon name="Send" className="w-4 h-4" fallback="MessageCircle" />
+                      Telegram
+                    </a>
+                    <a href="https://max.ru/geniusspa" target="_blank" rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 h-9 px-3.5 rounded-lg text-sm font-semibold text-white transition-transform hover:scale-105"
+                      style={{ background: 'linear-gradient(135deg, #8B5CF6, #6366F1)' }}>
+                      <MaxIcon className="w-4 h-4" />
+                      МАКС
+                    </a>
+                  </div>
+                </div>
               )}
             </div>
           </div>

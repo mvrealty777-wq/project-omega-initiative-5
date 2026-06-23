@@ -1,4 +1,4 @@
-import { Star, Quote } from "lucide-react"
+import { Star, Quote, ExternalLink } from "lucide-react"
 import type { ServiceTestimonial } from "@/data/serviceExtras"
 
 const defaultTestimonials = [
@@ -103,6 +103,35 @@ export function TestimonialsSection({ title, subtitle, items }: Props = {}) {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Яндекс Бизнес */}
+        <div className="mt-10 flex justify-center">
+          <a
+            href="https://yandex.ru/maps/org/geniusspa"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex items-center gap-4 bg-white rounded-2xl border border-border shadow-sm hover:shadow-lg hover:border-primary/30 transition-all duration-300 px-6 py-4"
+          >
+            <span className="w-12 h-12 rounded-xl flex items-center justify-center text-white text-2xl font-black flex-shrink-0"
+              style={{ fontFamily: 'Montserrat, sans-serif', background: 'linear-gradient(135deg, #FF4433, #CC0000)' }}>
+              Я
+            </span>
+            <span className="text-left">
+              <span className="flex items-center gap-2 font-bold text-base text-foreground" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                Все отзывы на Яндекс&nbsp;Бизнес
+                <ExternalLink className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
+              </span>
+              <span className="flex items-center gap-1.5 text-sm text-muted-foreground mt-0.5">
+                <span className="flex gap-0.5">
+                  {Array.from({ length: 5 }).map((_, i) => (
+                    <Star key={i} className="w-3.5 h-3.5 text-amber-400 fill-amber-400" />
+                  ))}
+                </span>
+                Рейтинг 5,0 — реальные отзывы клиентов
+              </span>
+            </span>
+          </a>
         </div>
       </div>
     </section>
