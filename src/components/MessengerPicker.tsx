@@ -1,10 +1,10 @@
 import Icon from "@/components/ui/icon"
-import { MaxIcon } from "@/components/icons/MaxIcon"
+import { MessengerIcon } from "@/components/icons/MessengerIcon"
 
 export const messengers = [
   { id: "max", label: "МАКС", color: "linear-gradient(135deg, #8B5CF6, #6366F1)" },
-  { id: "telegram", label: "Telegram", icon: "Send", color: "#27A7E7" },
-  { id: "whatsapp", label: "WhatsApp", icon: "MessageCircle", color: "#25D366" },
+  { id: "telegram", label: "Telegram", color: "#27A7E7" },
+  { id: "whatsapp", label: "WhatsApp", color: "#25D366" },
 ] as const
 
 export const messengerLabel = (id: string): string | undefined =>
@@ -63,11 +63,7 @@ export function MessengerPicker({ enabled, onEnabledChange, value, onValueChange
                 }`}
                 style={isActive ? { background: m.color } : undefined}
               >
-                {m.id === "max" ? (
-                  <MaxIcon className="w-5 h-5" />
-                ) : (
-                  <Icon name={(m as { icon?: string }).icon ?? "MessageCircle"} className="w-5 h-5" fallback="MessageCircle" />
-                )}
+                <MessengerIcon id={m.id} className="w-6 h-6" />
                 <span className="text-xs font-semibold" style={{ fontFamily: "Montserrat, sans-serif" }}>{m.label}</span>
               </button>
             )
