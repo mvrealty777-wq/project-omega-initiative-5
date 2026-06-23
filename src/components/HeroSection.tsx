@@ -5,6 +5,7 @@ import { Venok } from "@/components/icons/Venok"
 import { MaxIcon } from "@/components/icons/MaxIcon"
 import Icon from "@/components/ui/icon"
 import { CheckCircle, Send } from "lucide-react"
+import { sendLead } from "@/lib/sendLead"
 
 const messengers = [
   { id: "max", label: "МАКС", color: "linear-gradient(135deg, #8B5CF6, #6366F1)", solid: "#7C3AED" },
@@ -28,6 +29,12 @@ export function HeroSection() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     setSent(true)
+    sendLead({
+      name: formData.name,
+      phone: formData.phone,
+      source: "Первый экран — расчёт проекта",
+      messenger: useMessenger ? messengers.find((m) => m.id === messenger)?.label : undefined,
+    })
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {

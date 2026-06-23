@@ -27,6 +27,7 @@ import type { ServiceData } from "@/data/servicesData"
 import { getSubServices } from "@/data/servicesData"
 import { getServiceExtra } from "@/data/serviceExtras"
 import { getServiceContent } from "@/data/serviceContent"
+import { getServiceFaq } from "@/data/serviceFaq"
 import { useSeo } from "@/hooks/useSeo"
 import { organizationSchema, breadcrumbSchema, serviceSchema } from "@/lib/schema"
 
@@ -38,6 +39,7 @@ export function ServicePageTemplate({ service }: Props) {
   const subServices = getSubServices(service)
   const extra = getServiceExtra(service.slug)
   const content = getServiceContent(service.slug)
+  const faqItems = getServiceFaq(service.slug)
   const path = `/uslugi/${service.slug}`
 
   useSeo({
@@ -226,7 +228,7 @@ export function ServicePageTemplate({ service }: Props) {
       )}
 
       {/* 12. Частые вопросы */}
-      <FaqSection />
+      <FaqSection items={faqItems} />
       <ContactSection />
       <Footer />
       <FloatingContacts />

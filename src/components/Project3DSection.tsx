@@ -3,6 +3,7 @@ import { useState } from "react"
 import { Input } from "@/components/ui/input"
 import Icon from "@/components/ui/icon"
 import { MaxIcon } from "@/components/icons/MaxIcon"
+import { sendLead } from "@/lib/sendLead"
 
 const gallery = [
   { src: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/36d84774-a9b9-44bf-964e-4bda7bab7a1e.jpg", tag: "Сауна" },
@@ -32,6 +33,11 @@ export function Project3DSection() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     setSent(true)
+    sendLead({
+      name: formData.name,
+      phone: formData.phone,
+      source: "Заказ 3D-проекта",
+    })
   }
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }))

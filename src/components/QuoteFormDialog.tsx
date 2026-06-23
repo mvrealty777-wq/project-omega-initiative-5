@@ -13,6 +13,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { sendLead } from "@/lib/sendLead"
 
 interface QuoteFormDialogProps {
   packageName?: string
@@ -34,8 +35,17 @@ export function QuoteFormDialog({ packageName, variant = "default", className, c
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    console.log("[v0] Quote form submitted:", formData)
-    // Here you would typically send the form data to your backend
+    sendLead({
+      name: formData.name,
+      phone: formData.phone,
+      email: formData.email,
+      message: [
+        formData.company && `Компания: ${formData.company}`,
+        formData.package && `Тариф: ${formData.package}`,
+        formData.message,
+      ].filter(Boolean).join("\n"),
+      source: "Форма «Запросить расчёт»",
+    })
     setOpen(false)
     // Reset form
     setFormData({

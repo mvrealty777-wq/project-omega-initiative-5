@@ -1,0 +1,26 @@
+{
+  "tests": [
+    {
+      "name": "CORS preflight",
+      "method": "OPTIONS",
+      "path": "/",
+      "expectedStatus": 200
+    },
+    {
+      "name": "Reject empty lead",
+      "method": "POST",
+      "path": "/",
+      "body": {"name": "Тест"},
+      "expectedStatus": 400
+    },
+    {
+      "name": "Accept valid lead",
+      "method": "POST",
+      "path": "/",
+      "body": {"name": "Иван", "phone": "+79001234567", "source": "Тест", "page_url": "https://geniusspa.ru/"},
+      "expectedStatus": 200,
+      "expectedBody": {"success": true},
+      "bodyMatcher": "partial"
+    }
+  ]
+}

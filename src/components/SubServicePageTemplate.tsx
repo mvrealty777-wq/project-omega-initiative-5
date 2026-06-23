@@ -27,6 +27,7 @@ import type { SubServiceData } from "@/data/servicesData"
 import { getSubServices } from "@/data/servicesData"
 import { getServiceExtra } from "@/data/serviceExtras"
 import { getServiceContent } from "@/data/serviceContent"
+import { getServiceFaq } from "@/data/serviceFaq"
 import { useSeo } from "@/hooks/useSeo"
 import { organizationSchema, breadcrumbSchema, serviceSchema } from "@/lib/schema"
 
@@ -39,6 +40,7 @@ export function SubServicePageTemplate({ sub }: Props) {
   const siblings = getSubServices(service).filter((s) => s.subSlug !== sub.subSlug)
   const extra = getServiceExtra(service.slug)
   const content = getServiceContent(service.slug)
+  const faqItems = getServiceFaq(service.slug)
   const path = `/uslugi/${service.slug}/${sub.subSlug}`
   const description = `${sub.title} под ключ по всей России: проектирование, материалы, монтаж и гарантия 5 лет. Раздел «${service.cardTitle}». Бесплатный расчёт и выезд замерщика.`
 
@@ -194,7 +196,7 @@ export function SubServicePageTemplate({ sub }: Props) {
           </section>
         )}
 
-        <FaqSection />
+        <FaqSection items={faqItems} />
         <ContactSection />
         <Footer />
         <FloatingContacts />

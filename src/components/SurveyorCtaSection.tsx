@@ -2,6 +2,7 @@ import type React from "react"
 import { useState } from "react"
 import { Input } from "@/components/ui/input"
 import { CheckCircle, Ruler } from "lucide-react"
+import { sendLead } from "@/lib/sendLead"
 
 export function SurveyorCtaSection() {
   const [formData, setFormData] = useState({ name: "", phone: "" })
@@ -10,6 +11,11 @@ export function SurveyorCtaSection() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     setSent(true)
+    sendLead({
+      name: formData.name,
+      phone: formData.phone,
+      source: "Заявка на выезд замерщика",
+    })
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {

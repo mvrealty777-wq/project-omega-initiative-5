@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input"
 import { Venok } from "@/components/icons/Venok"
 import Icon from "@/components/ui/icon"
 import { CheckCircle, Send } from "lucide-react"
+import { sendLead } from "@/lib/sendLead"
 import type { ServiceData } from "@/data/servicesData"
 
 const benefits = [
@@ -30,6 +31,11 @@ export function ServiceHero({ service, titleOverride, subtitleOverride, parentCr
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     setSent(true)
+    sendLead({
+      name: formData.name,
+      phone: formData.phone,
+      source: `Заявка с направления — ${titleOverride ?? service.cardTitle}`,
+    })
   }
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }))

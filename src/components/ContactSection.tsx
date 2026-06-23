@@ -2,6 +2,7 @@ import type React from "react"
 import { useState } from "react"
 import { Input } from "@/components/ui/input"
 import { Phone, Mail, CheckCircle, MessageCircle, Send } from "lucide-react"
+import { sendLead } from "@/lib/sendLead"
 
 export function ContactSection() {
   const [formData, setFormData] = useState({ time: "", phone: "" })
@@ -10,6 +11,11 @@ export function ContactSection() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     setSent(true)
+    sendLead({
+      phone: formData.phone,
+      message: formData.time ? `Удобное время для звонка: ${formData.time}` : undefined,
+      source: "Блок «Контакты» — заказать звонок",
+    })
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {

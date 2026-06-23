@@ -7,8 +7,9 @@ import {
 } from "@/components/ui/accordion"
 import Icon from "@/components/ui/icon"
 import { faqSchema } from "@/lib/schema"
+import type { FaqItem } from "@/data/serviceFaq"
 
-const faqs = [
+const defaultFaqs: FaqItem[] = [
   {
     icon: "Wallet",
     q: "Сколько стоит построить хаммам или сауну под ключ?",
@@ -41,7 +42,12 @@ const faqs = [
   },
 ]
 
-export function FaqSection() {
+interface Props {
+  items?: FaqItem[]
+}
+
+export function FaqSection({ items }: Props = {}) {
+  const faqs = items ?? defaultFaqs
   useEffect(() => {
     const script = document.createElement("script")
     script.type = "application/ld+json"
@@ -51,7 +57,7 @@ export function FaqSection() {
     return () => {
       script.remove()
     }
-  }, [])
+  }, [faqs])
 
   return (
     <section id="faq" className="py-10 sm:py-12 lg:py-14 px-4 sm:px-6 lg:px-8 section-glass-tint">
