@@ -1,8 +1,8 @@
 // Настоящие логотипы мессенджеров (МАКС, WhatsApp, Telegram)
 const ICONS: Record<string, string> = {
-  max: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/bucket/5808ea37-a8b5-4f3d-b6b9-512233ccf9dc.png",
-  whatsapp: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/bucket/29a86ff3-9b83-47c4-991e-e19b17647eaa.png",
-  telegram: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/bucket/fd914d4e-3387-4747-979f-0589513a7bd8.jpg",
+  max: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/bucket/f9bc2e5b-c5ac-448f-b3c7-a29367f309ab.png",
+  whatsapp: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/bucket/6efefad0-ecb1-4e39-87f8-45d620637adb.png",
+  telegram: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/bucket/a5e19297-986b-4607-94e2-f92dcbce0c3e.jpg",
 }
 
 const LABELS: Record<string, string> = {
