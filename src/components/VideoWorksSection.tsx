@@ -12,9 +12,9 @@ interface Video {
 const videos: Video[] = [
   {
     thumb: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/8ce3e4a6-6eac-43f3-82ac-1e7c276ab8bb.jpg",
-    title: "Хаммам со звёздным небом",
-    duration: "2:14",
-    // src: "https://www.youtube.com/embed/YOUTUBE_ID"
+    title: "Хаммам — кейс GeniusSPA",
+    duration: "Клип",
+    src: "https://vk.com/clip_ext.php?oid=-62729838&id=456239039",
   },
   {
     thumb: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/bc574b96-1b7b-46c9-9b4c-7c2950015e48.jpg",
@@ -121,10 +121,14 @@ export function VideoWorksSection() {
           onClick={() => setActive(null)}
         >
           <div
-            className="relative w-full max-w-4xl aspect-video rounded-2xl overflow-hidden shadow-2xl"
+            className="relative rounded-2xl overflow-hidden shadow-2xl"
+            style={{
+              width: active.src?.includes("clip_ext") ? "min(333px, 90vw)" : "min(900px, 95vw)",
+              aspectRatio: active.src?.includes("clip_ext") ? "333/592" : "16/9",
+            }}
             onClick={(e) => e.stopPropagation()}
           >
-            {active.src?.includes("mp4") || active.src?.startsWith("https://cdn") ? (
+            {active.src?.includes("mp4") || (active.src?.startsWith("https://cdn") && !active.src?.includes("clip_ext")) ? (
               <video
                 src={active.src}
                 controls
@@ -133,11 +137,13 @@ export function VideoWorksSection() {
               />
             ) : (
               <iframe
-                src={`${active.src}?autoplay=1&rel=0`}
+                src={active.src}
                 title={active.title}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                width="100%"
+                height="100%"
+                style={{ background: "#000", border: 0 }}
+                allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock"
                 allowFullScreen
-                className="w-full h-full border-0"
               />
             )}
             <button
