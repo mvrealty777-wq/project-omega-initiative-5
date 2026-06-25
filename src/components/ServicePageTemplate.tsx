@@ -15,6 +15,7 @@ import { Project3DSection } from "@/components/Project3DSection"
 import { AboutSection } from "@/components/AboutSection"
 import { EquipmentBrandsSection } from "@/components/EquipmentBrandsSection"
 import { VideoWorksSection } from "@/components/VideoWorksSection"
+import { VkClipsSection } from "@/components/VkClipsSection"
 import { EquipmentChoiceSection } from "@/components/EquipmentChoiceSection"
 import { SurveyorCtaSection } from "@/components/SurveyorCtaSection"
 import { ProcessSection } from "@/components/ProcessSection"
@@ -182,6 +183,7 @@ export function ServicePageTemplate({ service }: Props) {
       />
       {/* 9. Видео работ */}
       <VideoWorksSection />
+      <VkClipsSection />
       {/* 10. Заявка на замерщика */}
       <SurveyorCtaSection />
       <ReputationSection />
