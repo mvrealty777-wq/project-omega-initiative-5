@@ -3,36 +3,44 @@ import { Play, X } from "lucide-react"
 
 interface Video {
   title: string
+  sub: string
   src: string
 }
 
 const videos: Video[] = [
   {
-    title: "Хаммам под ключ",
+    title: "Хаммам в частном доме",
+    sub: "14 м² · мозаика · чебек с подогревом",
     src: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/bucket/cd39b9e8-2aab-4b0f-8824-be3cfc16b99d.mp4",
   },
   {
-    title: "Строительство сауны",
+    title: "Финская сауна на даче",
+    sub: "8 м² · кедр · электрокаменка",
     src: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/bucket/558b57b8-2f29-4972-b9cc-2c8d7f2dc198.mp4",
   },
   {
-    title: "Отделка хаммама",
+    title: "Мозаичная отделка хаммама",
+    sub: "Ручная выкладка · турецкий стиль",
     src: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/bucket/dae4abe1-6c8a-4713-b158-7e2fc63ed37a.mp4",
   },
   {
-    title: "Финская парная",
+    title: "Парная из кедра",
+    sub: "Коттедж · многоуровневые полки",
     src: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/bucket/58ef9104-ef13-43ea-8e4c-0027a8466694.mp4",
   },
   {
-    title: "Восточный хаммам",
+    title: "Хаммам в восточном стиле",
+    sub: "20 м² · звёздное небо · паргенератор",
     src: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/bucket/f6601a72-132d-432a-833f-739a430eee29.mp4",
   },
   {
-    title: "Печь в парной",
+    title: "Дровяная печь-каменка",
+    sub: "Монтаж и запуск в русской бане",
     src: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/bucket/1b1d335a-ac44-47d1-b347-e33f3d380376.mp4",
   },
   {
-    title: "SPA-комплекс",
+    title: "SPA-комплекс для отеля",
+    sub: "Сауна + хаммам + купель · под ключ",
     src: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/bucket/36049ec6-55f1-43bd-885c-555aec90b162.mp4",
   },
 ]
@@ -45,12 +53,17 @@ function VideoCard({ video, onClick }: { video: Video; onClick: () => void }) {
       type="button"
       onClick={onClick}
       onMouseEnter={() => ref.current?.play()}
-      onMouseLeave={() => { if (ref.current) { ref.current.pause(); ref.current.currentTime = 0 } }}
+      onMouseLeave={() => {
+        if (ref.current) {
+          ref.current.pause()
+          ref.current.currentTime = 0
+        }
+      }}
       className="group relative rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 text-left w-full"
-      style={{ aspectRatio: "9/16" }}
+      style={{ aspectRatio: "3/4" }}
       aria-label={`Смотреть: ${video.title}`}
     >
-      {/* Видео как превью — автопауза, без звука */}
+      {/* Видео как живое превью */}
       <video
         ref={ref}
         src={video.src}
@@ -60,22 +73,24 @@ function VideoCard({ video, onClick }: { video: Video; onClick: () => void }) {
         className="w-full h-full object-cover"
       />
 
-      {/* Затемнение */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent group-hover:from-black/50 transition-all duration-300" />
+      {/* Градиент снизу */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-black/10 group-hover:from-black/70 transition-all duration-300" />
 
-      {/* Кнопка Play */}
+      {/* Кнопка Play по центру */}
       <div className="absolute inset-0 flex items-center justify-center">
-        <span className="w-14 h-14 rounded-full bg-white/90 flex items-center justify-center shadow-xl group-hover:scale-110 group-hover:bg-primary transition-all duration-300">
-          <Play className="w-6 h-6 text-primary group-hover:text-white fill-current ml-0.5 transition-colors" />
+        <span className="w-12 h-12 rounded-full bg-white/90 flex items-center justify-center shadow-xl group-hover:scale-110 group-hover:bg-primary transition-all duration-300 opacity-90 group-hover:opacity-100">
+          <Play className="w-5 h-5 text-primary group-hover:text-white fill-current ml-0.5 transition-colors" />
         </span>
       </div>
 
-      {/* Заголовок */}
-      <div className="absolute bottom-0 left-0 right-0 p-3">
-        <h3 className="text-white font-semibold text-sm leading-tight" style={{ fontFamily: "Montserrat, sans-serif" }}>
+      {/* Заголовок снизу */}
+      <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-4">
+        <p className="text-white font-bold text-sm sm:text-base leading-tight mb-0.5" style={{ fontFamily: "Montserrat, sans-serif" }}>
           {video.title}
-        </h3>
-        <span className="text-white/60 text-[11px] mt-0.5 block">GeniusSPA</span>
+        </p>
+        <p className="text-white/60 text-[11px] sm:text-xs leading-snug">
+          {video.sub}
+        </p>
       </div>
     </button>
   )
@@ -97,7 +112,7 @@ export function VideoWorksSection() {
               Наши <span className="text-primary">работы в видео</span>
             </h2>
             <p className="text-muted-foreground text-base">
-              Реальные кейсы — наводи на видео, чтобы посмотреть превью
+              Наводи на карточку — видео запустится сразу. Нажми чтобы смотреть полностью
             </p>
           </div>
 
@@ -117,7 +132,7 @@ export function VideoWorksSection() {
         >
           <div
             className="relative rounded-2xl overflow-hidden shadow-2xl"
-            style={{ width: "min(360px, 92vw)", aspectRatio: "9/16", maxHeight: "92vh" }}
+            style={{ width: "min(380px, 92vw)", aspectRatio: "9/16", maxHeight: "92vh" }}
             onClick={(e) => e.stopPropagation()}
           >
             <video
