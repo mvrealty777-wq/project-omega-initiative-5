@@ -4,6 +4,7 @@ import { Phone, Mail } from "lucide-react"
 import { Link } from "react-router-dom"
 import Icon from "@/components/ui/icon"
 import { servicesData } from "@/data/servicesData"
+import { CallbackDialog } from "@/components/CallbackDialog"
 
 const navLinks = [
   { href: "/#about", label: "О компании" },
@@ -28,12 +29,11 @@ export function Footer() {
               </p>
               <p className="text-white/60 text-sm">Бесплатная консультация и выезд на замер</p>
             </div>
-            <a
-              href="#contact"
-              className="btn-green text-base flex-shrink-0"
-            >
-              Получить расчёт бесплатно
-            </a>
+            <CallbackDialog source="Футер — Получить расчёт бесплатно">
+              <button className="btn-green text-base flex-shrink-0">
+                Перезвоните мне
+              </button>
+            </CallbackDialog>
           </div>
         </div>
       </div>

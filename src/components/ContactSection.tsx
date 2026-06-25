@@ -55,6 +55,13 @@ export function ContactSection() {
 
           {/* Right — content */}
           <div>
+            <h2
+              className="text-3xl sm:text-4xl lg:text-5xl font-black text-white leading-tight mb-8"
+              style={{ fontFamily: 'Montserrat, sans-serif' }}
+            >
+              Давайте начнём наше знакомство с<br className="hidden sm:block" />{" "}
+              <span style={{ color: 'hsl(145 63% 50%)' }}>бесплатной консультации</span>
+            </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
               {/* Messengers */}
               <div>

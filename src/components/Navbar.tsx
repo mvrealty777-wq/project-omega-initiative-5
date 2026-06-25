@@ -6,6 +6,7 @@ import Icon from "@/components/ui/icon"
 import { Link } from "react-router-dom"
 import { useState, useEffect } from "react"
 import { servicesData, slugify } from "@/data/servicesData"
+import { CallbackDialog } from "@/components/CallbackDialog"
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -118,9 +119,11 @@ export function Navbar() {
                 <MaxIcon className="h-5 w-5" />
               </a>
             </div>
-            <a href="/#contact" className="btn-green text-sm px-5 py-2.5">
-              Перезвоните мне
-            </a>
+            <CallbackDialog source="Шапка — Перезвоните мне">
+              <button className="btn-green text-sm px-5 py-2.5">
+                Перезвоните мне
+              </button>
+            </CallbackDialog>
           </div>
 
           <MobileMenu />

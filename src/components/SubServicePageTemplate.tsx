@@ -74,7 +74,11 @@ export function SubServicePageTemplate({ sub }: Props) {
         <ServiceHero
           service={service}
           titleOverride={sub.title}
-          subtitleOverride={`${sub.title} под ключ по всей России. Проектирование, материалы, монтаж и гарантия 5 лет.`}
+          subtitleOverride={
+            sub.title === "Русская баня"
+              ? "Русская баня с дровяной печью-каменкой под ключ. Сруб, брус или бревно, парная + моечная + комната отдыха. Гарантия 5 лет."
+              : `${sub.title} под ключ по всей России. Проектирование, материалы, монтаж и гарантия 5 лет.`
+          }
           parentCrumb={{ label: service.cardTitle, to: `/uslugi/${service.slug}` }}
         />
 
