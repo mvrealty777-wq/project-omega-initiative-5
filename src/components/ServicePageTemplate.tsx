@@ -30,6 +30,7 @@ import { getServiceContent } from "@/data/serviceContent"
 import { getServiceFaq } from "@/data/serviceFaq"
 import { useSeo } from "@/hooks/useSeo"
 import { organizationSchema, breadcrumbSchema, serviceSchema } from "@/lib/schema"
+import { EquipmentSchemeSection } from "@/components/EquipmentSchemeSection"
 
 interface Props {
   service: ServiceData
@@ -108,6 +109,9 @@ export function ServicePageTemplate({ service }: Props) {
           </div>
         </div>
       </section>
+
+      {/* Схема оборудования */}
+      <EquipmentSchemeSection slug={service.slug} />
 
       {/* Подуслуги — направления */}
       <section className="py-10 sm:py-12 lg:py-14 px-4 sm:px-6 lg:px-8 section-glass">

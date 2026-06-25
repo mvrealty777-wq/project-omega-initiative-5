@@ -30,6 +30,7 @@ import { getServiceContent } from "@/data/serviceContent"
 import { getServiceFaq } from "@/data/serviceFaq"
 import { useSeo } from "@/hooks/useSeo"
 import { organizationSchema, breadcrumbSchema, serviceSchema } from "@/lib/schema"
+import { EquipmentSchemeSection } from "@/components/EquipmentSchemeSection"
 
 interface Props {
   sub: SubServiceData
@@ -91,6 +92,9 @@ export function SubServicePageTemplate({ sub }: Props) {
             <p className="text-lg text-muted-foreground leading-relaxed">{service.intro}</p>
           </div>
         </section>
+
+        {/* Схема оборудования */}
+        <EquipmentSchemeSection slug={service.slug} />
 
         {/* Блоки как на главной — в порядке главной страницы */}
         <ReadySection />
