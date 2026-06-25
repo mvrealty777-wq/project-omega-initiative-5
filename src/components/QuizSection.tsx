@@ -2,6 +2,26 @@ import Icon from "@/components/ui/icon"
 import { QuizDialog } from "@/components/QuizDialog"
 import { quizzes } from "@/data/quizData"
 
+const ORDER = [
+  "hammam",
+  "sauna",
+  "bath-complex",
+  "pool",
+  "cooling",
+  "salt-cave-room",
+  "infrared-sauna",
+  "equipment",
+  "salt-cave",
+]
+
+const sortedQuizzes = [...quizzes].sort(
+  (a, b) => {
+    const ai = ORDER.indexOf(a.slug)
+    const bi = ORDER.indexOf(b.slug)
+    return (ai === -1 ? 999 : ai) - (bi === -1 ? 999 : bi)
+  }
+)
+
 const gradients: Record<string, string> = {
   "from-blue-600 to-purple-600": "linear-gradient(135deg, #2563eb, #9333ea)",
   "from-orange-500 to-red-600": "linear-gradient(135deg, #f97316, #dc2626)",
@@ -33,7 +53,7 @@ export function QuizSection() {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {quizzes.map((quiz) => (
+          {sortedQuizzes.map((quiz) => (
             <QuizDialog key={quiz.slug} quiz={quiz}>
               <button
                 className="group relative overflow-hidden rounded-2xl border border-border bg-white shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 text-left w-full"
