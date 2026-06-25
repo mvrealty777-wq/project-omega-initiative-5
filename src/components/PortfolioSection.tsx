@@ -18,6 +18,18 @@ interface Project {
 const projects: Project[] = [
   {
     images: [
+      "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/bucket/a6e10fd6-8d8e-48dd-b64e-1e271d5e8a29.jpg",
+      "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/8ce3e4a6-6eac-43f3-82ac-1e7c276ab8bb.jpg",
+      "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/68a45e60-98ed-4c22-baa0-f4bacff2a65a.jpg",
+    ],
+    category: "Хаммам",
+    categoryColor: "bg-primary text-white",
+    title: "Просторный хаммам в восточном стиле",
+    short: "Большой массажный стол, встроенный душ и мозаичная отделка",
+    full: "Просторный хаммам в восточном стиле с большим массажным столом для проведения косметических процедур. Обратите внимание на удобный душ, встроенный сбоку от стола — это редкое и очень практичное решение. Мозаичная облицовка в сине-серых тонах, мраморный пол с тёплой подсветкой по периметру и сводчатые потолки создают атмосферу настоящего восточного хаммама. Строим сауны, хамамы, СПА. Оставьте заявку сегодня и получите 3D-визуализацию в подарок!",
+  },
+  {
+    images: [
       "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/8ce3e4a6-6eac-43f3-82ac-1e7c276ab8bb.jpg",
       "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/4384e557-d15c-4d4c-a166-4bb8cae4fc8c.jpg",
       "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/d0fc622e-ce71-4860-aaf6-441d66631642.jpg",

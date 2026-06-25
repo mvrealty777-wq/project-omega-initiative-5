@@ -90,7 +90,7 @@ export function QuizDialog({ quiz, children }: Props) {
   return (
     <Dialog open={open} onOpenChange={handleOpenChange}>
       <DialogTrigger asChild>{children}</DialogTrigger>
-      <DialogContent className="sm:max-w-[520px] p-0 overflow-hidden gap-0">
+      <DialogContent className="w-[95vw] sm:max-w-[520px] p-0 overflow-hidden gap-0">
         {sent ? (
           <div className="text-center py-14 px-8">
             <div
@@ -144,7 +144,7 @@ export function QuizDialog({ quiz, children }: Props) {
               {!isContactStep && currentQ ? (
                 <div className="animate-fade-in-up">
                   <h3
-                    className="text-lg font-black text-foreground mb-4 leading-snug"
+                    className="text-base sm:text-lg font-black text-foreground mb-4 leading-snug"
                     style={{ fontFamily: "Montserrat, sans-serif" }}
                   >
                     {currentQ.question}
@@ -152,7 +152,7 @@ export function QuizDialog({ quiz, children }: Props) {
                   {currentQ.multiple && (
                     <p className="text-xs text-muted-foreground mb-3">Можно выбрать несколько</p>
                   )}
-                  <div className="grid grid-cols-2 gap-2.5">
+                  <div className="grid grid-cols-2 gap-2">
                     {currentQ.options.map((opt: QuizOption) => {
                       const selected = answers[currentQ.id]?.includes(opt.id)
                       return (

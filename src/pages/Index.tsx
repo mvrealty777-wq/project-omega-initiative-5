@@ -18,6 +18,7 @@ import { PricingSection } from "@/components/PricingSection"
 import { QuizSection } from "@/components/QuizSection"
 import { FaqSection } from "@/components/FaqSection"
 import { ContactSection } from "@/components/ContactSection"
+import { FinalCtaSection } from "@/components/FinalCtaSection"
 import { Footer } from "@/components/Footer"
 import { FloatingContacts } from "@/components/FloatingContacts"
 import { BanyaDecor } from "@/components/BanyaDecor"
@@ -40,6 +41,7 @@ export default function Index() {
         <ServicesSection />
         <ReadySection />
         <PortfolioSection />
+        <QuizSection />
         <FullCycleSection />
         <Project3DSection />
         <AboutSection />
@@ -52,9 +54,9 @@ export default function Index() {
         <BuildTimelineSection />
         <TestimonialsSection />
         <PricingSection />
-        <QuizSection />
         <FaqSection />
         <ContactSection />
+        <FinalCtaSection />
         <Footer />
         <FloatingContacts />
       </div>
