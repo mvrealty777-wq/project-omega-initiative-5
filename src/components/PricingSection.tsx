@@ -1,5 +1,6 @@
 import { Check, ArrowRight, Zap } from "lucide-react"
 import type { PricingTier } from "@/data/serviceContent"
+import { LeadDialog } from "@/components/LeadDialog"
 
 const defaultTiers: PricingTier[] = [
   {
@@ -138,17 +139,12 @@ export function PricingSection({ title, titleAccent, subtitle, tiers: tiersProp 
                   ))}
                 </ul>
 
-                {tier.highlighted ? (
-                  <a href="#contact" className="btn-green text-sm text-center justify-center w-full">
+                <LeadDialog source={`Цены — ${tier.name}`} title={tier.cta} submitText={tier.cta}>
+                  <button className={`${tier.highlighted ? 'btn-green' : 'btn-green-outline'} text-sm text-center justify-center w-full`}>
                     {tier.cta}
                     <ArrowRight className="w-4 h-4" />
-                  </a>
-                ) : (
-                  <a href="#contact" className="btn-green-outline text-sm text-center justify-center w-full">
-                    {tier.cta}
-                    <ArrowRight className="w-4 h-4" />
-                  </a>
-                )}
+                  </button>
+                </LeadDialog>
               </div>
             </div>
           ))}

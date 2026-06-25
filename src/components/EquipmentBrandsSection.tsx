@@ -1,4 +1,5 @@
 import Icon from "@/components/ui/icon"
+import { LeadDialog } from "@/components/LeadDialog"
 
 const cards = [
   {
@@ -138,10 +139,12 @@ export function EquipmentBrandsSection() {
               </div>
             </div>
 
-            <a href="#contact" className="bg-white text-primary font-bold px-7 py-4 rounded-xl whitespace-nowrap hover:bg-white/90 transition-colors shadow-lg flex-shrink-0 text-base"
-              style={{ fontFamily: 'Montserrat, sans-serif' }}>
-              Узнать цену
-            </a>
+            <LeadDialog source="Секция «Бренды»" title="Узнать цену" submitText="Узнать цену">
+              <button className="bg-white text-primary font-bold px-7 py-4 rounded-xl whitespace-nowrap hover:bg-white/90 transition-colors shadow-lg flex-shrink-0 text-base"
+                style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                Узнать цену
+              </button>
+            </LeadDialog>
           </div>
         </div>
       </div>

@@ -6,11 +6,12 @@ import { MaxIcon } from "@/components/icons/MaxIcon"
 import Icon from "@/components/ui/icon"
 import { CheckCircle, Send } from "lucide-react"
 import { sendLead } from "@/lib/sendLead"
+import { MessengerIcon } from "@/components/icons/MessengerIcon"
 
 const messengers = [
   { id: "max", label: "МАКС", color: "linear-gradient(135deg, #8B5CF6, #6366F1)", solid: "#7C3AED" },
-  { id: "telegram", label: "Telegram", icon: "Send", color: "#27A7E7", solid: "#27A7E7" },
-  { id: "whatsapp", label: "WhatsApp", icon: "MessageCircle", color: "#25D366", solid: "#25D366" },
+  { id: "telegram", label: "Telegram", color: "#27A7E7", solid: "#27A7E7" },
+  { id: "whatsapp", label: "WhatsApp", color: "#25D366", solid: "#25D366" },
 ]
 
 const benefits = [
@@ -180,11 +181,7 @@ export function HeroSection() {
                               }`}
                               style={isActive ? { background: m.color } : undefined}
                             >
-                              {m.id === 'max' ? (
-                                <MaxIcon className="w-5 h-5" />
-                              ) : (
-                                <Icon name={m.icon as string} className="w-5 h-5" fallback="MessageCircle" />
-                              )}
+                              <MessengerIcon id={m.id} className="w-6 h-6 rounded-md" />
                               <span className="text-xs font-semibold" style={{ fontFamily: 'Montserrat, sans-serif' }}>{m.label}</span>
                             </button>
                           )

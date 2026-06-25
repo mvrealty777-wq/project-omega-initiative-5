@@ -1,4 +1,5 @@
 import { CheckCircle2, ArrowRight } from "lucide-react"
+import { LeadDialog } from "@/components/LeadDialog"
 
 const points = [
   "Хаммамы, сауны, бани и бассейны под ключ",
@@ -35,10 +36,12 @@ export function ReadySection() {
               ))}
             </ul>
 
-            <a href="#contact" className="btn-green inline-flex">
-              Обсудить ваш проект
-              <ArrowRight className="w-4 h-4" />
-            </a>
+            <LeadDialog source="Секция «Готовы реализовать»" title="Обсудить ваш проект" submitText="Обсудить проект">
+              <button className="btn-green inline-flex">
+                Обсудить ваш проект
+                <ArrowRight className="w-4 h-4" />
+              </button>
+            </LeadDialog>
           </div>
 
           {/* Image */}

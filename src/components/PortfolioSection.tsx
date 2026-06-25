@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { ArrowRight, Phone, X } from "lucide-react"
+import { LeadDialog } from "@/components/LeadDialog"
 import {
   Dialog,
   DialogContent,
@@ -242,10 +243,12 @@ export function PortfolioSection() {
                 <p className="text-base text-muted-foreground leading-relaxed mb-6">{active.full}</p>
 
                 <div className="flex flex-col sm:flex-row gap-3">
-                  <a href="#contact" onClick={() => setActive(null)} className="btn-green justify-center text-sm flex-1">
-                    Хочу такой же — рассчитать
-                    <ArrowRight className="w-4 h-4" />
-                  </a>
+                  <LeadDialog source={`Портфолио — ${active.title}`} title="Хочу такой же проект" submitText="Рассчитать стоимость">
+                    <button onClick={() => setActive(null)} className="btn-green justify-center text-sm flex-1">
+                      Хочу такой же — рассчитать
+                      <ArrowRight className="w-4 h-4" />
+                    </button>
+                  </LeadDialog>
                   <a href="tel:88003026753" className="btn-green-outline justify-center text-sm">
                     <Phone className="w-4 h-4" />
                     Позвонить

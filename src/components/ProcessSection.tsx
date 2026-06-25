@@ -1,6 +1,7 @@
 import { ArrowRight } from "lucide-react"
 import Icon from "@/components/ui/icon"
 import type { ProcessStep } from "@/data/serviceContent"
+import { LeadDialog } from "@/components/LeadDialog"
 
 const defaultSteps: ProcessStep[] = [
   {
@@ -118,10 +119,12 @@ export function ProcessSection({ badge, title, titleAccent, steps: stepsProp }: 
 
         {/* CTA */}
         <div className="mt-12 text-center">
-          <a href="#contact" className="btn-green text-base mx-auto inline-flex">
-            Начать прямо сейчас — бесплатная консультация
-            <ArrowRight className="w-4 h-4" />
-          </a>
+          <LeadDialog source="Секция «Процесс»" title="Бесплатная консультация" submitText="Получить консультацию">
+            <button className="btn-green text-base mx-auto inline-flex">
+              Начать прямо сейчас — бесплатная консультация
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          </LeadDialog>
         </div>
       </div>
     </section>

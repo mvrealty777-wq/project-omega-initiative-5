@@ -1,6 +1,7 @@
 import { CheckCircle2, ArrowRight } from "lucide-react"
 import Icon from "@/components/ui/icon"
 import type { ServiceData } from "@/data/servicesData"
+import { LeadDialog } from "@/components/LeadDialog"
 
 interface Props {
   service: ServiceData
@@ -109,10 +110,12 @@ export function ServiceTurnkeySection({ service, title, image }: Props) {
                     </li>
                   ))}
                 </ul>
-                <a href="#contact" className="btn-green w-full justify-center text-base">
-                  Рассчитать стоимость
-                  <ArrowRight className="w-4 h-4" />
-                </a>
+                <LeadDialog source="Секция «Под ключ»" title="Рассчитать стоимость" submitText="Рассчитать стоимость">
+                  <button className="btn-green w-full justify-center text-base">
+                    Рассчитать стоимость
+                    <ArrowRight className="w-4 h-4" />
+                  </button>
+                </LeadDialog>
                 <p className="text-center text-xs text-muted-foreground mt-3 flex items-center justify-center gap-1.5">
                   <CheckCircle2 className="w-3.5 h-3.5 text-primary" />
                   Бесплатный выезд замерщика по всей России

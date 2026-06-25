@@ -1,5 +1,6 @@
 import Icon from "@/components/ui/icon"
 import type { ChoiceProduct, ChoiceFeature } from "@/data/serviceContent"
+import { LeadDialog } from "@/components/LeadDialog"
 
 const defaultProducts: ChoiceProduct[] = [
   {
@@ -84,10 +85,12 @@ export function EquipmentChoiceSection({ title, titleAccent, subtitle, cta, prod
               </span>
             ))}
           </div>
-          <a href="#contact" className="btn-green whitespace-nowrap flex-shrink-0">
-            {cta ?? "Подобрать оборудование"}
-            <Icon name="ArrowRight" className="w-4 h-4" fallback="ChevronRight" />
-          </a>
+          <LeadDialog source="Секция «Оборудование»" title={cta ?? "Подобрать оборудование"} submitText={cta ?? "Подобрать оборудование"}>
+            <button className="btn-green whitespace-nowrap flex-shrink-0">
+              {cta ?? "Подобрать оборудование"}
+              <Icon name="ArrowRight" className="w-4 h-4" fallback="ChevronRight" />
+            </button>
+          </LeadDialog>
         </div>
       </div>
     </section>
