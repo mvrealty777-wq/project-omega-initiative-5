@@ -176,7 +176,7 @@ export const serviceContent: Record<string, ServiceContent> = {
       cta: "Подобрать оборудование",
       products: [
         { image: PANELS, title: "Вагонка для сауны", text: "Кедр, липа, абаши, термоосина. Шлифованная евровагонка для стен и потолка.", badge: "от 950 ₽/м²" },
-        { image: HARVIA, title: "Электрокаменка Harvia", text: "Электрические печи Harvia, EOS, SAWO с пультом для саун от 3 до 20 м².", badge: "от 28 000 ₽" },
+        { image: HARVIA, title: "Электрокаменка", text: "Электрические печи EOS, SAWO, TYLÖ с пультом для саун от 3 до 20 м².", badge: "от 28 000 ₽" },
         { image: STOVE, title: "Дровяная печь", text: "Чугунные и стальные печи-каменки со стеклянной дверцей и баком.", badge: "от 32 000 ₽" },
       ],
       features: commonFeatures,

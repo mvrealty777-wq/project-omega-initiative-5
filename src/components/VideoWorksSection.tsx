@@ -9,77 +9,56 @@ interface Video {
   src?: string
 }
 
-const VK_THUMB = "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/8ce3e4a6-6eac-43f3-82ac-1e7c276ab8bb.jpg"
+const HAMMAM_THUMB = "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/8ce3e4a6-6eac-43f3-82ac-1e7c276ab8bb.jpg"
 const SAUNA_THUMB = "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/bc574b96-1b7b-46c9-9b4c-7c2950015e48.jpg"
 const SAUNA2_THUMB = "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/d97d8191-171e-43e8-b9e3-997a9caa87ef.jpg"
 const HAMMAM2_THUMB = "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/4384e557-d15c-4d4c-a166-4bb8cae4fc8c.jpg"
-const HAMMAM3_THUMB = "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/d0fc622e-ce71-4860-aaf6-441d66631642.jpg"
-const HAMMAM4_THUMB = "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/68a45e60-98ed-4c22-baa0-f4bacff2a65a.jpg"
-const POOL_THUMB = "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/11121246-eb64-4c70-9ba6-30cd19046423.jpg"
+const HAMMAM3_THUMB = "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/68a45e60-98ed-4c22-baa0-f4bacff2a65a.jpg"
+const STOVE_THUMB = "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/bucket/0dcc86d1-41e2-437e-952a-6d8df810fba1.jpg"
 const SPA_THUMB = "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/300aee80-ed49-410c-b117-9d48406ecb27.jpg"
-const STONE_THUMB = "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/ee57d73f-708f-424e-8c6a-8829eb0e1bce.jpg"
-const AROMA_THUMB = "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/e99432a1-7193-4b89-a1c6-718880ad1dae.jpg"
 
 const videos: Video[] = [
   {
-    thumb: VK_THUMB,
+    thumb: HAMMAM_THUMB,
     title: "Хаммам под ключ",
-    duration: "Клип",
-    src: "https://vk.com/clip_ext.php?oid=-62729838&id=456239039",
-  },
-  {
-    thumb: HAMMAM2_THUMB,
-    title: "Строительство хаммама",
-    duration: "Клип",
-    src: "https://vk.com/clip_ext.php?oid=-62729838&id=456239036",
-  },
-  {
-    thumb: HAMMAM3_THUMB,
-    title: "Хаммам с мозаикой",
-    duration: "Клип",
-    src: "https://vk.com/clip_ext.php?oid=-62729838&id=456239035",
+    duration: "Видео",
+    src: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/bucket/cd39b9e8-2aab-4b0f-8824-be3cfc16b99d.mp4",
   },
   {
     thumb: SAUNA_THUMB,
-    title: "Сауна под ключ",
-    duration: "Клип",
-    src: "https://vk.com/clip_ext.php?oid=-62729838&id=456239031",
+    title: "Строительство сауны",
+    duration: "Видео",
+    src: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/bucket/558b57b8-2f29-4972-b9cc-2c8d7f2dc198.mp4",
   },
   {
-    thumb: HAMMAM4_THUMB,
-    title: "Восточный хаммам",
-    duration: "Клип",
-    src: "https://vk.com/clip_ext.php?oid=-62729838&id=456239029",
+    thumb: HAMMAM2_THUMB,
+    title: "Отделка хаммама",
+    duration: "Видео",
+    src: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/bucket/dae4abe1-6c8a-4713-b158-7e2fc63ed37a.mp4",
   },
   {
     thumb: SAUNA2_THUMB,
     title: "Финская парная",
-    duration: "Клип",
-    src: "https://vk.com/clip_ext.php?oid=-62729838&id=456239028",
+    duration: "Видео",
+    src: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/bucket/58ef9104-ef13-43ea-8e4c-0027a8466694.mp4",
   },
   {
-    thumb: POOL_THUMB,
-    title: "Бассейн и SPA",
-    duration: "Клип",
-    src: "https://vk.com/clip_ext.php?oid=-62729838&id=456239026",
+    thumb: HAMMAM3_THUMB,
+    title: "Восточный хаммам",
+    duration: "Видео",
+    src: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/bucket/f6601a72-132d-432a-833f-739a430eee29.mp4",
+  },
+  {
+    thumb: STOVE_THUMB,
+    title: "Печь в парной",
+    duration: "Видео",
+    src: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/bucket/1b1d335a-ac44-47d1-b347-e33f3d380376.mp4",
   },
   {
     thumb: SPA_THUMB,
     title: "SPA-комплекс",
-    duration: "Клип",
-    src: "https://vk.com/clip_ext.php?oid=-62729838&id=456239025",
-  },
-  {
-    thumb: STONE_THUMB,
-    title: "Хаммам из камня",
-    duration: "Клип",
-    src: "https://vk.com/clip_ext.php?oid=-62729838&id=456239024",
-  },
-  {
-    thumb: AROMA_THUMB,
-    title: "Отделка и оборудование",
-    duration: "Клип",
-    src: "https://vk.com/clip_ext.php?oid=-62729838&id=456239019",
+    duration: "Видео",
+    src: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/bucket/36049ec6-55f1-43bd-885c-555aec90b162.mp4",
   },
 ]
 
@@ -103,7 +82,7 @@ export function VideoWorksSection() {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-5">
             {videos.map((video, index) => (
               <button
                 key={index}
@@ -164,11 +143,12 @@ export function VideoWorksSection() {
             className="relative rounded-2xl overflow-hidden shadow-2xl"
             style={{
               width: active.src?.includes("clip_ext") ? "min(333px, 90vw)" : "min(900px, 95vw)",
-              aspectRatio: active.src?.includes("clip_ext") ? "333/592" : "16/9",
+              aspectRatio: active.src?.includes("clip_ext") ? "333/592" : "9/16",
+              maxHeight: "90vh",
             }}
             onClick={(e) => e.stopPropagation()}
           >
-            {active.src?.includes("mp4") || (active.src?.startsWith("https://cdn") && !active.src?.includes("clip_ext")) ? (
+            {active.src?.includes("mp4") ? (
               <video
                 src={active.src}
                 controls
