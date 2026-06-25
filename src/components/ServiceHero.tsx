@@ -7,6 +7,8 @@ import Icon from "@/components/ui/icon"
 import { CheckCircle, Send } from "lucide-react"
 import { sendLead } from "@/lib/sendLead"
 import type { ServiceData } from "@/data/servicesData"
+import { QuizDialog } from "@/components/QuizDialog"
+import { getQuizBySlug } from "@/data/quizData"
 
 const benefits = [
   { text: "Бесплатный расчёт сметы", icon: "Wallet", from: "hsl(145 63% 42%)", to: "hsl(145 70% 28%)" },
@@ -27,6 +29,7 @@ interface Props {
 export function ServiceHero({ service, titleOverride, subtitleOverride, parentCrumb }: Props) {
   const [formData, setFormData] = useState({ name: "", phone: "" })
   const [sent, setSent] = useState(false)
+  const quiz = getQuizBySlug(service.slug)
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
@@ -162,6 +165,19 @@ export function ServiceHero({ service, titleOverride, subtitleOverride, parentCr
                   <p className="text-[11px] text-muted-foreground text-center mt-3">
                     Нажимая кнопку, вы соглашаетесь с политикой обработки данных
                   </p>
+                  {quiz && (
+                    <div className="mt-4 pt-4 border-t border-border">
+                      <p className="text-xs text-muted-foreground text-center mb-2.5">
+                        Хотите точнее? Пройдите квиз
+                      </p>
+                      <QuizDialog quiz={quiz}>
+                        <button className="btn-green-outline w-full justify-center text-sm">
+                          <Icon name="ClipboardList" className="w-4 h-4" fallback="List" />
+                          Пройти квиз — получить расчёт
+                        </button>
+                      </QuizDialog>
+                    </div>
+                  )}
                 </>
               )}
             </div>

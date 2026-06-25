@@ -15,6 +15,7 @@ import { ProcessSection } from "@/components/ProcessSection"
 import { BuildTimelineSection } from "@/components/BuildTimelineSection"
 import { TestimonialsSection } from "@/components/TestimonialsSection"
 import { PricingSection } from "@/components/PricingSection"
+import { QuizSection } from "@/components/QuizSection"
 import { FaqSection } from "@/components/FaqSection"
 import { ContactSection } from "@/components/ContactSection"
 import { Footer } from "@/components/Footer"
@@ -51,6 +52,7 @@ export default function Index() {
         <BuildTimelineSection />
         <TestimonialsSection />
         <PricingSection />
+        <QuizSection />
         <FaqSection />
         <ContactSection />
         <Footer />

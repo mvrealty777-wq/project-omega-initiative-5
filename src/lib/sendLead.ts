@@ -11,6 +11,8 @@ export interface LeadData {
   source: string
   /** Предпочтительный мессенджер для связи */
   messenger?: string
+  /** Дополнительный комментарий / ответы квиза */
+  comment?: string
 }
 
 /**
