@@ -1,10 +1,10 @@
 import Icon from "@/components/ui/icon"
-import { MaxIcon } from "@/components/icons/MaxIcon"
+import { MessengerIcon } from "@/components/icons/MessengerIcon"
 
 export const messengers = [
   { id: "max", label: "МАКС", color: "linear-gradient(135deg, #8B5CF6, #6366F1)" },
-  { id: "telegram", label: "Telegram", icon: "Send", color: "#27A7E7" },
-  { id: "whatsapp", label: "WhatsApp", icon: "MessageCircle", color: "#25D366" },
+  { id: "telegram", label: "Telegram", color: "#27A7E7" },
+  { id: "whatsapp", label: "WhatsApp", color: "#25D366" },
 ] as const
 
 export const messengerLabel = (id: string): string | undefined =>
@@ -15,7 +15,6 @@ interface Props {
   onEnabledChange: (v: boolean) => void
   value: string
   onValueChange: (v: string) => void
-  /** Тёмный фон (для блоков на тёмном фоне) */
   dark?: boolean
 }
 
@@ -54,21 +53,25 @@ export function MessengerPicker({ enabled, onEnabledChange, value, onValueChange
                 key={m.id}
                 type="button"
                 onClick={() => onValueChange(m.id)}
-                className={`relative flex flex-col items-center justify-center gap-1.5 rounded-xl border-2 py-2.5 transition-all ${
+                className={`relative flex flex-col items-center justify-center gap-1.5 rounded-xl border-2 py-2.5 px-2 transition-all ${
                   isActive
-                    ? "border-transparent text-white shadow-md"
+                    ? "border-transparent shadow-md"
                     : dark
-                      ? "border-white/15 bg-white/5 text-white/70 hover:border-primary/50"
-                      : "border-border bg-white text-foreground/70 hover:border-primary/40"
+                      ? "border-white/15 bg-white/5 hover:border-primary/50"
+                      : "border-border bg-white hover:border-primary/40"
                 }`}
                 style={isActive ? { background: m.color } : undefined}
               >
-                {m.id === "max" ? (
-                  <MaxIcon className="w-5 h-5" />
-                ) : (
-                  <Icon name={(m as { icon?: string }).icon ?? "MessageCircle"} className="w-5 h-5" fallback="MessageCircle" />
-                )}
-                <span className="text-xs font-semibold" style={{ fontFamily: "Montserrat, sans-serif" }}>{m.label}</span>
+                <MessengerIcon
+                  id={m.id}
+                  className={`w-7 h-7 rounded-lg object-cover ${isActive ? "ring-2 ring-white/40" : ""}`}
+                />
+                <span
+                  className={`text-xs font-semibold ${isActive ? "text-white" : dark ? "text-white/70" : "text-foreground/70"}`}
+                  style={{ fontFamily: "Montserrat, sans-serif" }}
+                >
+                  {m.label}
+                </span>
               </button>
             )
           })}
