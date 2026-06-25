@@ -14,6 +14,7 @@ import { FullCycleSection } from "@/components/FullCycleSection"
 import { Project3DSection } from "@/components/Project3DSection"
 import { AboutSection } from "@/components/AboutSection"
 import { EquipmentBrandsSection } from "@/components/EquipmentBrandsSection"
+import { VideoWorksSection } from "@/components/VideoWorksSection"
 import { EquipmentChoiceSection } from "@/components/EquipmentChoiceSection"
 import { SurveyorCtaSection } from "@/components/SurveyorCtaSection"
 import { ProcessSection } from "@/components/ProcessSection"
@@ -179,7 +180,9 @@ export function ServicePageTemplate({ service }: Props) {
         products={content?.equipmentChoice.products}
         features={content?.equipmentChoice.features}
       />
-      {/* 9. Заявка на замерщика */}
+      {/* 9. Видео работ */}
+      <VideoWorksSection />
+      {/* 10. Заявка на замерщика */}
       <SurveyorCtaSection />
       <ReputationSection />
       <ProcessSection

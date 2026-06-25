@@ -9,37 +9,77 @@ interface Video {
   src?: string
 }
 
+const VK_THUMB = "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/8ce3e4a6-6eac-43f3-82ac-1e7c276ab8bb.jpg"
+const SAUNA_THUMB = "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/bc574b96-1b7b-46c9-9b4c-7c2950015e48.jpg"
+const SAUNA2_THUMB = "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/d97d8191-171e-43e8-b9e3-997a9caa87ef.jpg"
+const HAMMAM2_THUMB = "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/4384e557-d15c-4d4c-a166-4bb8cae4fc8c.jpg"
+const HAMMAM3_THUMB = "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/d0fc622e-ce71-4860-aaf6-441d66631642.jpg"
+const HAMMAM4_THUMB = "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/68a45e60-98ed-4c22-baa0-f4bacff2a65a.jpg"
+const POOL_THUMB = "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/11121246-eb64-4c70-9ba6-30cd19046423.jpg"
+const SPA_THUMB = "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/300aee80-ed49-410c-b117-9d48406ecb27.jpg"
+const STONE_THUMB = "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/ee57d73f-708f-424e-8c6a-8829eb0e1bce.jpg"
+const AROMA_THUMB = "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/e99432a1-7193-4b89-a1c6-718880ad1dae.jpg"
+
 const videos: Video[] = [
   {
-    thumb: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/8ce3e4a6-6eac-43f3-82ac-1e7c276ab8bb.jpg",
-    title: "Хаммам — кейс GeniusSPA",
+    thumb: VK_THUMB,
+    title: "Хаммам под ключ",
     duration: "Клип",
     src: "https://vk.com/clip_ext.php?oid=-62729838&id=456239039",
   },
   {
-    thumb: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/bc574b96-1b7b-46c9-9b4c-7c2950015e48.jpg",
-    title: "Финская сауна под ключ",
-    duration: "1:48",
+    thumb: HAMMAM2_THUMB,
+    title: "Строительство хаммама",
+    duration: "Клип",
+    src: "https://vk.com/clip_ext.php?oid=-62729838&id=456239036",
   },
   {
-    thumb: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/372589d9-db8d-4b45-8a44-f9e720673402.jpg",
-    title: "SPA-комплекс в отеле",
-    duration: "3:05",
+    thumb: HAMMAM3_THUMB,
+    title: "Хаммам с мозаикой",
+    duration: "Клип",
+    src: "https://vk.com/clip_ext.php?oid=-62729838&id=456239035",
   },
   {
-    thumb: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/d0fc622e-ce71-4860-aaf6-441d66631642.jpg",
-    title: "Хаммам в морском стиле",
-    duration: "2:32",
+    thumb: SAUNA_THUMB,
+    title: "Сауна под ключ",
+    duration: "Клип",
+    src: "https://vk.com/clip_ext.php?oid=-62729838&id=456239031",
   },
   {
-    thumb: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/11121246-eb64-4c70-9ba6-30cd19046423.jpg",
-    title: "Бассейн в гроте",
-    duration: "1:59",
+    thumb: HAMMAM4_THUMB,
+    title: "Восточный хаммам",
+    duration: "Клип",
+    src: "https://vk.com/clip_ext.php?oid=-62729838&id=456239029",
   },
   {
-    thumb: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/d97d8191-171e-43e8-b9e3-997a9caa87ef.jpg",
-    title: "Инфракрасная сауна",
-    duration: "1:21",
+    thumb: SAUNA2_THUMB,
+    title: "Финская парная",
+    duration: "Клип",
+    src: "https://vk.com/clip_ext.php?oid=-62729838&id=456239028",
+  },
+  {
+    thumb: POOL_THUMB,
+    title: "Бассейн и SPA",
+    duration: "Клип",
+    src: "https://vk.com/clip_ext.php?oid=-62729838&id=456239026",
+  },
+  {
+    thumb: SPA_THUMB,
+    title: "SPA-комплекс",
+    duration: "Клип",
+    src: "https://vk.com/clip_ext.php?oid=-62729838&id=456239025",
+  },
+  {
+    thumb: STONE_THUMB,
+    title: "Хаммам из камня",
+    duration: "Клип",
+    src: "https://vk.com/clip_ext.php?oid=-62729838&id=456239024",
+  },
+  {
+    thumb: AROMA_THUMB,
+    title: "Отделка и оборудование",
+    duration: "Клип",
+    src: "https://vk.com/clip_ext.php?oid=-62729838&id=456239019",
   },
 ]
 
@@ -63,7 +103,7 @@ export function VideoWorksSection() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4">
             {videos.map((video, index) => (
               <button
                 key={index}

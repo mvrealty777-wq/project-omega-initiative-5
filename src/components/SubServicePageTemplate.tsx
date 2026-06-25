@@ -14,6 +14,7 @@ import { FullCycleSection } from "@/components/FullCycleSection"
 import { Project3DSection } from "@/components/Project3DSection"
 import { AboutSection } from "@/components/AboutSection"
 import { EquipmentBrandsSection } from "@/components/EquipmentBrandsSection"
+import { VideoWorksSection } from "@/components/VideoWorksSection"
 import { EquipmentChoiceSection } from "@/components/EquipmentChoiceSection"
 import { SurveyorCtaSection } from "@/components/SurveyorCtaSection"
 import { ProcessSection } from "@/components/ProcessSection"
@@ -122,6 +123,7 @@ export function SubServicePageTemplate({ sub }: Props) {
           products={content?.equipmentChoice.products}
           features={content?.equipmentChoice.features}
         />
+        <VideoWorksSection />
         <SurveyorCtaSection />
         <ReputationSection />
         <ProcessSection
