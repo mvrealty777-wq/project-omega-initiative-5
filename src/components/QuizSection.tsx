@@ -10,6 +10,8 @@ const gradients: Record<string, string> = {
   "from-yellow-500 to-orange-500": "linear-gradient(135deg, #eab308, #f97316)",
   "from-slate-600 to-gray-800": "linear-gradient(135deg, #475569, #1f2937)",
   "from-emerald-600 to-teal-700": "linear-gradient(135deg, #059669, #0f766e)",
+  "from-pink-500 to-rose-600": "linear-gradient(135deg, #ec4899, #e11d48)",
+  "from-sky-400 to-cyan-600": "linear-gradient(135deg, #38bdf8, #0891b2)",
 }
 
 export function QuizSection() {

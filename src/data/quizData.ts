@@ -471,6 +471,126 @@ export const quizzes: QuizConfig[] = [
       },
     ],
   },
+  {
+    slug: "salt-cave-room",
+    title: "Соляная пещера",
+    subtitle: "Подберём решение для галотерапии под ваш объект",
+    icon: "Gem",
+    color: "from-pink-500 to-rose-600",
+    questions: [
+      {
+        id: "saltType",
+        question: "Какой тип соли предпочитаете?",
+        options: [
+          { id: "himalayan", label: "Розовая гималайская соль", icon: "Mountain" },
+          { id: "white", label: "Каменная белая соль", icon: "Gem" },
+          { id: "both", label: "Комбинация двух видов", icon: "Layers" },
+          { id: "notSure", label: "Посоветуйте сами", icon: "HelpCircle" },
+        ],
+      },
+      {
+        id: "purpose",
+        question: "Для каких целей создаёте пещеру?",
+        options: [
+          { id: "home", label: "Для семьи / частное", icon: "Home" },
+          { id: "medical", label: "Медицинский / оздоровительный центр", icon: "HeartPulse" },
+          { id: "spa", label: "SPA или отель", icon: "Building2" },
+          { id: "kids", label: "Детская галокамера", icon: "Baby" },
+        ],
+      },
+      {
+        id: "area",
+        question: "Планируемая площадь помещения?",
+        options: [
+          { id: "small", label: "До 8 м²", icon: "Minimize2" },
+          { id: "medium", label: "8–15 м²", icon: "Square" },
+          { id: "large", label: "15–30 м²", icon: "Maximize2" },
+          { id: "xlarge", label: "Больше 30 м²", icon: "LayoutGrid" },
+        ],
+      },
+      {
+        id: "options",
+        question: "Какие дополнения хотите включить?",
+        multiple: true,
+        options: [
+          { id: "halogenerator", label: "Галогенератор (аэрозольная терапия)", icon: "Wind" },
+          { id: "lighting", label: "Тёплая атмосферная подсветка", icon: "Lightbulb" },
+          { id: "loungers", label: "Лежаки и кресла для сеансов", icon: "Armchair" },
+          { id: "sound", label: "Звукотерапия / медитация", icon: "Music" },
+        ],
+      },
+      {
+        id: "budget",
+        question: "Ориентировочный бюджет?",
+        options: [
+          { id: "b1", label: "до 600 000 ₽", icon: "Wallet" },
+          { id: "b2", label: "600 000 — 1,5 млн ₽", icon: "CreditCard" },
+          { id: "b3", label: "1,5 — 3 млн ₽", icon: "Banknote" },
+          { id: "b4", label: "Больше 3 млн ₽", icon: "TrendingUp" },
+        ],
+      },
+    ],
+  },
+  {
+    slug: "cooling",
+    title: "Системы охлаждения",
+    subtitle: "Купели, ледяные фонтаны, снежные комнаты",
+    icon: "Snowflake",
+    color: "from-sky-400 to-cyan-600",
+    questions: [
+      {
+        id: "type",
+        question: "Какой тип охлаждения интересует?",
+        options: [
+          { id: "plunge", label: "Купель (холодная вода)", icon: "Droplets" },
+          { id: "icefountain", label: "Ледяной фонтан", icon: "Snowflake" },
+          { id: "snowroom", label: "Снежная комната", icon: "CloudSnow" },
+          { id: "shower", label: "Душ впечатлений", icon: "ShowerHead" },
+        ],
+      },
+      {
+        id: "context",
+        question: "В составе чего планируете?",
+        options: [
+          { id: "hammam", label: "К хаммаму", icon: "Landmark" },
+          { id: "sauna", label: "К сауне / бане", icon: "Flame" },
+          { id: "spa", label: "К SPA-комплексу", icon: "Building2" },
+          { id: "standalone", label: "Отдельно / самостоятельно", icon: "Package" },
+        ],
+      },
+      {
+        id: "material",
+        question: "Предпочтение по материалу купели?",
+        options: [
+          { id: "steel", label: "Нержавеющая сталь", icon: "Layers" },
+          { id: "wood", label: "Дерево (кедр, лиственница)", icon: "TreePine" },
+          { id: "composite", label: "Композит / акрил", icon: "Circle" },
+          { id: "notSure", label: "Посоветуйте", icon: "HelpCircle" },
+        ],
+      },
+      {
+        id: "options",
+        question: "Какие функции важны?",
+        multiple: true,
+        options: [
+          { id: "cooling", label: "Система охлаждения воды", icon: "Thermometer" },
+          { id: "hydro", label: "Гидромассаж / пузырьки", icon: "Wind" },
+          { id: "lighting", label: "Подводная подсветка", icon: "Lightbulb" },
+          { id: "aroma", label: "Ароматерапия", icon: "Sparkles" },
+        ],
+      },
+      {
+        id: "budget",
+        question: "Ориентировочный бюджет?",
+        options: [
+          { id: "b1", label: "до 350 000 ₽", icon: "Wallet" },
+          { id: "b2", label: "350 000 — 800 000 ₽", icon: "CreditCard" },
+          { id: "b3", label: "800 000 — 2 млн ₽", icon: "Banknote" },
+          { id: "b4", label: "Больше 2 млн ₽", icon: "TrendingUp" },
+        ],
+      },
+    ],
+  },
 ]
 
 export const getQuizBySlug = (slug: string): QuizConfig | undefined =>
