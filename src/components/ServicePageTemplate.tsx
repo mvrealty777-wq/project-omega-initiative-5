@@ -31,6 +31,7 @@ import { getServiceFaq } from "@/data/serviceFaq"
 import { useSeo } from "@/hooks/useSeo"
 import { organizationSchema, breadcrumbSchema, serviceSchema } from "@/lib/schema"
 import { EquipmentSchemeSection } from "@/components/EquipmentSchemeSection"
+import { QuizSection } from "@/components/QuizSection"
 
 interface Props {
   service: ServiceData
@@ -231,7 +232,10 @@ export function ServicePageTemplate({ service }: Props) {
         </section>
       )}
 
-      {/* 12. Частые вопросы */}
+      {/* 12. Квизы — подбор проекта */}
+      <QuizSection />
+
+      {/* 13. Частые вопросы */}
       <FaqSection items={faqItems} />
       <ContactSection />
       <Footer />
