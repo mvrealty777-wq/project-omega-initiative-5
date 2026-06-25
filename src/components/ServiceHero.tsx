@@ -168,12 +168,12 @@ export function ServiceHero({ service, titleOverride, subtitleOverride, parentCr
                   {quiz && (
                     <div className="mt-4 pt-4 border-t border-border">
                       <p className="text-xs text-muted-foreground text-center mb-2.5">
-                        Хотите точнее? Пройдите квиз
+                        Хотите точнее? Ответьте на несколько вопросов
                       </p>
                       <QuizDialog quiz={quiz}>
                         <button className="btn-green-outline w-full justify-center text-sm">
                           <Icon name="ClipboardList" className="w-4 h-4" fallback="List" />
-                          Пройти квиз — получить расчёт
+                          Ответить на вопросы — получить расчёт
                         </button>
                       </QuizDialog>
                     </div>

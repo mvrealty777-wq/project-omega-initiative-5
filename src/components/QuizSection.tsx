@@ -22,11 +22,11 @@ export function QuizSection() {
             className="text-3xl sm:text-4xl lg:text-5xl font-black text-foreground mb-4"
             style={{ fontFamily: "Montserrat, sans-serif" }}
           >
-            Пройдите квиз и получите{" "}
-            <span className="text-primary">точный расчёт</span>
+            Ответьте на вопросы —{" "}
+            <span className="text-primary">получите точный расчёт</span>
           </h2>
           <p className="text-muted-foreground max-w-xl mx-auto text-lg leading-relaxed">
-            4–6 вопросов за 2 минуты — и мы подготовим персональное предложение именно под ваш проект.
+            Выберите направление, ответьте на 4–6 простых вопросов — и мы подготовим персональное предложение под ваш объект.
           </p>
         </div>
 
@@ -75,7 +75,7 @@ export function QuizSection() {
                           WebkitTextFillColor: "transparent",
                         }}
                       >
-                        Пройти квиз
+                        Ответить на вопросы
                       </span>
                       <Icon name="ArrowRight" size={16} className="text-primary flex-shrink-0" />
                     </span>
