@@ -6,7 +6,7 @@ import { FullCycleSection } from "@/components/FullCycleSection"
 import { AboutSection } from "@/components/AboutSection"
 import { PortfolioSection } from "@/components/PortfolioSection"
 import { VideoWorksSection } from "@/components/VideoWorksSection"
-import { VkClipsSection } from "@/components/VkClipsSection"
+
 import { EquipmentBrandsSection } from "@/components/EquipmentBrandsSection"
 import { EquipmentChoiceSection } from "@/components/EquipmentChoiceSection"
 import { Project3DSection } from "@/components/Project3DSection"
@@ -46,7 +46,6 @@ export default function Index() {
         <Project3DSection />
         <AboutSection />
         <VideoWorksSection />
-        <VkClipsSection />
         <EquipmentBrandsSection />
         <EquipmentChoiceSection />
         <SurveyorCtaSection />
