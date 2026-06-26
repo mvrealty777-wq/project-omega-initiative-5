@@ -7,42 +7,29 @@ interface Video {
   src: string
 }
 
+const BASE = "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/bucket/"
+
 const videos: Video[] = [
-  {
-    title: "Хаммам в частном доме",
-    sub: "14 м² · мозаика · чебек с подогревом",
-    src: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/bucket/cd39b9e8-2aab-4b0f-8824-be3cfc16b99d.mp4",
-  },
-  {
-    title: "Финская сауна на даче",
-    sub: "8 м² · кедр · электрокаменка",
-    src: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/bucket/558b57b8-2f29-4972-b9cc-2c8d7f2dc198.mp4",
-  },
-  {
-    title: "Мозаичная отделка хаммама",
-    sub: "Ручная выкладка изнутри",
-    src: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/bucket/dae4abe1-6c8a-4713-b158-7e2fc63ed37a.mp4",
-  },
-  {
-    title: "Парная из кедра",
-    sub: "Коттедж · многоуровневые полки",
-    src: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/bucket/58ef9104-ef13-43ea-8e4c-0027a8466694.mp4",
-  },
-  {
-    title: "Хаммам в восточном стиле",
-    sub: "20 м² · звёздное небо · парогенератор",
-    src: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/bucket/f6601a72-132d-432a-833f-739a430eee29.mp4",
-  },
-  {
-    title: "Дровяная печь-каменка",
-    sub: "Монтаж и запуск в русской бане",
-    src: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/bucket/1b1d335a-ac44-47d1-b347-e33f3d380376.mp4",
-  },
-  {
-    title: "SPA-комплекс для отеля",
-    sub: "Сауна + хаммам + купель · под ключ",
-    src: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/bucket/36049ec6-55f1-43bd-885c-555aec90b162.mp4",
-  },
+  { title: "Строительство хаммама", sub: "Этапы монтажа и отделки", src: BASE + "b4facf2e-7c4a-4ec3-94d8-b960cc268047.mp4" },
+  { title: "Хаммам под ключ", sub: "Мозаика · пар · звёздное небо", src: BASE + "a8dcb69f-ee0a-4dc7-9e12-c77286902dc8.mp4" },
+  { title: "Отделка и оборудование", sub: "Финишные работы · монтаж", src: BASE + "1037de40-cbc1-4bc6-b1e4-3cb535779009.mp4" },
+  { title: "Парная — финская сауна", sub: "Классический стиль · липа", src: BASE + "8605a0cb-2c34-4baf-b242-307b7f830cbf.mp4" },
+  { title: "Бассейн и SPA-зона", sub: "Отделка · фильтрация · подогрев", src: BASE + "4bd221e6-954c-4fc4-ac1d-4a9095d48ab8.mp4" },
+  { title: "Хаммам в частном доме", sub: "14 м² · мозаика · чебек с подогревом", src: BASE + "cd39b9e8-2aab-4b0f-8824-be3cfc16b99d.mp4" },
+  { title: "Финская сауна на даче", sub: "8 м² · кедр · электрокаменка", src: BASE + "558b57b8-2f29-4972-b9cc-2c8d7f2dc198.mp4" },
+  { title: "Мозаичная отделка хаммама", sub: "Ручная выкладка изнутри", src: BASE + "dae4abe1-6c8a-4713-b158-7e2fc63ed37a.mp4" },
+  { title: "Хаммам с нуля", sub: "Кладка · паропровод · отделка", src: BASE + "c49491ed-5fb3-4d69-b4a3-d0e554ac21a6.mp4" },
+  { title: "Парная из кедра", sub: "Коттедж · многоуровневые полки", src: BASE + "58ef9104-ef13-43ea-8e4c-0027a8466694.mp4" },
+  { title: "Купель и зона охлаждения", sub: "Встроенная купель · монтаж", src: BASE + "4d475a35-6aa5-4ab0-acd0-f9d25b112e5d.mp4" },
+  { title: "Сауна в загородном доме", sub: "Кедр · электрокаменка · полки", src: BASE + "1eaa794c-8703-49f4-97fa-477ec322fd18.mp4" },
+  { title: "Банный комплекс", sub: "Сауна + хаммам + зона отдыха", src: BASE + "2bab41f2-4ee8-4162-9842-3531869eff8c.mp4" },
+  { title: "Хаммам в восточном стиле", sub: "20 м² · звёздное небо · парогенератор", src: BASE + "f6601a72-132d-432a-833f-739a430eee29.mp4" },
+  { title: "Соляная пещера", sub: "Гималайская соль · подсветка · вентиляция", src: BASE + "8276dbd6-0959-4c77-9d10-398fe80d27de.mp4" },
+  { title: "Дровяная печь-каменка", sub: "Монтаж и запуск в русской бане", src: BASE + "1b1d335a-ac44-47d1-b347-e33f3d380376.mp4" },
+  { title: "SPA-комплекс для отеля", sub: "Сауна + хаммам + купель · под ключ", src: BASE + "36049ec6-55f1-43bd-885c-555aec90b162.mp4" },
+  { title: "Турецкая баня", sub: "Классический хаммам · мрамор", src: BASE + "b38f3a4d-1b23-4e65-9975-197871f698a6.mp4" },
+  { title: "Инфракрасная сауна", sub: "ИК-панели · кедр · управление", src: BASE + "1fd94c23-ad76-4e75-8663-849ad8b1aaa5.mp4" },
+  { title: "Банный комплекс под ключ", sub: "Комплексный проект · сдача объекта", src: BASE + "43186f23-57fc-4978-8e95-fc247faea360.mp4" },
 ]
 
 function VideoCard({ video, onClick }: { video: Video; onClick: () => void }) {
@@ -104,7 +91,7 @@ export function VideoWorksSection() {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-5">
+          <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-4">
             {videos.map((video, i) => (
               <VideoCard key={i} video={video} onClick={() => setActive(video)} />
             ))}
