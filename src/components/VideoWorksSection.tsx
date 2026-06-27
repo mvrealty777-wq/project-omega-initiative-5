@@ -1,4 +1,4 @@
-import { useState, useRef } from "react"
+import { useState, useRef, useEffect } from "react"
 import { Play, X } from "lucide-react"
 
 interface Video {
@@ -21,10 +21,27 @@ const videos: Video[] = [
   { title: "Соляная пещера", sub: "Гималайская соль · подсветка · вентиляция", src: BASE + "8276dbd6-0959-4c77-9d10-398fe80d27de.mp4" },
   { title: "Дровяная печь-каменка", sub: "Монтаж и запуск в русской бане", src: BASE + "1b1d335a-ac44-47d1-b347-e33f3d380376.mp4" },
   { title: "SPA-комплекс для отеля", sub: "Сауна + хаммам + купель · под ключ", src: BASE + "36049ec6-55f1-43bd-885c-555aec90b162.mp4" },
+  { title: "Хаммам премиум", sub: "Отделка · мозаика · паровая система", src: BASE + "881bccb3-d85c-43ec-a348-245c154d5877.mp4" },
+  { title: "Строительство сауны", sub: "Монтаж под ключ", src: BASE + "dcae31e2-e699-495f-aa17-ebc2846604f2.mp4" },
+  { title: "Хаммам в квартире", sub: "Дизайн · отделка · оборудование", src: BASE + "86b8ad56-9eba-4a8a-aca6-3d54e31cea2e.mp4" },
+  { title: "Паровая комната", sub: "Комплексный монтаж", src: BASE + "eff279e0-1e7c-47da-a013-88a518793ede.mp4" },
 ]
 
 function VideoCard({ video, onClick }: { video: Video; onClick: () => void }) {
   const ref = useRef<HTMLVideoElement>(null)
+  const [loaded, setLoaded] = useState(false)
+
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+    const handleLoaded = () => setLoaded(true)
+    if (el.readyState >= 1) {
+      setLoaded(true)
+    } else {
+      el.addEventListener("loadedmetadata", handleLoaded)
+    }
+    return () => el.removeEventListener("loadedmetadata", handleLoaded)
+  }, [])
 
   return (
     <button
@@ -38,12 +55,15 @@ function VideoCard({ video, onClick }: { video: Video; onClick: () => void }) {
       style={{ aspectRatio: "3/4" }}
       aria-label={video.title}
     >
+      {!loaded && (
+        <div className="absolute inset-0 bg-black/20 animate-pulse rounded-2xl z-10" />
+      )}
       <video
         ref={ref}
         src={video.src}
         muted
         playsInline
-        preload="metadata"
+        preload="auto"
         className="w-full h-full object-cover"
       />
       <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/15 to-transparent group-hover:from-black/70 transition-all duration-300" />
@@ -82,7 +102,7 @@ export function VideoWorksSection() {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-4">
+          <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-4">
             {videos.map((video, i) => (
               <VideoCard key={i} video={video} onClick={() => setActive(video)} />
             ))}
