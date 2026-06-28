@@ -151,7 +151,7 @@ export function ServicePageTemplate({ service }: Props) {
 
       {/* Блоки как на главной — в порядке главной страницы */}
       {/* 1. Наш подход */}
-      <ReadySection />
+      <ReadySection slug={service.slug} />
       {/* 2. Наши работы */}
       {extra && (
         <ServiceCasesSection title={extra.casesTitle} subtitle={extra.casesSubtitle} cases={extra.cases} />
@@ -163,7 +163,7 @@ export function ServicePageTemplate({ service }: Props) {
         items={content?.fullCycle.items}
       />
       {/* 4. 3D-проект */}
-      <Project3DSection />
+      <Project3DSection slug={service.slug} />
       {/* 5. Почему выбирают нас */}
       <AboutSection
         subtitle={content?.about.subtitle}
@@ -171,7 +171,7 @@ export function ServicePageTemplate({ service }: Props) {
         stats={content?.about.stats}
       />
       {/* 6 + 7. Лучшая цена + «нашли дешевле» */}
-      <EquipmentBrandsSection />
+      <EquipmentBrandsSection slug={service.slug} />
       {/* 8. Выбор оборудования и материалов */}
       <EquipmentChoiceSection
         title={content?.equipmentChoice.title}

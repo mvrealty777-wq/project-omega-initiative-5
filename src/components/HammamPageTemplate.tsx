@@ -12,6 +12,8 @@ import { EquipmentBrandsSection } from "@/components/EquipmentBrandsSection"
 import { Project3DSection } from "@/components/Project3DSection"
 import { QuizSection } from "@/components/QuizSection"
 import { FaqSection } from "@/components/FaqSection"
+import { ReadySection } from "@/components/ReadySection"
+import { HammamCompositionSection } from "@/components/HammamCompositionSection"
 import { LeadDialog } from "@/components/LeadDialog"
 import { Input } from "@/components/ui/input"
 import { MessengerPicker, messengerLabel } from "@/components/MessengerPicker"
@@ -628,14 +630,20 @@ export function HammamPageTemplate({ service }: Props) {
           <ServiceCasesSection title={extra.casesTitle} subtitle={extra.casesSubtitle} cases={extra.cases} />
         )}
 
+        {/* === Готовы реализовать === */}
+        <ReadySection slug="hammam" />
+
+        {/* === Из чего состоит хаммам === */}
+        <HammamCompositionSection />
+
         {/* === 9. 3D-ПРОЕКТ === */}
-        <Project3DSection />
+        <Project3DSection slug="hammam" />
 
         {/* === 10. ВИДЕО === */}
         <VideoWorksSection />
 
         {/* === 11. БРЕНДЫ === */}
-        <EquipmentBrandsSection />
+        <EquipmentBrandsSection slug="hammam" />
 
         {/* === 12. ОТЗЫВЫ === */}
         {extra && (
