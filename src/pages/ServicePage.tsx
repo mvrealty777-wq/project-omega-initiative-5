@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom"
 import { ServicePageTemplate } from "@/components/ServicePageTemplate"
+import { HammamPageTemplate } from "@/components/HammamPageTemplate"
 import { getServiceBySlug } from "@/data/servicesData"
 import NotFound from "@/pages/NotFound"
 
@@ -9,6 +10,10 @@ export default function ServicePage() {
 
   if (!service) {
     return <NotFound />
+  }
+
+  if (service.slug === "hammam") {
+    return <HammamPageTemplate service={service} />
   }
 
   return <ServicePageTemplate service={service} />
