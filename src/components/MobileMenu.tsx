@@ -41,7 +41,8 @@ export function MobileMenu() {
               <AccordionItem key={s.slug} value={s.slug} className="border-b-0">
                 <AccordionTrigger className="py-2.5 px-4 rounded-lg hover:bg-primary/5 hover:no-underline [&[data-state=open]]:text-primary">
                   <span className="flex items-center gap-3 text-sm font-medium">
-                    <span className="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0 bg-primary/10">
+                    <span className="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0"
+                      style={{ background: 'hsl(145 63% 32% / 0.1)' }}>
                       <Icon name={s.icon} className="w-4 h-4 text-primary" fallback="Hammer" />
                     </span>
                     {s.cardTitle}

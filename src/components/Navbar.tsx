@@ -26,7 +26,7 @@ export function Navbar() {
       }`}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex h-16 items-center justify-between">
+        <div className="flex h-18 py-2 items-center justify-between">
           <Link to="/" className="hover:opacity-90 transition-opacity">
             <Logo />
           </Link>
@@ -41,7 +41,7 @@ export function Navbar() {
                 Строительство
                 <ChevronDown className="w-3.5 h-3.5 transition-transform group-hover/dd:rotate-180" />
               </a>
-              <div className="fixed left-0 right-0 top-[4rem] opacity-0 invisible translate-y-1 group-hover/dd:opacity-100 group-hover/dd:visible group-hover/dd:translate-y-0 transition-all duration-200 z-50 px-4 mt-2">
+              <div className="fixed left-0 right-0 top-[4.5rem] opacity-0 invisible translate-y-1 group-hover/dd:opacity-100 group-hover/dd:visible group-hover/dd:translate-y-0 transition-all duration-200 z-50 px-4">
                 <div className="container mx-auto max-w-7xl bg-white rounded-2xl shadow-2xl border border-border p-6">
                   <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-6">
                     {servicesData.map((s) => (
@@ -50,10 +50,11 @@ export function Navbar() {
                           to={`/uslugi/${s.slug}`}
                           className="flex items-center gap-2.5 mb-2.5 group/cat"
                         >
-                          <span className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 icon-bg">
-                            <Icon name={s.icon} className="w-5 h-5 text-primary" fallback="Hammer" />
+                          <span className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0"
+                            style={{ background: 'hsl(145 63% 32% / 0.1)' }}>
+                            <Icon name={s.icon} className="w-4.5 h-4.5 text-primary" fallback="Hammer" />
                           </span>
-                          <span className="font-bold text-sm text-foreground group-hover/cat:text-primary transition-colors font-heading">
+                          <span className="font-bold text-sm text-foreground group-hover/cat:text-primary transition-colors" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                             {s.cardTitle}
                           </span>
                         </Link>
@@ -105,7 +106,7 @@ export function Navbar() {
               <a href="https://wa.me/88003026753" target="_blank" rel="noopener noreferrer"
                 className="w-9 h-9 rounded-lg flex items-center justify-center text-white transition-transform hover:scale-105"
                 style={{ background: '#25D366' }} aria-label="WhatsApp">
-                <Icon name="MessageCircle" className="h-5 w-5" fallback="Phone" />
+                <Icon name="MessageCircle" className="h-4.5 w-4.5" fallback="Phone" />
               </a>
               <a href="https://t.me/geniusspa" target="_blank" rel="noopener noreferrer"
                 className="w-9 h-9 rounded-lg flex items-center justify-center text-white transition-transform hover:scale-105"

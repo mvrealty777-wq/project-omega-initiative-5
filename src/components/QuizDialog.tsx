@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogTrigger } from "@/components/ui/dialog"
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog"
 import { Input } from "@/components/ui/input"
 import Icon from "@/components/ui/icon"
 import { CheckCircle, ChevronRight, ChevronLeft, Send } from "lucide-react"
@@ -93,17 +93,16 @@ export function QuizDialog({ quiz, children }: Props) {
       <DialogContent className="w-[95vw] sm:max-w-[520px] p-0 overflow-hidden gap-0">
         {sent ? (
           <div className="text-center py-14 px-8">
-            <DialogHeader className="sr-only">
-              <DialogTitle>Заявка принята</DialogTitle>
-              <DialogDescription>Ваша заявка успешно отправлена. Мы свяжемся с вами в ближайшее время.</DialogDescription>
-            </DialogHeader>
             <div
               className="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-5"
               style={{ background: "hsl(145 63% 32% / 0.12)" }}
             >
               <CheckCircle className="w-10 h-10 text-primary" />
             </div>
-            <h3 className="text-2xl font-black text-foreground mb-3">
+            <h3
+              className="text-2xl font-black text-foreground mb-3"
+              style={{ fontFamily: "Montserrat, sans-serif" }}
+            >
               Заявка принята!
             </h3>
             <p className="text-muted-foreground">
@@ -114,11 +113,6 @@ export function QuizDialog({ quiz, children }: Props) {
           </div>
         ) : (
           <>
-            {/* Accessible title for screen readers */}
-            <DialogHeader className="sr-only">
-              <DialogTitle>{quiz.title}</DialogTitle>
-              <DialogDescription>Ответьте на несколько вопросов, чтобы получить персональный расчёт стоимости.</DialogDescription>
-            </DialogHeader>
             {/* Header */}
             <div className={`bg-gradient-to-r ${quiz.color} px-6 pt-6 pb-5 text-white`}>
               <div className="flex items-center gap-3 mb-4">
@@ -149,7 +143,10 @@ export function QuizDialog({ quiz, children }: Props) {
             <div className="px-6 py-5">
               {!isContactStep && currentQ ? (
                 <div className="animate-fade-in-up">
-                  <h3 className="text-base sm:text-lg font-black text-foreground mb-4 leading-snug">
+                  <h3
+                    className="text-base sm:text-lg font-black text-foreground mb-4 leading-snug"
+                    style={{ fontFamily: "Montserrat, sans-serif" }}
+                  >
                     {currentQ.question}
                   </h3>
                   {currentQ.multiple && (
@@ -203,7 +200,10 @@ export function QuizDialog({ quiz, children }: Props) {
               ) : (
                 /* Contact step */
                 <div className="animate-fade-in-up space-y-3">
-                  <h3 className="text-lg font-black text-foreground mb-1">
+                  <h3
+                    className="text-lg font-black text-foreground mb-1"
+                    style={{ fontFamily: "Montserrat, sans-serif" }}
+                  >
                     Отлично! Куда отправить расчёт?
                   </h3>
                   <p className="text-sm text-muted-foreground mb-4">

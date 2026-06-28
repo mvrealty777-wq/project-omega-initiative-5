@@ -149,62 +149,6 @@ const projects: Project[] = [
     short: "Сауна + хаммам + купель + комната отдыха под одной крышей",
     full: "Полноценный банный комплекс под ключ: финская сауна с дровяной печью, турецкий хаммам с мозаикой, купель из нержавеющей стали с охлаждением воды до +10°C и уютная комната отдыха с камином. Всё пространство объединено единой концепцией дизайна и инженерии. Площадь комплекса — 85 м².",
   },
-  {
-    images: [
-      "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/4384e557-d15c-4d4c-a166-4bb8cae4fc8c.jpg",
-      "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/8ce3e4a6-6eac-43f3-82ac-1e7c276ab8bb.jpg",
-    ],
-    category: "Хаммам",
-    categoryColor: "bg-primary text-white",
-    title: "Хаммам 14 м² в частном доме",
-    short: "Мозаика ручной укладки, чебек с подогревом и звёздное небо",
-    full: "Хаммам площадью 14 м², встроенный в частный загородный дом. Мозаика выложена вручную мастерами — каждая плитка подобрана по цвету и оттенку. Центральный чебек с подогревом поверхности до 48°C, купол со звёздным небом на 200 точек, парогенератор с ароматическим блоком. Система вентиляции скрыта в конструкции стен.",
-  },
-  {
-    images: [
-      "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/d0fc622e-ce71-4860-aaf6-441d66631642.jpg",
-      "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/68a45e60-98ed-4c22-baa0-f4bacff2a65a.jpg",
-    ],
-    category: "Хаммам",
-    categoryColor: "bg-primary text-white",
-    title: "Хаммам с душевой кабиной",
-    short: "Встроенная душевая кабина с тропическим душем и паровой функцией",
-    full: "Хаммам с интегрированной душевой кабиной — редкое и функциональное решение. Тропический душ сверху, боковые форсунки гидромассажа и паровая функция в одном блоке. Отделка: белый мрамор и мозаика цвета морской волны. Лежаки с подогревом, автоматика на сенсорной панели. Площадь — 10 м².",
-  },
-  {
-    images: [
-      "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/b14cf6dd-6668-414b-916f-634fa3822073.jpg",
-      "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/e99432a1-7193-4b89-a1c6-718880ad1dae.jpg",
-    ],
-    category: "Хаммам",
-    categoryColor: "bg-primary text-white",
-    title: "Турецкая баня с мраморной отделкой",
-    short: "Классический турецкий хаммам из белого мрамора под ключ",
-    full: "Классическая турецкая баня полностью отделана белым мрамором Биянко — стены, пол, чебек, ниши. Купол с золотыми звёздами и цветными витражными вставками. Два боковых лежака и центральный массажный стол на 2 человека. Парогенератор с дистанционным управлением, подогрев всех поверхностей. Объект сдан в Подмосковье.",
-  },
-  {
-    images: [
-      "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/ee57d73f-708f-424e-8c6a-8829eb0e1bce.jpg",
-      "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/d0fc622e-ce71-4860-aaf6-441d66631642.jpg",
-    ],
-    category: "Хаммам",
-    categoryColor: "bg-primary text-white",
-    title: "Хаммам с отдельной зоной охлаждения",
-    short: "Парная + купель + зона отдыха — полный цикл термальных процедур",
-    full: "Хаммам с полноценной зоной охлаждения: встроенная купель из акрила с функцией гидромассажа, контрастный душ и лежаки для отдыха. Переход от горячей турецкой бани к прохладной воде запускает мощный оздоровительный эффект. Отделка — натуральный травертин и мозаика в золотисто-бежевых тонах. Площадь комплекса — 22 м².",
-  },
-  {
-    images: [
-      "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/8ce3e4a6-6eac-43f3-82ac-1e7c276ab8bb.jpg",
-      "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/4384e557-d15c-4d4c-a166-4bb8cae4fc8c.jpg",
-      "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/b14cf6dd-6668-414b-916f-634fa3822073.jpg",
-    ],
-    category: "Коммерческий",
-    categoryColor: "bg-gray-800 text-white",
-    title: "Банный комплекс под ключ",
-    short: "Хаммам + финская сауна + бассейн для SPA-центра",
-    full: "Комплексный проект для коммерческого SPA-центра: турецкий хаммам с мозаичной отделкой, финская сауна из липы, бассейн с подогревом воды и система автоматизации всего оборудования. Весь комплекс управляется с единой панели. Срок строительства — 70 дней. Объект успешно работает и принимает гостей.",
-  },
 ]
 
 export function PortfolioSection() {
@@ -246,7 +190,6 @@ export function PortfolioSection() {
                 <img
                   src={project.images[0]}
                   alt={project.title}
-                  loading="lazy"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
                 {/* Category badge */}
@@ -295,7 +238,6 @@ export function PortfolioSection() {
                 <img
                   src={active.images[imgIndex]}
                   alt={active.title}
-                  loading="lazy"
                   className="w-full h-64 sm:h-80 object-cover"
                 />
                 <button
@@ -321,7 +263,7 @@ export function PortfolioSection() {
                       onClick={() => setImgIndex(i)}
                       className={`w-20 h-16 rounded-lg overflow-hidden flex-shrink-0 border-2 transition-all ${i === imgIndex ? 'border-primary' : 'border-transparent opacity-70 hover:opacity-100'}`}
                     >
-                      <img src={img} alt={`${active.title} ${i + 1}`} loading="lazy" className="w-full h-full object-cover" />
+                      <img src={img} alt={`${active.title} ${i + 1}`} className="w-full h-full object-cover" />
                     </button>
                   ))}
                 </div>

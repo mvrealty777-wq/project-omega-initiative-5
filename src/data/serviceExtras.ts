@@ -61,12 +61,6 @@ export const serviceExtras: Record<string, ServiceExtra> = {
       { image: HAMMAM, category: "Хаммам", categoryColor: greenBadge, title: "Традиционный хаммам", short: "Классическая турецкая ниша со звёздным небом и золотым декором" },
       { image: HAMMAM2, category: "Хаммам", categoryColor: greenBadge, title: "Хаммам с турецкими арками", short: "Подсветка, меняющая цвета, и генератор морского климата" },
       { image: HAMMAM3, category: "Хаммам", categoryColor: greenBadge, title: "Хаммам в морском стиле", short: "Бирюзовая мозаика и анатомические лежаки" },
-      { image: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/b14cf6dd-6668-414b-916f-634fa3822073.jpg", category: "Хаммам", categoryColor: greenBadge, title: "Хаммам 14 м² в частном доме", short: "Мозаика ручной укладки, чебек с подогревом и звёздное небо" },
-      { image: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/68a45e60-98ed-4c22-baa0-f4bacff2a65a.jpg", category: "Хаммам", categoryColor: greenBadge, title: "Хаммам с душевой кабиной", short: "Тропический душ, боковые форсунки и паровая функция в одном блоке" },
-      { image: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/ee57d73f-708f-424e-8c6a-8829eb0e1bce.jpg", category: "Хаммам", categoryColor: greenBadge, title: "Турецкая баня из белого мрамора", short: "Классический хаммам Биянко с куполом и золотыми витражами" },
-      { image: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/e99432a1-7193-4b89-a1c6-718880ad1dae.jpg", category: "Хаммам", categoryColor: greenBadge, title: "Хаммам + зона охлаждения", short: "Парная, купель и зона отдыха — полный термальный цикл, 22 м²" },
-      { image: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/bucket/a6e10fd6-8d8e-48dd-b64e-1e271d5e8a29.jpg", category: "Хаммам", categoryColor: greenBadge, title: "Просторный хаммам в восточном стиле", short: "Массажный стол, встроенный душ и мозаичная отделка" },
-      { image: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/300aee80-ed49-410c-b117-9d48406ecb27.jpg", category: "Коммерческий", categoryColor: grayBadge, title: "Банный комплекс для SPA-центра", short: "Хаммам + сауна + бассейн, срок сдачи — 70 дней" },
     ],
   },
   sauna: {

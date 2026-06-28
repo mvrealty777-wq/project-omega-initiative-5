@@ -59,7 +59,10 @@ export function ProcessSection({ badge, title, titleAccent, steps: stepsProp }: 
             style={{ background: 'hsl(145 63% 42% / 0.12)' }}>
             {badge ?? "Как мы работаем"}
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white text-balance">
+          <h2
+            className="text-3xl sm:text-4xl lg:text-5xl font-black text-white text-balance"
+            style={{ fontFamily: 'Montserrat, sans-serif' }}
+          >
             {title ?? "От заявки до готовой"}<br />
             <span className="text-green-400">{titleAccent ?? "сауны — 4 шага"}</span>
           </h2>
@@ -77,8 +80,8 @@ export function ProcessSection({ badge, title, titleAccent, steps: stepsProp }: 
             >
               {/* Big ghost number */}
               <span
-                className="absolute top-3 right-5 text-6xl font-black leading-none select-none pointer-events-none font-heading"
-                style={{ color: 'hsl(0 0% 100% / 0.06)' }}
+                className="absolute top-3 right-5 text-6xl font-black leading-none select-none pointer-events-none"
+                style={{ fontFamily: 'Montserrat, sans-serif', color: 'hsl(0 0% 100% / 0.06)' }}
               >
                 {step.number}
               </span>
@@ -97,10 +100,11 @@ export function ProcessSection({ badge, title, titleAccent, steps: stepsProp }: 
                 <ArrowRight className="hidden lg:block absolute top-9 -right-3.5 z-20 w-6 h-6 text-green-400/70" />
               )}
 
-              <div className="text-xs font-black tracking-widest text-green-400/80 mb-2 uppercase font-heading">
+              <div className="text-xs font-black tracking-widest text-green-400/80 mb-2 uppercase"
+                style={{ fontFamily: 'Montserrat, sans-serif' }}>
                 Шаг {step.number}
               </div>
-              <h3 className="font-bold text-lg text-white mb-2.5">
+              <h3 className="font-bold text-lg text-white mb-2.5" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                 {step.title}
               </h3>
               <p className="text-sm text-white/60 leading-relaxed mb-5 flex-1">{step.description}</p>

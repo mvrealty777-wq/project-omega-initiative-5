@@ -18,19 +18,16 @@ const services = servicesData.map((s) => ({ slug: s.slug, label: s.menuLabel }))
 
 export function Footer() {
   return (
-    <footer className="text-white" style={{ background: 'hsl(220 25% 8%)' }}>
+    <footer className="bg-gray-900 text-white">
       {/* CTA strip */}
       <div className="border-b border-white/10">
         <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
             <div>
-              <p className="font-bold text-xl mb-1">
+              <p className="font-bold text-xl mb-1" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                 Готовы начать ваш проект?
               </p>
-              <p className="text-white/60 text-sm">
-                Бесплатная консультация и выезд на замер —{" "}
-                <span className="text-green-400">бесплатно</span>
-              </p>
+              <p className="text-white/60 text-sm">Бесплатная консультация и выезд на замер</p>
             </div>
             <CallbackDialog source="Футер — Получить расчёт бесплатно">
               <button className="btn-green text-base flex-shrink-0">
@@ -47,10 +44,10 @@ export function Footer() {
           {/* Brand */}
           <div className="sm:col-span-2 lg:col-span-1">
             <Logo className="mb-4 [&_span]:text-white [&_.text-primary]:!text-green-400 [&_.text-muted-foreground]:text-white/40" />
-            <p className="text-sm text-white/60 leading-relaxed mb-5 flex-shrink-0">
+            <p className="text-sm text-white/60 leading-relaxed mb-5">
               Строительство финских саун, русских бань и турецких хамамов под ключ. Работаем по всей России с 2014 года.
             </p>
-            <div className="flex flex-col gap-2 border-l-2 border-green-500/30 pl-3">
+            <div className="flex flex-col gap-2">
               <a href="tel:88003026753" className="flex items-center gap-2 text-sm text-white/70 hover:text-white transition-colors">
                 <Phone className="w-4 h-4 text-green-400" />
                 8 800 302-67-53
@@ -64,7 +61,7 @@ export function Footer() {
 
           {/* Navigation */}
           <div>
-            <h4 className="font-bold text-sm uppercase tracking-wider mb-4 text-white/80">
+            <h4 className="font-bold text-sm uppercase tracking-wider mb-4 text-white/80" style={{ fontFamily: 'Montserrat, sans-serif' }}>
               Навигация
             </h4>
             <ul className="space-y-2.5">
@@ -80,7 +77,7 @@ export function Footer() {
 
           {/* Services */}
           <div>
-            <h4 className="font-bold text-sm uppercase tracking-wider mb-4 text-white/80">
+            <h4 className="font-bold text-sm uppercase tracking-wider mb-4 text-white/80" style={{ fontFamily: 'Montserrat, sans-serif' }}>
               Направления
             </h4>
             <ul className="space-y-2.5">
@@ -96,7 +93,7 @@ export function Footer() {
 
           {/* Working hours */}
           <div>
-            <h4 className="font-bold text-sm uppercase tracking-wider mb-4 text-white/80">
+            <h4 className="font-bold text-sm uppercase tracking-wider mb-4 text-white/80" style={{ fontFamily: 'Montserrat, sans-serif' }}>
               Режим работы
             </h4>
             <div className="space-y-2 text-sm text-white/60">
@@ -109,7 +106,7 @@ export function Footer() {
                     href="https://wa.me/88003026753"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="px-3 h-9 rounded-lg flex items-center gap-1.5 text-xs font-semibold text-white transition-transform hover:scale-105 active:scale-95"
+                    className="px-3 h-9 rounded-lg flex items-center gap-1.5 text-xs font-semibold text-white transition-transform hover:scale-105"
                     style={{ background: '#25D366' }}
                   >
                     <Icon name="MessageCircle" className="w-4 h-4" fallback="Phone" />
@@ -119,7 +116,7 @@ export function Footer() {
                     href="https://t.me/geniusspa"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="px-3 h-9 rounded-lg flex items-center gap-1.5 text-xs font-semibold text-white transition-transform hover:scale-105 active:scale-95"
+                    className="px-3 h-9 rounded-lg flex items-center gap-1.5 text-xs font-semibold text-white transition-transform hover:scale-105"
                     style={{ background: '#27A7E7' }}
                   >
                     <Icon name="Send" className="w-3.5 h-3.5" fallback="Phone" />
@@ -129,7 +126,7 @@ export function Footer() {
                     href="https://max.ru/geniusspa"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="px-3 h-9 rounded-lg flex items-center gap-1.5 text-xs font-semibold text-white transition-transform hover:scale-105 active:scale-95"
+                    className="px-3 h-9 rounded-lg flex items-center gap-1.5 text-xs font-semibold text-white transition-transform hover:scale-105"
                     style={{ background: 'linear-gradient(135deg, #8B5CF6, #6366F1)' }}
                   >
                     <MaxIcon className="w-4 h-4" />
@@ -145,7 +142,7 @@ export function Footer() {
       {/* Bottom bar */}
       <div className="border-t border-white/10">
         <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/40">
-          <p>© 2024–2025 GeniusSPA. Все права защищены.</p>
+          <p>© 2025 GeniusSPA. Все права защищены.</p>
           <p>Строительство саун и хамамов под ключ по всей России</p>
         </div>
       </div>

@@ -62,7 +62,7 @@ export function EquipmentChoiceSection({ title, titleAccent, subtitle, cta, prod
           {products.map((p) => (
             <div key={p.title} className="group bg-white rounded-2xl overflow-hidden border border-border shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col">
               <div className="relative h-48 sm:h-52 overflow-hidden bg-secondary/40">
-                <img src={p.image} alt={p.title} loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                <img src={p.image} alt={p.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                 <span className="absolute top-3 right-3 text-xs font-bold px-3 py-1.5 rounded-full text-primary bg-white shadow-md" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                   {p.badge}
                 </span>

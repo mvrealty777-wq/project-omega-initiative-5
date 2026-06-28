@@ -40,7 +40,10 @@ export function QuizSection() {
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-10">
           <div className="section-badge mb-5 mx-auto">Подбор проекта</div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-foreground mb-4">
+          <h2
+            className="text-3xl sm:text-4xl lg:text-5xl font-black text-foreground mb-4"
+            style={{ fontFamily: "Montserrat, sans-serif" }}
+          >
             Ответьте на вопросы —{" "}
             <span className="text-primary">получите точный расчёт</span>
           </h2>
@@ -69,7 +72,10 @@ export function QuizSection() {
                     <Icon name={quiz.icon} size={22} className="text-white" fallback="HelpCircle" />
                   </div>
 
-                  <h3 className="text-lg font-black text-foreground mb-1.5 leading-snug">
+                  <h3
+                    className="text-lg font-black text-foreground mb-1.5 leading-snug"
+                    style={{ fontFamily: "Montserrat, sans-serif" }}
+                  >
                     {quiz.title}
                   </h3>
                   <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
