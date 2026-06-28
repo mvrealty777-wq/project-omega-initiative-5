@@ -88,7 +88,7 @@ export function VideoWorksSection() {
   return (
     <>
       <section className="py-10 sm:py-12 lg:py-14 px-4 sm:px-6 lg:px-8 section-glass">
-        <div className="container mx-auto max-w-6xl">
+        <div className="container mx-auto max-w-7xl">
           <div className="text-center mb-9 sm:mb-10">
             <div className="section-badge mb-5 mx-auto">Видео-обзоры</div>
             <h2
@@ -102,7 +102,7 @@ export function VideoWorksSection() {
             </p>
           </div>
 
-          <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-4 sm:gap-5">
             {videos.map((video, i) => (
               <VideoCard key={i} video={video} onClick={() => setActive(video)} />
             ))}
