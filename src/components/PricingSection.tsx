@@ -92,7 +92,7 @@ export function PricingSection({ title, titleAccent, subtitle, tiers: tiersProp 
             >
               {/* Big image */}
               <div className="relative h-52 overflow-hidden">
-                <img src={tier.image} alt={tier.name} className="w-full h-full object-cover" />
+                <img src={tier.image} alt={tier.name} loading="lazy" className="w-full h-full object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
                 {tier.badge && (
                   <div

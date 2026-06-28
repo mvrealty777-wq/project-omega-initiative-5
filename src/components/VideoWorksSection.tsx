@@ -29,41 +29,45 @@ const videos: Video[] = [
 
 function VideoCard({ video, onClick }: { video: Video; onClick: () => void }) {
   const ref = useRef<HTMLVideoElement>(null)
-  const [loaded, setLoaded] = useState(false)
+  const [hovered, setHovered] = useState(false)
+  const [srcLoaded, setSrcLoaded] = useState(false)
+
+  const handleMouseEnter = () => {
+    setHovered(true)
+    setSrcLoaded(true)
+  }
+
+  const handleMouseLeave = () => {
+    setHovered(false)
+    if (ref.current) { ref.current.pause(); ref.current.currentTime = 0 }
+  }
 
   useEffect(() => {
-    const el = ref.current
-    if (!el) return
-    const handleLoaded = () => setLoaded(true)
-    if (el.readyState >= 1) {
-      setLoaded(true)
-    } else {
-      el.addEventListener("loadedmetadata", handleLoaded)
+    if (srcLoaded && ref.current) {
+      ref.current.load()
+      ref.current.play().catch(() => {})
     }
-    return () => el.removeEventListener("loadedmetadata", handleLoaded)
-  }, [])
+  }, [srcLoaded])
 
   return (
     <button
       type="button"
       onClick={onClick}
-      onMouseEnter={() => ref.current?.play()}
-      onMouseLeave={() => {
-        if (ref.current) { ref.current.pause(); ref.current.currentTime = 0 }
-      }}
-      className="group relative rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 text-left w-full"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      className="group relative rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 text-left w-full bg-stone-900"
       style={{ aspectRatio: "3/4" }}
       aria-label={video.title}
     >
-      {!loaded && (
-        <div className="absolute inset-0 bg-black/20 animate-pulse rounded-2xl z-10" />
+      {!hovered && (
+        <div className="absolute inset-0 flex items-end z-10 pointer-events-none" />
       )}
       <video
         ref={ref}
-        src={video.src}
+        src={srcLoaded ? video.src : undefined}
         muted
         playsInline
-        preload="auto"
+        preload="none"
         className="w-full h-full object-cover"
       />
       <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/15 to-transparent group-hover:from-black/70 transition-all duration-300" />

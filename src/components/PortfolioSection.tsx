@@ -190,6 +190,7 @@ export function PortfolioSection() {
                 <img
                   src={project.images[0]}
                   alt={project.title}
+                  loading="lazy"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
                 {/* Category badge */}
@@ -238,6 +239,7 @@ export function PortfolioSection() {
                 <img
                   src={active.images[imgIndex]}
                   alt={active.title}
+                  loading="lazy"
                   className="w-full h-64 sm:h-80 object-cover"
                 />
                 <button
@@ -263,7 +265,7 @@ export function PortfolioSection() {
                       onClick={() => setImgIndex(i)}
                       className={`w-20 h-16 rounded-lg overflow-hidden flex-shrink-0 border-2 transition-all ${i === imgIndex ? 'border-primary' : 'border-transparent opacity-70 hover:opacity-100'}`}
                     >
-                      <img src={img} alt={`${active.title} ${i + 1}`} className="w-full h-full object-cover" />
+                      <img src={img} alt={`${active.title} ${i + 1}`} loading="lazy" className="w-full h-full object-cover" />
                     </button>
                   ))}
                 </div>

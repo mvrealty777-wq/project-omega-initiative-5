@@ -1,29 +1,30 @@
+import { lazy, Suspense } from "react"
 import { Navbar } from "@/components/Navbar"
 import { HeroSection } from "@/components/HeroSection"
-import { ServicesSection } from "@/components/ServicesSection"
-import { ReadySection } from "@/components/ReadySection"
-import { FullCycleSection } from "@/components/FullCycleSection"
-import { AboutSection } from "@/components/AboutSection"
-import { PortfolioSection } from "@/components/PortfolioSection"
-import { VideoWorksSection } from "@/components/VideoWorksSection"
-
-import { EquipmentBrandsSection } from "@/components/EquipmentBrandsSection"
-import { EquipmentChoiceSection } from "@/components/EquipmentChoiceSection"
-import { Project3DSection } from "@/components/Project3DSection"
-import { SurveyorCtaSection } from "@/components/SurveyorCtaSection"
-import { ReputationSection } from "@/components/ReputationSection"
-import { ProcessSection } from "@/components/ProcessSection"
-import { BuildTimelineSection } from "@/components/BuildTimelineSection"
-import { TestimonialsSection } from "@/components/TestimonialsSection"
-import { PricingSection } from "@/components/PricingSection"
-import { QuizSection } from "@/components/QuizSection"
-import { FaqSection } from "@/components/FaqSection"
-import { ContactSection } from "@/components/ContactSection"
-import { Footer } from "@/components/Footer"
 import { FloatingContacts } from "@/components/FloatingContacts"
 import { BanyaDecor } from "@/components/BanyaDecor"
 import { useSeo } from "@/hooks/useSeo"
 import { organizationSchema } from "@/lib/schema"
+
+const ServicesSection = lazy(() => import("@/components/ServicesSection").then(m => ({ default: m.ServicesSection })))
+const ReadySection = lazy(() => import("@/components/ReadySection").then(m => ({ default: m.ReadySection })))
+const FullCycleSection = lazy(() => import("@/components/FullCycleSection").then(m => ({ default: m.FullCycleSection })))
+const AboutSection = lazy(() => import("@/components/AboutSection").then(m => ({ default: m.AboutSection })))
+const PortfolioSection = lazy(() => import("@/components/PortfolioSection").then(m => ({ default: m.PortfolioSection })))
+const VideoWorksSection = lazy(() => import("@/components/VideoWorksSection").then(m => ({ default: m.VideoWorksSection })))
+const EquipmentBrandsSection = lazy(() => import("@/components/EquipmentBrandsSection").then(m => ({ default: m.EquipmentBrandsSection })))
+const EquipmentChoiceSection = lazy(() => import("@/components/EquipmentChoiceSection").then(m => ({ default: m.EquipmentChoiceSection })))
+const Project3DSection = lazy(() => import("@/components/Project3DSection").then(m => ({ default: m.Project3DSection })))
+const SurveyorCtaSection = lazy(() => import("@/components/SurveyorCtaSection").then(m => ({ default: m.SurveyorCtaSection })))
+const ReputationSection = lazy(() => import("@/components/ReputationSection").then(m => ({ default: m.ReputationSection })))
+const ProcessSection = lazy(() => import("@/components/ProcessSection").then(m => ({ default: m.ProcessSection })))
+const BuildTimelineSection = lazy(() => import("@/components/BuildTimelineSection").then(m => ({ default: m.BuildTimelineSection })))
+const TestimonialsSection = lazy(() => import("@/components/TestimonialsSection").then(m => ({ default: m.TestimonialsSection })))
+const PricingSection = lazy(() => import("@/components/PricingSection").then(m => ({ default: m.PricingSection })))
+const QuizSection = lazy(() => import("@/components/QuizSection").then(m => ({ default: m.QuizSection })))
+const FaqSection = lazy(() => import("@/components/FaqSection").then(m => ({ default: m.FaqSection })))
+const ContactSection = lazy(() => import("@/components/ContactSection").then(m => ({ default: m.ContactSection })))
+const Footer = lazy(() => import("@/components/Footer").then(m => ({ default: m.Footer })))
 
 export default function Index() {
   useSeo({
@@ -38,25 +39,27 @@ export default function Index() {
       <div className="relative z-10">
         <Navbar />
         <HeroSection />
-        <ServicesSection />
-        <ReadySection />
-        <PortfolioSection />
-        <QuizSection />
-        <FullCycleSection />
-        <Project3DSection />
-        <AboutSection />
-        <VideoWorksSection />
-        <EquipmentBrandsSection />
-        <EquipmentChoiceSection />
-        <SurveyorCtaSection />
-        <ReputationSection />
-        <ProcessSection />
-        <BuildTimelineSection />
-        <TestimonialsSection />
-        <PricingSection />
-        <FaqSection />
-        <ContactSection />
-        <Footer />
+        <Suspense fallback={null}>
+          <ServicesSection />
+          <ReadySection />
+          <PortfolioSection />
+          <QuizSection />
+          <FullCycleSection />
+          <Project3DSection />
+          <AboutSection />
+          <VideoWorksSection />
+          <EquipmentBrandsSection />
+          <EquipmentChoiceSection />
+          <SurveyorCtaSection />
+          <ReputationSection />
+          <ProcessSection />
+          <BuildTimelineSection />
+          <TestimonialsSection />
+          <PricingSection />
+          <FaqSection />
+          <ContactSection />
+          <Footer />
+        </Suspense>
         <FloatingContacts />
       </div>
     </main>
