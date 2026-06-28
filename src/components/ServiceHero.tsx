@@ -17,6 +17,23 @@ const benefits = [
   { text: "Строим по ГОСТам и нормам пожарной безопасности", icon: "ShieldCheck", from: "hsl(0 75% 58%)", to: "hsl(355 75% 45%)" },
 ]
 
+// Разбивает заголовок: «... под ключ» → до «под ключ» + зелёный «ПОД КЛЮЧ»
+const HeroTitle = ({ title }: { title: string }) => {
+  const ACCENT = "под ключ"
+  const idx = title.toLowerCase().indexOf(ACCENT)
+  if (idx === -1) return <>{title}</>
+  const before = title.slice(0, idx)
+  const accent = title.slice(idx, idx + ACCENT.length)
+  const after = title.slice(idx + ACCENT.length)
+  return (
+    <>
+      {before}
+      <span className="text-green-400">{accent.toUpperCase()}</span>
+      {after && <span className="block text-2xl sm:text-3xl lg:text-4xl mt-3 font-bold text-white/90">{after.trim()}</span>}
+    </>
+  )
+}
+
 interface Props {
   service: ServiceData
   /** Переопределение заголовка (для страниц подуслуг) */
@@ -74,7 +91,7 @@ export function ServiceHero({ service, titleOverride, subtitleOverride, parentCr
               Под ключ по всей России
             </div>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black leading-tight mb-5 animate-fade-in-up">
-              {titleOverride ?? service.heroTitle}
+              <HeroTitle title={titleOverride ?? service.heroTitle} />
             </h1>
 
             <p className="text-lg sm:text-xl text-white/80 leading-relaxed mb-8 max-w-lg animate-fade-in-up animate-delay-100">
