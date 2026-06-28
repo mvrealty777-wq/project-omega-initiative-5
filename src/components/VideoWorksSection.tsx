@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react"
+import { useState, useRef } from "react"
 import { Play, X } from "lucide-react"
 
 interface Video {
@@ -30,24 +30,16 @@ const videos: Video[] = [
 function VideoCard({ video, onClick }: { video: Video; onClick: () => void }) {
   const ref = useRef<HTMLVideoElement>(null)
   const [hovered, setHovered] = useState(false)
-  const [srcLoaded, setSrcLoaded] = useState(false)
 
   const handleMouseEnter = () => {
     setHovered(true)
-    setSrcLoaded(true)
+    ref.current?.play().catch(() => {})
   }
 
   const handleMouseLeave = () => {
     setHovered(false)
     if (ref.current) { ref.current.pause(); ref.current.currentTime = 0 }
   }
-
-  useEffect(() => {
-    if (srcLoaded && ref.current) {
-      ref.current.load()
-      ref.current.play().catch(() => {})
-    }
-  }, [srcLoaded])
 
   return (
     <button
@@ -58,15 +50,12 @@ function VideoCard({ video, onClick }: { video: Video; onClick: () => void }) {
       className="group relative rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 text-left w-full bg-stone-900 aspect-[3/4]"
       aria-label={video.title}
     >
-      {!hovered && (
-        <div className="absolute inset-0 flex items-end z-10 pointer-events-none" />
-      )}
       <video
         ref={ref}
-        src={srcLoaded ? video.src : undefined}
+        src={video.src}
         muted
         playsInline
-        preload="none"
+        preload="metadata"
         className="w-full h-full object-cover"
       />
       <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/15 to-transparent group-hover:from-black/70 transition-all duration-300" />
