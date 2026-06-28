@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogTrigger } from "@/components/ui/dialog"
 import { Input } from "@/components/ui/input"
 import { CheckCircle, Phone } from "lucide-react"
 import { sendLead } from "@/lib/sendLead"
@@ -32,11 +32,10 @@ export function CallbackDialog({ children, source = "Кнопка «Перезв
       <DialogContent className="sm:max-w-[400px]">
         {sent ? (
           <div className="text-center py-8">
-            <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"
-              style={{ background: "hsl(145 63% 32% / 0.12)" }}>
+            <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
               <CheckCircle className="w-8 h-8 text-primary" />
             </div>
-            <h3 className="text-xl font-black text-foreground mb-2" style={{ fontFamily: "Montserrat, sans-serif" }}>
+            <h3 className="text-xl font-black text-foreground mb-2">
               Заявка принята!
             </h3>
             <p className="text-muted-foreground text-sm">Перезвоним в течение 15 минут.</p>
@@ -44,9 +43,10 @@ export function CallbackDialog({ children, source = "Кнопка «Перезв
         ) : (
           <>
             <DialogHeader>
-              <DialogTitle style={{ fontFamily: "Montserrat, sans-serif" }}>
-                Перезвоним вам
-              </DialogTitle>
+              <DialogTitle>Перезвоним вам</DialogTitle>
+              <DialogDescription>
+                Оставьте номер — перезвоним в течение 15 минут
+              </DialogDescription>
             </DialogHeader>
             <form onSubmit={handleSubmit} className="space-y-3 mt-1">
               <Input

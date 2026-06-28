@@ -129,10 +129,7 @@ export function ReadySection({ slug }: Props) {
           {/* Text */}
           <div>
             <div className="section-badge mb-5">{c.badge}</div>
-            <h2
-              className="text-4xl sm:text-5xl font-black text-foreground mb-5 leading-tight"
-              style={{ fontFamily: 'Montserrat, sans-serif' }}
-            >
+            <h2 className="text-4xl sm:text-5xl font-black text-foreground mb-5 leading-tight">
               {c.title} <span className="text-primary">{c.titleAccent}</span>
             </h2>
             <p className="text-muted-foreground leading-relaxed mb-7">{c.subtitle}</p>
@@ -156,7 +153,7 @@ export function ReadySection({ slug }: Props) {
 
           {/* Image */}
           <div className="relative">
-            <div className="rounded-2xl overflow-hidden shadow-xl">
+            <div className="rounded-2xl overflow-hidden shadow-xl aspect-[4/3]">
               <img
                 src={c.image}
                 alt={c.imageAlt}
@@ -164,7 +161,7 @@ export function ReadySection({ slug }: Props) {
               />
             </div>
             <div className="absolute -bottom-5 -left-5 bg-white rounded-2xl shadow-lg px-6 py-4 border border-border hidden sm:block">
-              <p className="text-3xl font-black text-primary" style={{ fontFamily: 'Montserrat, sans-serif' }}>{c.stat}</p>
+              <p className="text-3xl font-black text-primary font-heading">{c.stat}</p>
               <p className="text-xs text-muted-foreground">{c.statLabel}</p>
             </div>
           </div>

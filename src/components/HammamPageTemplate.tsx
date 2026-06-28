@@ -177,7 +177,7 @@ function PortfolioCard({ c }: { c: typeof portfolioCases[0] }) {
         </span>
       </div>
       <div className="p-5 flex flex-col flex-1">
-        <h3 className="font-bold text-lg text-foreground mb-1 leading-tight" style={{ fontFamily: "Montserrat, sans-serif" }}>
+        <h3 className="font-bold text-lg text-foreground mb-1 leading-tight">
           {c.title}
         </h3>
         <p className="text-sm text-muted-foreground mb-3">{c.city}</p>
@@ -270,11 +270,11 @@ function HammamHero({ service }: { service: ServiceData }) {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
           {/* Left */}
           <div className="text-white">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold text-green-400 mb-5" style={{ background: "rgba(74,222,128,0.12)" }}>
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold text-green-400 mb-5 bg-green-400/10 border border-green-400/20">
               <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
               Под ключ по всей России
             </div>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black leading-tight mb-5" style={{ fontFamily: "Montserrat, sans-serif" }}>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black leading-tight mb-5">
               ХАММАМ «ПОД КЛЮЧ»
             </h1>
             <p className="text-base sm:text-lg font-bold text-white/90 mb-3 max-w-lg">
@@ -288,7 +288,7 @@ function HammamHero({ service }: { service: ServiceData }) {
                 <div key={item.label} className="relative rounded-xl bg-white/10 backdrop-blur-sm border border-white/15 px-2 py-3.5 sm:py-4 text-center overflow-hidden">
                   <Venok className="absolute inset-0 w-full h-full text-green-400/25 px-1.5 py-1.5" />
                   <div className="relative">
-                    <div className="text-xl sm:text-3xl font-black text-green-400" style={{ fontFamily: "Montserrat, sans-serif" }}>{item.number}</div>
+                    <div className="text-xl sm:text-3xl font-black text-green-400 font-heading">{item.number}</div>
                     <div className="text-[10px] sm:text-xs text-white/75 mt-0.5 leading-tight">{item.label}</div>
                   </div>
                 </div>
@@ -301,7 +301,7 @@ function HammamHero({ service }: { service: ServiceData }) {
             <div className="bg-white rounded-2xl shadow-2xl overflow-hidden">
               {!sent && (
                 <div className="px-7 pt-7 pb-0">
-                  <h2 className="text-xl font-black text-foreground mb-1" style={{ fontFamily: "Montserrat, sans-serif" }}>
+                  <h2 className="text-xl font-black text-foreground mb-1">
                     Хотите быстро<br />просчитать проект?
                   </h2>
                   <p className="text-sm text-muted-foreground mb-5">
@@ -330,10 +330,10 @@ function HammamHero({ service }: { service: ServiceData }) {
               )}
               {sent ? (
                 <div className="text-center py-14 px-8">
-                  <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4" style={{ background: "hsl(145 63% 32% / 0.12)" }}>
+                  <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 bg-primary/10">
                     <CheckCircle className="w-8 h-8 text-primary" />
                   </div>
-                  <h3 className="text-xl font-bold text-foreground mb-2" style={{ fontFamily: "Montserrat, sans-serif" }}>Заявка принята!</h3>
+                  <h3 className="text-xl font-bold text-foreground mb-2">Заявка принята!</h3>
                   <p className="text-muted-foreground text-sm">
                     {useMessenger ? `Напишем в ${messengerLabel(messenger)} в течение 15 минут с персональным расчётом.` : "Перезвоним в течение 15 минут и подготовим расчёт."}
                   </p>
@@ -365,7 +365,7 @@ function HammamHero({ service }: { service: ServiceData }) {
                   <div className="px-6 py-5">
                     {!isContactStep && currentQ ? (
                       <div>
-                        <h3 className="text-base font-black text-foreground mb-4 leading-snug" style={{ fontFamily: "Montserrat, sans-serif" }}>
+                        <h3 className="text-base font-black text-foreground mb-4 leading-snug">
                           {currentQ.question}
                         </h3>
                         {currentQ.multiple && <p className="text-xs text-muted-foreground mb-3">Можно выбрать несколько</p>}
@@ -396,7 +396,7 @@ function HammamHero({ service }: { service: ServiceData }) {
                       </div>
                     ) : (
                       <div className="space-y-3">
-                        <h3 className="text-lg font-black text-foreground mb-1" style={{ fontFamily: "Montserrat, sans-serif" }}>Отлично! Куда отправить расчёт?</h3>
+                        <h3 className="text-lg font-black text-foreground mb-1">Отлично! Куда отправить расчёт?</h3>
                         <p className="text-sm text-muted-foreground mb-3">Подготовим персональное предложение на основе ваших ответов.</p>
                         <Input value={contact.name} onChange={(e) => setContact((p) => ({ ...p, name: e.target.value }))} placeholder="Ваше имя" className="h-11 rounded-xl" />
                         <Input type="tel" required value={contact.phone} onChange={(e) => setContact((p) => ({ ...p, phone: e.target.value }))} placeholder="Телефон *" className="h-11 rounded-xl" />
@@ -471,7 +471,7 @@ export function HammamPageTemplate({ service }: Props) {
           <div className="container mx-auto max-w-6xl">
             <div className="text-center mb-10">
               <div className="section-badge mb-5 mx-auto">Комплект услуг</div>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-foreground" style={{ fontFamily: "Montserrat, sans-serif" }}>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-foreground">
                 Что <span className="text-primary">входит в стоимость</span>
               </h2>
               <p className="text-muted-foreground mt-4 text-base max-w-xl mx-auto">
@@ -481,7 +481,7 @@ export function HammamPageTemplate({ service }: Props) {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {whatIncluded.map((item, i) => (
                 <div key={i} className="flex items-center gap-4 bg-white rounded-2xl p-5 border border-border shadow-sm">
-                  <span className="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 font-bold text-primary text-sm" style={{ fontFamily: "Montserrat, sans-serif" }}>
+                  <span className="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 font-bold text-primary text-sm font-heading">
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   <span className="font-medium text-foreground text-sm leading-tight">{item}</span>
@@ -496,17 +496,17 @@ export function HammamPageTemplate({ service }: Props) {
           <div className="container mx-auto max-w-6xl">
             <div className="text-center mb-10">
               <div className="section-badge mb-5 mx-auto">Направления</div>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-foreground" style={{ fontFamily: "Montserrat, sans-serif" }}>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-foreground">
                 Какие <span className="text-primary">хаммамы строим</span>
               </h2>
             </div>
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
               {hammamTypes.map((t, i) => (
                 <div key={i} className="group bg-white rounded-2xl p-5 border border-border shadow-sm hover:border-primary hover:shadow-lg transition-all duration-300 hover:-translate-y-1 flex flex-col items-center text-center gap-3 cursor-default">
-                  <span className="w-12 h-12 rounded-xl flex items-center justify-center" style={{ background: "hsl(145 63% 32% / 0.1)" }}>
+                  <span className="w-12 h-12 rounded-xl flex items-center justify-center bg-primary/10">
                     <Icon name={t.icon} className="w-6 h-6 text-primary" fallback="Droplets" />
                   </span>
-                  <span className="font-semibold text-sm text-foreground leading-tight group-hover:text-primary transition-colors" style={{ fontFamily: "Montserrat, sans-serif" }}>
+                  <span className="font-semibold text-sm text-foreground leading-tight group-hover:text-primary transition-colors font-heading">
                     {t.label}
                   </span>
                 </div>
@@ -520,7 +520,7 @@ export function HammamPageTemplate({ service }: Props) {
           <div className="container mx-auto max-w-4xl">
             <div className="text-center mb-10">
               <div className="section-badge mb-5 mx-auto">Прозрачные цены</div>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-foreground" style={{ fontFamily: "Montserrat, sans-serif" }}>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-foreground">
                 Цены на <span className="text-primary">хаммам</span>
               </h2>
               <p className="text-muted-foreground mt-4 text-base max-w-xl mx-auto">
@@ -530,15 +530,15 @@ export function HammamPageTemplate({ service }: Props) {
             <div className="bg-white rounded-2xl border border-border shadow-sm overflow-hidden">
               <table className="w-full">
                 <thead>
-                  <tr className="border-b border-border bg-secondary/40">
-                    <th className="text-left px-6 py-4 text-sm font-bold text-foreground" style={{ fontFamily: "Montserrat, sans-serif" }}>Услуга</th>
-                    <th className="text-left px-6 py-4 text-sm font-bold text-foreground" style={{ fontFamily: "Montserrat, sans-serif" }}>Стоимость</th>
-                    <th className="text-left px-6 py-4 text-sm font-bold text-foreground hidden sm:table-cell" style={{ fontFamily: "Montserrat, sans-serif" }}>Включает</th>
+                  <tr className="border-b border-border bg-muted/50">
+                    <th className="text-left px-6 py-4 text-sm font-bold text-foreground font-heading">Услуга</th>
+                    <th className="text-left px-6 py-4 text-sm font-bold text-foreground font-heading">Стоимость</th>
+                    <th className="text-left px-6 py-4 text-sm font-bold text-foreground hidden sm:table-cell font-heading">Включает</th>
                   </tr>
                 </thead>
                 <tbody>
                   {pricingRows.map((row, i) => (
-                    <tr key={i} className={`border-b border-border last:border-0 ${i % 2 === 0 ? "" : "bg-secondary/20"}`}>
+                    <tr key={i} className={`border-b border-border last:border-0 ${i % 2 === 0 ? "" : "bg-muted/30"}`}>
                       <td className="px-6 py-4 text-sm font-medium text-foreground">{row.service}</td>
                       <td className="px-6 py-4 text-sm font-bold text-primary whitespace-nowrap">{row.price}</td>
                       <td className="px-6 py-4 text-xs text-muted-foreground hidden sm:table-cell">{row.note}</td>
@@ -563,14 +563,14 @@ export function HammamPageTemplate({ service }: Props) {
           <div className="container mx-auto max-w-6xl">
             <div className="text-center mb-10">
               <div className="section-badge mb-5 mx-auto">Ценообразование</div>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-foreground" style={{ fontFamily: "Montserrat, sans-serif" }}>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-foreground">
                 От чего зависит <span className="text-primary">стоимость хаммама</span>
               </h2>
             </div>
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
               {costFactors.map((f, i) => (
                 <div key={i} className="bg-white rounded-2xl p-5 border border-border shadow-sm flex flex-col items-center text-center gap-3">
-                  <span className="w-11 h-11 rounded-xl flex items-center justify-center" style={{ background: "hsl(145 63% 32% / 0.1)" }}>
+                  <span className="w-11 h-11 rounded-xl flex items-center justify-center bg-primary/10">
                     <Icon name={f.icon} className="w-5 h-5 text-primary" fallback="Info" />
                   </span>
                   <span className="text-sm font-medium text-foreground leading-tight">{f.text}</span>
@@ -585,18 +585,18 @@ export function HammamPageTemplate({ service }: Props) {
           <div className="container mx-auto max-w-6xl">
             <div className="text-center mb-10">
               <div className="section-badge mb-5 mx-auto">Как мы работаем</div>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-foreground" style={{ fontFamily: "Montserrat, sans-serif" }}>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-foreground">
                 13 этапов от <span className="text-primary">заявки до сдачи</span>
               </h2>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {buildSteps.map((s, i) => (
                 <div key={i} className="flex items-start gap-4 bg-white rounded-2xl p-5 border border-border shadow-sm">
-                  <span className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 font-black text-sm text-white" style={{ background: "linear-gradient(135deg, hsl(145 63% 36%), hsl(145 70% 26%))", fontFamily: "Montserrat, sans-serif" }}>
+                  <span className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 font-black text-sm text-white bg-gradient-to-br from-green-600 to-green-800 font-heading">
                     {s.n}
                   </span>
                   <div>
-                    <p className="font-bold text-foreground text-sm mb-0.5" style={{ fontFamily: "Montserrat, sans-serif" }}>{s.title}</p>
+                    <p className="font-bold text-foreground text-sm mb-0.5 font-heading">{s.title}</p>
                     <p className="text-muted-foreground text-xs leading-relaxed">{s.desc}</p>
                   </div>
                 </div>
@@ -610,7 +610,7 @@ export function HammamPageTemplate({ service }: Props) {
           <div className="container mx-auto max-w-7xl">
             <div className="text-center mb-10">
               <div className="section-badge mb-5 mx-auto">Наши работы</div>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-foreground" style={{ fontFamily: "Montserrat, sans-serif" }}>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-foreground">
                 Реальные <span className="text-primary">кейсы хаммамов</span>
               </h2>
               <p className="text-muted-foreground mt-4 text-base max-w-xl mx-auto">

@@ -232,10 +232,7 @@ export function EquipmentBrandsSection({ slug }: Props) {
         {/* Заголовок */}
         <div className="text-center mb-9 sm:mb-10">
           <div className="section-badge mb-5 mx-auto">Оборудование и сервис</div>
-          <h2
-            className="text-3xl sm:text-4xl lg:text-5xl font-black text-foreground mb-4"
-            style={{ fontFamily: "Montserrat, sans-serif" }}
-          >
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-foreground mb-4">
             {title}
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto text-base sm:text-lg leading-relaxed">
@@ -248,8 +245,7 @@ export function EquipmentBrandsSection({ slug }: Props) {
           {brands.map((brand) => (
             <span
               key={brand}
-              className="px-4 sm:px-5 py-2 rounded-full bg-white border border-border shadow-sm text-sm sm:text-base font-bold text-foreground/70"
-              style={{ fontFamily: "Montserrat, sans-serif" }}
+              className="px-4 sm:px-5 py-2 rounded-full bg-white border border-border shadow-sm text-sm sm:text-base font-bold text-foreground/70 font-heading hover:border-primary/40 hover:text-foreground transition-colors"
             >
               {brand}
             </span>
@@ -275,10 +271,7 @@ export function EquipmentBrandsSection({ slug }: Props) {
                 </span>
               </div>
               <div className="p-6 flex flex-col flex-1">
-                <h3
-                  className="font-bold text-xl text-foreground mb-3"
-                  style={{ fontFamily: "Montserrat, sans-serif" }}
-                >
+                <h3 className="font-bold text-xl text-foreground mb-3">
                   {card.title}
                 </h3>
                 <p className="text-base text-muted-foreground leading-relaxed">{card.text}</p>
@@ -288,10 +281,7 @@ export function EquipmentBrandsSection({ slug }: Props) {
         </div>
 
         {/* ── Нижний баннер — переработанный ── */}
-        <div
-          className="mt-8 relative rounded-3xl overflow-hidden shadow-2xl text-white"
-          style={{ background: "linear-gradient(135deg, hsl(145 63% 30%), hsl(150 70% 18%))" }}
-        >
+        <div className="mt-8 relative rounded-3xl overflow-hidden shadow-2xl text-white bg-gradient-to-br from-green-700 to-green-900">
           {/* Декоративные элементы фона */}
           <div className="absolute -top-16 -right-10 w-64 h-64 rounded-full bg-white/5 pointer-events-none" />
           <div className="absolute -bottom-24 -left-12 w-72 h-72 rounded-full bg-white/5 pointer-events-none" />
@@ -304,7 +294,6 @@ export function EquipmentBrandsSection({ slug }: Props) {
               <div>
                 <p
                   className="text-2xl sm:text-3xl lg:text-4xl font-black leading-tight mb-3"
-                  style={{ fontFamily: "Montserrat, sans-serif" }}
                 >
                   Нашли дешевле?
                   <br />
@@ -318,10 +307,7 @@ export function EquipmentBrandsSection({ slug }: Props) {
 
               <div className="flex flex-wrap gap-3">
                 <LeadDialog source="Секция «Бренды» — нашли дешевле" title="Узнать цену" submitText="Узнать цену">
-                  <button
-                    className="inline-flex items-center gap-2 bg-white text-primary font-bold px-6 py-3.5 rounded-xl hover:bg-white/90 transition-colors shadow-lg text-sm"
-                    style={{ fontFamily: "Montserrat, sans-serif" }}
-                  >
+                  <button className="inline-flex items-center gap-2 bg-white text-primary font-bold px-6 py-3.5 rounded-xl hover:bg-white/90 transition-colors shadow-lg text-sm font-heading">
                     <Icon name="BadgePercent" className="w-4 h-4" fallback="Tag" />
                     Узнать цену
                   </button>
@@ -338,13 +324,9 @@ export function EquipmentBrandsSection({ slug }: Props) {
               {bannerStats.map((stat) => (
                 <div
                   key={stat.value}
-                  className="flex items-center gap-4 rounded-2xl px-5 py-4"
-                  style={{ background: "hsl(0 0% 100% / 0.08)", border: "1px solid hsl(0 0% 100% / 0.12)" }}
+                  className="flex items-center gap-4 rounded-2xl px-5 py-4 bg-white/[0.08] border border-white/[0.12]"
                 >
-                  <div
-                    className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
-                    style={{ background: "hsl(0 0% 100% / 0.12)" }}
-                  >
+                  <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 bg-white/[0.12]">
                     <Icon
                       name={
                         stat.value === "10+ лет"
@@ -358,10 +340,7 @@ export function EquipmentBrandsSection({ slug }: Props) {
                     />
                   </div>
                   <div className="min-w-0">
-                    <p
-                      className="text-lg font-black text-white leading-none"
-                      style={{ fontFamily: "Montserrat, sans-serif" }}
-                    >
+                    <p className="text-lg font-black text-white leading-none font-heading">
                       {stat.value}
                     </p>
                     <p className="text-xs text-white/60 mt-0.5 leading-snug">{stat.label}</p>

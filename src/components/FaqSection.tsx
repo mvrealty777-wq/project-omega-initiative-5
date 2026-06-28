@@ -66,10 +66,7 @@ export function FaqSection({ items }: Props = {}) {
           {/* Left — heading + graphic CTA */}
           <div className="lg:sticky lg:top-24">
             <div className="section-badge mb-5">Вопросы и ответы</div>
-            <h2
-              className="text-3xl sm:text-4xl lg:text-5xl font-black text-foreground mb-4 leading-tight"
-              style={{ fontFamily: 'Montserrat, sans-serif' }}
-            >
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-foreground mb-4 leading-tight">
               Частые <span className="text-primary">вопросы</span>
             </h2>
             <p className="text-muted-foreground text-base mb-6">
@@ -77,21 +74,22 @@ export function FaqSection({ items }: Props = {}) {
             </p>
 
             {/* Графика — карточка с иконкой и CTA */}
-            <div className="relative rounded-2xl p-6 text-white overflow-hidden shadow-xl"
-              style={{ background: 'linear-gradient(135deg, hsl(145 63% 30%), hsl(150 70% 18%))' }}>
+            <div className="relative rounded-2xl p-6 text-white overflow-hidden shadow-xl bg-gradient-to-br from-green-700 to-green-900">
               <Icon name="MessageCircleQuestion" className="absolute -right-4 -bottom-4 w-28 h-28 text-white/10" fallback="HelpCircle" />
               <div className="relative">
                 <span className="w-12 h-12 rounded-xl bg-white/15 flex items-center justify-center mb-4">
                   <Icon name="Headset" className="w-6 h-6 text-white" fallback="Phone" />
                 </span>
-                <p className="font-black text-lg mb-1" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                <p className="font-black text-lg mb-1">
                   Не нашли ответ?
                 </p>
                 <p className="text-white/80 text-sm mb-4">
                   Позвоните — бесплатно ответим на любой вопрос и рассчитаем смету.
                 </p>
-                <a href="tel:88003026753" className="inline-flex items-center gap-2 bg-white text-primary font-bold px-5 py-2.5 rounded-xl hover:bg-white/90 transition-colors text-sm"
-                  style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                <a
+                  href="tel:88003026753"
+                  className="inline-flex items-center gap-2 bg-white text-primary font-bold px-5 py-2.5 rounded-xl hover:bg-white/90 transition-colors text-sm"
+                >
                   <Icon name="Phone" className="w-4 h-4" />
                   8 800 302-67-53
                 </a>
@@ -105,16 +103,12 @@ export function FaqSection({ items }: Props = {}) {
               <AccordionItem
                 key={index}
                 value={`item-${index}`}
-                className="bg-white rounded-xl border border-border px-4 sm:px-5 shadow-sm data-[state=open]:border-primary/40 data-[state=open]:shadow-md transition-all"
+                className="bg-white rounded-xl border border-border px-4 sm:px-5 shadow-sm data-[state=open]:border-primary/40 data-[state=open]:shadow-md data-[state=open]:bg-primary/[0.02] transition-all"
               >
-                <AccordionTrigger
-                  className="text-left font-bold text-sm sm:text-base text-foreground hover:no-underline py-4 gap-3"
-                  style={{ fontFamily: 'Montserrat, sans-serif' }}
-                >
+                <AccordionTrigger className="text-left font-bold text-sm sm:text-base text-foreground hover:no-underline py-4 gap-3 cursor-pointer">
                   <span className="flex items-center gap-3">
-                    <span className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0"
-                      style={{ background: 'hsl(145 63% 32% / 0.1)' }}>
-                      <Icon name={faq.icon} className="w-4.5 h-4.5 text-primary" fallback="HelpCircle" />
+                    <span className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 bg-primary/10">
+                      <Icon name={faq.icon} className="w-5 h-5 text-primary" fallback="HelpCircle" />
                     </span>
                     {faq.q}
                   </span>

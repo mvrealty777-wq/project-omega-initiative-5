@@ -49,7 +49,7 @@ export function ServiceHero({ service, titleOverride, subtitleOverride, parentCr
       {/* Background image */}
       <div className="absolute inset-0">
         <img src={service.image} alt={service.heroTitle} className="w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/65 to-black/40" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/70 to-black/30" />
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-16 lg:py-24">
@@ -66,18 +66,14 @@ export function ServiceHero({ service, titleOverride, subtitleOverride, parentCr
           <span className="text-white/90">{titleOverride ?? service.menuLabel}</span>
         </nav>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           {/* Left — headline */}
           <div className="text-white">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold text-green-400 mb-5"
-              style={{ background: 'rgba(74,222,128,0.12)' }}>
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold text-green-400 mb-5 bg-green-400/10 border border-green-400/20">
               <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
               Под ключ по всей России
             </div>
-            <h1
-              className="text-4xl sm:text-5xl lg:text-6xl font-black leading-tight mb-5 animate-fade-in-up"
-              style={{ fontFamily: 'Montserrat, sans-serif' }}
-            >
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black leading-tight mb-5 animate-fade-in-up">
               {titleOverride ?? service.heroTitle}
             </h1>
 
@@ -91,10 +87,10 @@ export function ServiceHero({ service, titleOverride, subtitleOverride, parentCr
                 { number: "10+", label: "лет опыта" },
                 { number: "5 лет", label: "гарантия" },
               ].map((item) => (
-                <div key={item.label} className="relative rounded-xl bg-white/10 backdrop-blur-sm border border-white/15 px-2 py-3.5 sm:py-4 text-center overflow-hidden">
+                <div key={item.label} className="relative rounded-xl bg-white/10 backdrop-blur-sm border border-white/15 px-3 py-4 sm:py-5 text-center overflow-hidden">
                   <Venok className="absolute inset-0 w-full h-full text-green-400/25 px-1.5 py-1.5" />
                   <div className="relative">
-                    <div className="text-xl sm:text-3xl font-black text-green-400" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                    <div className="text-xl sm:text-3xl font-black text-green-400 font-heading">
                       {item.number}
                     </div>
                     <div className="text-[10px] sm:text-xs text-white/75 mt-0.5 leading-tight">{item.label}</div>
@@ -105,7 +101,7 @@ export function ServiceHero({ service, titleOverride, subtitleOverride, parentCr
           </div>
 
           {/* Right — form card */}
-          <div className="lg:justify-self-end w-full max-w-md animate-fade-in-up animate-delay-200">
+          <div className="lg:justify-self-end w-full max-w-md lg:max-w-sm animate-fade-in-up animate-delay-200">
             <div className="bg-white rounded-2xl shadow-2xl p-7">
               {sent ? (
                 <div className="text-center py-10">
@@ -113,7 +109,7 @@ export function ServiceHero({ service, titleOverride, subtitleOverride, parentCr
                     style={{ background: 'hsl(145 63% 32% / 0.12)' }}>
                     <CheckCircle className="w-8 h-8 text-primary" />
                   </div>
-                  <h3 className="text-xl font-bold text-foreground mb-2" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                  <h3 className="text-xl font-bold text-foreground mb-2">
                     Заявка принята!
                   </h3>
                   <p className="text-muted-foreground text-sm">
@@ -122,7 +118,7 @@ export function ServiceHero({ service, titleOverride, subtitleOverride, parentCr
                 </div>
               ) : (
                 <>
-                  <h2 className="text-2xl font-black text-foreground mb-1" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                  <h2 className="text-2xl font-black text-foreground mb-1">
                     Хотите быстро<br />просчитать проект?
                   </h2>
                   <p className="text-sm text-muted-foreground mb-5">
@@ -148,14 +144,14 @@ export function ServiceHero({ service, titleOverride, subtitleOverride, parentCr
 
                   <form onSubmit={handleSubmit} className="space-y-3">
                     <div>
-                      <label htmlFor="svc-hero-name" className="text-sm font-medium text-foreground">Имя</label>
+                      <label htmlFor="svc-hero-name" className="block text-sm font-medium text-foreground mb-1">Имя</label>
                       <Input id="svc-hero-name" name="name" value={formData.name} onChange={handleChange}
-                        placeholder="Ваше имя" className="h-11 rounded-xl border-border mt-1" />
+                        placeholder="Ваше имя" className="h-11 rounded-xl border-border" />
                     </div>
                     <div>
-                      <label htmlFor="svc-hero-phone" className="text-sm font-medium text-foreground">Телефон *</label>
+                      <label htmlFor="svc-hero-phone" className="block text-sm font-medium text-foreground mb-1">Телефон *</label>
                       <Input id="svc-hero-phone" name="phone" type="tel" required value={formData.phone} onChange={handleChange}
-                        placeholder="+7 900 123-45-67" className="h-11 rounded-xl border-border mt-1" />
+                        placeholder="+7 900 123-45-67" className="h-11 rounded-xl border-border" />
                     </div>
                     <button type="submit" className="btn-green w-full justify-center text-sm">
                       <Send className="w-4 h-4" />
@@ -171,7 +167,7 @@ export function ServiceHero({ service, titleOverride, subtitleOverride, parentCr
                         Хотите точнее? Ответьте на несколько вопросов
                       </p>
                       <QuizDialog quiz={quiz}>
-                        <button className="btn-green-outline w-full justify-center text-sm">
+                        <button className="btn-green-outline w-full justify-center text-sm hover:bg-primary/5 transition-colors">
                           <Icon name="ClipboardList" className="w-4 h-4" fallback="List" />
                           Ответить на вопросы — получить расчёт
                         </button>

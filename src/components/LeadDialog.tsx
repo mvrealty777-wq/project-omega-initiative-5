@@ -75,11 +75,15 @@ export function LeadDialog({ children, source, title, description, submitText }:
         {/* Успех */}
         {sent ? (
           <div className="text-center py-12 px-8">
+            <DialogHeader className="sr-only">
+              <DialogTitle>Заявка принята</DialogTitle>
+              <DialogDescription>Ваша заявка успешно отправлена. Мы свяжемся с вами в ближайшее время.</DialogDescription>
+            </DialogHeader>
             <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"
               style={{ background: "hsl(145 63% 32% / 0.12)" }}>
               <CheckCircle className="w-8 h-8 text-primary" />
             </div>
-            <h3 className="text-xl font-black text-foreground mb-2" style={{ fontFamily: "Montserrat, sans-serif" }}>
+            <h3 className="text-xl font-black text-foreground mb-2">
               Заявка принята!
             </h3>
             <p className="text-muted-foreground text-sm">
@@ -99,7 +103,11 @@ export function LeadDialog({ children, source, title, description, submitText }:
           /* Шаг 1 — выбор типа объекта */
           <div>
             <div className="px-6 pt-6 pb-4 border-b border-border">
-              <h2 className="text-lg font-black text-foreground" style={{ fontFamily: "Montserrat, sans-serif" }}>
+              <DialogHeader className="sr-only">
+                <DialogTitle>{title ?? "Получить расчёт"}</DialogTitle>
+                <DialogDescription>Выберите тип объекта, который вы хотите построить.</DialogDescription>
+              </DialogHeader>
+              <h2 className="text-lg font-black text-foreground">
                 {title ?? "Получить расчёт"}
               </h2>
               <p className="text-sm text-muted-foreground mt-1">
@@ -144,7 +152,7 @@ export function LeadDialog({ children, source, title, description, submitText }:
                 Изменить выбор
               </button>
               <DialogHeader>
-                <DialogTitle style={{ fontFamily: "Montserrat, sans-serif" }}>
+                <DialogTitle>
                   {selectedType ? (
                     <span className="flex items-center gap-2">
                       <span

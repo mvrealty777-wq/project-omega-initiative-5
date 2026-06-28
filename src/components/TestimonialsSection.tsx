@@ -59,10 +59,7 @@ export function TestimonialsSection({ title, subtitle, items }: Props = {}) {
       <div className="container mx-auto max-w-7xl">
         <div className="text-center mb-9 sm:mb-10">
           <div className="section-badge mb-5 mx-auto">Отзывы</div>
-          <h2
-            className="text-3xl sm:text-4xl lg:text-5xl font-black text-foreground text-balance mb-4"
-            style={{ fontFamily: 'Montserrat, sans-serif' }}
-          >
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-foreground text-balance mb-4">
             {title ?? (<>Что говорят <span className="text-primary">наши клиенты</span></>)}
           </h2>
           <p className="text-muted-foreground max-w-xl mx-auto text-base">
@@ -70,11 +67,11 @@ export function TestimonialsSection({ title, subtitle, items }: Props = {}) {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-start">
           {testimonials.map((t, index) => (
             <div
               key={index}
-              className="relative bg-white rounded-2xl p-7 border border-border shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 flex flex-col"
+              className="relative bg-white rounded-2xl p-7 border border-border shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 cursor-default flex flex-col"
             >
               <Quote className="absolute top-6 right-6 w-10 h-10 text-primary/10 fill-current" />
 
@@ -90,14 +87,11 @@ export function TestimonialsSection({ title, subtitle, items }: Props = {}) {
               </p>
 
               <div className="flex items-center gap-3 pt-4 border-t border-border">
-                <div
-                  className="w-11 h-11 rounded-full flex items-center justify-center text-white text-sm font-bold flex-shrink-0"
-                  style={{ background: 'linear-gradient(135deg, hsl(145 63% 36%), hsl(145 70% 26%))' }}
-                >
+                <div className="w-11 h-11 rounded-full flex items-center justify-center text-white text-sm font-bold flex-shrink-0 bg-gradient-to-br from-green-600 to-green-800">
                   {t.avatar}
                 </div>
                 <div>
-                  <p className="font-bold text-base text-foreground" style={{ fontFamily: 'Montserrat, sans-serif' }}>{t.name}</p>
+                  <p className="font-bold text-base text-foreground">{t.name}</p>
                   <p className="text-sm text-muted-foreground">{t.role}</p>
                 </div>
               </div>
@@ -113,12 +107,14 @@ export function TestimonialsSection({ title, subtitle, items }: Props = {}) {
             rel="noopener noreferrer"
             className="group inline-flex items-center gap-4 bg-white rounded-2xl border border-border shadow-sm hover:shadow-lg hover:border-primary/30 transition-all duration-300 px-6 py-4"
           >
-            <span className="w-12 h-12 rounded-xl flex items-center justify-center text-white text-2xl font-black flex-shrink-0"
-              style={{ fontFamily: 'Montserrat, sans-serif', background: 'linear-gradient(135deg, #FF4433, #CC0000)' }}>
+            <span
+              className="w-12 h-12 rounded-xl flex items-center justify-center text-white text-2xl font-black flex-shrink-0"
+              style={{ background: 'linear-gradient(135deg, #FF4433, #CC0000)' }}
+            >
               Я
             </span>
             <span className="text-left">
-              <span className="flex items-center gap-2 font-bold text-base text-foreground" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+              <span className="flex items-center gap-2 font-bold text-base text-foreground">
                 Все отзывы на Яндекс&nbsp;Бизнес
                 <ExternalLink className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
               </span>

@@ -55,8 +55,7 @@ function VideoCard({ video, onClick }: { video: Video; onClick: () => void }) {
       onClick={onClick}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      className="group relative rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 text-left w-full bg-stone-900"
-      style={{ aspectRatio: "3/4" }}
+      className="group relative rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 text-left w-full bg-stone-900 aspect-[3/4]"
       aria-label={video.title}
     >
       {!hovered && (
@@ -72,12 +71,12 @@ function VideoCard({ video, onClick }: { video: Video; onClick: () => void }) {
       />
       <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/15 to-transparent group-hover:from-black/70 transition-all duration-300" />
       <div className="absolute inset-0 flex items-center justify-center">
-        <span className="w-11 h-11 rounded-full bg-white/90 flex items-center justify-center shadow-xl group-hover:scale-110 group-hover:bg-primary transition-all duration-300">
+        <span className="w-11 h-11 rounded-full bg-white/90 flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:bg-primary transition-all duration-300">
           <Play className="w-5 h-5 text-primary group-hover:text-white fill-current ml-0.5 transition-colors" />
         </span>
       </div>
       <div className="absolute bottom-0 left-0 right-0 p-3">
-        <p className="text-white font-bold text-sm leading-tight mb-0.5" style={{ fontFamily: "Montserrat, sans-serif" }}>
+        <p className="text-white font-bold text-sm leading-tight mb-0.5 font-heading">
           {video.title}
         </p>
         <p className="text-white/60 text-[11px]">{video.sub}</p>
@@ -95,10 +94,7 @@ export function VideoWorksSection() {
         <div className="container mx-auto max-w-7xl">
           <div className="text-center mb-9 sm:mb-10">
             <div className="section-badge mb-5 mx-auto">Видео-обзоры</div>
-            <h2
-              className="text-3xl sm:text-4xl lg:text-5xl font-black text-foreground mb-4"
-              style={{ fontFamily: "Montserrat, sans-serif" }}
-            >
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-foreground mb-4">
               Наши <span className="text-primary">работы в видео</span>
             </h2>
             <p className="text-muted-foreground text-base">
@@ -106,7 +102,7 @@ export function VideoWorksSection() {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-4 sm:gap-5">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-5">
             {videos.map((video, i) => (
               <VideoCard key={i} video={video} onClick={() => setActive(video)} />
             ))}
@@ -133,7 +129,7 @@ export function VideoWorksSection() {
             />
             <button
               onClick={() => setActive(null)}
-              className="absolute top-3 right-3 w-9 h-9 rounded-full bg-black/60 hover:bg-black/80 text-white flex items-center justify-center transition-colors"
+              className="absolute top-3 right-3 w-9 h-9 rounded-full bg-black/60 backdrop-blur-sm hover:bg-black/80 text-white flex items-center justify-center transition-colors"
             >
               <X className="w-5 h-5" />
             </button>
