@@ -1,7 +1,12 @@
 import Icon from "@/components/ui/icon"
 import { LeadDialog } from "@/components/LeadDialog"
 
-const cards = [
+interface Props {
+  slug?: string
+}
+
+// ── Base cards (default / sauna context) ──────────────────────────────────────
+const defaultCards = [
   {
     image: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/033178db-5e79-4aec-b186-7d77bb86a892.jpg",
     icon: "Hammer",
@@ -40,23 +45,201 @@ const cards = [
   },
 ]
 
+// ── Hammam-specific card overrides (slots 0, 1, 4 replaced) ──────────────────
+const hammamCards = [
+  {
+    image: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/033178db-5e79-4aec-b186-7d77bb86a892.jpg",
+    icon: "CloudFog",
+    title: "Парогенераторы HygroMatik / TYLÖ",
+    text: "Профессиональные парогенераторы с системой ароматерапии и автоматикой климата. Официальные поставки без наценок.",
+  },
+  {
+    image: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/e81a9bb5-78db-4658-9428-b84d20ab1011.jpg",
+    icon: "Gem",
+    title: "Мрамор и мозаика Bisazza",
+    text: "Натуральный мрамор и мозаика Bisazza ручной выкладки. Поставляем напрямую с заводов — по заводским ценам.",
+  },
+  {
+    image: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/09c8d356-2430-44e5-8306-455f9975a670.jpg",
+    icon: "ShieldCheck",
+    title: "Гарантия 5 лет",
+    text: "Предоставляем полную гарантию на все виды работ, материалы и оборудование. Гарантийное и постгарантийное обслуживание.",
+  },
+  {
+    image: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/56eeb1e9-8225-495f-9198-98a6b444bb21.jpg",
+    icon: "MapPin",
+    title: "Бесплатный выезд замерщика",
+    text: "Специалист приедет к вам бесплатно по всей России, сделает точные замеры и оценит технические условия.",
+  },
+  {
+    image: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/1a3ddb93-6269-4317-9e18-b58d210c901e.jpg",
+    icon: "Lightbulb",
+    title: "Подсветка и климат-контроль",
+    text: "Системы «Звёздное небо», RGB-подсветка, умное управление микроклиматом. Полная интеграция под ключ.",
+  },
+  {
+    image: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/d596455c-d3b0-42da-8561-a00382738d8f.jpg",
+    icon: "Wrench",
+    title: "Сервисный центр",
+    text: "Собственный сервисный центр для обслуживания и ремонта. Быстрое реагирование на любые запросы клиентов.",
+  },
+]
+
+// ── Sauna-specific card overrides ─────────────────────────────────────────────
+const saunaCards = [
+  {
+    image: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/033178db-5e79-4aec-b186-7d77bb86a892.jpg",
+    icon: "Flame",
+    title: "Печи Harvia / EOS / SAWO",
+    text: "Официальный партнёр ведущих производителей печей. Дровяные, электрические, газовые — любой мощности и форматов.",
+  },
+  {
+    image: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/e81a9bb5-78db-4658-9428-b84d20ab1011.jpg",
+    icon: "TreePine",
+    title: "Вагонка и натуральное дерево",
+    text: "Абаш, липа, кедр, осина — поставляем сертифицированные пиломатериалы напрямую с деревообрабатывающих предприятий.",
+  },
+  {
+    image: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/09c8d356-2430-44e5-8306-455f9975a670.jpg",
+    icon: "ShieldCheck",
+    title: "Гарантия 5 лет",
+    text: "Предоставляем полную гарантию на все виды работ, материалы и оборудование. Гарантийное и постгарантийное обслуживание.",
+  },
+  {
+    image: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/56eeb1e9-8225-495f-9198-98a6b444bb21.jpg",
+    icon: "MapPin",
+    title: "Бесплатный выезд замерщика",
+    text: "Специалист приедет к вам бесплатно по всей России, сделает точные замеры и оценит технические условия.",
+  },
+  {
+    image: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/1a3ddb93-6269-4317-9e18-b58d210c901e.jpg",
+    icon: "Gem",
+    title: "Камни и банные аксессуары",
+    text: "Жадеит, талькохлорит, габбро-диабаз и полный комплект банных аксессуаров от ведущих поставщиков.",
+  },
+  {
+    image: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/d596455c-d3b0-42da-8561-a00382738d8f.jpg",
+    icon: "Wrench",
+    title: "Сервисный центр",
+    text: "Собственный сервисный центр для обслуживания и ремонта. Быстрое реагирование на любые запросы клиентов.",
+  },
+]
+
+// ── Pool-specific card overrides ──────────────────────────────────────────────
+const poolCards = [
+  {
+    image: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/033178db-5e79-4aec-b186-7d77bb86a892.jpg",
+    icon: "Filter",
+    title: "Фильтрация Astral / Hayward",
+    text: "Профессиональные системы водоподготовки и фильтрации. Официальные поставки напрямую от производителей.",
+  },
+  {
+    image: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/e81a9bb5-78db-4658-9428-b84d20ab1011.jpg",
+    icon: "Thermometer",
+    title: "Системы подогрева воды",
+    text: "Тепловые насосы, электрические и газовые нагреватели ведущих брендов. Экономичный и стабильный нагрев.",
+  },
+  {
+    image: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/09c8d356-2430-44e5-8306-455f9975a670.jpg",
+    icon: "ShieldCheck",
+    title: "Гарантия 5 лет",
+    text: "Предоставляем полную гарантию на все виды работ, материалы и оборудование. Гарантийное и постгарантийное обслуживание.",
+  },
+  {
+    image: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/56eeb1e9-8225-495f-9198-98a6b444bb21.jpg",
+    icon: "MapPin",
+    title: "Бесплатный выезд замерщика",
+    text: "Специалист приедет к вам бесплатно по всей России, сделает точные замеры и оценит технические условия.",
+  },
+  {
+    image: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/1a3ddb93-6269-4317-9e18-b58d210c901e.jpg",
+    icon: "Lightbulb",
+    title: "Подводная подсветка",
+    text: "Профессиональные LED-системы подводного освещения. Контроллеры, RGB-режимы, управление со смартфона.",
+  },
+  {
+    image: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/d596455c-d3b0-42da-8561-a00382738d8f.jpg",
+    icon: "Wrench",
+    title: "Сервисный центр",
+    text: "Собственный сервисный центр для обслуживания и ремонта. Быстрое реагирование на любые запросы клиентов.",
+  },
+]
+
 const brands = ["Harvia", "TYLÖ", "EOS", "Jacuzzi", "ASTRAL", "SAWO", "HygroMatik"]
 
-export function EquipmentBrandsSection() {
+const bannerStats = [
+  { value: "10+ лет", label: "Прямые контракты с заводами" },
+  { value: "0 наценок", label: "Заводская цена без посредников" },
+  { value: "Официальная гарантия", label: "На всё оборудование" },
+]
+
+function getContent(slug?: string): { title: JSX.Element; subtitle: string; cards: typeof defaultCards } {
+  switch (slug) {
+    case "hammam":
+      return {
+        title: (
+          <>
+            Оборудование для хаммама —{" "}
+            <span className="text-primary">лучшая цена</span>
+          </>
+        ),
+        subtitle: "Прямые поставки парогенераторов, мрамора и отделочных материалов — без посредников и переплат.",
+        cards: hammamCards,
+      }
+    case "sauna":
+      return {
+        title: (
+          <>
+            Оборудование для сауны —{" "}
+            <span className="text-primary">лучшая цена</span>
+          </>
+        ),
+        subtitle: "Печи, вагонка, камни и аксессуары напрямую от производителей. Более 10 лет прямых контрактов.",
+        cards: saunaCards,
+      }
+    case "pool":
+      return {
+        title: (
+          <>
+            Оборудование для бассейна —{" "}
+            <span className="text-primary">лучшая цена</span>
+          </>
+        ),
+        subtitle: "Фильтрация, подогрев, подсветка и автоматика — официальные поставки без переплат.",
+        cards: poolCards,
+      }
+    default:
+      return {
+        title: (
+          <>
+            Гарантируем лучшую цену{" "}
+            <br className="hidden sm:block" />
+            <span className="text-primary">на оборудование</span>
+          </>
+        ),
+        subtitle: "Уже более 10 лет мы работаем напрямую с ведущими брендами — без посредников и наценок.",
+        cards: defaultCards,
+      }
+  }
+}
+
+export function EquipmentBrandsSection({ slug }: Props) {
+  const { title, subtitle, cards } = getContent(slug)
+
   return (
     <section className="py-10 sm:py-12 lg:py-14 px-4 sm:px-6 lg:px-8 section-glass-tint">
       <div className="container mx-auto max-w-7xl">
+        {/* Заголовок */}
         <div className="text-center mb-9 sm:mb-10">
           <div className="section-badge mb-5 mx-auto">Оборудование и сервис</div>
           <h2
             className="text-3xl sm:text-4xl lg:text-5xl font-black text-foreground mb-4"
-            style={{ fontFamily: 'Montserrat, sans-serif' }}
+            style={{ fontFamily: "Montserrat, sans-serif" }}
           >
-            Гарантируем лучшую цену <br className="hidden sm:block" />
-            <span className="text-primary">на оборудование</span>
+            {title}
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto text-base sm:text-lg leading-relaxed">
-            Уже более 10 лет мы работаем напрямую с ведущими брендами — без посредников и наценок.
+            {subtitle}
           </p>
         </div>
 
@@ -66,13 +249,14 @@ export function EquipmentBrandsSection() {
             <span
               key={brand}
               className="px-4 sm:px-5 py-2 rounded-full bg-white border border-border shadow-sm text-sm sm:text-base font-bold text-foreground/70"
-              style={{ fontFamily: 'Montserrat, sans-serif' }}
+              style={{ fontFamily: "Montserrat, sans-serif" }}
             >
               {brand}
             </span>
           ))}
         </div>
 
+        {/* Карточки */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 lg:gap-7">
           {cards.map((card, index) => (
             <div
@@ -91,7 +275,10 @@ export function EquipmentBrandsSection() {
                 </span>
               </div>
               <div className="p-6 flex flex-col flex-1">
-                <h3 className="font-bold text-xl text-foreground mb-3" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                <h3
+                  className="font-bold text-xl text-foreground mb-3"
+                  style={{ fontFamily: "Montserrat, sans-serif" }}
+                >
                   {card.title}
                 </h3>
                 <p className="text-base text-muted-foreground leading-relaxed">{card.text}</p>
@@ -100,51 +287,88 @@ export function EquipmentBrandsSection() {
           ))}
         </div>
 
-        {/* Bottom guarantee banner */}
-        <div className="mt-8 relative rounded-3xl p-7 sm:p-10 overflow-hidden text-white shadow-2xl"
-          style={{ background: 'linear-gradient(135deg, hsl(145 63% 30%), hsl(150 70% 18%))' }}>
-          {/* Декоративные круги */}
-          <div className="absolute -top-16 -right-10 w-64 h-64 rounded-full bg-white/5" />
-          <div className="absolute -bottom-24 -left-12 w-72 h-72 rounded-full bg-white/5" />
-          <div className="absolute top-6 right-8 w-24 h-24 rounded-full border border-white/10" />
+        {/* ── Нижний баннер — переработанный ── */}
+        <div
+          className="mt-8 relative rounded-3xl overflow-hidden shadow-2xl text-white"
+          style={{ background: "linear-gradient(135deg, hsl(145 63% 30%), hsl(150 70% 18%))" }}
+        >
+          {/* Декоративные элементы фона */}
+          <div className="absolute -top-16 -right-10 w-64 h-64 rounded-full bg-white/5 pointer-events-none" />
+          <div className="absolute -bottom-24 -left-12 w-72 h-72 rounded-full bg-white/5 pointer-events-none" />
+          <div className="absolute top-6 right-40 w-20 h-20 rounded-full border border-white/10 pointer-events-none" />
+          <div className="absolute bottom-8 right-20 w-10 h-10 rounded-full border border-white/10 pointer-events-none" />
 
-          <div className="relative flex flex-col lg:flex-row items-center gap-7 lg:gap-10">
-            {/* Большой бейдж со скидкой */}
-            <div className="flex-shrink-0 relative">
-              <div className="w-28 h-28 sm:w-32 sm:h-32 rounded-full bg-white flex flex-col items-center justify-center shadow-xl">
-                <Icon name="BadgePercent" className="w-8 h-8 text-primary mb-0.5" fallback="Tag" />
-                <span className="text-primary font-black text-sm leading-none" style={{ fontFamily: 'Montserrat, sans-serif' }}>ЛУЧШАЯ</span>
-                <span className="text-primary font-black text-sm leading-none" style={{ fontFamily: 'Montserrat, sans-serif' }}>ЦЕНА</span>
+          <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-0 divide-y lg:divide-y-0 lg:divide-x divide-white/10">
+            {/* Левая часть — текст + кнопка */}
+            <div className="p-7 sm:p-10 flex flex-col justify-center gap-5">
+              <div>
+                <p
+                  className="text-2xl sm:text-3xl lg:text-4xl font-black leading-tight mb-3"
+                  style={{ fontFamily: "Montserrat, sans-serif" }}
+                >
+                  Нашли дешевле?
+                  <br />
+                  <span className="text-green-300">Скажите нам</span> — снизим цену
+                </p>
+                <p className="text-sm sm:text-base text-white/75 leading-relaxed max-w-sm">
+                  Прямые поставки от заводов-производителей по всей России. Если вы нашли дешевле —
+                  мы сделаем цену ещё выгоднее.
+                </p>
+              </div>
+
+              <div className="flex flex-wrap gap-3">
+                <LeadDialog source="Секция «Бренды» — нашли дешевле" title="Узнать цену" submitText="Узнать цену">
+                  <button
+                    className="inline-flex items-center gap-2 bg-white text-primary font-bold px-6 py-3.5 rounded-xl hover:bg-white/90 transition-colors shadow-lg text-sm"
+                    style={{ fontFamily: "Montserrat, sans-serif" }}
+                  >
+                    <Icon name="BadgePercent" className="w-4 h-4" fallback="Tag" />
+                    Узнать цену
+                  </button>
+                </LeadDialog>
+                <div className="flex items-center gap-2 text-sm text-white/70">
+                  <Icon name="Clock" className="w-4 h-4 text-green-300 flex-shrink-0" fallback="Timer" />
+                  Ответим за 15 минут
+                </div>
               </div>
             </div>
 
-            <div className="flex-1 text-center lg:text-left">
-              <p className="text-2xl sm:text-3xl lg:text-4xl font-black mb-2" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                Нашли дешевле? Сделаем ещё выгоднее
-              </p>
-              <p className="text-sm sm:text-base text-white/80 mb-5">
-                Прямые поставки от заводов-производителей по всей России
-              </p>
-              <div className="flex flex-wrap justify-center lg:justify-start gap-x-5 gap-y-2.5">
-                {[
-                  { icon: "Factory", label: "Заводские цены" },
-                  { icon: "ShieldCheck", label: "Официальная гарантия" },
-                  { icon: "Truck", label: "Доставка по РФ" },
-                ].map((f) => (
-                  <span key={f.label} className="inline-flex items-center gap-2 text-sm font-medium text-white/90">
-                    <Icon name={f.icon} className="w-4.5 h-4.5 text-green-300" fallback="Check" />
-                    {f.label}
-                  </span>
-                ))}
-              </div>
+            {/* Правая часть — 3 стат-карточки */}
+            <div className="p-7 sm:p-10 flex flex-col justify-center gap-4">
+              {bannerStats.map((stat) => (
+                <div
+                  key={stat.value}
+                  className="flex items-center gap-4 rounded-2xl px-5 py-4"
+                  style={{ background: "hsl(0 0% 100% / 0.08)", border: "1px solid hsl(0 0% 100% / 0.12)" }}
+                >
+                  <div
+                    className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
+                    style={{ background: "hsl(0 0% 100% / 0.12)" }}
+                  >
+                    <Icon
+                      name={
+                        stat.value === "10+ лет"
+                          ? "Factory"
+                          : stat.value === "0 наценок"
+                          ? "BadgePercent"
+                          : "ShieldCheck"
+                      }
+                      className="w-5 h-5 text-green-300"
+                      fallback="Check"
+                    />
+                  </div>
+                  <div className="min-w-0">
+                    <p
+                      className="text-lg font-black text-white leading-none"
+                      style={{ fontFamily: "Montserrat, sans-serif" }}
+                    >
+                      {stat.value}
+                    </p>
+                    <p className="text-xs text-white/60 mt-0.5 leading-snug">{stat.label}</p>
+                  </div>
+                </div>
+              ))}
             </div>
-
-            <LeadDialog source="Секция «Бренды»" title="Узнать цену" submitText="Узнать цену">
-              <button className="bg-white text-primary font-bold px-7 py-4 rounded-xl whitespace-nowrap hover:bg-white/90 transition-colors shadow-lg flex-shrink-0 text-base"
-                style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                Узнать цену
-              </button>
-            </LeadDialog>
           </div>
         </div>
       </div>
