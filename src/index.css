@@ -339,5 +339,5 @@
   background: hsl(var(--background));
 }
 .section-glass-tint {
-  background: hsl(var(--secondary));
+  background: hsl(220 10% 97%);
 }
