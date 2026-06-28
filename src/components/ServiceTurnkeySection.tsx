@@ -44,7 +44,7 @@ export function ServiceTurnkeySection({ service, title, image }: Props) {
           {/* Left — image graphic + numbered checklist */}
           <div>
             <div className="relative rounded-3xl overflow-hidden shadow-2xl ring-1 ring-white/10 mb-8 aspect-[16/10]">
-              <img src={heroImage} alt={`${title ?? service.cardTitle} под ключ`} className="w-full h-full object-cover" />
+              <img src={heroImage} alt={`${title ?? service.cardTitle} под ключ`} loading="lazy" className="w-full h-full object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
               <div className="absolute bottom-4 left-4 right-4 flex flex-wrap gap-2">
                 <span className="inline-flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-full text-white border border-white/20"

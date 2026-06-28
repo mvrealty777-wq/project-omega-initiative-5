@@ -83,7 +83,7 @@ export function Project3DSection() {
           <div className="p-4 sm:p-5 lg:p-6"
             style={{ background: 'linear-gradient(160deg, hsl(150 30% 96%), hsl(150 20% 92%))' }}>
             <div className="relative rounded-2xl overflow-hidden shadow-xl mb-3 aspect-[4/3] ring-1 ring-black/5">
-              <img src={gallery[active].src} alt={`3D-проект — ${gallery[active].tag}`} className="w-full h-full object-cover" />
+              <img src={gallery[active].src} alt={`3D-проект — ${gallery[active].tag}`} loading="lazy" className="w-full h-full object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
               <span className="absolute top-3 left-3 inline-flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-full text-white shadow-md"
                 style={{ background: 'hsl(145 63% 30% / 0.95)', backdropFilter: 'blur(4px)', fontFamily: 'Montserrat, sans-serif' }}>
@@ -99,7 +99,7 @@ export function Project3DSection() {
                   onClick={() => setActive(i)}
                   className={`relative rounded-xl overflow-hidden aspect-[4/3] border-2 transition-all ${active === i ? 'border-primary shadow-md scale-[1.02]' : 'border-transparent opacity-65 hover:opacity-100'}`}
                 >
-                  <img src={img.src} alt={img.tag} className="w-full h-full object-cover" />
+                  <img src={img.src} alt={img.tag} loading="lazy" className="w-full h-full object-cover" />
                   <span className="absolute bottom-0 inset-x-0 text-[10px] font-semibold text-white text-center py-0.5 bg-black/55">{img.tag}</span>
                 </button>
               ))}
