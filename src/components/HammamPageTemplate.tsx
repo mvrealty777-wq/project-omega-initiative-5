@@ -273,13 +273,10 @@ function HammamHero({ service }: { service: ServiceData }) {
               Под ключ по всей России
             </div>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black leading-tight mb-5" style={{ fontFamily: "Montserrat, sans-serif" }}>
-              ХАММАМ «ПОД КЛЮЧ»
+              Хаммам под ключ в Санкт-Петербурге и по РФ
             </h1>
-            <p className="text-base sm:text-lg font-bold text-white/90 mb-3 max-w-lg">
-              Строительство и отделка саун и бань по всей России
-            </p>
-            <p className="text-base sm:text-lg text-white/75 leading-relaxed mb-8 max-w-lg">
-              Полный комплекс услуг — от проектирования до выполнения отделочных работ и установки оборудования
+            <p className="text-lg sm:text-xl text-white/80 leading-relaxed mb-8 max-w-lg">
+              Проект��руем и строим хаммамы для квартир, домов, коттеджей, СПА и коммерческих о��ъектов. Рассчитыва��м парогенератор, гидроизоляцию, вентиляцию и отделку под ваше помещение.
             </p>
             <div className="grid grid-cols-3 gap-2.5 sm:gap-4 max-w-lg">
               {[{ number: "400+", label: "объектов сдано" }, { number: "10+", label: "лет опыта" }, { number: "5 лет", label: "гарантия" }].map((item) => (
@@ -297,35 +294,6 @@ function HammamHero({ service }: { service: ServiceData }) {
           {/* Right — inline quiz card */}
           <div className="lg:justify-self-end w-full max-w-md">
             <div className="bg-white rounded-2xl shadow-2xl overflow-hidden">
-              {!sent && (
-                <div className="px-7 pt-7 pb-0">
-                  <h2 className="text-xl font-black text-foreground mb-1" style={{ fontFamily: "Montserrat, sans-serif" }}>
-                    Хотите быстро<br />просчитать проект?
-                  </h2>
-                  <p className="text-sm text-muted-foreground mb-5">
-                    Вы получите просчёт в 3-х различных вариантах по цене
-                  </p>
-                  <ul className="space-y-3 mb-5">
-                    {[
-                      { icon: "Wallet", text: "Бесплатный расчёт сметы", from: "hsl(145 63% 42%)", to: "hsl(145 70% 28%)" },
-                      { icon: "Box", text: "Дизайн-проект и 3D-ви��уализация", from: "hsl(210 80% 55%)", to: "hsl(220 80% 42%)" },
-                      { icon: "FileSignature", text: "Фиксированная цена и сроки в договоре", from: "hsl(38 92% 55%)", to: "hsl(28 90% 45%)" },
-                      { icon: "ShieldCheck", text: "Строим по ГОСТам и нормам пожарной безопасности", from: "hsl(0 75% 58%)", to: "hsl(355 75% 45%)" },
-                    ].map((b) => (
-                      <li key={b.text} className="flex items-center gap-3 text-sm font-medium text-foreground/85">
-                        <span className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 shadow-md"
-                          style={{ background: `linear-gradient(135deg, ${b.from}, ${b.to})`, boxShadow: `0 4px 10px -2px ${b.to}55, inset 0 1px 0 rgba(255,255,255,0.35)` }}>
-                          <Icon name={b.icon} className="w-5 h-5 text-white" fallback="Check" />
-                        </span>
-                        <span>{b.text}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  <div className="border-t border-border pt-4 mb-0">
-                    <p className="text-xs text-muted-foreground text-center mb-3">Ответьте на 5 вопросов — рассчитаем стоимость</p>
-                  </div>
-                </div>
-              )}
               {sent ? (
                 <div className="text-center py-14 px-8">
                   <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4" style={{ background: "hsl(145 63% 32% / 0.12)" }}>
