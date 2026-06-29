@@ -113,9 +113,6 @@ export function ServicePageTemplate({ service }: Props) {
         </div>
       </section>
 
-      {/* Схема оборудования */}
-      <EquipmentSchemeSection slug={service.slug} />
-
       {/* Подуслуги — направления */}
       <section className="py-10 sm:py-12 lg:py-14 px-4 sm:px-6 lg:px-8 section-glass">
         <div className="container mx-auto max-w-6xl">
@@ -162,6 +159,8 @@ export function ServicePageTemplate({ service }: Props) {
         subtitle={content?.fullCycle.subtitle}
         items={content?.fullCycle.items}
       />
+      {/* 3.5 Схема оборудования */}
+      <EquipmentSchemeSection slug={service.slug} />
       {/* 4. 3D-проект */}
       <Project3DSection />
       {/* 5. Почему выбирают нас */}

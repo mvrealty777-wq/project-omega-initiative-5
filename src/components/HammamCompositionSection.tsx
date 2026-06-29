@@ -310,45 +310,21 @@ export function HammamCompositionSection() {
                       <span className="w-1.5 h-1.5 rounded-full bg-white/80" />
                     </span>
 
-                    {/* Tooltip */}
-                    {showLabel && (
-                      <span
-                        className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 whitespace-nowrap rounded-lg px-3 py-1.5 text-xs font-semibold text-white pointer-events-none z-20 shadow-lg"
-                        style={{
-                          background: "hsl(220 25% 12% / 0.95)",
-                          border: "1px solid hsl(145 63% 32% / 0.4)",
-                        }}
-                      >
-                        {el.title}
-                        {/* Arrow */}
-                        <span
-                          className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent"
-                          style={{
-                            borderTopColor: "hsl(220 25% 12% / 0.95)",
-                          }}
-                        />
-                      </span>
-                    )}
-
-                    {/* Active tooltip above (always visible when active) */}
-                    {isActive && (
-                      <span
-                        className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 whitespace-nowrap rounded-lg px-3 py-1.5 text-xs font-bold text-white pointer-events-none z-20 shadow-xl"
-                        style={{
-                          background: "hsl(145 63% 28% / 0.97)",
-                          border: "1px solid hsl(145 63% 45% / 0.6)",
-                          boxShadow: "0 4px 16px hsl(145 63% 20% / 0.5)",
-                        }}
-                      >
-                        {el.title}
-                        <span
-                          className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent"
-                          style={{
-                            borderTopColor: "hsl(145 63% 28% / 0.97)",
-                          }}
-                        />
-                      </span>
-                    )}
+                    {/* Persistent label under dot */}
+                    <span
+                      className="absolute top-full mt-1.5 left-1/2 -translate-x-1/2 pointer-events-none z-20 text-center"
+                      style={{
+                        fontSize: "9px",
+                        lineHeight: "1.25",
+                        fontWeight: 600,
+                        color: isActive ? "hsl(145 63% 70%)" : "rgba(255,255,255,0.82)",
+                        textShadow: "0 1px 4px rgba(0,0,0,1), 0 0 8px rgba(0,0,0,0.8)",
+                        width: "72px",
+                        display: "block",
+                      }}
+                    >
+                      {el.title}
+                    </span>
                   </button>
                 );
               })}

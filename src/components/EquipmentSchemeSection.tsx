@@ -161,6 +161,25 @@ export function EquipmentSchemeSection({ slug }: Props) {
                     {point.id}
                   </span>
 
+                  {/* Label under dot */}
+                  <span className="absolute top-full mt-1 left-1/2 -translate-x-1/2 whitespace-nowrap pointer-events-none"
+                    style={{
+                      fontSize: "9px",
+                      lineHeight: "1.2",
+                      fontWeight: 600,
+                      color: isActive ? "hsl(145 63% 70%)" : "rgba(255,255,255,0.75)",
+                      textShadow: "0 1px 3px rgba(0,0,0,0.9)",
+                      maxWidth: "80px",
+                      textAlign: "center",
+                      overflow: "hidden",
+                      display: "-webkit-box",
+                      WebkitLineClamp: 2,
+                      WebkitBoxOrient: "vertical",
+                    }}
+                  >
+                    {point.label}
+                  </span>
+
                   {/* Inline tooltip (mobile / hover) */}
                   {isActive && (
                     <span className={`absolute z-20 w-48 sm:w-56 bg-white rounded-xl shadow-2xl p-3 text-left pointer-events-none
