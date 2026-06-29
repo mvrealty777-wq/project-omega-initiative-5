@@ -43,9 +43,9 @@ const IR = "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da
 const EQUIP = "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/09e490cf-4e62-4ee4-a5ae-0db40e9c8a31.jpg"
 const COMPLEX = "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/300aee80-ed49-410c-b117-9d48406ecb27.jpg"
 const COOL = "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/29ac4107-cc4b-49ff-980f-8534b208a073.jpg"
-const PANELS = "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/988d1b04-f34f-4a60-b1c2-5dd6af04601f.jpg"
-const HARVIA = "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/1a3ddb93-6269-4317-9e18-b58d210c901e.jpg"
-const STOVE = "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/05a9a2bb-2085-4374-b403-d1377edd33ce.jpg"
+const PANELS = "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/07aa0bb4-fa79-4b60-b826-1ae850d4d6e0.jpg"
+const HARVIA = "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/29880a6f-6839-45ed-b7bd-ba72d6548f10.jpg"
+const STOVE = "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/e2be9eb1-f72f-4b93-9c49-90746a0b5719.jpg"
 
 const commonStats: AboutStat[] = [
   { icon: "CalendarDays", number: "10+", label: "Лет на рынке" },

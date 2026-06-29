@@ -153,14 +153,14 @@ export function ServicePageTemplate({ service }: Props) {
       {extra && (
         <ServiceCasesSection title={extra.casesTitle} subtitle={extra.casesSubtitle} cases={extra.cases} />
       )}
+      {/* 2.5 Из чего состоит */}
+      <EquipmentSchemeSection slug={service.slug} />
       {/* 3. Полный цикл работ */}
       <FullCycleSection
         title={content?.fullCycle.title}
         subtitle={content?.fullCycle.subtitle}
         items={content?.fullCycle.items}
       />
-      {/* 3.5 Схема оборудования */}
-      <EquipmentSchemeSection slug={service.slug} />
       {/* 4. 3D-проект */}
       <Project3DSection />
       {/* 5. Почему выбирают нас */}

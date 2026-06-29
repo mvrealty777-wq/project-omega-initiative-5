@@ -86,12 +86,6 @@ export function HammamPageTemplate({ service }: Props) {
         {/* === 6. ЭТАПЫ РАБОТ === */}
         <HammamBuildStepsSection />
 
-        {/* === Из чего состоит хаммам === */}
-        <HammamCompositionSection />
-
-        {/* === Схема оборудования === */}
-        <EquipmentSchemeSection slug="hammam" />
-
         {/* === 7. ПОРТФОЛИО === */}
         <HammamPortfolioSection />
 
@@ -99,6 +93,12 @@ export function HammamPageTemplate({ service }: Props) {
         {extra && (
           <ServiceCasesSection title={extra.casesTitle} subtitle={extra.casesSubtitle} cases={extra.cases} />
         )}
+
+        {/* === Из чего состоит хаммам === */}
+        <HammamCompositionSection />
+
+        {/* === Схема оборудования === */}
+        <EquipmentSchemeSection slug="hammam" />
 
         {/* === Готовы реализовать === */}
         <ReadySection slug="hammam" />

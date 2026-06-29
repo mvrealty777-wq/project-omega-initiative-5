@@ -90,13 +90,13 @@ export function SubServicePageTemplate({ sub }: Props) {
         {extra && (
           <ServiceCasesSection title={extra.casesTitle} subtitle={extra.casesSubtitle} cases={extra.cases} />
         )}
+        {/* Из чего состоит */}
+        <EquipmentSchemeSection slug={sub.subSlug === "infrakrasnye-sauny" ? "infrared-sauna" : service.slug} />
         <FullCycleSection
           title={content?.fullCycle.title}
           subtitle={content?.fullCycle.subtitle}
           items={content?.fullCycle.items}
         />
-        {/* Схема оборудования */}
-        <EquipmentSchemeSection slug={service.slug} />
         <Project3DSection />
         <AboutSection
           subtitle={content?.about.subtitle}
