@@ -233,12 +233,12 @@ export function ReadySection({ slug }: Props = {}) {
 
           {/* Image */}
           <div className="relative">
-            <div className="rounded-2xl overflow-hidden shadow-xl">
+            <div className="rounded-2xl overflow-hidden shadow-xl" style={{ aspectRatio: "4/3" }}>
               <img
                 src={cfg.image}
                 alt={cfg.imageAlt}
                 className="w-full h-full object-cover"
-                style={{ aspectRatio: "4/3" }}
+                loading="eager"
               />
             </div>
             <div className="absolute -bottom-5 -left-5 bg-white rounded-2xl shadow-lg px-6 py-4 border border-border hidden sm:block">
