@@ -1,66 +1,55 @@
+import type React from "react"
 import { useState } from "react"
 import { Link } from "react-router-dom"
 import { Input } from "@/components/ui/input"
-import { MessengerPicker, messengerLabel } from "@/components/MessengerPicker"
-import Icon from "@/components/ui/icon"
 import { Venok } from "@/components/icons/Venok"
-import { CheckCircle, ChevronRight, Send } from "lucide-react"
-import type { ServiceData } from "@/data/servicesData"
-import { getQuizBySlug } from "@/data/quizData"
-import type { QuizOption } from "@/data/quizData"
+import Icon from "@/components/ui/icon"
+import { CheckCircle, Send } from "lucide-react"
 import { sendLead } from "@/lib/sendLead"
+import { MessengerIcon } from "@/components/icons/MessengerIcon"
+import type { ServiceData } from "@/data/servicesData"
 
 const CDN = "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/"
 
+const messengers = [
+  { id: "max", label: "МАКС", color: "linear-gradient(135deg, #8B5CF6, #6366F1)" },
+  { id: "telegram", label: "Telegram", color: "#27A7E7" },
+  { id: "whatsapp", label: "WhatsApp", color: "#25D366" },
+]
+
 const benefits = [
-  { icon: "Wallet", text: "Бесплатный расчёт сметы", from: "hsl(145 63% 42%)", to: "hsl(145 70% 28%)" },
-  { icon: "Box", text: "Дизайн-проект и 3D-визуализация", from: "hsl(210 80% 55%)", to: "hsl(220 80% 42%)" },
-  { icon: "FileSignature", text: "Фиксированная цена и сроки в договоре", from: "hsl(38 92% 55%)", to: "hsl(28 90% 45%)" },
-  { icon: "ShieldCheck", text: "Строим по ГОСТам и нормам пожарной безопасности", from: "hsl(0 75% 58%)", to: "hsl(355 75% 45%)" },
+  { text: "Бесплатный расчёт сметы", icon: "Wallet", from: "hsl(145 63% 42%)", to: "hsl(145 70% 28%)" },
+  { text: "Дизайн-проект и 3D-визуализация", icon: "Box", from: "hsl(210 80% 55%)", to: "hsl(220 80% 42%)" },
+  { text: "Фиксированная цена и сроки в договоре", icon: "FileSignature", from: "hsl(38 92% 55%)", to: "hsl(28 90% 45%)" },
+  { text: "Строим по ГОСТам и нормам пожарной безопасности", icon: "ShieldCheck", from: "hsl(0 75% 58%)", to: "hsl(355 75% 45%)" },
 ]
 
 export function HammamHeroSection({ service }: { service: ServiceData }) {
-  const quiz = getQuizBySlug("hammam")!
-  const questions = quiz.questions
-  const [step, setStep] = useState(0)
-  const [answers, setAnswers] = useState<Record<string, string[]>>({})
-  const [contact, setContact] = useState({ name: "", phone: "" })
+  const [formData, setFormData] = useState({ name: "", phone: "" })
+  const [sent, setSent] = useState(false)
   const [useMessenger, setUseMessenger] = useState(false)
   const [messenger, setMessenger] = useState("telegram")
-  const [sent, setSent] = useState(false)
 
-  const isContactStep = step === questions.length
-  const progress = Math.round((step / (questions.length + 1)) * 100)
-  const currentQ = !isContactStep ? questions[step] : null
-
-  const toggleAnswer = (qId: string, optId: string, multiple?: boolean) => {
-    setAnswers((prev) => {
-      const cur = prev[qId] ?? []
-      if (multiple) return { ...prev, [qId]: cur.includes(optId) ? cur.filter((id) => id !== optId) : [...cur, optId] }
-      return { ...prev, [qId]: [optId] }
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    setSent(true)
+    sendLead({
+      name: formData.name,
+      phone: formData.phone,
+      source: "Хаммам — Первый экран",
+      messenger: useMessenger ? messengers.find((m) => m.id === messenger)?.label : undefined,
     })
   }
 
-  const canNext = currentQ ? (answers[currentQ.id]?.length ?? 0) > 0 : contact.phone.length >= 5
-  const handleNext = () => { if (step < questions.length) setStep((s) => s + 1) }
-  const handleBack = () => { if (step > 0) setStep((s) => s - 1) }
-
-  const handleSubmit = () => {
-    const summary = questions
-      .map((q) => {
-        const labels = q.options.filter((o) => (answers[q.id] ?? []).includes(o.id)).map((o) => o.label)
-        return labels.length ? `${q.question}: ${labels.join(", ")}` : null
-      })
-      .filter(Boolean).join("\n")
-    setSent(true)
-    sendLead({ name: contact.name, phone: contact.phone, source: "Хаммам — Квиз в Hero", messenger: useMessenger ? messengerLabel(messenger) : undefined, comment: summary })
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }))
   }
 
   return (
     <section className="relative overflow-hidden">
       <div className="absolute inset-0">
         <img src={CDN + "8ce3e4a6-6eac-43f3-82ac-1e7c276ab8bb.jpg"} alt="Хаммам под ключ" className="w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/70 to-black/30" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/65 to-black/40" />
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-16 lg:py-24">
@@ -70,29 +59,36 @@ export function HammamHeroSection({ service }: { service: ServiceData }) {
           <span className="text-white/90">Хаммам под ключ</span>
         </nav>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-          {/* Left */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+          {/* Left — headline */}
           <div className="text-white">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold text-green-400 mb-5 bg-green-400/10 border border-green-400/20">
-              <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-              Под ключ по всей России
-            </div>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black leading-tight mb-5 animate-fade-in-up" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+            <h1
+              className="text-4xl sm:text-5xl lg:text-6xl font-black leading-tight mb-5 animate-fade-in-up"
+              style={{ fontFamily: 'Montserrat, sans-serif' }}
+            >
               ХАММАМ или САУНА{" "}
               <span className="text-green-400">«ПОД КЛЮЧ»</span>
               <span className="block text-2xl sm:text-3xl lg:text-4xl mt-3 font-bold">
                 Строительство и отделка хаммамов по всей России
               </span>
             </h1>
+
             <p className="text-lg sm:text-xl text-white/80 leading-relaxed mb-8 max-w-lg animate-fade-in-up animate-delay-100">
               Полный комплекс услуг — от проектирования до выполнения отделочных работ и установки оборудования 👌
             </p>
+
             <div className="grid grid-cols-3 gap-2.5 sm:gap-4 max-w-lg animate-fade-in-up animate-delay-200">
-              {[{ number: "400+", label: "объектов сдано" }, { number: "10+", label: "лет опыта" }, { number: "5 лет", label: "гарантия" }].map((item) => (
+              {[
+                { number: "400+", label: "объектов сдано" },
+                { number: "10+", label: "лет опыта" },
+                { number: "5 лет", label: "гарантия" },
+              ].map((item) => (
                 <div key={item.label} className="relative rounded-xl bg-white/10 backdrop-blur-sm border border-white/15 px-2 py-3.5 sm:py-4 text-center overflow-hidden">
                   <Venok className="absolute inset-0 w-full h-full text-green-400/25 px-1.5 py-1.5" />
                   <div className="relative">
-                    <div className="text-xl sm:text-3xl font-black text-green-400 font-heading">{item.number}</div>
+                    <div className="text-xl sm:text-3xl font-black text-green-400" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                      {item.number}
+                    </div>
                     <div className="text-[10px] sm:text-xs text-white/75 mt-0.5 leading-tight">{item.label}</div>
                   </div>
                 </div>
@@ -100,110 +96,111 @@ export function HammamHeroSection({ service }: { service: ServiceData }) {
             </div>
           </div>
 
-          {/* Right — quiz card */}
-          <div className="lg:justify-self-end w-full max-w-lg animate-fade-in-up animate-delay-200">
-            <div className="bg-white rounded-2xl shadow-2xl overflow-hidden">
-              {!sent && (
-                <div className="px-7 pt-7 pb-0">
-                  <h2 className="text-xl font-black text-foreground mb-1">
+          {/* Right — form card */}
+          <div className="lg:justify-self-end w-full max-w-md animate-fade-in-up animate-delay-200">
+            <div className="bg-white rounded-2xl shadow-2xl p-7">
+              {sent ? (
+                <div className="text-center py-10">
+                  <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"
+                    style={{ background: 'hsl(145 63% 32% / 0.12)' }}>
+                    <CheckCircle className="w-8 h-8 text-primary" />
+                  </div>
+                  <h3 className="text-xl font-bold text-foreground mb-2" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                    Заявка принята!
+                  </h3>
+                  <p className="text-muted-foreground text-sm">
+                    {useMessenger
+                      ? `Напишем вам в ${messengers.find((m) => m.id === messenger)?.label} в течение 15 минут и подготовим расчёт сметы.`
+                      : "Перезвоним в течение 15 минут и подготовим расчёт сметы."}
+                  </p>
+                </div>
+              ) : (
+                <>
+                  <h2 className="text-2xl font-black text-foreground mb-1" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                     Хотите быстро<br />просчитать проект?
                   </h2>
-                  <p className="text-sm text-muted-foreground mb-4">
+                  <p className="text-sm text-muted-foreground mb-5">
                     Вы получите просчёт в 3-х различных вариантах по цене
                   </p>
-                  <ul className="space-y-2.5 mb-4">
+
+                  <ul className="space-y-3 mb-6">
                     {benefits.map((b) => (
                       <li key={b.text} className="flex items-center gap-3 text-sm font-medium text-foreground/85">
-                        <span className="w-8 h-8 rounded-xl flex items-center justify-center flex-shrink-0 shadow-md"
-                          style={{ background: `linear-gradient(135deg, ${b.from}, ${b.to})`, boxShadow: `0 4px 10px -2px ${b.to}55, inset 0 1px 0 rgba(255,255,255,0.35)` }}>
-                          <Icon name={b.icon} className="w-4 h-4 text-white" fallback="Check" />
+                        <span
+                          className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 shadow-md"
+                          style={{
+                            background: `linear-gradient(135deg, ${b.from}, ${b.to})`,
+                            boxShadow: `0 4px 10px -2px ${b.to}55, inset 0 1px 0 rgba(255,255,255,0.35)`,
+                          }}
+                        >
+                          <Icon name={b.icon} className="w-5 h-5 text-white" fallback="Check" />
                         </span>
                         <span>{b.text}</span>
                       </li>
                     ))}
                   </ul>
-                  <div className="border-t border-border pt-3 mb-0">
-                    <p className="text-xs text-muted-foreground text-center mb-2">Ответьте на 5 вопросов — рассчитаем стоимость</p>
-                  </div>
-                </div>
-              )}
-              {sent ? (
-                <div className="text-center py-14 px-8">
-                  <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 bg-primary/10">
-                    <CheckCircle className="w-8 h-8 text-primary" />
-                  </div>
-                  <h3 className="text-xl font-bold text-foreground mb-2">Заявка принята!</h3>
-                  <p className="text-muted-foreground text-sm">
-                    {useMessenger ? `Напишем в ${messengerLabel(messenger)} в течение 15 минут.` : "Перезвоним в течение 15 минут."}
-                  </p>
-                </div>
-              ) : (
-                <>
-                  <div className="bg-gradient-to-r from-blue-600 to-purple-600 px-6 pt-5 pb-4 text-white">
-                    <div className="flex items-center gap-3 mb-3">
-                      <div className="w-8 h-8 rounded-xl bg-white/20 flex items-center justify-center flex-shrink-0">
-                        <Icon name="Landmark" size={18} className="text-white" fallback="Droplets" />
-                      </div>
-                      <div>
-                        <div className="text-[10px] font-semibold text-white/70 uppercase tracking-wide">Квиз</div>
-                        <div className="font-bold text-sm leading-tight">Рассчитать стоимость хаммама</div>
-                      </div>
+
+                  <form onSubmit={handleSubmit} className="space-y-3">
+                    <div>
+                      <label htmlFor="hammam-hero-name" className="text-sm font-medium text-foreground">Имя</label>
+                      <Input id="hammam-hero-name" name="name" value={formData.name} onChange={handleChange}
+                        placeholder="Ваше имя" className="h-11 rounded-xl border-border mt-1" />
                     </div>
-                    <div className="flex items-center gap-3">
-                      <div className="flex-1 h-1.5 bg-white/20 rounded-full overflow-hidden">
-                        <div className="h-full bg-white rounded-full transition-all duration-500" style={{ width: `${progress}%` }} />
-                      </div>
-                      <span className="text-xs text-white/70 whitespace-nowrap flex-shrink-0">
-                        {isContactStep ? "Последний шаг" : `${step + 1} из ${questions.length}`}
+                    <div>
+                      <label htmlFor="hammam-hero-phone" className="text-sm font-medium text-foreground">Телефон *</label>
+                      <Input id="hammam-hero-phone" name="phone" type="tel" required value={formData.phone} onChange={handleChange}
+                        placeholder="+7 900 123-45-67" className="h-11 rounded-xl border-border mt-1" />
+                    </div>
+
+                    <label className="flex items-start gap-2.5 cursor-pointer select-none rounded-xl bg-secondary/40 border border-border p-3 hover:border-primary/40 transition-colors">
+                      <span className="relative flex-shrink-0 mt-0.5">
+                        <input
+                          type="checkbox"
+                          checked={useMessenger}
+                          onChange={(e) => setUseMessenger(e.target.checked)}
+                          className="peer sr-only"
+                        />
+                        <span className="w-5 h-5 rounded-md border-2 border-border flex items-center justify-center transition-colors peer-checked:bg-primary peer-checked:border-primary">
+                          <Icon name="Check" className={`w-3.5 h-3.5 text-white transition-opacity ${useMessenger ? 'opacity-100' : 'opacity-0'}`} />
+                        </span>
                       </span>
-                    </div>
-                  </div>
-                  <div className="px-6 py-4">
-                    {!isContactStep && currentQ ? (
-                      <div>
-                        <h3 className="text-sm font-black text-foreground mb-3 leading-snug">{currentQ.question}</h3>
-                        {currentQ.multiple && <p className="text-xs text-muted-foreground mb-2">Можно выбрать несколько</p>}
-                        <div className="grid grid-cols-2 gap-2">
-                          {currentQ.options.map((opt: QuizOption) => {
-                            const selected = answers[currentQ.id]?.includes(opt.id)
-                            return (
-                              <button key={opt.id} type="button"
-                                onClick={() => { toggleAnswer(currentQ.id, opt.id, currentQ.multiple); if (!currentQ.multiple) setTimeout(handleNext, 200) }}
-                                className={`flex items-center gap-2 rounded-xl border-2 px-3 py-2 text-left transition-all text-xs font-medium ${selected ? "border-primary bg-primary/8 text-primary shadow-sm" : "border-border bg-white text-foreground hover:border-primary/40"}`}>
-                                {opt.icon && <Icon name={opt.icon} size={14} className={selected ? "text-primary flex-shrink-0" : "text-muted-foreground flex-shrink-0"} fallback="Circle" />}
-                                <span className="leading-snug">{opt.label}</span>
-                              </button>
-                            )
-                          })}
-                        </div>
-                        {currentQ.multiple && (
-                          <button onClick={handleNext} disabled={!canNext} className="btn-green w-full justify-center mt-3 text-sm disabled:opacity-40 disabled:cursor-not-allowed">
-                            Продолжить <ChevronRight className="w-4 h-4" />
-                          </button>
-                        )}
-                      </div>
-                    ) : (
-                      <div className="space-y-2.5">
-                        <h3 className="text-base font-black text-foreground mb-1">Отлично! Куда отправить расчёт?</h3>
-                        <p className="text-xs text-muted-foreground mb-2">Подготовим персональное предложение.</p>
-                        <Input value={contact.name} onChange={(e) => setContact((p) => ({ ...p, name: e.target.value }))} placeholder="Ваше имя" className="h-10 rounded-xl" />
-                        <Input type="tel" required value={contact.phone} onChange={(e) => setContact((p) => ({ ...p, phone: e.target.value }))} placeholder="Телефон *" className="h-10 rounded-xl" />
-                        <MessengerPicker enabled={useMessenger} onEnabledChange={setUseMessenger} value={messenger} onValueChange={setMessenger} />
-                        <button onClick={handleSubmit} disabled={contact.phone.length < 5} className="btn-green w-full justify-center text-sm disabled:opacity-40 disabled:cursor-not-allowed">
-                          <Send className="w-4 h-4" />
-                          {useMessenger ? `Написать в ${messengerLabel(messenger)}` : "Получить расчёт"}
-                        </button>
-                        <p className="text-[11px] text-muted-foreground text-center">Нажимая кнопку, вы соглашаетесь с политикой обработки данных</p>
+                      <span className="text-sm font-medium text-foreground leading-snug">
+                        Напишите мне в мессенджер вместо звонка
+                      </span>
+                    </label>
+
+                    {useMessenger && (
+                      <div className="grid grid-cols-3 gap-2 animate-fade-in-up">
+                        {messengers.map((m) => {
+                          const isActive = messenger === m.id
+                          return (
+                            <button
+                              key={m.id}
+                              type="button"
+                              onClick={() => setMessenger(m.id)}
+                              className={`relative flex flex-col items-center justify-center gap-1.5 rounded-xl border-2 py-2.5 transition-all ${
+                                isActive ? 'border-transparent text-white shadow-md' : 'border-border bg-white text-foreground/70 hover:border-primary/40'
+                              }`}
+                              style={isActive ? { background: m.color } : undefined}
+                            >
+                              <MessengerIcon id={m.id} className="w-6 h-6 rounded-md" />
+                              <span className="text-xs font-semibold" style={{ fontFamily: 'Montserrat, sans-serif' }}>{m.label}</span>
+                            </button>
+                          )
+                        })}
                       </div>
                     )}
-                  </div>
-                  {step > 0 && !isContactStep && (
-                    <div className="px-6 pb-4">
-                      <button onClick={handleBack} className="flex items-center gap-1.5 text-xs text-muted-foreground hover:text-foreground transition-colors">
-                        ← Назад
-                      </button>
-                    </div>
-                  )}
+
+                    <button type="submit" className="btn-green w-full justify-center text-sm">
+                      <Send className="w-4 h-4" />
+                      {useMessenger
+                        ? `Написать в ${messengers.find((m) => m.id === messenger)?.label}`
+                        : "Отправить заявку и получить смету"}
+                    </button>
+                  </form>
+                  <p className="text-[11px] text-muted-foreground text-center mt-3">
+                    Нажимая кнопку, вы соглашаетесь с политикой обработки данных
+                  </p>
                 </>
               )}
             </div>

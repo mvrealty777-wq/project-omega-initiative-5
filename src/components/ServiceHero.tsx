@@ -6,9 +6,14 @@ import { Venok } from "@/components/icons/Venok"
 import Icon from "@/components/ui/icon"
 import { CheckCircle, Send } from "lucide-react"
 import { sendLead } from "@/lib/sendLead"
+import { MessengerIcon } from "@/components/icons/MessengerIcon"
 import type { ServiceData } from "@/data/servicesData"
-import { QuizDialog } from "@/components/QuizDialog"
-import { getQuizBySlug } from "@/data/quizData"
+
+const messengers = [
+  { id: "max", label: "МАКС", color: "linear-gradient(135deg, #8B5CF6, #6366F1)" },
+  { id: "telegram", label: "Telegram", color: "#27A7E7" },
+  { id: "whatsapp", label: "WhatsApp", color: "#25D366" },
+]
 
 const benefits = [
   { text: "Бесплатный расчёт сметы", icon: "Wallet", from: "hsl(145 63% 42%)", to: "hsl(145 70% 28%)" },
@@ -19,17 +24,16 @@ const benefits = [
 
 interface Props {
   service: ServiceData
-  /** Переопределение заголовка (для страниц подуслуг) */
   titleOverride?: string
   subtitleOverride?: string
-  /** Дополнительная крошка между «Главная» и текущим пунктом */
   parentCrumb?: { label: string; to: string }
 }
 
 export function ServiceHero({ service, titleOverride, subtitleOverride, parentCrumb }: Props) {
   const [formData, setFormData] = useState({ name: "", phone: "" })
   const [sent, setSent] = useState(false)
-  const quiz = getQuizBySlug(service.slug)
+  const [useMessenger, setUseMessenger] = useState(false)
+  const [messenger, setMessenger] = useState("telegram")
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
@@ -38,15 +42,39 @@ export function ServiceHero({ service, titleOverride, subtitleOverride, parentCr
       name: formData.name,
       phone: formData.phone,
       source: `Заявка с направления — ${titleOverride ?? service.cardTitle}`,
+      messenger: useMessenger ? messengers.find((m) => m.id === messenger)?.label : undefined,
     })
   }
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }))
   }
 
+  // Разбиваем заголовок: «... под ключ» → основная часть + зелёный «ПОД КЛЮЧ»
+  const renderTitle = () => {
+    const raw = titleOverride ?? service.heroTitle
+    const subtitle = subtitleOverride ?? service.heroSubtitle
+    const upper = raw.toUpperCase()
+    const idx = upper.indexOf("ПОД КЛЮЧ")
+    if (idx === -1) {
+      return (
+        <>
+          {upper}
+          {subtitle && <span className="block text-2xl sm:text-3xl lg:text-4xl mt-3 font-bold">{subtitle}</span>}
+        </>
+      )
+    }
+    return (
+      <>
+        {upper.slice(0, idx)}
+        <span className="text-green-400">«ПОД КЛЮЧ»</span>
+        {subtitle && <span className="block text-2xl sm:text-3xl lg:text-4xl mt-3 font-bold">{subtitle}</span>}
+      </>
+    )
+  }
+
   return (
     <section className="relative overflow-hidden">
-      {/* Background image */}
       <div className="absolute inset-0">
         <img src={service.image} alt={service.heroTitle} className="w-full h-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/65 to-black/40" />
@@ -69,29 +97,16 @@ export function ServiceHero({ service, titleOverride, subtitleOverride, parentCr
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
           {/* Left — headline */}
           <div className="text-white">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold text-green-400 mb-5"
-              style={{ background: 'rgba(74,222,128,0.12)' }}>
-              <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-              Под ключ по всей России
-            </div>
             <h1
               className="text-4xl sm:text-5xl lg:text-6xl font-black leading-tight mb-5 animate-fade-in-up"
               style={{ fontFamily: 'Montserrat, sans-serif' }}
             >
-              {(() => {
-                const title = (titleOverride ?? service.heroTitle).toUpperCase()
-                const subtitle = subtitleOverride ?? service.heroSubtitle
-                const idx = title.indexOf("ПОД КЛЮЧ")
-                if (idx === -1) return <>{title}{subtitle && <span className="block text-2xl sm:text-3xl lg:text-4xl mt-3 font-bold">{subtitle}</span>}</>
-                return (
-                  <>
-                    {title.slice(0, idx)}
-                    <span className="text-green-400">«ПОД КЛЮЧ»</span>
-                    {subtitle && <span className="block text-2xl sm:text-3xl lg:text-4xl mt-3 font-bold">{subtitle}</span>}
-                  </>
-                )
-              })()}
+              {renderTitle()}
             </h1>
+
+            <p className="text-lg sm:text-xl text-white/80 leading-relaxed mb-8 max-w-lg animate-fade-in-up animate-delay-100">
+              Полный комплекс услуг — от проектирования до выполнения отделочных работ и установки оборудования 👌
+            </p>
 
             <div className="grid grid-cols-3 gap-2.5 sm:gap-4 max-w-lg animate-fade-in-up animate-delay-200">
               {[
@@ -125,7 +140,9 @@ export function ServiceHero({ service, titleOverride, subtitleOverride, parentCr
                     Заявка принята!
                   </h3>
                   <p className="text-muted-foreground text-sm">
-                    Перезвоним в течение 15 минут и подготовим расчёт сметы.
+                    {useMessenger
+                      ? `Напишем вам в ${messengers.find((m) => m.id === messenger)?.label} в течение 15 минут и подготовим расчёт сметы.`
+                      : "Перезвоним в течение 15 минут и подготовим расчёт сметы."}
                   </p>
                 </div>
               ) : (
@@ -165,27 +182,56 @@ export function ServiceHero({ service, titleOverride, subtitleOverride, parentCr
                       <Input id="svc-hero-phone" name="phone" type="tel" required value={formData.phone} onChange={handleChange}
                         placeholder="+7 900 123-45-67" className="h-11 rounded-xl border-border mt-1" />
                     </div>
+
+                    <label className="flex items-start gap-2.5 cursor-pointer select-none rounded-xl bg-secondary/40 border border-border p-3 hover:border-primary/40 transition-colors">
+                      <span className="relative flex-shrink-0 mt-0.5">
+                        <input
+                          type="checkbox"
+                          checked={useMessenger}
+                          onChange={(e) => setUseMessenger(e.target.checked)}
+                          className="peer sr-only"
+                        />
+                        <span className="w-5 h-5 rounded-md border-2 border-border flex items-center justify-center transition-colors peer-checked:bg-primary peer-checked:border-primary">
+                          <Icon name="Check" className={`w-3.5 h-3.5 text-white transition-opacity ${useMessenger ? 'opacity-100' : 'opacity-0'}`} />
+                        </span>
+                      </span>
+                      <span className="text-sm font-medium text-foreground leading-snug">
+                        Напишите мне в мессенджер вместо звонка
+                      </span>
+                    </label>
+
+                    {useMessenger && (
+                      <div className="grid grid-cols-3 gap-2 animate-fade-in-up">
+                        {messengers.map((m) => {
+                          const isActive = messenger === m.id
+                          return (
+                            <button
+                              key={m.id}
+                              type="button"
+                              onClick={() => setMessenger(m.id)}
+                              className={`relative flex flex-col items-center justify-center gap-1.5 rounded-xl border-2 py-2.5 transition-all ${
+                                isActive ? 'border-transparent text-white shadow-md' : 'border-border bg-white text-foreground/70 hover:border-primary/40'
+                              }`}
+                              style={isActive ? { background: m.color } : undefined}
+                            >
+                              <MessengerIcon id={m.id} className="w-6 h-6 rounded-md" />
+                              <span className="text-xs font-semibold" style={{ fontFamily: 'Montserrat, sans-serif' }}>{m.label}</span>
+                            </button>
+                          )
+                        })}
+                      </div>
+                    )}
+
                     <button type="submit" className="btn-green w-full justify-center text-sm">
                       <Send className="w-4 h-4" />
-                      Отправить заявку и получить смету
+                      {useMessenger
+                        ? `Написать в ${messengers.find((m) => m.id === messenger)?.label}`
+                        : "Отправить заявку и получить смету"}
                     </button>
                   </form>
                   <p className="text-[11px] text-muted-foreground text-center mt-3">
                     Нажимая кнопку, вы соглашаетесь с политикой обработки данных
                   </p>
-                  {quiz && (
-                    <div className="mt-4 pt-4 border-t border-border">
-                      <p className="text-xs text-muted-foreground text-center mb-2.5">
-                        Хотите точнее? Ответьте на несколько вопросов
-                      </p>
-                      <QuizDialog quiz={quiz}>
-                        <button className="btn-green-outline w-full justify-center text-sm">
-                          <Icon name="ClipboardList" className="w-4 h-4" fallback="List" />
-                          Ответить на вопросы — получить расчёт
-                        </button>
-                      </QuizDialog>
-                    </div>
-                  )}
                 </>
               )}
             </div>
