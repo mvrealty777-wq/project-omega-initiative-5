@@ -85,9 +85,6 @@ export function SubServicePageTemplate({ sub }: Props) {
           parentCrumb={{ label: service.cardTitle, to: `/uslugi/${service.slug}` }}
         />
 
-        {/* Схема оборудования */}
-        <EquipmentSchemeSection slug={service.slug} />
-
         {/* Блоки как на главной — в порядке главной страницы */}
         <ReadySection />
         {extra && (
@@ -98,6 +95,8 @@ export function SubServicePageTemplate({ sub }: Props) {
           subtitle={content?.fullCycle.subtitle}
           items={content?.fullCycle.items}
         />
+        {/* Схема оборудования */}
+        <EquipmentSchemeSection slug={service.slug} />
         <Project3DSection />
         <AboutSection
           subtitle={content?.about.subtitle}

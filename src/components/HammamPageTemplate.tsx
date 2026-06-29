@@ -13,6 +13,7 @@ import { HammamQuizBlock } from "@/components/HammamQuizBlock"
 import { FaqSection } from "@/components/FaqSection"
 import { ReadySection } from "@/components/ReadySection"
 import { HammamCompositionSection } from "@/components/HammamCompositionSection"
+import { EquipmentSchemeSection } from "@/components/EquipmentSchemeSection"
 import { HammamHeroSection } from "@/components/HammamHeroSection"
 import {
   HammamWhatIncludedSection,
@@ -87,6 +88,9 @@ export function HammamPageTemplate({ service }: Props) {
 
         {/* === Из чего состоит хаммам === */}
         <HammamCompositionSection />
+
+        {/* === Схема оборудования === */}
+        <EquipmentSchemeSection slug="hammam" />
 
         {/* === 7. ПОРТФОЛИО === */}
         <HammamPortfolioSection />
