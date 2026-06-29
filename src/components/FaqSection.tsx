@@ -22,8 +22,8 @@ const defaultFaqs: FaqItem[] = [
   },
   {
     icon: "MapPin",
-    q: "Вы работаете только по Москве?",
-    a: "Нет, мы строим по всей России. Выезжаем в любой регион — от проектирования до сдачи объекта под ключ. Консультация и расчёт сметы — бесплатно, звоните 8 800 302-67-53.",
+    q: "Вы работаете только по Москве и Санкт-Петербургу?",
+    a: "Нет, работаем по всей России и СНГ — Москва, Санкт-Петербург, регионы и выезд за рубеж. Выезжаем на любой объект: от проектирования до сдачи под ключ. Консультация и расчёт сметы — бесплатно, звоните 8 800 302-38-36.",
   },
   {
     icon: "Package",
@@ -90,10 +90,10 @@ export function FaqSection({ items }: Props = {}) {
                 <p className="text-white/80 text-sm mb-4">
                   Позвоните — бесплатно ответим на любой вопрос и рассчитаем смету.
                 </p>
-                <a href="tel:88003026753" className="inline-flex items-center gap-2 bg-white text-primary font-bold px-5 py-2.5 rounded-xl hover:bg-white/90 transition-colors text-sm"
+                <a href="tel:88003023836" className="inline-flex items-center gap-2 bg-white text-primary font-bold px-5 py-2.5 rounded-xl hover:bg-white/90 transition-colors text-sm"
                   style={{ fontFamily: 'Montserrat, sans-serif' }}>
                   <Icon name="Phone" className="w-4 h-4" />
-                  8 800 302-67-53
+                  8 800 302-38-36
                 </a>
               </div>
             </div>

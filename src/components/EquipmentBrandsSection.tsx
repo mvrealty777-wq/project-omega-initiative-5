@@ -1,5 +1,6 @@
 import Icon from "@/components/ui/icon"
 import { LeadDialog } from "@/components/LeadDialog"
+import { ShoppingCart } from "lucide-react"
 
 const cards = [
   {
@@ -56,8 +57,18 @@ export function EquipmentBrandsSection() {
             <span className="text-primary">на оборудование</span>
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto text-base sm:text-lg leading-relaxed">
-            Уже более 10 лет мы работаем напрямую с ведущими брендами — без посредников и наценок.
+            Мы не только строим, но и продаём оборудование. Являемся официальными дилерами всех ведущих брендов — поставки напрямую с заводов без посредников и наценок.
           </p>
+          <a
+            href="https://vam-vdom.ru/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 mt-5 px-6 py-3 rounded-xl font-bold text-white text-sm transition-all hover:scale-105 hover:shadow-lg"
+            style={{ background: 'linear-gradient(135deg, #2563EB, #1d4ed8)' }}
+          >
+            <ShoppingCart className="w-4 h-4" />
+            Перейти в интернет-магазин
+          </a>
         </div>
 
         {/* Brand chips */}
@@ -139,12 +150,24 @@ export function EquipmentBrandsSection() {
               </div>
             </div>
 
-            <LeadDialog source="Секция «Бренды»" title="Узнать цену" submitText="Узнать цену">
-              <button className="bg-white text-primary font-bold px-7 py-4 rounded-xl whitespace-nowrap hover:bg-white/90 transition-colors shadow-lg flex-shrink-0 text-base"
-                style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                Узнать цену
-              </button>
-            </LeadDialog>
+            <div className="flex flex-col sm:flex-row gap-3 flex-shrink-0">
+              <a
+                href="https://vam-vdom.ru/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-xl font-bold text-white whitespace-nowrap text-base transition-all hover:scale-105"
+                style={{ background: 'linear-gradient(135deg, #2563EB, #1d4ed8)', fontFamily: 'Montserrat, sans-serif' }}
+              >
+                <ShoppingCart className="w-5 h-5" />
+                В магазин
+              </a>
+              <LeadDialog source="Секция «Бренды»" title="Узнать цену" submitText="Узнать цену">
+                <button className="bg-white text-primary font-bold px-7 py-4 rounded-xl whitespace-nowrap hover:bg-white/90 transition-colors shadow-lg text-base"
+                  style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                  Узнать цену
+                </button>
+              </LeadDialog>
+            </div>
           </div>
         </div>
       </div>

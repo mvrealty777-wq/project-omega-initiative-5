@@ -48,13 +48,13 @@ export function Footer() {
               Строительство финских саун, русских бань и турецких хамамов под ключ. Работаем по всей России с 2014 года.
             </p>
             <div className="flex flex-col gap-2">
-              <a href="tel:88003026753" className="flex items-center gap-2 text-sm text-white/70 hover:text-white transition-colors">
+              <a href="tel:88003023836" className="flex items-center gap-2 text-sm text-white/70 hover:text-white transition-colors">
                 <Phone className="w-4 h-4 text-green-400" />
-                8 800 302-67-53
+                8 800 302-38-36
               </a>
-              <a href="mailto:info@geniusspa.ru" className="flex items-center gap-2 text-sm text-white/70 hover:text-white transition-colors">
+              <a href="mailto:info@vam-vdom.ru" className="flex items-center gap-2 text-sm text-white/70 hover:text-white transition-colors">
                 <Mail className="w-4 h-4 text-green-400" />
-                info@geniusspa.ru
+                info@vam-vdom.ru
               </a>
             </div>
           </div>
@@ -103,7 +103,7 @@ export function Footer() {
                 <p className="text-white/40 text-xs mb-2">Напишите нам:</p>
                 <div className="flex gap-3">
                   <a
-                    href="https://wa.me/88003026753"
+                    href="https://wa.me/88003023836"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="px-3 h-9 rounded-lg flex items-center gap-1.5 text-xs font-semibold text-white transition-transform hover:scale-105"

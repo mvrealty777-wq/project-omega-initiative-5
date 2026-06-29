@@ -6,9 +6,9 @@ import { MaxIcon } from "@/components/icons/MaxIcon"
 import { sendLead } from "@/lib/sendLead"
 
 const gallery = [
-  { src: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/36d84774-a9b9-44bf-964e-4bda7bab7a1e.jpg", tag: "Сауна" },
-  { src: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/a9216446-6746-4155-a352-9c5e9add83e2.jpg", tag: "Хаммам" },
-  { src: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/806491d7-4ffe-4e9e-8c4e-71d22ac9af98.jpg", tag: "3D-чертёж сауны" },
+  { src: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/2ad12f49-973d-4ff5-88da-a09246609324.jpg", tag: "Сауна" },
+  { src: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/d2e669bd-fe0e-4164-a322-0cb4c8574471.jpg", tag: "Хаммам" },
+  { src: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/020640aa-1aee-464d-85b9-f2e4be664dfa.jpg", tag: "3D-чертёж" },
 ]
 
 const visualTypes = ["Сауны", "Турецкой бани", "Соляной комнаты", "Комнаты отдыха", "и др."]
@@ -190,6 +190,12 @@ export function Project3DSection() {
                   {/* Мессенджеры */}
                   <div className="flex items-center flex-wrap gap-2 mt-4 pt-4 border-t border-white/15">
                     <span className="text-sm text-white/75">Или напишите нам:</span>
+                    <a href="https://wa.me/88003023836" target="_blank" rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 h-9 px-3.5 rounded-lg text-sm font-semibold text-white transition-transform hover:scale-105"
+                      style={{ background: '#25D366' }}>
+                      <Icon name="MessageCircle" className="w-4 h-4" fallback="MessageCircle" />
+                      WhatsApp
+                    </a>
                     <a href="https://t.me/geniusspa" target="_blank" rel="noopener noreferrer"
                       className="inline-flex items-center gap-1.5 h-9 px-3.5 rounded-lg text-sm font-semibold text-white transition-transform hover:scale-105"
                       style={{ background: '#27A7E7' }}>

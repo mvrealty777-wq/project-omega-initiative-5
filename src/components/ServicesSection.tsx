@@ -67,7 +67,9 @@ export function ServicesSection() {
                 <div className="grid grid-cols-3 gap-2 mb-6 rounded-xl border border-border bg-secondary/40 p-3">
                   <div className="text-center">
                     <div className="flex justify-center mb-1"><Icon name="Wallet" className="w-4 h-4 text-primary" fallback="Tag" /></div>
-                    <p className="text-[13px] font-black text-foreground leading-none" style={{ fontFamily: 'Montserrat, sans-serif' }}>{service.priceFrom.replace('от ', '')}₽</p>
+                    <p className="text-[13px] font-black text-foreground leading-none" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                      {service.priceFrom.startsWith('от ') ? <>от {service.priceFrom.replace('от ', '')}₽</> : service.priceFrom}
+                    </p>
                     <p className="text-[10px] text-muted-foreground mt-0.5">цена</p>
                   </div>
                   <div className="text-center border-x border-border">

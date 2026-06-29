@@ -5,15 +5,15 @@ import { Phone, Mail, CheckCircle, MessageCircle, Send } from "lucide-react"
 import { sendLead } from "@/lib/sendLead"
 
 export function ContactSection() {
-  const [formData, setFormData] = useState({ time: "", phone: "" })
+  const [formData, setFormData] = useState({ name: "", phone: "" })
   const [sent, setSent] = useState(false)
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     setSent(true)
     sendLead({
+      name: formData.name,
       phone: formData.phone,
-      message: formData.time ? `Удобное время для звонка: ${formData.time}` : undefined,
       source: "Блок «Контакты» — заказать звонок",
     })
   }
@@ -70,7 +70,7 @@ export function ContactSection() {
                   <span className="text-white/90 font-medium">Пишите, мы онлайн:</span>
                 </div>
                 <div className="flex gap-3">
-                  <a href="https://wa.me/79810779725" target="_blank" rel="noopener noreferrer"
+                  <a href="https://wa.me/88003023836" target="_blank" rel="noopener noreferrer"
                     className="w-12 h-12 rounded-full flex items-center justify-center bg-[#25D366] hover:scale-110 transition-transform shadow-lg">
                     <MessageCircle className="w-6 h-6 text-white" />
                   </a>
@@ -78,7 +78,7 @@ export function ContactSection() {
                     className="w-12 h-12 rounded-full flex items-center justify-center bg-[#229ED9] hover:scale-110 transition-transform shadow-lg">
                     <Send className="w-5 h-5 text-white" />
                   </a>
-                  <a href="mailto:info@geniusspa.ru"
+                  <a href="mailto:info@vam-vdom.ru"
                     className="w-12 h-12 rounded-full flex items-center justify-center bg-white/15 hover:bg-white/25 hover:scale-110 transition-all shadow-lg">
                     <Mail className="w-5 h-5 text-white" />
                   </a>
@@ -91,11 +91,11 @@ export function ContactSection() {
                   <span className="w-2.5 h-2.5 rounded-full" style={{ background: 'hsl(145 63% 50%)' }} />
                   <span className="text-white/90 font-medium">Звоните прямо сейчас:</span>
                 </div>
-                <a href="tel:+79810779725" className="flex items-center gap-2.5 group">
+                <a href="tel:88003023836" className="flex items-center gap-2.5 group">
                   <Phone className="w-6 h-6" style={{ color: 'hsl(145 63% 50%)' }} />
                   <span className="text-2xl sm:text-3xl font-black text-white group-hover:text-primary transition-colors"
                     style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                    +7 981 077 97 25
+                    8 800 302-38-36
                   </span>
                 </a>
               </div>
@@ -120,14 +120,14 @@ export function ContactSection() {
               ) : (
                 <>
                   <p className="text-white/85 mb-4 text-base">
-                    Или просто введите ваш телефон, мы перезвоним когда вам будет удобно
+                    Или просто введите ваш телефон, мы перезвоним и ответим на все вопросы
                   </p>
                   <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3">
                     <Input
-                      name="time"
-                      value={formData.time}
+                      name="name"
+                      value={formData.name}
                       onChange={handleChange}
-                      placeholder="Удобное время для звонка"
+                      placeholder="Ваше имя"
                       className="h-14 rounded-xl bg-white/5 border-white/15 text-white placeholder:text-white/40 focus-visible:ring-primary"
                     />
                     <Input

@@ -75,6 +75,17 @@ export function MobileMenu() {
               </a>
             ))}
             <a
+              href="https://vam-vdom.ru/"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={close}
+              className="mx-4 mt-2 inline-flex items-center justify-center gap-2 px-4 py-3 rounded-lg text-base font-bold text-white transition-all"
+              style={{ background: 'linear-gradient(135deg, #2563EB, #1d4ed8)' }}
+            >
+              <Icon name="ShoppingCart" className="w-4 h-4" fallback="Store" />
+              Интернет-магазин
+            </a>
+            <a
               href="/#contact"
               onClick={close}
               className="btn-green justify-center mt-3 mx-4"

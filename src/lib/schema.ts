@@ -1,5 +1,5 @@
 const SITE_NAME = "GeniusSPA"
-const PHONE = "+78003026753"
+const PHONE = "+78003023836"
 
 const origin = () =>
   typeof window !== "undefined" ? window.location.origin : "https://geniusspa.ru"
@@ -23,7 +23,7 @@ export function organizationSchema(): Record<string, unknown> {
       areaServed: "RU",
       availableLanguage: "Russian",
     },
-    sameAs: ["https://t.me/geniusspa", "https://wa.me/88003026753"],
+    sameAs: ["https://t.me/geniusspa", "https://wa.me/88003023836"],
   }
 }
 

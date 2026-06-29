@@ -45,7 +45,7 @@ const configs: Record<string, SlugConfig> = {
       "Монтаж каменки, вентиляции и пароизоляции за один выезд",
       "Реставрация и реконструкция существующих парных",
     ],
-    image: CDN + "7f50eade-763f-430d-ae19-a529d762a70e.jpg",
+    image: CDN + "abaca29d-a28a-4b08-8c2d-876ba90bdf24.jpg",
     imageAlt: "Готовая финская сауна под ключ",
     stat: "500+",
     statLabel: "саун и бань сдано",
