@@ -29,25 +29,34 @@ const videos: Video[] = [
 
 function VideoCard({ video, onClick }: { video: Video; onClick: () => void }) {
   const ref = useRef<HTMLVideoElement>(null)
-  const [hovered, setHovered] = useState(false)
-  const [srcLoaded, setSrcLoaded] = useState(false)
+  const [playing, setPlaying] = useState(false)
+
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+    // Загружаем метаданные сразу и показываем первый кадр
+    el.preload = "metadata"
+    el.load()
+    const onMeta = () => { el.currentTime = 0.1 }
+    el.addEventListener("loadedmetadata", onMeta)
+    return () => el.removeEventListener("loadedmetadata", onMeta)
+  }, [])
 
   const handleMouseEnter = () => {
-    setHovered(true)
-    setSrcLoaded(true)
+    const el = ref.current
+    if (!el) return
+    setPlaying(true)
+    el.currentTime = 0
+    el.play().catch(() => {})
   }
 
   const handleMouseLeave = () => {
-    setHovered(false)
-    if (ref.current) { ref.current.pause(); ref.current.currentTime = 0 }
+    const el = ref.current
+    if (!el) return
+    setPlaying(false)
+    el.pause()
+    el.currentTime = 0.1
   }
-
-  useEffect(() => {
-    if (srcLoaded && ref.current) {
-      ref.current.load()
-      ref.current.play().catch(() => {})
-    }
-  }, [srcLoaded])
 
   return (
     <button
@@ -59,21 +68,18 @@ function VideoCard({ video, onClick }: { video: Video; onClick: () => void }) {
       style={{ aspectRatio: "3/4" }}
       aria-label={video.title}
     >
-      {!hovered && (
-        <div className="absolute inset-0 flex items-end z-10 pointer-events-none" />
-      )}
       <video
         ref={ref}
-        src={srcLoaded ? video.src : undefined}
+        src={video.src}
         muted
         playsInline
-        preload="none"
+        preload="metadata"
         className="w-full h-full object-cover"
       />
       <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/15 to-transparent group-hover:from-black/70 transition-all duration-300" />
       <div className="absolute inset-0 flex items-center justify-center">
-        <span className="w-11 h-11 rounded-full bg-white/90 flex items-center justify-center shadow-xl group-hover:scale-110 group-hover:bg-primary transition-all duration-300">
-          <Play className="w-5 h-5 text-primary group-hover:text-white fill-current ml-0.5 transition-colors" />
+        <span className={`w-11 h-11 rounded-full flex items-center justify-center shadow-xl transition-all duration-300 ${playing ? "bg-primary scale-110" : "bg-white/90 group-hover:scale-110 group-hover:bg-primary"}`}>
+          <Play className={`w-5 h-5 fill-current ml-0.5 transition-colors ${playing ? "text-white" : "text-primary group-hover:text-white"}`} />
         </span>
       </div>
       <div className="absolute bottom-0 left-0 right-0 p-3">
@@ -102,7 +108,7 @@ export function VideoWorksSection() {
               Наши <span className="text-primary">работы в видео</span>
             </h2>
             <p className="text-muted-foreground text-base">
-              Наводи на карточку — видео запустится сразу. Нажми чтобы смотреть полностью
+              Наводи на карточку — видео запустится. Нажми чтобы смотреть полностью
             </p>
           </div>
 
