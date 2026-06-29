@@ -76,24 +76,14 @@ export function SubServicePageTemplate({ sub }: Props) {
         {/* Hero — как на главной */}
         <ServiceHero
           service={service}
-          titleOverride={sub.title}
+          titleOverride={`${sub.title} под ключ`}
           subtitleOverride={
             sub.title === "Русская баня"
-              ? "Русская баня с дровяной печью-каменкой под ключ. Сруб, брус или бревно, парная + моечная + комната отдыха. Гарантия 5 лет."
-              : `${sub.title} под ключ по всей России. Проектирование, материалы, монтаж и гарантия 5 лет.`
+              ? "С дровяной печью-каменкой. Сруб, брус или бревно, парная + моечная + комната отдыха. Гарантия 5 лет."
+              : `Строительство и отделка по всей России. Проектирование, материалы, монтаж и гарантия 5 лет.`
           }
           parentCrumb={{ label: service.cardTitle, to: `/uslugi/${service.slug}` }}
         />
-
-        {/* Intro */}
-        <section className="py-10 sm:py-12 lg:py-14 px-4 sm:px-6 lg:px-8 section-glass">
-          <div className="container mx-auto max-w-4xl text-center">
-            <h2 className="text-3xl sm:text-4xl font-black text-foreground mb-6" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-              {sub.title}
-            </h2>
-            <p className="text-lg text-muted-foreground leading-relaxed">{service.intro}</p>
-          </div>
-        </section>
 
         {/* Схема оборудования */}
         <EquipmentSchemeSection slug={service.slug} />
@@ -153,27 +143,6 @@ export function SubServicePageTemplate({ sub }: Props) {
 
         {/* Услуга под ключ (что входит + стоимость) */}
         <ServiceTurnkeySection service={service} title={sub.title} />
-
-        {/* Gallery */}
-        {service.gallery.length > 1 && (
-          <section className="py-10 sm:py-12 lg:py-14 px-4 sm:px-6 lg:px-8 section-glass">
-            <div className="container mx-auto max-w-6xl">
-              <div className="text-center mb-12">
-                <div className="section-badge mb-5 mx-auto">Примеры</div>
-                <h2 className="text-4xl sm:text-5xl font-black text-foreground" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                  Примеры <span className="text-primary">объектов</span>
-                </h2>
-              </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                {service.gallery.map((img, i) => (
-                  <div key={i} className="rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 aspect-[4/3] group">
-                    <img src={img} alt={`${sub.title} — пример ${i + 1}`} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                  </div>
-                ))}
-              </div>
-            </div>
-          </section>
-        )}
 
         {/* Другие услуги направления */}
         {siblings.length > 0 && (
