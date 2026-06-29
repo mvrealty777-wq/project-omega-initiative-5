@@ -148,7 +148,7 @@ export function ServicePageTemplate({ service }: Props) {
 
       {/* Блоки как на главной — в порядке главной страницы */}
       {/* 1. Наш подход */}
-      <ReadySection />
+      <ReadySection slug={service.slug} />
       {/* 2. Наши работы */}
       {extra && (
         <ServiceCasesSection title={extra.casesTitle} subtitle={extra.casesSubtitle} cases={extra.cases} />

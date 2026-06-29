@@ -86,7 +86,7 @@ export function SubServicePageTemplate({ sub }: Props) {
         />
 
         {/* Блоки как на главной — в порядке главной страницы */}
-        <ReadySection />
+        <ReadySection slug={service.slug} />
         {extra && (
           <ServiceCasesSection title={extra.casesTitle} subtitle={extra.casesSubtitle} cases={extra.cases} />
         )}
