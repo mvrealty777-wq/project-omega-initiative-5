@@ -36,16 +36,27 @@ const HAMMAM3 = "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06
 const SAUNA = "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/bc574b96-1b7b-46c9-9b4c-7c2950015e48.jpg"
 const SAUNA2 = "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/d97d8191-171e-43e8-b9e3-997a9caa87ef.jpg"
 const SAUNA3 = "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/372589d9-db8d-4b45-8a44-f9e720673402.jpg"
-const SALT = "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/0c3708ac-d30b-4718-9b87-d5deeb7b94a1.jpg"
-const SALT2 = "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/14683f6b-e013-4819-9e21-d37583fe823f.jpg"
 const POOL = "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/11121246-eb64-4c70-9ba6-30cd19046423.jpg"
 const IR = "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/d97d8191-171e-43e8-b9e3-997a9caa87ef.jpg"
 const EQUIP = "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/09e490cf-4e62-4ee4-a5ae-0db40e9c8a31.jpg"
 const COMPLEX = "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/300aee80-ed49-410c-b117-9d48406ecb27.jpg"
-const COOL = "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/29ac4107-cc4b-49ff-980f-8534b208a073.jpg"
 const PANELS = "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/07aa0bb4-fa79-4b60-b826-1ae850d4d6e0.jpg"
 const HARVIA = "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/29880a6f-6839-45ed-b7bd-ba72d6548f10.jpg"
 const STOVE = "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/e2be9eb1-f72f-4b93-9c49-90746a0b5719.jpg"
+// Новые предметные фото
+const MARBLE = "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/1a6a970f-2fe0-4353-ae4d-62cbdd3f3792.jpg"
+const STEAM_GEN = "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/25d76578-9d48-42dc-b02e-20e21881f391.jpg"
+const FIBER_LIGHT = "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/1c45b927-8f04-4c7a-9407-f3bc05a62410.jpg"
+const POOL_PUMP = "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/b08afcbb-c2eb-48f3-9d52-5a2c75aa3ae0.jpg"
+const POOL_MOSAIC = "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/3d3f11d2-5d2c-465b-a314-f9707d77dc90.jpg"
+const POOL_JETS = "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/551d77d4-b0d6-4caf-b9ac-2b32d7dd7545.jpg"
+const SALT_BLOCKS = "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/a3ab1805-572e-4001-a7b9-2b5945fd6090.jpg"
+const HALO_GEN = "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/c9edb4b6-70b6-43cd-ab1d-1a21963f9972.jpg"
+const FLOAT_POD = "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/57f46317-3561-44cc-97cd-cc09bfe2207b.jpg"
+const PLUNGE_TUB = "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/66f65f08-dbff-4213-a096-7187d6a6cfbe.jpg"
+const ICE_FOUNTAIN = "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/5d7f1559-5002-4950-8fca-8134d3d487c6.jpg"
+const EXP_SHOWER = "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/ba608ed8-4747-4fd2-aacb-ca716b6bf39b.jpg"
+const SPA_FINISH = "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/accb7a39-2e94-4995-8340-fc3b2c2188ec.jpg"
 
 const commonStats: AboutStat[] = [
   { icon: "CalendarDays", number: "10+", label: "Лет на рынке" },
@@ -103,9 +114,9 @@ export const serviceContent: Record<string, ServiceContent> = {
       subtitle: "Парогенераторы, мрамор и мозаика в наличии. Подберём комплектацию под ваш проект и бюджет.",
       cta: "Подобрать оборудование",
       products: [
-        { image: HAMMAM2, title: "Мрамор и мозаика", text: "Натуральный мрамор, мозаика Bisazza для стен, лежаков и чебека.", badge: "от 4 500 ₽/м²" },
-        { image: HAMMAM3, title: "Парогенератор", text: "Профессиональные парогенераторы HygroMatik, TYLÖ с автоматикой.", badge: "от 95 000 ₽" },
-        { image: HAMMAM, title: "Подсветка и климат", text: "Фибероптика «звёздное небо», RGB-подсветка и генератор морского климата.", badge: "от 60 000 ₽" },
+        { image: MARBLE, title: "Мрамор и мозаика", text: "Натуральный мрамор, мозаика Bisazza для стен, лежаков и чебека.", badge: "от 4 500 ₽/м²" },
+        { image: STEAM_GEN, title: "Парогенератор", text: "Профессиональные парогенераторы HygroMatik, TYLÖ с автоматикой.", badge: "от 95 000 ₽" },
+        { image: FIBER_LIGHT, title: "Подсветка и климат", text: "Фибероптика «звёздное небо», RGB-подсветка и генератор морского климата.", badge: "от 60 000 ₽" },
       ],
       features: commonFeatures,
     },
@@ -246,9 +257,9 @@ export const serviceContent: Record<string, ServiceContent> = {
       subtitle: "Галогенераторы, соль, флоат- и криокамеры в наличии. Подберём под ваш проект и бюджет.",
       cta: "Подобрать оборудование",
       products: [
-        { image: SALT, title: "Гималайская соль", text: "Блоки и плитка из розовой гималайской соли для стен и подсветки.", badge: "от 2 500 ₽/м²" },
-        { image: SALT2, title: "Галогенератор", text: "Профессиональные галогенераторы для аэрозольной соляной терапии.", badge: "от 120 000 ₽" },
-        { image: COOL, title: "Флоат и криокамеры", text: "Флоат-камеры и криосауны ведущих производителей с гарантией.", badge: "по запросу" },
+        { image: SALT_BLOCKS, title: "Гималайская соль", text: "Блоки и плитка из розовой гималайской соли для стен и подсветки.", badge: "от 2 500 ₽/м²" },
+        { image: HALO_GEN, title: "Галогенератор", text: "Профессиональные галогенераторы для аэрозольной соляной терапии.", badge: "от 120 000 ₽" },
+        { image: FLOAT_POD, title: "Флоат и криокамеры", text: "Флоат-камеры и криосауны ведущих производителей с гарантией.", badge: "по запросу" },
       ],
       features: commonFeatures,
     },
@@ -318,9 +329,9 @@ export const serviceContent: Record<string, ServiceContent> = {
       subtitle: "Насосы, фильтры, мозаика и автоматика в наличии. Подберём комплектацию под проект.",
       cta: "Подобрать оборудование",
       products: [
-        { image: POOL, title: "Фильтрация Astral", text: "Насосы, песочные фильтры и системы водоподготовки ведущих брендов.", badge: "от 80 000 ₽" },
-        { image: COMPLEX, title: "Мозаика и плитка", text: "Стеклянная мозаика и керамика для облицовки чаши любой формы.", badge: "от 2 800 ₽/м²" },
-        { image: POOL, title: "Гидромассаж и подсветка", text: "Противотоки, гидромассажные форсунки и подводная LED-подсветка.", badge: "от 45 000 ₽" },
+        { image: POOL_PUMP, title: "Фильтрация Astral", text: "Насосы, песочные фильтры и системы водоподготовки ведущих брендов.", badge: "от 80 000 ₽" },
+        { image: POOL_MOSAIC, title: "Мозаика и плитка", text: "Стеклянная мозаика и керамика для облицовки чаши любой формы.", badge: "от 2 800 ₽/м²" },
+        { image: POOL_JETS, title: "Гидромассаж и подсветка", text: "Противотоки, гидромассажные форсунки и подводная LED-подсветка.", badge: "от 45 000 ₽" },
       ],
       features: commonFeatures,
     },
@@ -390,7 +401,7 @@ export const serviceContent: Record<string, ServiceContent> = {
       cta: "Подобрать комплектацию",
       products: [
         { image: PANELS, title: "Кедр и липа", text: "Натуральная древесина для кабины: кедр, липа, канадский хемлок.", badge: "от 1 200 ₽/м²" },
-        { image: IR, title: "Керамические излучатели", text: "ИК-излучатели с равномерным мягким прогревом и долгим ресурсом.", badge: "от 6 500 ₽" },
+        { image: FIBER_LIGHT, title: "Керамические излучатели", text: "ИК-излучатели с равномерным мягким прогревом и долгим ресурсом.", badge: "от 6 500 ₽" },
         { image: HARVIA, title: "Сенсорное управление", text: "Панели, таймеры, подсветка и аудиосистема для кабины.", badge: "от 12 000 ₽" },
       ],
       features: commonFeatures,
@@ -534,8 +545,8 @@ export const serviceContent: Record<string, ServiceContent> = {
       cta: "Подобрать комплектацию",
       products: [
         { image: HARVIA, title: "Печи и парогенераторы", text: "Печи для сауны и парогенераторы для хамама ведущих брендов.", badge: "от 28 000 ₽" },
-        { image: POOL, title: "Оборудование бассейна", text: "Фильтрация, подогрев и водоподготовка для бассейна комплекса.", badge: "от 80 000 ₽" },
-        { image: COMPLEX, title: "Отделка и интерьер", text: "Мрамор, древесина, мозаика и мебель для зоны отдыха.", badge: "по запросу" },
+        { image: POOL_PUMP, title: "Оборудование бассейна", text: "Фильтрация, подогрев и водоподготовка для бассейна комплекса.", badge: "от 80 000 ₽" },
+        { image: SPA_FINISH, title: "Отделка и интерьер", text: "Мрамор, древесина, мозаика и мебель для зоны отдыха.", badge: "по запросу" },
       ],
       features: commonFeatures,
     },
@@ -604,9 +615,9 @@ export const serviceContent: Record<string, ServiceContent> = {
       subtitle: "Гималайская и каменная соль, галогенераторы и подсветка в наличии. Подберём под проект.",
       cta: "Подобрать комплектацию",
       products: [
-        { image: SALT, title: "Гималайская соль", text: "Розовые соляные блоки и плитка для стен, потолка и подсветки.", badge: "от 2 500 ₽/м²" },
-        { image: SALT2, title: "Галогенератор", text: "Профессиональные галогенераторы для аэрозольной соляной терапии.", badge: "от 120 000 ₽" },
-        { image: SALT, title: "Подсветка и климат", text: "LED-подсветка соли и система поддержания влажности и температуры.", badge: "от 35 000 ₽" },
+        { image: SALT_BLOCKS, title: "Гималайская соль", text: "Розовые соляные блоки и плитка для стен, потолка и подсветки.", badge: "от 2 500 ₽/м²" },
+        { image: HALO_GEN, title: "Галогенератор", text: "Профессиональные галогенераторы для аэрозольной соляной терапии.", badge: "от 120 000 ₽" },
+        { image: FIBER_LIGHT, title: "Подсветка и климат", text: "LED-подсветка соли и система поддержания влажности и температуры.", badge: "от 35 000 ₽" },
       ],
       features: commonFeatures,
     },
@@ -675,9 +686,9 @@ export const serviceContent: Record<string, ServiceContent> = {
       subtitle: "Купели, ледогенераторы и душ впечатлений в наличии. Подберём под ваш проект и бюджет.",
       cta: "Подобрать оборудование",
       products: [
-        { image: COOL, title: "Купели", text: "Купели из нержавеющей стали и дерева с системой охлаждения воды.", badge: "от 120 000 ₽" },
-        { image: COOL, title: "Ледогенераторы", text: "Ледяные фонтаны и генераторы снега для контрастных процедур.", badge: "от 180 000 ₽" },
-        { image: SALT2, title: "Душ впечатлений", text: "Контрастный душ с режимами, ароматами и подсветкой.", badge: "от 90 000 ₽" },
+        { image: PLUNGE_TUB, title: "Купели", text: "Купели из нержавеющей стали и дерева с системой охлаждения воды.", badge: "от 120 000 ₽" },
+        { image: ICE_FOUNTAIN, title: "Ледогенераторы", text: "Ледяные фонтаны и генераторы снега для контрастных процедур.", badge: "от 180 000 ₽" },
+        { image: EXP_SHOWER, title: "Душ впечатлений", text: "Контрастный душ с режимами, ароматами и подсветкой.", badge: "от 90 000 ₽" },
       ],
       features: commonFeatures,
     },
