@@ -78,12 +78,20 @@ export function ServiceHero({ service, titleOverride, subtitleOverride, parentCr
               className="text-4xl sm:text-5xl lg:text-6xl font-black leading-tight mb-5 animate-fade-in-up"
               style={{ fontFamily: 'Montserrat, sans-serif' }}
             >
-              {titleOverride ?? service.heroTitle}
+              {(() => {
+                const title = (titleOverride ?? service.heroTitle).toUpperCase()
+                const subtitle = subtitleOverride ?? service.heroSubtitle
+                const idx = title.indexOf("ПОД КЛЮЧ")
+                if (idx === -1) return <>{title}{subtitle && <span className="block text-2xl sm:text-3xl lg:text-4xl mt-3 font-bold">{subtitle}</span>}</>
+                return (
+                  <>
+                    {title.slice(0, idx)}
+                    <span className="text-green-400">«ПОД КЛЮЧ»</span>
+                    {subtitle && <span className="block text-2xl sm:text-3xl lg:text-4xl mt-3 font-bold">{subtitle}</span>}
+                  </>
+                )
+              })()}
             </h1>
-
-            <p className="text-lg sm:text-xl text-white/80 leading-relaxed mb-8 max-w-lg animate-fade-in-up animate-delay-100">
-              {subtitleOverride ?? service.heroSubtitle}
-            </p>
 
             <div className="grid grid-cols-3 gap-2.5 sm:gap-4 max-w-lg animate-fade-in-up animate-delay-200">
               {[

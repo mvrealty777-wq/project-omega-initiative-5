@@ -276,13 +276,13 @@ function HammamHero({ service }: { service: ServiceData }) {
               <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
               Под ключ по всей России
             </div>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black leading-tight mb-3 animate-fade-in-up">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black leading-tight mb-5 animate-fade-in-up" style={{ fontFamily: 'Montserrat, sans-serif' }}>
               ХАММАМ или САУНА{" "}
               <span className="text-green-400">«ПОД КЛЮЧ»</span>
+              <span className="block text-2xl sm:text-3xl lg:text-4xl mt-3 font-bold">
+                Строительство и отделка хаммамов по всей России
+              </span>
             </h1>
-            <p className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white/90 mb-5 animate-fade-in-up">
-              Строительство и отделка хаммамов по всей России
-            </p>
             <p className="text-lg sm:text-xl text-white/80 leading-relaxed mb-8 max-w-lg animate-fade-in-up animate-delay-100">
               Полный комплекс услуг — от проектирования до выполнения отделочных работ и установки оборудования 👌
             </p>
