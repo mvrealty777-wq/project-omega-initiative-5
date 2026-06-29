@@ -12,6 +12,7 @@ import { VideoWorksSection } from "@/components/VideoWorksSection"
 import { EquipmentBrandsSection } from "@/components/EquipmentBrandsSection"
 import { Project3DSection } from "@/components/Project3DSection"
 import { QuizSection } from "@/components/QuizSection"
+import { HammamQuizBlock } from "@/components/HammamQuizBlock"
 import { FaqSection } from "@/components/FaqSection"
 import { ReadySection } from "@/components/ReadySection"
 import { HammamCompositionSection } from "@/components/HammamCompositionSection"
@@ -640,7 +641,7 @@ export function HammamPageTemplate({ service }: Props) {
         )}
 
         {/* === 13. КВИЗ === */}
-        <QuizSection />
+        <HammamQuizBlock />
 
         {/* === 14. FAQ === */}
         <FaqSection items={faqItems} />
