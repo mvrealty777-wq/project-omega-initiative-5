@@ -21,11 +21,9 @@ import { HammamCompositionSection } from "@/components/HammamCompositionSection"
 import { EquipmentSchemeSection } from "@/components/EquipmentSchemeSection"
 import { HammamHeroSection } from "@/components/HammamHeroSection"
 import {
-  HammamWhatIncludedSection,
   HammamTypesSection,
   HammamPricingSection,
   HammamCostFactorsSection,
-  HammamBuildStepsSection,
 } from "@/components/HammamInfoSections"
 import type { ServiceData } from "@/data/servicesData"
 import { getServiceExtra } from "@/data/serviceExtras"
@@ -83,9 +81,6 @@ export function HammamPageTemplate({ service }: Props) {
         {/* === Квиз — расчёт стоимости === */}
         <HammamQuizBlock />
 
-        {/* === Что входит в стоимость === */}
-        <HammamWhatIncludedSection />
-
         {/* === Какие хаммамы строим === */}
         <HammamTypesSection />
 
@@ -119,7 +114,7 @@ export function HammamPageTemplate({ service }: Props) {
         <VideoWorksSection />
 
         {/* === Лучшая цена на оборудование === */}
-        <EquipmentBrandsSection />
+        <EquipmentBrandsSection slug="hammam" />
 
         {/* === Дополнительные опции и оборудование для хаммама === */}
         <EquipmentChoiceSection
@@ -133,9 +128,6 @@ export function HammamPageTemplate({ service }: Props) {
 
         {/* === От чего зависит стоимость === */}
         <HammamCostFactorsSection />
-
-        {/* === Этапы работ === */}
-        <HammamBuildStepsSection />
 
         {/* === Заявка на замерщика === */}
         <SurveyorCtaSection />

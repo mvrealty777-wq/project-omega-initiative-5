@@ -2,7 +2,7 @@ import Icon from "@/components/ui/icon"
 import { LeadDialog } from "@/components/LeadDialog"
 import { ShoppingCart } from "lucide-react"
 
-const cards = [
+const defaultCards = [
   {
     image: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/033178db-5e79-4aec-b186-7d77bb86a892.jpg",
     icon: "Hammer",
@@ -41,9 +41,53 @@ const cards = [
   },
 ]
 
+const hammamCards = [
+  {
+    image: "/img/313bf9f3-4a91-4c30-a626-72bcdb662233.webp",
+    icon: "Hammer",
+    title: "Строительство под ключ",
+    text: "Берём на себя весь цикл: проект, материалы, монтаж, мраморная отделка, парогенератор. Вам не нужно ни о чём беспокоиться.",
+  },
+  {
+    image: "/img/a29dedde-0213-4624-9390-cdba4a77dc06.webp",
+    icon: "Box",
+    title: "Дизайн и 3D-визуализация",
+    text: "Разрабатываем уникальный дизайн-проект хаммама с детальной 3D-визуализацией. Вы увидите результат ещё до начала работ.",
+  },
+  {
+    image: "/img/124b4fc9-6320-4a77-8b37-3b76e25dda80.webp",
+    icon: "ShieldCheck",
+    title: "Гарантия 5 лет",
+    text: "Предоставляем полную гарантию на мраморную отделку, гидроизоляцию и парогенератор. Гарантийное обслуживание.",
+  },
+  {
+    image: "/img/937c588d-b4c7-4263-afb5-07c4cec1b579.webp",
+    icon: "MapPin",
+    title: "Бесплатный выезд замерщика",
+    text: "Специалист приедет к вам бесплатно по всей России, сделает точные замеры и оценит технические условия.",
+  },
+  {
+    image: "/img/29ee3e1d-8698-4c42-91bc-8a93f08eedd7.webp",
+    icon: "Award",
+    title: "Премиум материалы",
+    text: "Официальный партнёр HygroMatik, TYLÖ, Bisazza. Используем только натуральный мрамор и сертифицированную мозаику.",
+  },
+  {
+    image: "/img/f93e558e-f553-4625-bcf8-aa84401e6afc.webp",
+    icon: "Wrench",
+    title: "Сервисный центр",
+    text: "Собственный сервисный центр для обслуживания парогенераторов и климат-систем. Быстрое реагирование на запросы.",
+  },
+]
+
 const brands = ["Harvia", "TYLÖ", "EOS", "Jacuzzi", "ASTRAL", "SAWO", "HygroMatik"]
 
-export function EquipmentBrandsSection() {
+interface Props {
+  slug?: string
+}
+
+export function EquipmentBrandsSection({ slug }: Props = {}) {
+  const cards = slug === "hammam" ? hammamCards : defaultCards
   return (
     <section className="py-10 sm:py-12 lg:py-14 px-4 sm:px-6 lg:px-8 section-glass-tint">
       <div className="container mx-auto max-w-7xl">

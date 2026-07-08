@@ -106,7 +106,7 @@ export function SubServicePageTemplate({ sub }: Props) {
           values={content?.about.values}
           stats={content?.about.stats}
         />
-        <EquipmentBrandsSection />
+        <EquipmentBrandsSection slug={service.slug} />
         <EquipmentChoiceSection
           title={content?.equipmentChoice.title}
           titleAccent={content?.equipmentChoice.titleAccent}

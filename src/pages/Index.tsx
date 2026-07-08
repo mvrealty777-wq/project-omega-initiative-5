@@ -41,6 +41,7 @@ export default function Index() {
         <HeroSection />
         <Suspense fallback={null}>
           <ReadySection />
+          <ServicesSection />
           <PortfolioSection />
           <QuizSection />
           <FullCycleSection />
@@ -55,7 +56,6 @@ export default function Index() {
           <BuildTimelineSection />
           <TestimonialsSection />
           <PricingSection />
-          <ServicesSection />
           <FaqSection />
           <ContactSection />
           <Footer />
