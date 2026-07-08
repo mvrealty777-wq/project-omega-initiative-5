@@ -4,7 +4,6 @@ import { Footer } from "@/components/Footer"
 import { FloatingContacts } from "@/components/FloatingContacts"
 import { BanyaDecor } from "@/components/BanyaDecor"
 import { ContactSection } from "@/components/ContactSection"
-import { ServiceCasesSection } from "@/components/ServiceCasesSection"
 import { PortfolioSection } from "@/components/PortfolioSection"
 import { TestimonialsSection } from "@/components/TestimonialsSection"
 import { VideoWorksSection } from "@/components/VideoWorksSection"
@@ -28,7 +27,6 @@ import {
   HammamCostFactorsSection,
   HammamBuildStepsSection,
 } from "@/components/HammamInfoSections"
-import { HammamPortfolioSection } from "@/components/HammamPortfolioSection"
 import type { ServiceData } from "@/data/servicesData"
 import { getServiceExtra } from "@/data/serviceExtras"
 import { getServiceContent } from "@/data/serviceContent"
@@ -82,22 +80,17 @@ export function HammamPageTemplate({ service }: Props) {
         {/* === Наш подход === */}
         <ReadySection slug="hammam" />
 
+        {/* === Квиз — расчёт стоимости === */}
+        <HammamQuizBlock />
+
         {/* === Что входит в стоимость === */}
         <HammamWhatIncludedSection />
 
         {/* === Какие хаммамы строим === */}
         <HammamTypesSection />
 
-        {/* === Наши хаммамы (галерея из serviceExtras) === */}
-        {extra && (
-          <ServiceCasesSection title={extra.casesTitle} subtitle={extra.casesSubtitle} cases={extra.cases} />
-        )}
-
         {/* === Более 400 выполненных объектов === */}
         <PortfolioSection />
-
-        {/* === Реальные кейсы хаммамов с ценами и сроками === */}
-        <HammamPortfolioSection />
 
         {/* === Из чего состоит хаммам === */}
         <HammamCompositionSection />
@@ -161,9 +154,6 @@ export function HammamPageTemplate({ service }: Props) {
 
         {/* === Цены на хаммам === */}
         <HammamPricingSection />
-
-        {/* === Квиз === */}
-        <HammamQuizBlock />
 
         {/* === FAQ === */}
         <FaqSection items={faqItems} />
