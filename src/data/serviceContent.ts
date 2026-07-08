@@ -43,9 +43,14 @@ const COMPLEX = "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06
 const PANELS = "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/a8be4c56-8cfa-4946-a4b4-35e9ea719d97.jpg"
 const HARVIA = "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/3e6c51ce-1862-4d6e-be31-a4d24933606b.jpg"
 const STOVE = "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/e58c4a26-31e7-42b2-9d2b-41d0a419f481.jpg"
-const MARBLE = "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/b3e24689-33ac-457a-a8ef-55896ec0335a.jpg"
-const STEAM_GEN = "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/665da9f4-4b7c-417c-a0ab-df24f0cf9a44.jpg"
 const FIBER_LIGHT = "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/f0dd3628-16cc-4b37-88a3-b17378485dcd.jpg"
+
+const HAMMAM_MARBLE = "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/08a0aeb0-7722-4f7d-ab0d-8d872a886fb0.jpg"
+const HAMMAM_STEAM_GEN = "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/4f5f86cd-de69-4345-ae2b-80fe160691c3.jpg"
+const HAMMAM_FIBER_LIGHT = "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/0239d960-b88f-455b-8033-116367e0abf9.jpg"
+const HAMMAM_EXP_SHOWER = "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/6bebe345-3d6d-4427-8055-d0b2aa3f9fd2.jpg"
+const HAMMAM_SEA_CLIMATE = "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/a58d2b64-c018-4ca0-8ed7-265a0e7bac90.jpg"
+const HAMMAM_SPA_FINISH = "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/08f16420-d509-4ce5-b702-2216c41fea6f.jpg"
 const POOL_PUMP = "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/2eb53488-92da-480e-9907-4f9431fc8b14.jpg"
 const POOL_MOSAIC = "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/9af15fd8-4a00-429b-9cf9-1abfcc769a00.jpg"
 const POOL_JETS = "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/951276da-53a4-40cb-80fe-15acd5ac916b.jpg"
@@ -113,12 +118,12 @@ export const serviceContent: Record<string, ServiceContent> = {
       subtitle: "Парогенераторы, мрамор, мозаика и опции комфорта в наличии. Подберём комплектацию под ваш проект и бюджет.",
       cta: "Подобрать оборудование",
       products: [
-        { image: MARBLE, title: "Мрамор и мозаика", text: "Натуральный мрамор, мозаика Bisazza для стен, лежаков и чебека.", badge: "от 4 500 ₽/м²" },
-        { image: STEAM_GEN, title: "Парогенератор", text: "Профессиональные парогенераторы HygroMatik, TYLÖ с автоматикой.", badge: "от 95 000 ₽" },
-        { image: FIBER_LIGHT, title: "Подсветка и звёздное небо", text: "Фибероптика «звёздное небо», RGB-подсветка с пультом управления.", badge: "от 60 000 ₽" },
-        { image: EXP_SHOWER, title: "Душ впечатлений", text: "Тропический, контрастный и ароматический режимы в одном модуле.", badge: "от 85 000 ₽" },
-        { image: ICE_FOUNTAIN, title: "Генератор морского климата", text: "Насыщает воздух ионами соли — эффект прибрежного климата в парной.", badge: "от 70 000 ₽" },
-        { image: SPA_FINISH, title: "Премиум-отделка", text: "Натуральный камень и дерево для зоны отдыха и предбанника.", badge: "от 3 200 ₽/м²" },
+        { image: HAMMAM_MARBLE, title: "Мрамор и мозаика", text: "Натуральный мрамор, мозаика Bisazza для стен, лежаков и чебека.", badge: "от 4 500 ₽/м²" },
+        { image: HAMMAM_STEAM_GEN, title: "Парогенератор", text: "Профессиональные парогенераторы HygroMatik, TYLÖ с автоматикой.", badge: "от 95 000 ₽" },
+        { image: HAMMAM_FIBER_LIGHT, title: "Подсветка и звёздное небо", text: "Фибероптика «звёздное небо», RGB-подсветка с пультом управления.", badge: "от 60 000 ₽" },
+        { image: HAMMAM_EXP_SHOWER, title: "Душ впечатлений", text: "Тропический, контрастный и ароматический режимы в одном модуле.", badge: "от 85 000 ₽" },
+        { image: HAMMAM_SEA_CLIMATE, title: "Генератор морского климата", text: "Насыщает воздух ионами соли — эффект прибрежного климата в парной.", badge: "от 70 000 ₽" },
+        { image: HAMMAM_SPA_FINISH, title: "Премиум-отделка", text: "Натуральный камень и дерево для зоны отдыха и предбанника.", badge: "от 3 200 ₽/м²" },
       ],
       features: commonFeatures,
     },
