@@ -8,6 +8,7 @@ import { ContactSection } from "@/components/ContactSection"
 import { ServiceHero } from "@/components/ServiceHero"
 import { ReadySection } from "@/components/ReadySection"
 import { ServiceCasesSection } from "@/components/ServiceCasesSection"
+import { PortfolioSection } from "@/components/PortfolioSection"
 import { ServiceTurnkeySection } from "@/components/ServiceTurnkeySection"
 import { BuildTimelineSection } from "@/components/BuildTimelineSection"
 import { FullCycleSection } from "@/components/FullCycleSection"
@@ -90,6 +91,8 @@ export function SubServicePageTemplate({ sub }: Props) {
         {extra && (
           <ServiceCasesSection title={extra.casesTitle} subtitle={extra.casesSubtitle} cases={extra.cases} />
         )}
+        {/* Более 400 выполненных объектов */}
+        <PortfolioSection />
         {/* Из чего состоит */}
         <EquipmentSchemeSection slug={sub.subSlug === "infrakrasnye-sauny" ? "infrared-sauna" : service.slug} />
         <FullCycleSection
