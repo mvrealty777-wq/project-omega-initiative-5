@@ -17,16 +17,16 @@ const whatIncluded = [
 ]
 
 const hammamTypes = [
-  { icon: "Home", label: "Хаммам в квартире" },
-  { icon: "TreePine", label: "Хаммам в доме" },
-  { icon: "Landmark", label: "Хаммам в коттедже" },
-  { icon: "Sparkles", label: "Хаммам в SPA" },
-  { icon: "Dumbbell", label: "Хаммам в фитнес-клубе" },
-  { icon: "Building2", label: "Коммерческий хаммам" },
-  { icon: "LayoutGrid", label: "Маленький хаммам" },
-  { icon: "BedDouble", label: "Хаммам с лежаком" },
-  { icon: "CircleDot", label: "Хаммам с куполом" },
-  { icon: "Gem", label: "Хаммам с мозаикой" },
+  { image: "/img/3be05181-5308-4008-84a6-0ec4f3752e0a.webp", label: "Хаммам в квартире" },
+  { image: "/img/46d08233-ac52-45d3-90d5-64f03b2339e4.webp", label: "Хаммам в доме" },
+  { image: "/img/2c6499e2-dab2-48e2-b6fb-1f3c35b26dcb.webp", label: "Хаммам в коттедже" },
+  { image: "/img/63c91419-2c88-48cc-9f5c-266189c6531c.webp", label: "Хаммам в SPA" },
+  { image: "/img/b801265b-4c3d-48f5-90f1-f88410000916.webp", label: "Хаммам в фитнес-клубе" },
+  { image: "/img/aee51d99-03f0-4f0f-ac8b-b8f6b75c4e52.webp", label: "Коммерческий хаммам" },
+  { image: "/img/63e1e767-4594-4cea-ac62-219a55fb05e3.webp", label: "Маленький хаммам" },
+  { image: "/img/5b932b55-ad78-4e33-9618-2a357b98d32b.webp", label: "Хаммам с лежаком" },
+  { image: "/img/179d5466-8119-438c-983a-d987a9c24b1d.webp", label: "Хаммам с куполом" },
+  { image: "/img/6d1fad22-aa36-4700-b383-fbd787a9be9a.webp", label: "Хаммам с мозаикой" },
 ]
 
 const pricingRows = [
@@ -107,11 +107,16 @@ export function HammamTypesSection() {
         </div>
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
           {hammamTypes.map((t, i) => (
-            <div key={i} className="group bg-white rounded-2xl p-5 border border-border shadow-sm hover:border-primary hover:shadow-lg transition-all duration-300 hover:-translate-y-1 flex flex-col items-center text-center gap-3 cursor-default">
-              <span className="w-12 h-12 rounded-xl flex items-center justify-center" style={{ background: "hsl(145 63% 32% / 0.1)" }}>
-                <Icon name={t.icon} className="w-6 h-6 text-primary" fallback="Droplets" />
-              </span>
-              <span className="font-semibold text-sm text-foreground leading-tight group-hover:text-primary transition-colors" style={{ fontFamily: "Montserrat, sans-serif" }}>
+            <div key={i} className="group relative rounded-2xl overflow-hidden border border-border shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 aspect-[3/4] cursor-default">
+              <img
+                src={t.image}
+                alt={t.label}
+                loading="lazy"
+                decoding="async"
+                className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
+              <span className="absolute bottom-0 left-0 right-0 p-3 font-bold text-sm text-white leading-tight" style={{ fontFamily: "Montserrat, sans-serif" }}>
                 {t.label}
               </span>
             </div>
