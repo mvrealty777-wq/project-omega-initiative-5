@@ -28,6 +28,8 @@ export function ServicesSection() {
                   src={service.image}
                   alt={service.cardTitle}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  loading="lazy"
+                  decoding="async"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
                 {/* Иконка-категория */}

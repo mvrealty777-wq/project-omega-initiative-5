@@ -164,6 +164,8 @@ export function HammamQuizBlock() {
               src={CDN + "8ce3e4a6-6eac-43f3-82ac-1e7c276ab8bb.jpg"}
               alt="Хаммам под ключ"
               className="w-full h-full object-cover"
+              loading="lazy"
+              decoding="async"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
             <div className="absolute bottom-8 left-8 right-8 text-white">

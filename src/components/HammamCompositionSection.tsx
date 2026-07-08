@@ -231,6 +231,8 @@ export function HammamCompositionSection() {
                 src="https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/8ce3e4a6-6eac-43f3-82ac-1e7c276ab8bb.jpg"
                 alt="Интерьер хаммама"
                 className="absolute inset-0 w-full h-full object-cover"
+                loading="lazy"
+                decoding="async"
               />
 
               {/* Subtle dark overlay for depth */}

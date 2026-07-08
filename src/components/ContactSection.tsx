@@ -41,6 +41,8 @@ export function ContactSection() {
                 alt="Александр, руководитель отдела продаж"
                 className="w-44 h-44 sm:w-52 sm:h-52 rounded-full object-cover border-4 shadow-2xl"
                 style={{ borderColor: 'hsl(145 63% 40%)' }}
+                loading="lazy"
+                decoding="async"
               />
               <span className="absolute bottom-3 right-3 w-6 h-6 rounded-full border-4 animate-pulse"
                 style={{ background: 'hsl(145 63% 45%)', borderColor: 'hsl(220 25% 11%)' }} />

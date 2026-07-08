@@ -32,6 +32,8 @@ export function ServiceCasesSection({ title, subtitle, cases }: Props) {
                   src={c.image}
                   alt={c.title}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                  decoding="async"
                 />
                 <span className={`absolute top-3 left-3 text-xs font-semibold px-3 py-1 rounded-lg ${c.categoryColor}`}>
                   {c.category}

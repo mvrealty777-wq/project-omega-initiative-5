@@ -176,6 +176,8 @@ export function EquipmentSchemeSection({ slug }: Props) {
               src={scheme.image}
               alt={scheme.title}
               className="w-full h-full object-cover"
+              loading="lazy"
+              decoding="async"
             />
             {/* Dark overlay */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-black/30" />

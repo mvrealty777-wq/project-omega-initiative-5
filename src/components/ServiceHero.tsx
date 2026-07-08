@@ -76,7 +76,7 @@ export function ServiceHero({ service, titleOverride, subtitleOverride, parentCr
   return (
     <section className="relative overflow-hidden">
       <div className="absolute inset-0">
-        <img src={service.image} alt={service.heroTitle} className="w-full h-full object-cover" />
+        <img src={service.image} alt={service.heroTitle} className="w-full h-full object-cover" loading="eager" fetchPriority="high" decoding="async" />
         <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/65 to-black/40" />
       </div>
 
