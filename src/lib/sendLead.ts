@@ -37,9 +37,12 @@ function getGoalName(source: string): string {
   if (source.includes("Футер") || source.includes("футер")) return "footer_callback"
   if (source.includes("Первый экран")) return "hero_lead"
   if (source.includes("Портфолио")) return "portfolio_lead"
-  if (source.includes("Цены") || source.includes("Прайс")) return "pricing_lead"
+  if (source.includes("Цены") || source.includes("Прайс") || source.includes("Запросить расчёт")) return "pricing_lead"
   if (source.includes("замерщик") || source.includes("Замер")) return "surveyor_lead"
   if (source.includes("Контакт")) return "contact_lead"
+  if (source.includes("направления") || source.includes("Хаммам") || source.includes("хаммам")) return "service_hero_lead"
+  if (source.includes("3D")) return "project3d_lead"
+  if (source.includes("Перезвоните") || source.includes("перезвоните")) return "callback_lead"
   return "form_lead"
 }
 

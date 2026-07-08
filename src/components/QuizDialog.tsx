@@ -90,7 +90,7 @@ export function QuizDialog({ quiz, children }: Props) {
   return (
     <Dialog open={open} onOpenChange={handleOpenChange}>
       <DialogTrigger asChild>{children}</DialogTrigger>
-      <DialogContent className="w-[95vw] sm:max-w-[520px] p-0 overflow-hidden gap-0">
+      <DialogContent className="w-[95vw] sm:max-w-[520px] p-0 gap-0 max-h-[90vh] overflow-y-auto">
         {sent ? (
           <div className="text-center py-14 px-8">
             <div

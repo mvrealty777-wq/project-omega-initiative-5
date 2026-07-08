@@ -173,7 +173,7 @@ export function PortfolioSection() {
           <p className="text-muted-foreground max-w-2xl mx-auto text-base leading-relaxed">
             Показываем реальные кейсы, а не скопированные картинки из интернета. Оставьте заявку
             или позвоните нам по телефону{" "}
-            <a href="tel:88003026753" className="text-primary font-semibold hover:underline">8 800 302-67-53</a>{" "}
+            <a href="tel:88003023836" className="text-primary font-semibold hover:underline">8 800 302-38-36</a>{" "}
             для консультации — мы профессионалы и фанаты своего дела.
           </p>
         </div>
@@ -280,12 +280,12 @@ export function PortfolioSection() {
 
                 <div className="flex flex-col sm:flex-row gap-3">
                   <LeadDialog source={`Портфолио — ${active.title}`} title="Хочу такой же проект" submitText="Рассчитать стоимость">
-                    <button onClick={() => setActive(null)} className="btn-green justify-center text-sm flex-1">
+                    <button className="btn-green justify-center text-sm flex-1">
                       Хочу такой же — рассчитать
                       <ArrowRight className="w-4 h-4" />
                     </button>
                   </LeadDialog>
-                  <a href="tel:88003026753" className="btn-green-outline justify-center text-sm">
+                  <a href="tel:88003023836" className="btn-green-outline justify-center text-sm">
                     <Phone className="w-4 h-4" />
                     Позвонить
                   </a>
