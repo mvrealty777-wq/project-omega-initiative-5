@@ -5,7 +5,7 @@ export function FloatingContacts() {
   return (
     <div className="fixed bottom-4 right-4 sm:bottom-5 sm:right-5 z-50 flex flex-col gap-2.5 sm:gap-3">
       <a
-        href="https://wa.me/88003023836"
+        href="https://wa.me/79602319672"
         target="_blank"
         rel="noopener noreferrer"
         aria-label="WhatsApp"
@@ -15,7 +15,7 @@ export function FloatingContacts() {
         <Icon name="MessageCircle" className="w-6 h-6 sm:w-7 sm:h-7" fallback="Phone" />
       </a>
       <a
-        href="https://t.me/geniusspa"
+        href="https://t.me/+79602319672"
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Telegram"
@@ -25,7 +25,7 @@ export function FloatingContacts() {
         <Icon name="Send" className="w-5 h-5 sm:w-6 sm:h-6" fallback="Phone" />
       </a>
       <a
-        href="https://max.ru/geniusspa"
+        href="https://max.ru/+79602319672"
         target="_blank"
         rel="noopener noreferrer"
         aria-label="МАКС"

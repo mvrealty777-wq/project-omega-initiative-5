@@ -190,19 +190,19 @@ export function Project3DSection() {
                   {/* Мессенджеры */}
                   <div className="flex items-center flex-wrap gap-2 mt-4 pt-4 border-t border-white/15">
                     <span className="text-sm text-white/75">Или напишите нам:</span>
-                    <a href="https://wa.me/88003023836" target="_blank" rel="noopener noreferrer"
+                    <a href="https://wa.me/79602319672" target="_blank" rel="noopener noreferrer"
                       className="inline-flex items-center gap-1.5 h-9 px-3.5 rounded-lg text-sm font-semibold text-white transition-transform hover:scale-105"
                       style={{ background: '#25D366' }}>
                       <Icon name="MessageCircle" className="w-4 h-4" fallback="MessageCircle" />
                       WhatsApp
                     </a>
-                    <a href="https://t.me/geniusspa" target="_blank" rel="noopener noreferrer"
+                    <a href="https://t.me/+79602319672" target="_blank" rel="noopener noreferrer"
                       className="inline-flex items-center gap-1.5 h-9 px-3.5 rounded-lg text-sm font-semibold text-white transition-transform hover:scale-105"
                       style={{ background: '#27A7E7' }}>
                       <Icon name="Send" className="w-4 h-4" fallback="MessageCircle" />
                       Telegram
                     </a>
-                    <a href="https://max.ru/geniusspa" target="_blank" rel="noopener noreferrer"
+                    <a href="https://max.ru/+79602319672" target="_blank" rel="noopener noreferrer"
                       className="inline-flex items-center gap-1.5 h-9 px-3.5 rounded-lg text-sm font-semibold text-white transition-transform hover:scale-105"
                       style={{ background: 'linear-gradient(135deg, #8B5CF6, #6366F1)' }}>
                       <MaxIcon className="w-4 h-4" />

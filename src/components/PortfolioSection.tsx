@@ -26,7 +26,7 @@ export function PortfolioSection() {
           <p className="text-muted-foreground max-w-2xl mx-auto text-base leading-relaxed">
             Показываем реальные кейсы, а не скопированные картинки из интернета. Оставьте заявку
             или позвоните нам по телефону{" "}
-            <a href="tel:88003023836" className="text-primary font-semibold hover:underline">8 800 302-38-36</a>{" "}
+            <a href="tel:+79602319672" className="text-primary font-semibold hover:underline">8 960 231-96-72</a>{" "}
             для консультации — мы профессионалы и фанаты своего дела.
           </p>
         </div>

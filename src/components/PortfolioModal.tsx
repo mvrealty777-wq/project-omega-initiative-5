@@ -70,7 +70,7 @@ export function PortfolioModal({ active, imgIndex, setImgIndex, setActive }: Por
                     <ArrowRight className="w-4 h-4" />
                   </button>
                 </LeadDialog>
-                <a href="tel:88003023836" className="btn-green-outline justify-center text-sm">
+                <a href="tel:+79602319672" className="btn-green-outline justify-center text-sm">
                   <Phone className="w-4 h-4" />
                   Позвонить
                 </a>

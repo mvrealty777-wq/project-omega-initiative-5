@@ -23,7 +23,7 @@ export function organizationSchema(): Record<string, unknown> {
       areaServed: "RU",
       availableLanguage: "Russian",
     },
-    sameAs: ["https://t.me/geniusspa", "https://wa.me/88003023836"],
+    sameAs: ["https://t.me/+79602319672", "https://wa.me/79602319672"],
   }
 }
 

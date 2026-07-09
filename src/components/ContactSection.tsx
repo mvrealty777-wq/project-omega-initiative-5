@@ -72,11 +72,11 @@ export function ContactSection() {
                   <span className="text-white/90 font-medium">Пишите, мы онлайн:</span>
                 </div>
                 <div className="flex gap-3">
-                  <a href="https://wa.me/88003023836" target="_blank" rel="noopener noreferrer"
+                  <a href="https://wa.me/79602319672" target="_blank" rel="noopener noreferrer"
                     className="w-12 h-12 rounded-full flex items-center justify-center bg-[#25D366] hover:scale-110 transition-transform shadow-lg">
                     <MessageCircle className="w-6 h-6 text-white" />
                   </a>
-                  <a href="https://t.me/geniusspa" target="_blank" rel="noopener noreferrer"
+                  <a href="https://t.me/+79602319672" target="_blank" rel="noopener noreferrer"
                     className="w-12 h-12 rounded-full flex items-center justify-center bg-[#229ED9] hover:scale-110 transition-transform shadow-lg">
                     <Send className="w-5 h-5 text-white" />
                   </a>
@@ -93,11 +93,11 @@ export function ContactSection() {
                   <span className="w-2.5 h-2.5 rounded-full" style={{ background: 'hsl(145 63% 50%)' }} />
                   <span className="text-white/90 font-medium">Звоните прямо сейчас:</span>
                 </div>
-                <a href="tel:88003023836" className="flex items-center gap-2.5 group">
+                <a href="tel:+79602319672" className="flex items-center gap-2.5 group">
                   <Phone className="w-6 h-6" style={{ color: 'hsl(145 63% 50%)' }} />
                   <span className="text-2xl sm:text-3xl font-black text-white group-hover:text-primary transition-colors"
                     style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                    8 800 302-38-36
+                    8 960 231-96-72
                   </span>
                 </a>
               </div>

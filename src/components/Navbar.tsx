@@ -106,24 +106,24 @@ export function Navbar() {
 
           <div className="hidden md:flex items-center gap-3">
             <div className="flex flex-col items-end">
-              <a href="tel:88003023836" className="flex items-center gap-2 text-sm font-bold text-foreground hover:text-primary transition-colors">
+              <a href="tel:+79602319672" className="flex items-center gap-2 text-sm font-bold text-foreground hover:text-primary transition-colors">
                 <Phone className="h-4 w-4 text-primary" />
-                8 800 302-38-36
+                8 960 231-96-72
               </a>
               <span className="text-[11px] text-primary font-semibold">Звоните, бесплатно!</span>
             </div>
             <div className="flex items-center gap-1.5">
-              <a href="https://wa.me/88003023836" target="_blank" rel="noopener noreferrer"
+              <a href="https://wa.me/79602319672" target="_blank" rel="noopener noreferrer"
                 className="w-9 h-9 rounded-lg flex items-center justify-center text-white transition-transform hover:scale-105"
                 style={{ background: '#25D366' }} aria-label="WhatsApp">
                 <Icon name="MessageCircle" className="h-4.5 w-4.5" fallback="Phone" />
               </a>
-              <a href="https://t.me/geniusspa" target="_blank" rel="noopener noreferrer"
+              <a href="https://t.me/+79602319672" target="_blank" rel="noopener noreferrer"
                 className="w-9 h-9 rounded-lg flex items-center justify-center text-white transition-transform hover:scale-105"
                 style={{ background: '#27A7E7' }} aria-label="Telegram">
                 <Icon name="Send" className="h-4 w-4" fallback="Phone" />
               </a>
-              <a href="https://max.ru/geniusspa" target="_blank" rel="noopener noreferrer"
+              <a href="https://max.ru/+79602319672" target="_blank" rel="noopener noreferrer"
                 className="w-9 h-9 rounded-lg flex items-center justify-center text-white transition-transform hover:scale-105"
                 style={{ background: 'linear-gradient(135deg, #8B5CF6, #6366F1)' }} aria-label="МАКС">
                 <MaxIcon className="h-5 w-5" />
