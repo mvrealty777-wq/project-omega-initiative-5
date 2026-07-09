@@ -1,6 +1,6 @@
 import { Logo } from "@/components/Logo"
 import { MobileMenu } from "@/components/MobileMenu"
-import { MaxIcon } from "@/components/icons/MaxIcon"
+import { MessengerIcon } from "@/components/icons/MessengerIcon"
 import { Phone, ChevronDown } from "lucide-react"
 import Icon from "@/components/ui/icon"
 import { Link } from "react-router-dom"
@@ -114,19 +114,19 @@ export function Navbar() {
             </div>
             <div className="flex items-center gap-1.5">
               <a href="https://wa.me/79602319672" target="_blank" rel="noopener noreferrer"
-                className="w-9 h-9 rounded-lg flex items-center justify-center text-white transition-transform hover:scale-105"
-                style={{ background: '#25D366' }} aria-label="WhatsApp">
-                <Icon name="MessageCircle" className="h-4.5 w-4.5" fallback="Phone" />
+                className="w-9 h-9 rounded-lg overflow-hidden transition-transform hover:scale-105"
+                aria-label="WhatsApp">
+                <MessengerIcon id="whatsapp" fill className="w-full h-full rounded-lg" />
               </a>
               <a href="https://t.me/+79602319672" target="_blank" rel="noopener noreferrer"
-                className="w-9 h-9 rounded-lg flex items-center justify-center text-white transition-transform hover:scale-105"
-                style={{ background: '#27A7E7' }} aria-label="Telegram">
-                <Icon name="Send" className="h-4 w-4" fallback="Phone" />
+                className="w-9 h-9 rounded-lg overflow-hidden transition-transform hover:scale-105"
+                aria-label="Telegram">
+                <MessengerIcon id="telegram" fill className="w-full h-full rounded-lg" />
               </a>
               <a href="https://max.ru/+79602319672" target="_blank" rel="noopener noreferrer"
-                className="w-9 h-9 rounded-lg flex items-center justify-center text-white transition-transform hover:scale-105"
-                style={{ background: 'linear-gradient(135deg, #8B5CF6, #6366F1)' }} aria-label="МАКС">
-                <MaxIcon className="h-5 w-5" />
+                className="w-9 h-9 rounded-lg overflow-hidden transition-transform hover:scale-105"
+                aria-label="МАКС">
+                <MessengerIcon id="max" fill className="w-full h-full rounded-lg" />
               </a>
             </div>
             <CallbackDialog source="Шапка — Перезвоните мне">

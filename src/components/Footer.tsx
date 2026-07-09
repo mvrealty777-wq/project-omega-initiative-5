@@ -1,8 +1,7 @@
 import { Logo } from "@/components/Logo"
-import { MaxIcon } from "@/components/icons/MaxIcon"
+import { MessengerIcon } from "@/components/icons/MessengerIcon"
 import { Phone, Mail } from "lucide-react"
 import { Link } from "react-router-dom"
-import Icon from "@/components/ui/icon"
 import { servicesData } from "@/data/servicesData"
 import { CallbackDialog } from "@/components/CallbackDialog"
 
@@ -109,7 +108,7 @@ export function Footer() {
                     className="px-3 h-9 rounded-lg flex items-center gap-1.5 text-xs font-semibold text-white transition-transform hover:scale-105"
                     style={{ background: '#25D366' }}
                   >
-                    <Icon name="MessageCircle" className="w-4 h-4" fallback="Phone" />
+                    <MessengerIcon id="whatsapp" fill className="w-5 h-5 rounded-md" />
                     WhatsApp
                   </a>
                   <a
@@ -119,7 +118,7 @@ export function Footer() {
                     className="px-3 h-9 rounded-lg flex items-center gap-1.5 text-xs font-semibold text-white transition-transform hover:scale-105"
                     style={{ background: '#27A7E7' }}
                   >
-                    <Icon name="Send" className="w-3.5 h-3.5" fallback="Phone" />
+                    <MessengerIcon id="telegram" fill className="w-5 h-5 rounded-md" />
                     Telegram
                   </a>
                   <a
@@ -129,7 +128,7 @@ export function Footer() {
                     className="px-3 h-9 rounded-lg flex items-center gap-1.5 text-xs font-semibold text-white transition-transform hover:scale-105"
                     style={{ background: 'linear-gradient(135deg, #8B5CF6, #6366F1)' }}
                   >
-                    <MaxIcon className="w-4 h-4" />
+                    <MessengerIcon id="max" fill className="w-5 h-5 rounded-md" />
                     МАКС
                   </a>
                 </div>

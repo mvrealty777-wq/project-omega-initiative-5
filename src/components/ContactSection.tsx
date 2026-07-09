@@ -1,8 +1,9 @@
 import type React from "react"
 import { useState } from "react"
 import { Input } from "@/components/ui/input"
-import { Phone, Mail, CheckCircle, MessageCircle, Send } from "lucide-react"
+import { Phone, Mail, CheckCircle } from "lucide-react"
 import { sendLead } from "@/lib/sendLead"
+import { MessengerIcon } from "@/components/icons/MessengerIcon"
 
 export function ContactSection() {
   const [formData, setFormData] = useState({ name: "", phone: "" })
@@ -72,13 +73,17 @@ export function ContactSection() {
                   <span className="text-white/90 font-medium">Пишите, мы онлайн:</span>
                 </div>
                 <div className="flex gap-3">
-                  <a href="https://wa.me/79602319672" target="_blank" rel="noopener noreferrer"
-                    className="w-12 h-12 rounded-full flex items-center justify-center bg-[#25D366] hover:scale-110 transition-transform shadow-lg">
-                    <MessageCircle className="w-6 h-6 text-white" />
+                  <a href="https://wa.me/79602319672" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"
+                    className="w-12 h-12 rounded-full overflow-hidden hover:scale-110 transition-transform shadow-lg">
+                    <MessengerIcon id="whatsapp" fill className="w-full h-full rounded-full" />
                   </a>
-                  <a href="https://t.me/+79602319672" target="_blank" rel="noopener noreferrer"
-                    className="w-12 h-12 rounded-full flex items-center justify-center bg-[#229ED9] hover:scale-110 transition-transform shadow-lg">
-                    <Send className="w-5 h-5 text-white" />
+                  <a href="https://t.me/+79602319672" target="_blank" rel="noopener noreferrer" aria-label="Telegram"
+                    className="w-12 h-12 rounded-full overflow-hidden hover:scale-110 transition-transform shadow-lg">
+                    <MessengerIcon id="telegram" fill className="w-full h-full rounded-full" />
+                  </a>
+                  <a href="https://max.ru/+79602319672" target="_blank" rel="noopener noreferrer" aria-label="МАКС"
+                    className="w-12 h-12 rounded-full overflow-hidden hover:scale-110 transition-transform shadow-lg">
+                    <MessengerIcon id="max" fill className="w-full h-full rounded-full" />
                   </a>
                   <a href="mailto:info@vam-vdom.ru"
                     className="w-12 h-12 rounded-full flex items-center justify-center bg-white/15 hover:bg-white/25 hover:scale-110 transition-all shadow-lg">

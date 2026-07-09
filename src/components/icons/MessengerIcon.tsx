@@ -1,8 +1,8 @@
 // Настоящие логотипы мессенджеров (МАКС, WhatsApp, Telegram)
 const ICONS: Record<string, string> = {
-  max: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/bucket/2cbec0a7-8709-4e9d-9e7d-7ec886f211f3.png",
-  whatsapp: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/bucket/b16353a6-1c88-4287-932b-5bcdff19e41a.png",
-  telegram: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/bucket/8e4730a3-fe0a-4653-9732-e3426a0be977.jpg",
+  max: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/bucket/bc258ed9-b979-4a46-b21b-ad570f5f8ed8.png",
+  whatsapp: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/bucket/1741d49e-b798-4316-9900-75695bdb265a.png",
+  telegram: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/bucket/a20aa6e4-9271-45e0-bd97-2037c28513b4.jpg",
 }
 
 const LABELS: Record<string, string> = {
@@ -14,16 +14,17 @@ const LABELS: Record<string, string> = {
 interface Props {
   id: string
   className?: string
+  fill?: boolean
 }
 
-export function MessengerIcon({ id, className = "w-5 h-5" }: Props) {
+export function MessengerIcon({ id, className = "w-5 h-5", fill }: Props) {
   const src = ICONS[id]
   if (!src) return null
   return (
     <img
       src={src}
       alt={LABELS[id] ?? id}
-      className={`${className} object-contain rounded-md`}
+      className={`${className} ${fill ? "object-cover" : "object-contain"}`}
       loading="lazy"
     />
   )

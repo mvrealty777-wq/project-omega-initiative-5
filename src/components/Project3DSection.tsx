@@ -2,7 +2,7 @@ import type React from "react"
 import { useState } from "react"
 import { Input } from "@/components/ui/input"
 import Icon from "@/components/ui/icon"
-import { MaxIcon } from "@/components/icons/MaxIcon"
+import { MessengerIcon } from "@/components/icons/MessengerIcon"
 import { sendLead } from "@/lib/sendLead"
 
 const gallery = [
@@ -193,19 +193,19 @@ export function Project3DSection() {
                     <a href="https://wa.me/79602319672" target="_blank" rel="noopener noreferrer"
                       className="inline-flex items-center gap-1.5 h-9 px-3.5 rounded-lg text-sm font-semibold text-white transition-transform hover:scale-105"
                       style={{ background: '#25D366' }}>
-                      <Icon name="MessageCircle" className="w-4 h-4" fallback="MessageCircle" />
+                      <MessengerIcon id="whatsapp" fill className="w-5 h-5 rounded-md" />
                       WhatsApp
                     </a>
                     <a href="https://t.me/+79602319672" target="_blank" rel="noopener noreferrer"
                       className="inline-flex items-center gap-1.5 h-9 px-3.5 rounded-lg text-sm font-semibold text-white transition-transform hover:scale-105"
                       style={{ background: '#27A7E7' }}>
-                      <Icon name="Send" className="w-4 h-4" fallback="MessageCircle" />
+                      <MessengerIcon id="telegram" fill className="w-5 h-5 rounded-md" />
                       Telegram
                     </a>
                     <a href="https://max.ru/+79602319672" target="_blank" rel="noopener noreferrer"
                       className="inline-flex items-center gap-1.5 h-9 px-3.5 rounded-lg text-sm font-semibold text-white transition-transform hover:scale-105"
                       style={{ background: 'linear-gradient(135deg, #8B5CF6, #6366F1)' }}>
-                      <MaxIcon className="w-4 h-4" />
+                      <MessengerIcon id="max" fill className="w-5 h-5 rounded-md" />
                       МАКС
                     </a>
                   </div>
