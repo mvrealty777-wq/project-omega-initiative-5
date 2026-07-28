@@ -10,9 +10,9 @@ export interface Project {
 export const projects: Project[] = [
   {
     images: [
-      "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/bucket/a6e10fd6-8d8e-48dd-b64e-1e271d5e8a29.jpg",
-      "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/8ce3e4a6-6eac-43f3-82ac-1e7c276ab8bb.jpg",
-      "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/68a45e60-98ed-4c22-baa0-f4bacff2a65a.jpg",
+      "/opt/a6e10fd6-8d8e-48dd-b64e-1e271d5e8a29.webp",
+      "/opt/8ce3e4a6-6eac-43f3-82ac-1e7c276ab8bb.webp",
+      "/opt/68a45e60-98ed-4c22-baa0-f4bacff2a65a.webp",
     ],
     category: "Хаммам",
     categoryColor: "bg-primary text-white",
@@ -22,9 +22,9 @@ export const projects: Project[] = [
   },
   {
     images: [
-      "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/8ce3e4a6-6eac-43f3-82ac-1e7c276ab8bb.jpg",
-      "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/4384e557-d15c-4d4c-a166-4bb8cae4fc8c.jpg",
-      "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/d0fc622e-ce71-4860-aaf6-441d66631642.jpg",
+      "/opt/8ce3e4a6-6eac-43f3-82ac-1e7c276ab8bb.webp",
+      "/opt/4384e557-d15c-4d4c-a166-4bb8cae4fc8c.webp",
+      "/opt/d0fc622e-ce71-4860-aaf6-441d66631642.webp",
     ],
     category: "Хаммам",
     categoryColor: "bg-primary text-white",
@@ -34,10 +34,10 @@ export const projects: Project[] = [
   },
   {
     images: [
-      "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/4384e557-d15c-4d4c-a166-4bb8cae4fc8c.jpg",
-      "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/8ce3e4a6-6eac-43f3-82ac-1e7c276ab8bb.jpg",
-      "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/d0fc622e-ce71-4860-aaf6-441d66631642.jpg",
-      "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/68a45e60-98ed-4c22-baa0-f4bacff2a65a.jpg",
+      "/opt/4384e557-d15c-4d4c-a166-4bb8cae4fc8c.webp",
+      "/opt/8ce3e4a6-6eac-43f3-82ac-1e7c276ab8bb.webp",
+      "/opt/d0fc622e-ce71-4860-aaf6-441d66631642.webp",
+      "/opt/68a45e60-98ed-4c22-baa0-f4bacff2a65a.webp",
     ],
     category: "Хаммам",
     categoryColor: "bg-primary text-white",
@@ -47,9 +47,9 @@ export const projects: Project[] = [
   },
   {
     images: [
-      "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/372589d9-db8d-4b45-8a44-f9e720673402.jpg",
-      "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/bc574b96-1b7b-46c9-9b4c-7c2950015e48.jpg",
-      "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/11121246-eb64-4c70-9ba6-30cd19046423.jpg",
+      "/opt/372589d9-db8d-4b45-8a44-f9e720673402.webp",
+      "/opt/bc574b96-1b7b-46c9-9b4c-7c2950015e48.webp",
+      "/opt/11121246-eb64-4c70-9ba6-30cd19046423.webp",
     ],
     category: "Коммерческий",
     categoryColor: "bg-gray-800 text-white",
@@ -59,7 +59,7 @@ export const projects: Project[] = [
   },
   {
     images: [
-      "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/d0fc622e-ce71-4860-aaf6-441d66631642.jpg",
+      "/opt/d0fc622e-ce71-4860-aaf6-441d66631642.webp",
     ],
     category: "Хаммам",
     categoryColor: "bg-primary text-white",
@@ -69,7 +69,7 @@ export const projects: Project[] = [
   },
   {
     images: [
-      "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/b14cf6dd-6668-414b-916f-634fa3822073.jpg",
+      "/opt/b14cf6dd-6668-414b-916f-634fa3822073.webp",
     ],
     category: "Хаммам",
     categoryColor: "bg-primary text-white",
@@ -79,7 +79,7 @@ export const projects: Project[] = [
   },
   {
     images: [
-      "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/68a45e60-98ed-4c22-baa0-f4bacff2a65a.jpg",
+      "/opt/68a45e60-98ed-4c22-baa0-f4bacff2a65a.webp",
     ],
     category: "Хаммам",
     categoryColor: "bg-primary text-white",
@@ -89,7 +89,7 @@ export const projects: Project[] = [
   },
   {
     images: [
-      "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/e99432a1-7193-4b89-a1c6-718880ad1dae.jpg",
+      "/opt/e99432a1-7193-4b89-a1c6-718880ad1dae.webp",
     ],
     category: "Хаммам",
     categoryColor: "bg-primary text-white",
@@ -99,7 +99,7 @@ export const projects: Project[] = [
   },
   {
     images: [
-      "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/ee57d73f-708f-424e-8c6a-8829eb0e1bce.jpg",
+      "/opt/ee57d73f-708f-424e-8c6a-8829eb0e1bce.webp",
     ],
     category: "Хаммам",
     categoryColor: "bg-primary text-white",
@@ -109,9 +109,9 @@ export const projects: Project[] = [
   },
   {
     images: [
-      "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/bc574b96-1b7b-46c9-9b4c-7c2950015e48.jpg",
-      "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/d97d8191-171e-43e8-b9e3-997a9caa87ef.jpg",
-      "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/372589d9-db8d-4b45-8a44-f9e720673402.jpg",
+      "/opt/bc574b96-1b7b-46c9-9b4c-7c2950015e48.webp",
+      "/opt/d97d8191-171e-43e8-b9e3-997a9caa87ef.webp",
+      "/opt/372589d9-db8d-4b45-8a44-f9e720673402.webp",
     ],
     category: "Сауна",
     categoryColor: "bg-amber-700 text-white",
@@ -121,8 +121,8 @@ export const projects: Project[] = [
   },
   {
     images: [
-      "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/d97d8191-171e-43e8-b9e3-997a9caa87ef.jpg",
-      "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/372589d9-db8d-4b45-8a44-f9e720673402.jpg",
+      "/opt/d97d8191-171e-43e8-b9e3-997a9caa87ef.webp",
+      "/opt/372589d9-db8d-4b45-8a44-f9e720673402.webp",
     ],
     category: "Сауна",
     categoryColor: "bg-amber-700 text-white",
@@ -132,8 +132,8 @@ export const projects: Project[] = [
   },
   {
     images: [
-      "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/300aee80-ed49-410c-b117-9d48406ecb27.jpg",
-      "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/b21ac2eb-0159-41ca-bb59-48b7b8545a16.jpg",
+      "/opt/300aee80-ed49-410c-b117-9d48406ecb27.webp",
+      "/opt/b21ac2eb-0159-41ca-bb59-48b7b8545a16.webp",
     ],
     category: "SPA-комплекс",
     categoryColor: "bg-blue-700 text-white",

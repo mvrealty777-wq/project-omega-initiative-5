@@ -46,7 +46,7 @@ export function HeroSection() {
       {/* Background image */}
       <div className="absolute inset-0">
         <img
-          src="https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/5f204f42-4e24-4506-a5e0-18c24654a87c.jpg"
+          src="/opt/5f204f42-4e24-4506-a5e0-18c24654a87c.webp"
           alt="Строительство хаммама и сауны под ключ"
           className="w-full h-full object-cover"
           loading="eager"

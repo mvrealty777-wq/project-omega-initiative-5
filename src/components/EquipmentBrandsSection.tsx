@@ -4,37 +4,37 @@ import { ShoppingCart } from "lucide-react"
 
 const defaultCards = [
   {
-    image: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/033178db-5e79-4aec-b186-7d77bb86a892.jpg",
+    image: "/opt/033178db-5e79-4aec-b186-7d77bb86a892.webp",
     icon: "Hammer",
     title: "Строительство под ключ",
     text: "Берём на себя весь цикл: проект, материалы, монтаж, отделка, оборудование. Вам не нужно ни о чём беспокоиться.",
   },
   {
-    image: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/e81a9bb5-78db-4658-9428-b84d20ab1011.jpg",
+    image: "/opt/e81a9bb5-78db-4658-9428-b84d20ab1011.webp",
     icon: "Box",
     title: "Дизайн и 3D-визуализация",
     text: "Разрабатываем уникальный дизайн-проект с детальной 3D-визуализацией. Вы увидите результат ещё до начала работ.",
   },
   {
-    image: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/09c8d356-2430-44e5-8306-455f9975a670.jpg",
+    image: "/opt/09c8d356-2430-44e5-8306-455f9975a670.webp",
     icon: "ShieldCheck",
     title: "Гарантия 5 лет",
     text: "Предоставляем полную гарантию на все виды работ, материалы и оборудование. Гарантийное и постгарантийное обслуживание.",
   },
   {
-    image: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/56eeb1e9-8225-495f-9198-98a6b444bb21.jpg",
+    image: "/opt/56eeb1e9-8225-495f-9198-98a6b444bb21.webp",
     icon: "MapPin",
     title: "Бесплатный выезд замерщика",
     text: "Специалист приедет к вам бесплатно по всей России, сделает точные замеры и оценит технические условия.",
   },
   {
-    image: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/1a3ddb93-6269-4317-9e18-b58d210c901e.jpg",
+    image: "/opt/1a3ddb93-6269-4317-9e18-b58d210c901e.webp",
     icon: "Award",
     title: "Премиум оборудование",
     text: "Официальный партнёр Harvia, TYLÖ, EOS, HygroMatik, ASTRAL. Используем только сертифицированные материалы и оборудование.",
   },
   {
-    image: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/d596455c-d3b0-42da-8561-a00382738d8f.jpg",
+    image: "/opt/d596455c-d3b0-42da-8561-a00382738d8f.webp",
     icon: "Wrench",
     title: "Сервисный центр",
     text: "Собственный сервисный центр для обслуживания и ремонта. Быстрое реагирование на любые запросы клиентов.",

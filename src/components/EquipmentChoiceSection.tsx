@@ -4,19 +4,19 @@ import { LeadDialog } from "@/components/LeadDialog"
 
 const defaultProducts: ChoiceProduct[] = [
   {
-    image: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/07aa0bb4-fa79-4b60-b826-1ae850d4d6e0.jpg",
+    image: "/opt/07aa0bb4-fa79-4b60-b826-1ae850d4d6e0.webp",
     title: "Вагонка для сауны",
     text: "Кедр, липа, абаши, термоосина. Шлифованная евровагонка для стен и потолка парной.",
     badge: "от 950 ₽/м²",
   },
   {
-    image: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/29880a6f-6839-45ed-b7bd-ba72d6548f10.jpg",
+    image: "/opt/29880a6f-6839-45ed-b7bd-ba72d6548f10.webp",
     title: "Электрокаменка Harvia",
     text: "Электрические печи Harvia, EOS, SAWO с пультом управления для саун от 3 до 20 м².",
     badge: "от 28 000 ₽",
   },
   {
-    image: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/e2be9eb1-f72f-4b93-9c49-90746a0b5719.jpg",
+    image: "/opt/e2be9eb1-f72f-4b93-9c49-90746a0b5719.webp",
     title: "Дровяная печь",
     text: "Чугунные и стальные печи-каменки для бани и сауны со стеклянной дверцей и баком.",
     badge: "от 32 000 ₽",

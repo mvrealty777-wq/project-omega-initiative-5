@@ -38,7 +38,7 @@ export const servicesData: ServiceData[] = [
     title: "Строительство хаммама под ключ",
     heroTitle: "Строительство хаммама под ключ",
     heroSubtitle: "Турецкие хаммамы с мозаикой, мрамором и звёздным небом. Проектирование, отделка и инженерия.",
-    image: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/68a45e60-98ed-4c22-baa0-f4bacff2a65a.jpg",
+    image: "/opt/68a45e60-98ed-4c22-baa0-f4bacff2a65a.webp",
     intro: "Строим турецкие хаммамы любой сложности — от компактных парных в частных домах до spa-комплексов для отелей. Используем натуральный мрамор, мозаику и профессиональные парогенераторы. Каждый объект проектируется индивидуально с 3D-визуализацией.",
     features: [
       { icon: "PencilRuler", title: "Проектирование хаммама", text: "Индивидуальный проект и 3D-визуализация с учётом площади, бюджета и стиля." },
@@ -54,9 +54,9 @@ export const servicesData: ServiceData[] = [
     priceFrom: "от 1 200 000",
     priceNote: "Турецкий хаммам до 20 м² под ключ",
     gallery: [
-      "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/8ce3e4a6-6eac-43f3-82ac-1e7c276ab8bb.jpg",
-      "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/4384e557-d15c-4d4c-a166-4bb8cae4fc8c.jpg",
-      "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/d0fc622e-ce71-4860-aaf6-441d66631642.jpg",
+      "/opt/8ce3e4a6-6eac-43f3-82ac-1e7c276ab8bb.webp",
+      "/opt/4384e557-d15c-4d4c-a166-4bb8cae4fc8c.webp",
+      "/opt/d0fc622e-ce71-4860-aaf6-441d66631642.webp",
     ],
   },
   {
@@ -71,7 +71,7 @@ export const servicesData: ServiceData[] = [
     title: "Строительство саун и бань под ключ",
     heroTitle: "Строительство саун и бань под ключ",
     heroSubtitle: "Финские сауны с электрокаменками и русские бани с дровяными печами. Качественная древесина и проверенные печи.",
-    image: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/bc574b96-1b7b-46c9-9b4c-7c2950015e48.jpg",
+    image: "/opt/bc574b96-1b7b-46c9-9b4c-7c2950015e48.webp",
     intro: "Возводим финские сауны с электрокаменками и русские бани с дровяными печами-каменками под ключ. Работаем с финской древесиной абаши, липой и кедром. Устанавливаем печи Harvia, EOS, SAWO и дровяные каменки. Полный цикл: от проекта до запуска и обучения работе с оборудованием.",
     features: [
       { icon: "PencilRuler", title: "Проектирование саун", text: "Разработка проекта с расчётом мощности печи, вентиляции и эргономики." },
@@ -87,9 +87,9 @@ export const servicesData: ServiceData[] = [
     priceFrom: "от 800 000",
     priceNote: "Сауна или баня до 30 м² под ключ",
     gallery: [
-      "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/bc574b96-1b7b-46c9-9b4c-7c2950015e48.jpg",
-      "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/d97d8191-171e-43e8-b9e3-997a9caa87ef.jpg",
-      "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/372589d9-db8d-4b45-8a44-f9e720673402.jpg",
+      "/opt/bc574b96-1b7b-46c9-9b4c-7c2950015e48.webp",
+      "/opt/d97d8191-171e-43e8-b9e3-997a9caa87ef.webp",
+      "/opt/372589d9-db8d-4b45-8a44-f9e720673402.webp",
     ],
   },
   {
@@ -104,7 +104,7 @@ export const servicesData: ServiceData[] = [
     title: "Зоны для впечатлений",
     heroTitle: "Зоны для впечатлений под ключ",
     heroSubtitle: "Соляные комнаты, флоатинг, криосауны и паровые бани для оздоровления и ярких ощущений.",
-    image: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/14683f6b-e013-4819-9e21-d37583fe823f.jpg",
+    image: "/opt/14683f6b-e013-4819-9e21-d37583fe823f.webp",
     intro: "Создаём оздоровительные зоны для ярких впечатлений: соляные комнаты для галотерапии, флоат-камеры, криосауны и паровые бани. Каждое решение проектируется индивидуально и помогает укрепить здоровье, снять стресс и подарить незабываемые ощущения.",
     features: [
       { icon: "Gem", title: "Соляные комнаты", text: "Галокамеры из гималайской соли с галогенератором для дыхания." },
@@ -120,8 +120,8 @@ export const servicesData: ServiceData[] = [
     priceFrom: "от 600 000",
     priceNote: "Зависит от типа зоны и оснащения",
     gallery: [
-      "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/14683f6b-e013-4819-9e21-d37583fe823f.jpg",
-      "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/e2b0a2d3-e6dc-44a4-ae60-482e3be5b688.jpg",
+      "/opt/14683f6b-e013-4819-9e21-d37583fe823f.webp",
+      "/opt/e2b0a2d3-e6dc-44a4-ae60-482e3be5b688.webp",
     ],
   },
   {
@@ -136,7 +136,7 @@ export const servicesData: ServiceData[] = [
     title: "Строительство бассейнов под ключ",
     heroTitle: "Строительство бассейнов под ключ",
     heroSubtitle: "Крытые и spa-бассейны любой формы. Проектирование, оборудование, отделка и облицовка.",
-    image: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/5b6ad93c-fe0d-4caf-acbb-bc53fe66b9c0.jpg",
+    image: "/opt/5b6ad93c-fe0d-4caf-acbb-bc53fe66b9c0.webp",
     intro: "Проектируем и строим крытые бассейны, spa-зоны и гидромассажные комплексы. Берём на себя весь цикл: чашу, гидроизоляцию, систему фильтрации и подогрева, отделку и облицовку. Работаем с частными домами, отелями и фитнес-центрами.",
     features: [
       { icon: "PencilRuler", title: "Проектирование", text: "Расчёт чаши, гидравлики и инженерных систем под ваше помещение." },
@@ -152,7 +152,7 @@ export const servicesData: ServiceData[] = [
     priceFrom: "По запросу",
     priceNote: "Цена зависит от размера и типа чаши",
     gallery: [
-      "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/11121246-eb64-4c70-9ba6-30cd19046423.jpg",
+      "/opt/11121246-eb64-4c70-9ba6-30cd19046423.webp",
     ],
   },
   {
@@ -167,7 +167,7 @@ export const servicesData: ServiceData[] = [
     title: "Инфракрасные сауны",
     heroTitle: "Инфракрасные сауны под ключ",
     heroSubtitle: "ИК-кабины для дома и спа. Проектирование, изготовление и монтаж под ваше помещение.",
-    image: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/d97d8191-171e-43e8-b9e3-997a9caa87ef.jpg",
+    image: "/opt/d97d8191-171e-43e8-b9e3-997a9caa87ef.webp",
     intro: "Проектируем и устанавливаем инфракрасные сауны — современную альтернативу классической парной. ИК-кабины прогревают тело мягким теплом, экономят энергию и подходят даже для небольших помещений. Изготавливаем под размер вашего пространства.",
     features: [
       { icon: "Box", title: "ИК-кабины", text: "Готовые и индивидуальные кабины из кедра, липы и хемлока." },
@@ -183,7 +183,7 @@ export const servicesData: ServiceData[] = [
     priceFrom: "от 250 000",
     priceNote: "ИК-кабина на 1–2 человека",
     gallery: [
-      "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/d97d8191-171e-43e8-b9e3-997a9caa87ef.jpg",
+      "/opt/d97d8191-171e-43e8-b9e3-997a9caa87ef.webp",
     ],
   },
   {
@@ -198,7 +198,7 @@ export const servicesData: ServiceData[] = [
     title: "Оборудование для бань и саун",
     heroTitle: "Оборудование для бань и саун",
     heroSubtitle: "Печи, парогенераторы и автоматика ведущих брендов. Поставка по лучшей цене и монтаж.",
-    image: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/daea0f52-b432-4f7f-a317-332789a053c2.jpg",
+    image: "/opt/daea0f52-b432-4f7f-a317-332789a053c2.webp",
     intro: "Поставляем и монтируем оборудование для хаммамов, саун и бань напрямую от заводов и официальных дистрибьюторов. Печи, парогенераторы, автоматику и аксессуары предлагаем дешевле розницы. Гарантируем лучшую цену на оборудование.",
     features: [
       { icon: "Landmark", title: "Оборудование для хаммама", text: "Парогенераторы, форсунки, ароматизация и системы управления климатом." },
@@ -214,7 +214,7 @@ export const servicesData: ServiceData[] = [
     priceFrom: "По запросу",
     priceNote: "Зависит от бренда и комплектации",
     gallery: [
-      "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/09e490cf-4e62-4ee4-a5ae-0db40e9c8a31.jpg",
+      "/opt/09e490cf-4e62-4ee4-a5ae-0db40e9c8a31.webp",
     ],
   },
   {
@@ -229,7 +229,7 @@ export const servicesData: ServiceData[] = [
     title: "Строительство банных комплексов",
     heroTitle: "Строительство банных комплексов под ключ",
     heroSubtitle: "Комплексы для дома, отелей и баз отдыха. Сауна, хамам, бассейн и зона отдыха в едином пространстве.",
-    image: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/300aee80-ed49-410c-b117-9d48406ecb27.jpg",
+    image: "/opt/300aee80-ed49-410c-b117-9d48406ecb27.webp",
     intro: "Строим банные комплексы под ключ — объединяем хаммам, сауну, бассейн, комнату отдыха и душевые в единое пространство. Берём на себя проектирование, строительство, оснащение оборудованием и дизайн интерьеров. Работаем с частными домами, отелями и базами отдыха.",
     features: [
       { icon: "PencilRuler", title: "Проектирование комплексов", text: "Зонирование пространства и инженерный проект всего банного комплекса." },
@@ -245,8 +245,8 @@ export const servicesData: ServiceData[] = [
     priceFrom: "По запросу",
     priceNote: "Цена зависит от состава и площади комплекса",
     gallery: [
-      "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/300aee80-ed49-410c-b117-9d48406ecb27.jpg",
-      "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/b21ac2eb-0159-41ca-bb59-48b7b8545a16.jpg",
+      "/opt/300aee80-ed49-410c-b117-9d48406ecb27.webp",
+      "/opt/b21ac2eb-0159-41ca-bb59-48b7b8545a16.webp",
     ],
   },
   {
@@ -261,7 +261,7 @@ export const servicesData: ServiceData[] = [
     title: "Строительство соляных пещер",
     heroTitle: "Строительство соляных пещер под ключ",
     heroSubtitle: "Галокамеры из розовой гималайской и белой каменной соли с профессиональным галогенератором.",
-    image: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/0c3708ac-d30b-4718-9b87-d5deeb7b94a1.jpg",
+    image: "/opt/0c3708ac-d30b-4718-9b87-d5deeb7b94a1.webp",
     intro: "Строим соляные пещеры (галокамеры) для дома, spa и медицинских центров. Используем розовую гималайскую и каменную белую соль, устанавливаем профессиональные галогенераторы. Соляная терапия укрепляет иммунитет и помогает при болезнях дыхания.",
     features: [
       { icon: "Mountain", title: "Розовая Гималайская соль", text: "Облицовка стен подсвеченными блоками гималайской соли." },
@@ -277,7 +277,7 @@ export const servicesData: ServiceData[] = [
     priceFrom: "от 600 000",
     priceNote: "Соляная пещера до 12 м² под ключ",
     gallery: [
-      "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/0c3708ac-d30b-4718-9b87-d5deeb7b94a1.jpg",
+      "/opt/0c3708ac-d30b-4718-9b87-d5deeb7b94a1.webp",
     ],
   },
   {
@@ -292,7 +292,7 @@ export const servicesData: ServiceData[] = [
     title: "Системы охлаждения для бань и спа",
     heroTitle: "Системы охлаждения для бань и спа",
     heroSubtitle: "Купели, ледяные фонтаны, снежные комнаты и душ впечатлений для контрастных процедур.",
-    image: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/29ac4107-cc4b-49ff-980f-8534b208a073.jpg",
+    image: "/opt/29ac4107-cc4b-49ff-980f-8534b208a073.webp",
     intro: "Проектируем и устанавливаем системы экстремального охлаждения для контрастных банных процедур. Купели из нержавеющей стали, ледяные фонтаны, снежные комнаты и душ впечатлений усиливают эффект парения и закаливания. Подбираем решения под любую spa-зону.",
     features: [
       { icon: "Droplets", title: "Купели", text: "Купели из нержавеющей стали и дерева с системой охлаждения воды." },
@@ -308,7 +308,7 @@ export const servicesData: ServiceData[] = [
     priceFrom: "от 350 000",
     priceNote: "Купель с системой охлаждения",
     gallery: [
-      "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/29ac4107-cc4b-49ff-980f-8534b208a073.jpg",
+      "/opt/29ac4107-cc4b-49ff-980f-8534b208a073.webp",
     ],
   },
 ]

@@ -6,9 +6,9 @@ import { MessengerIcon } from "@/components/icons/MessengerIcon"
 import { sendLead } from "@/lib/sendLead"
 
 const gallery = [
-  { src: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/2ad12f49-973d-4ff5-88da-a09246609324.jpg", tag: "Сауна" },
-  { src: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/d2e669bd-fe0e-4164-a322-0cb4c8574471.jpg", tag: "Хаммам" },
-  { src: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/020640aa-1aee-464d-85b9-f2e4be664dfa.jpg", tag: "3D-чертёж" },
+  { src: "/opt/2ad12f49-973d-4ff5-88da-a09246609324.webp", tag: "Сауна" },
+  { src: "/opt/d2e669bd-fe0e-4164-a322-0cb4c8574471.webp", tag: "Хаммам" },
+  { src: "/opt/020640aa-1aee-464d-85b9-f2e4be664dfa.webp", tag: "3D-чертёж" },
 ]
 
 const visualTypes = ["Сауны", "Турецкой бани", "Соляной комнаты", "Комнаты отдыха", "и др."]

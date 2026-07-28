@@ -1,11 +1,9 @@
 import { useState } from "react"
 import { ChevronDown, ChevronUp } from "lucide-react"
 
-const CDN = "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/"
-
 const portfolioCases = [
   {
-    img: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/bucket/f2861c41-8229-4af6-8a85-9b30511eb880.jpg",
+    img: "/opt/f2861c41-8229-4af6-8a85-9b30511eb880.webp",
     city: "Санкт-Петербург",
     area: "6 м²",
     works: "Золотая мозаика, арочный купол, анатомический лежак, мозаика ручной укладки, монтаж парогенератора",
@@ -15,7 +13,7 @@ const portfolioCases = [
     title: "Хаммам с золотым куполом",
   },
   {
-    img: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/bucket/90ead80c-b0c2-49c2-8257-f9d3f1b1e974.jpg",
+    img: "/opt/90ead80c-b0c2-49c2-8257-f9d3f1b1e974.webp",
     city: "Москва",
     area: "10 м²",
     works: "Оникс, золотые вставки, звёздный потолок, анатомический лежак, мозаика",
@@ -25,7 +23,7 @@ const portfolioCases = [
     title: "Хаммам с ониксом и звёздным небом",
   },
   {
-    img: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/bucket/982cc73c-cc78-4f90-bbe1-75ee48c58d5a.jpg",
+    img: "/opt/982cc73c-cc78-4f90-bbe1-75ee48c58d5a.webp",
     city: "Санкт-Петербург",
     area: "8 м²",
     works: "Синяя мозаика, восточные арки, звёздный купол, зелёный мрамор, подсветка",
@@ -35,7 +33,7 @@ const portfolioCases = [
     title: "Турецкий хаммам в восточном стиле",
   },
   {
-    img: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/bucket/cadc3d5e-4952-48f0-a2a8-b5a37efe37de.jpg",
+    img: "/opt/cadc3d5e-4952-48f0-a2a8-b5a37efe37de.webp",
     city: "Москва",
     area: "12 м²",
     works: "Синяя мозаика, мраморный чебек, восточные ниши с подсветкой, арки",
@@ -45,7 +43,7 @@ const portfolioCases = [
     title: "Классический хаммам с мраморным чебеком",
   },
   {
-    img: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/bucket/98ae3dfd-65f2-4318-9c8b-433f68ae3dcb.jpg",
+    img: "/opt/98ae3dfd-65f2-4318-9c8b-433f68ae3dcb.webp",
     city: "Санкт-Петербург",
     area: "14 м²",
     works: "Стеклянные двери, деревянные полоки, каменные стены, хромотерапия, печь с камнями",
@@ -55,7 +53,7 @@ const portfolioCases = [
     title: "Финская сауна с панорамным стеклом",
   },
   {
-    img: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/bucket/92796291-681c-4f7e-8d59-c1027c50c1a2.jpg",
+    img: "/opt/92796291-681c-4f7e-8d59-c1027c50c1a2.webp",
     city: "Ленинградская область",
     area: "16 м²",
     works: "Деревянные полоки, каменная отделка, стеклянная перегородка, душевая зона",
@@ -65,7 +63,7 @@ const portfolioCases = [
     title: "Сауна + душевая в частном доме",
   },
   {
-    img: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/bucket/f1bcd008-2326-4a40-8e94-8d0c4ca1bc5d.jpg",
+    img: "/opt/f1bcd008-2326-4a40-8e94-8d0c4ca1bc5d.webp",
     city: "Москва (отель)",
     area: "22 м²",
     works: "Стеклянная сауна, LED-подсветка, арт-печать на стене, купель, душевая кабина",
@@ -75,7 +73,7 @@ const portfolioCases = [
     title: "Дизайнерская сауна с арт-панно",
   },
   {
-    img: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/bucket/a1db02d4-8c72-4a5a-b8b1-5032a9fec061.jpg",
+    img: "/opt/a1db02d4-8c72-4a5a-b8b1-5032a9fec061.webp",
     city: "Москва",
     area: "40 м²",
     works: "Хаммам + финская сауна + бассейн, автоматизация, коммерческая эксплуатация",

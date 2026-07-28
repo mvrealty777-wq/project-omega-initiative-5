@@ -15,6 +15,7 @@ interface Lead {
   source: string
   page_url: string
   messenger: string
+  comment: string
   created_at: string
   email_sent: boolean
 }
@@ -210,6 +211,16 @@ export default function AdminLeads() {
                   <p className="mt-3 text-sm text-muted-foreground bg-secondary/50 rounded-xl p-3 whitespace-pre-line">
                     {lead.message}
                   </p>
+                )}
+
+                {lead.comment && (
+                  <div className="mt-3 text-sm bg-primary/5 border border-primary/15 rounded-xl p-3">
+                    <p className="flex items-center gap-1.5 text-xs font-semibold text-primary mb-1.5">
+                      <Icon name="ClipboardList" className="w-3.5 h-3.5" fallback="List" />
+                      Ответы формы / квиза
+                    </p>
+                    <p className="text-foreground/80 whitespace-pre-line">{lead.comment}</p>
+                  </div>
                 )}
 
                 {lead.page_url && (

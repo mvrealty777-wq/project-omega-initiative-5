@@ -1,7 +1,7 @@
 import { CheckCircle2, ArrowRight } from "lucide-react"
 import { LeadDialog } from "@/components/LeadDialog"
 
-const CDN = "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/"
+const CDN = "/opt/"
 
 interface SlugConfig {
   badge: string
@@ -28,7 +28,7 @@ const configs: Record<string, SlugConfig> = {
       "Работаем с частными клиентами и коммерческими объектами",
       "Гидроизоляция и вентиляция с гарантией 10 лет",
     ],
-    image: CDN + "c6ca7ec7-bd6a-42b1-80d4-221796db3447.jpg",
+    image: CDN + "c6ca7ec7-bd6a-42b1-80d4-221796db3447.webp",
     imageAlt: "Готовый хаммам под ключ",
     stat: "350+",
     statLabel: "хаммамов сдано",
@@ -45,7 +45,7 @@ const configs: Record<string, SlugConfig> = {
       "Монтаж каменки, вентиляции и пароизоляции за один выезд",
       "Реставрация и реконструкция существующих парных",
     ],
-    image: CDN + "abaca29d-a28a-4b08-8c2d-876ba90bdf24.jpg",
+    image: CDN + "abaca29d-a28a-4b08-8c2d-876ba90bdf24.webp",
     imageAlt: "Готовая финская сауна под ключ",
     stat: "500+",
     statLabel: "саун и бань сдано",
@@ -62,7 +62,7 @@ const configs: Record<string, SlugConfig> = {
       "Фильтрация, подогрев и автоматическая химия воды",
       "Подводная подсветка, гидромассаж и противоток",
     ],
-    image: CDN + "08a7f89e-5eea-4383-a211-8216ce54d23d.jpg",
+    image: CDN + "08a7f89e-5eea-4383-a211-8216ce54d23d.webp",
     imageAlt: "Готовый бассейн под ключ",
     stat: "150+",
     statLabel: "бассейнов сдано",
@@ -79,7 +79,7 @@ const configs: Record<string, SlugConfig> = {
       "Криосауны и контрастные зоны для wellness-центров",
       "Разработка концепции и дизайн-проект в подарок",
     ],
-    image: CDN + "09f595aa-9be3-434e-910c-e96e6f48f9f1.jpg",
+    image: CDN + "09f595aa-9be3-434e-910c-e96e6f48f9f1.webp",
     imageAlt: "Соляная пещера под ключ",
     stat: "80+",
     statLabel: "зон впечатлений",
@@ -96,7 +96,7 @@ const configs: Record<string, SlugConfig> = {
       "Хромотерапия, аудиосистема и сенсорное управление",
       "Монтаж за 1 день без пыли и строительного мусора",
     ],
-    image: CDN + "4e05a8b8-48c7-4a3d-936b-49deb7cdf9d0.jpg",
+    image: CDN + "4e05a8b8-48c7-4a3d-936b-49deb7cdf9d0.webp",
     imageAlt: "Инфракрасная сауна под ключ",
     stat: "200+",
     statLabel: "ИК-саун установлено",
@@ -113,7 +113,7 @@ const configs: Record<string, SlugConfig> = {
       "Автоматизация: один пульт управляет всем комплексом",
       "Работаем с девелоперами и гостиничными сетями",
     ],
-    image: CDN + "9a9ef2cd-01d8-41c3-96dd-25d2d472b1b6.jpg",
+    image: CDN + "9a9ef2cd-01d8-41c3-96dd-25d2d472b1b6.webp",
     imageAlt: "Банный комплекс под ключ",
     stat: "60+",
     statLabel: "комплексов сдано",
@@ -130,7 +130,7 @@ const configs: Record<string, SlugConfig> = {
       "Душ впечатлений с 5 режимами: дождь, тропик, контраст",
       "Интеграция в существующий банный комплекс",
     ],
-    image: CDN + "3c560863-6196-4ce7-8a15-f8bc04b64eb8.jpg",
+    image: CDN + "3c560863-6196-4ce7-8a15-f8bc04b64eb8.webp",
     imageAlt: "Зона охлаждения под ключ",
     stat: "120+",
     statLabel: "зон охлаждения",
@@ -147,7 +147,7 @@ const configs: Record<string, SlugConfig> = {
       "Монтаж, пусконаладка и гарантийное обслуживание",
       "Замена и модернизация существующего оборудования",
     ],
-    image: CDN + "09241a1a-a6ca-4451-8c07-9a9a4d44d8cd.jpg",
+    image: CDN + "09241a1a-a6ca-4451-8c07-9a9a4d44d8cd.webp",
     imageAlt: "Оборудование для бань и саун",
     stat: "1000+",
     statLabel: "единиц оборудования",
@@ -164,7 +164,7 @@ const configs: Record<string, SlugConfig> = {
       "Профессиональный галогенератор с авторежимами",
       "LED-подсветка и климат-контроль в комплекте",
     ],
-    image: CDN + "09f595aa-9be3-434e-910c-e96e6f48f9f1.jpg",
+    image: CDN + "09f595aa-9be3-434e-910c-e96e6f48f9f1.webp",
     imageAlt: "Соляная пещера под ключ",
     stat: "90+",
     statLabel: "соляных пещер",
@@ -183,7 +183,7 @@ const defaultConfig: SlugConfig = {
     "Реставрация и реконструкция существующих парных",
     "Собственная команда мастеров без подрядчиков",
   ],
-  image: CDN + "b6c32134-97f3-415b-a900-6e3820b49444.jpg",
+  image: CDN + "b6c32134-97f3-415b-a900-6e3820b49444.webp",
   imageAlt: "Премиальная сауна под ключ",
   stat: "400+",
   statLabel: "объектов сдано",
@@ -238,7 +238,8 @@ export function ReadySection({ slug }: Props = {}) {
                 src={cfg.image}
                 alt={cfg.imageAlt}
                 className="w-full h-full object-cover"
-                loading="eager"
+                loading="lazy"
+                decoding="async"
               />
             </div>
             <div className="absolute -bottom-5 -left-5 bg-white rounded-2xl shadow-lg px-6 py-4 border border-border hidden sm:block">

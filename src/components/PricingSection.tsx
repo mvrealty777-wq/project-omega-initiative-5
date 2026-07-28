@@ -5,7 +5,7 @@ import { LeadDialog } from "@/components/LeadDialog"
 const defaultTiers: PricingTier[] = [
   {
     name: "Баня / Сауна",
-    image: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/987e5a97-e8af-440e-9e38-9a91fa41da8e.jpg",
+    image: "/opt/987e5a97-e8af-440e-9e38-9a91fa41da8e.webp",
     price: "от 800 000",
     sub: "Частный объект до 30 м²",
     features: [
@@ -21,7 +21,7 @@ const defaultTiers: PricingTier[] = [
   },
   {
     name: "Хамам",
-    image: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/8ce3e4a6-6eac-43f3-82ac-1e7c276ab8bb.jpg",
+    image: "/opt/8ce3e4a6-6eac-43f3-82ac-1e7c276ab8bb.webp",
     price: "от 1 200 000",
     sub: "Турецкий хамам до 20 м²",
     features: [
@@ -38,7 +38,7 @@ const defaultTiers: PricingTier[] = [
   },
   {
     name: "SPA Комплекс",
-    image: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/300aee80-ed49-410c-b117-9d48406ecb27.jpg",
+    image: "/opt/300aee80-ed49-410c-b117-9d48406ecb27.webp",
     price: "По запросу",
     sub: "Коммерческий объект",
     features: [

@@ -9,7 +9,7 @@ import { sendLead } from "@/lib/sendLead"
 import { MessengerIcon } from "@/components/icons/MessengerIcon"
 import type { ServiceData } from "@/data/servicesData"
 
-const CDN = "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/"
+const CDN = "/opt/"
 
 const messengers = [
   { id: "max", label: "МАКС", color: "linear-gradient(135deg, #8B5CF6, #6366F1)" },
@@ -48,7 +48,7 @@ export function HammamHeroSection({ service }: { service: ServiceData }) {
   return (
     <section className="relative overflow-hidden">
       <div className="absolute inset-0">
-        <img src={CDN + "8ce3e4a6-6eac-43f3-82ac-1e7c276ab8bb.jpg"} alt="Хаммам под ключ" className="w-full h-full object-cover" loading="eager" fetchPriority="high" decoding="async" />
+        <img src={CDN + "8ce3e4a6-6eac-43f3-82ac-1e7c276ab8bb.webp"} alt="Хаммам под ключ" className="w-full h-full object-cover" loading="eager" fetchPriority="high" decoding="async" />
         <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/65 to-black/40" />
       </div>
 

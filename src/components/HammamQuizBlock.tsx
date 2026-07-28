@@ -6,7 +6,7 @@ import { MessengerPicker, messengerLabel } from "@/components/MessengerPicker"
 import { sendLead } from "@/lib/sendLead"
 import { CheckCircle, ChevronRight, ChevronLeft, Send } from "lucide-react"
 
-const CDN = "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/"
+const CDN = "/opt/"
 
 interface Option {
   id: string
@@ -161,7 +161,7 @@ export function HammamQuizBlock() {
           {/* Left — image */}
           <div className="relative hidden lg:block">
             <img
-              src={CDN + "8ce3e4a6-6eac-43f3-82ac-1e7c276ab8bb.jpg"}
+              src={CDN + "8ce3e4a6-6eac-43f3-82ac-1e7c276ab8bb.webp"}
               alt="Хаммам под ключ"
               className="w-full h-full object-cover"
               loading="lazy"

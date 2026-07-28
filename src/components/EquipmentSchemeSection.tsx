@@ -20,7 +20,7 @@ interface SchemeConfig {
 
 const schemes: Record<string, SchemeConfig> = {
   hammam: {
-    image: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/8ce3e4a6-6eac-43f3-82ac-1e7c276ab8bb.jpg",
+    image: "/opt/8ce3e4a6-6eac-43f3-82ac-1e7c276ab8bb.webp",
     title: "Из чего состоит хаммам",
     subtitle: "Каждый элемент влияет на атмосферу и долговечность",
     points: [
@@ -33,7 +33,7 @@ const schemes: Record<string, SchemeConfig> = {
     ],
   },
   sauna: {
-    image: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/bc574b96-1b7b-46c9-9b4c-7c2950015e48.jpg",
+    image: "/opt/bc574b96-1b7b-46c9-9b4c-7c2950015e48.webp",
     title: "Из чего состоит финская сауна",
     subtitle: "Правильный монтаж каждого слоя — залог 20 лет безупречной работы",
     points: [
@@ -46,7 +46,7 @@ const schemes: Record<string, SchemeConfig> = {
     ],
   },
   pool: {
-    image: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/11121246-eb64-4c70-9ba6-30cd19046423.jpg",
+    image: "/opt/11121246-eb64-4c70-9ba6-30cd19046423.webp",
     title: "Из чего состоит бассейн",
     subtitle: "Профессиональная инженерия обеспечивает чистоту и долговечность",
     points: [
@@ -59,7 +59,7 @@ const schemes: Record<string, SchemeConfig> = {
     ],
   },
   "salt-cave-room": {
-    image: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/0c3708ac-d30b-4718-9b87-d5deeb7b94a1.jpg",
+    image: "/opt/0c3708ac-d30b-4718-9b87-d5deeb7b94a1.webp",
     title: "Из чего состоит соляная пещера",
     subtitle: "Каждый элемент влияет на терапевтический эффект",
     points: [
@@ -71,7 +71,7 @@ const schemes: Record<string, SchemeConfig> = {
     ],
   },
   cooling: {
-    image: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/29ac4107-cc4b-49ff-980f-8534b208a073.jpg",
+    image: "/opt/29ac4107-cc4b-49ff-980f-8534b208a073.webp",
     title: "Из чего состоит зона охлаждения",
     subtitle: "Контраст температур — основа оздоровительного эффекта",
     points: [
@@ -83,7 +83,7 @@ const schemes: Record<string, SchemeConfig> = {
     ],
   },
   "infrared-sauna": {
-    image: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/d97d8191-171e-43e8-b9e3-997a9caa87ef.jpg",
+    image: "/opt/d97d8191-171e-43e8-b9e3-997a9caa87ef.webp",
     title: "Из чего состоит инфракрасная сауна",
     subtitle: "Мягкое тепло без пара — глубокий прогрев при 45–60°C",
     points: [
@@ -96,7 +96,7 @@ const schemes: Record<string, SchemeConfig> = {
     ],
   },
   "bath-complex": {
-    image: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/300aee80-ed49-410c-b117-9d48406ecb27.jpg",
+    image: "/opt/300aee80-ed49-410c-b117-9d48406ecb27.webp",
     title: "Из чего состоит банный комплекс",
     subtitle: "Полный термальный цикл: прогрев — пар — охлаждение — отдых",
     points: [
@@ -109,7 +109,7 @@ const schemes: Record<string, SchemeConfig> = {
     ],
   },
   "salt-cave": {
-    image: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/14683f6b-e013-4819-9e21-d37583fe823f.jpg",
+    image: "/opt/14683f6b-e013-4819-9e21-d37583fe823f.webp",
     title: "Из чего состоит зона впечатлений",
     subtitle: "Флоатинг, соляная пещера, криосауна — новый формат SPA",
     points: [
@@ -121,7 +121,7 @@ const schemes: Record<string, SchemeConfig> = {
     ],
   },
   "equipment": {
-    image: "https://cdn.poehali.dev/projects/601c86a7-3ea8-4a89-b63a-2f5b06647da4/files/09e490cf-4e62-4ee4-a5ae-0db40e9c8a31.jpg",
+    image: "/opt/09e490cf-4e62-4ee4-a5ae-0db40e9c8a31.webp",
     title: "Оборудование для бань и SPA",
     subtitle: "Только проверенные бренды с гарантией и сервисом в России",
     points: [
