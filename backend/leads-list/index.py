@@ -47,7 +47,7 @@ def handler(event: dict, context) -> dict:
         cur = conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
         cur.execute(
             "SELECT id, name, phone, email, message, source, page_url, messenger, "
-            "created_at, email_sent FROM leads ORDER BY created_at DESC LIMIT 500"
+            "comment, created_at, email_sent FROM leads ORDER BY created_at DESC LIMIT 500"
         )
         rows = cur.fetchall()
         cur.close()
@@ -66,6 +66,7 @@ def handler(event: dict, context) -> dict:
             'source': r['source'] or '',
             'page_url': r['page_url'] or '',
             'messenger': r['messenger'] or '',
+            'comment': r.get('comment') or '',
             'created_at': created.isoformat() if isinstance(created, datetime) else str(created),
             'email_sent': bool(r['email_sent']),
         })

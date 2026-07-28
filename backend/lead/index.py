@@ -27,8 +27,8 @@ def _save_lead(data: dict, email_sent: bool) -> None:
     try:
         cur = conn.cursor()
         cur.execute(
-            "INSERT INTO leads (name, phone, email, message, source, page_url, messenger, email_sent) "
-            "VALUES (%s, %s, %s, %s, %s, %s, %s, %s)",
+            "INSERT INTO leads (name, phone, email, message, source, page_url, messenger, comment, email_sent) "
+            "VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)",
             (
                 data.get('name', '')[:255],
                 data.get('phone', '')[:100],
@@ -37,6 +37,7 @@ def _save_lead(data: dict, email_sent: bool) -> None:
                 data.get('source', '')[:255],
                 data.get('page_url', ''),
                 data.get('messenger', '')[:50],
+                data.get('comment', ''),
                 email_sent,
             ),
         )
@@ -48,13 +49,14 @@ def _save_lead(data: dict, email_sent: bool) -> None:
 
 def _send_email(data: dict) -> bool:
     '''Отправляет заявку на почту через SMTP. Возвращает True при успехе.'''
-    host = os.environ.get('SMTP_HOST')
+    host = os.environ.get('SMTP_HOST') or 'smtp.yandex.ru'
     port = int(os.environ.get('SMTP_PORT', '465'))
     user = os.environ.get('SMTP_USER')
     password = os.environ.get('SMTP_PASSWORD')
     to_addr = os.environ.get('LEAD_EMAIL_TO', 'info@vam-vdom.ru')
 
     if not (host and user and password):
+        print(f"SMTP not configured: host={bool(host)} user={bool(user)} password={bool(password)}")
         return False
 
     msk = timezone(timedelta(hours=3))
@@ -71,6 +73,9 @@ def _send_email(data: dict) -> bool:
         lines.append(f"Связаться через: {data.get('messenger')}")
     if data.get('message'):
         lines.append(f"Сообщение: {data.get('message')}")
+    if data.get('comment'):
+        lines.append('')
+        lines.append(f"Детали заявки:\n{data.get('comment')}")
     lines += [
         '',
         f"Форма: {data.get('source') or '—'}",
@@ -132,7 +137,8 @@ def handler(event: dict, context) -> dict:
     email_sent = False
     try:
         email_sent = _send_email(data)
-    except Exception:
+    except Exception as e:
+        print(f"SMTP ERROR: {type(e).__name__}")
         email_sent = False
 
     try:
