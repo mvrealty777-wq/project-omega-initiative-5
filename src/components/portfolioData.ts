@@ -200,7 +200,6 @@ export const projects: Project[] = [
     images: [
       "/img/1af9b5f0-ce68-49d5-9b71-8fc8c9deea4d.webp",
       "/img/35ef47a8-2e39-431d-ac0d-0b1fe2935c2f.webp",
-      "/img/dda1091a-f14b-4da6-97f6-ddcf4d2f4579.webp",
     ],
     category: "Сауна",
     categoryColor: "bg-amber-700 text-white",
@@ -235,7 +234,6 @@ export const projects: Project[] = [
   {
     images: [
       "/img/f047791e-8d09-467e-9db8-85ff6a5b6257.webp",
-      "/img/fd032945-c390-4448-b8dc-4da4a182ae9f.webp",
       "/img/1c863198-afd7-4023-addf-8335fb2c8200.webp",
     ],
     category: "Хаммам",
@@ -248,7 +246,6 @@ export const projects: Project[] = [
     images: [
       "/img/f799ff82-e75f-41e0-b35e-72bc4d85789e.webp",
       "/img/d000108f-646e-4539-ba8c-a196ba8419b8.webp",
-      "/img/612afb93-c857-4d2d-b643-28aeb4021bb0.webp",
     ],
     category: "SPA-комплекс",
     categoryColor: "bg-blue-700 text-white",
@@ -258,20 +255,6 @@ export const projects: Project[] = [
   },
   {
     images: [
-      "/img/8112410d-8164-473d-abb1-7139f15de131.webp",
-      "/img/e4e6bc1c-6c53-46d4-aa3d-5de458f04014.webp",
-      "/img/997544c3-5712-4089-9d78-1715582c3f1b.webp",
-    ],
-    category: "Хаммам",
-    categoryColor: "bg-primary text-white",
-    title: "Хаммам со звёздным небом",
-    short: "Кессонный свод с эффектом ночного неба",
-    full: "Кессонный свод с эффектом ночного неба. Реализованный проект под ключ — от проектирования до сдачи объекта заказчику.",
-  },
-  {
-    images: [
-      "/img/088b0fb0-2585-44ad-9bb4-fa4ac1b27e3a.webp",
-      "/img/87181a6a-8685-4150-b6ef-f2acf4db5388.webp",
       "/img/d28baba3-97ba-4063-ab98-679db585ae44.webp",
     ],
     category: "Коммерческий",
@@ -320,7 +303,6 @@ export const projects: Project[] = [
     images: [
       "/img/1f86e5b9-5f6c-493f-9b2e-36ec96ca28d7.webp",
       "/img/496d52ca-65e0-42ea-bcec-43a63065b95c.webp",
-      "/img/9a342f54-2835-4b4d-a348-750aa5a7e71d.webp",
     ],
     category: "Сауна",
     categoryColor: "bg-amber-700 text-white",
@@ -330,8 +312,6 @@ export const projects: Project[] = [
   },
   {
     images: [
-      "/img/c53b3902-b54b-436b-8a16-3080cbe48541.webp",
-      "/img/f8180847-41f7-434d-937e-787d73206fa4.webp",
       "/img/e19ea9a7-aca5-47ce-b148-bd9059cfaea9.webp",
     ],
     category: "Хаммам",
@@ -343,8 +323,6 @@ export const projects: Project[] = [
   {
     images: [
       "/img/1ac0fe11-d4ee-4c02-90e3-896e7952eb50.webp",
-      "/img/412cca51-1793-4bca-beb2-46733c6f489f.webp",
-      "/img/0f486e7c-2abe-4640-a8a3-ef444bfd0f60.webp",
     ],
     category: "SPA-комплекс",
     categoryColor: "bg-blue-700 text-white",
@@ -379,23 +357,11 @@ export const projects: Project[] = [
   {
     images: [
       "/img/84937c4b-7334-4948-bab3-95120dc9b3a3.webp",
-      "/img/a0d53582-b89c-40fb-9056-dbbbd49fbbb9.webp",
-      "/img/cb3ea8e3-81e0-4167-a0cf-93063becb963.webp",
     ],
     category: "Хаммам",
     categoryColor: "bg-primary text-white",
     title: "Хаммам премиум-класса",
     short: "Индивидуальный проект с авторским дизайном",
     full: "Индивидуальный проект с авторским дизайном. Реализованный проект под ключ — от проектирования до сдачи объекта заказчику.",
-  },
-  {
-    images: [
-      "/img/8d78b9b1-14cc-4e3b-b3b8-a7f1b58b1ea8.webp",
-    ],
-    category: "Хаммам",
-    categoryColor: "bg-primary text-white",
-    title: "Хаммам с мозаичным куполом",
-    short: "Финальный штрих в оформлении турецкой парной",
-    full: "Финальный штрих в оформлении турецкой парной. Реализованный проект под ключ — от проектирования до сдачи объекта заказчику.",
   },
 ]
