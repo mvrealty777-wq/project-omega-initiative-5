@@ -4,6 +4,7 @@ import { Phone, Mail } from "lucide-react"
 import { Link } from "react-router-dom"
 import { servicesData } from "@/data/servicesData"
 import { CallbackDialog } from "@/components/CallbackDialog"
+import { trackClick } from "@/lib/sendLead"
 
 const navLinks = [
   { href: "/#about", label: "О компании" },
@@ -47,7 +48,7 @@ export function Footer() {
               Строительство финских саун, русских бань и турецких хамамов под ключ. Работаем по всей России с 2014 года.
             </p>
             <div className="flex flex-col gap-2">
-              <a href="tel:+79602319672" className="flex items-center gap-2 text-sm text-white/70 hover:text-white transition-colors">
+              <a href="tel:+79602319672" onClick={() => trackClick("phone_click")} className="flex items-center gap-2 text-sm text-white/70 hover:text-white transition-colors">
                 <Phone className="w-4 h-4 text-green-400" />
                 8 960 231-96-72
               </a>
@@ -105,6 +106,7 @@ export function Footer() {
                     href="https://wa.me/79602319672"
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={() => trackClick("messenger_whatsapp_click")}
                     className="px-3 h-9 rounded-lg flex items-center gap-1.5 text-xs font-semibold text-white transition-transform hover:scale-105"
                     style={{ background: '#25D366' }}
                   >
@@ -115,6 +117,7 @@ export function Footer() {
                     href="https://t.me/+79602319672"
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={() => trackClick("messenger_telegram_click")}
                     className="px-3 h-9 rounded-lg flex items-center gap-1.5 text-xs font-semibold text-white transition-transform hover:scale-105"
                     style={{ background: '#27A7E7' }}
                   >
@@ -125,6 +128,7 @@ export function Footer() {
                     href="https://max.ru/+79602319672"
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={() => trackClick("messenger_max_click")}
                     className="px-3 h-9 rounded-lg flex items-center gap-1.5 text-xs font-semibold text-white transition-transform hover:scale-105"
                     style={{ background: 'linear-gradient(135deg, #8B5CF6, #6366F1)' }}
                   >

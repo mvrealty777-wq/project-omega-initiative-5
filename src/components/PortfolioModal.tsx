@@ -1,5 +1,6 @@
 import { ArrowRight, Phone, X } from "lucide-react"
 import { LeadDialog } from "@/components/LeadDialog"
+import { trackClick } from "@/lib/sendLead"
 import {
   Dialog,
   DialogContent,
@@ -70,7 +71,7 @@ export function PortfolioModal({ active, imgIndex, setImgIndex, setActive }: Por
                     <ArrowRight className="w-4 h-4" />
                   </button>
                 </LeadDialog>
-                <a href="tel:+79602319672" className="btn-green-outline justify-center text-sm">
+                <a href="tel:+79602319672" onClick={() => trackClick("phone_click")} className="btn-green-outline justify-center text-sm">
                   <Phone className="w-4 h-4" />
                   Позвонить
                 </a>

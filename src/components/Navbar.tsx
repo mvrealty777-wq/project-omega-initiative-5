@@ -7,6 +7,7 @@ import { Link } from "react-router-dom"
 import { useState, useEffect } from "react"
 import { servicesData, slugify } from "@/data/servicesData"
 import { CallbackDialog } from "@/components/CallbackDialog"
+import { trackClick } from "@/lib/sendLead"
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -106,7 +107,7 @@ export function Navbar() {
 
           <div className="hidden md:flex items-center gap-3">
             <div className="flex flex-col items-end">
-              <a href="tel:+79602319672" className="flex items-center gap-2 text-sm font-bold text-foreground hover:text-primary transition-colors">
+              <a href="tel:+79602319672" onClick={() => trackClick("phone_click")} className="flex items-center gap-2 text-sm font-bold text-foreground hover:text-primary transition-colors">
                 <Phone className="h-4 w-4 text-primary" />
                 8 960 231-96-72
               </a>
@@ -114,16 +115,19 @@ export function Navbar() {
             </div>
             <div className="flex items-center gap-1.5">
               <a href="https://wa.me/79602319672" target="_blank" rel="noopener noreferrer"
+                onClick={() => trackClick("messenger_whatsapp_click")}
                 className="w-9 h-9 rounded-lg overflow-hidden transition-transform hover:scale-105"
                 aria-label="WhatsApp">
                 <MessengerIcon id="whatsapp" fill className="w-full h-full rounded-lg" />
               </a>
               <a href="https://t.me/+79602319672" target="_blank" rel="noopener noreferrer"
+                onClick={() => trackClick("messenger_telegram_click")}
                 className="w-9 h-9 rounded-lg overflow-hidden transition-transform hover:scale-105"
                 aria-label="Telegram">
                 <MessengerIcon id="telegram" fill className="w-full h-full rounded-lg" />
               </a>
               <a href="https://max.ru/+79602319672" target="_blank" rel="noopener noreferrer"
+                onClick={() => trackClick("messenger_max_click")}
                 className="w-9 h-9 rounded-lg overflow-hidden transition-transform hover:scale-105"
                 aria-label="МАКС">
                 <MessengerIcon id="max" fill className="w-full h-full rounded-lg" />

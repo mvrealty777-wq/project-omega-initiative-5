@@ -29,6 +29,14 @@ function reachGoal(goalName: string) {
 }
 
 /**
+ * Отправляет цель клика (телефон, мессенджеры и т.п.) в Яндекс.Метрику.
+ * Используется на href="tel:"/wa.me/t.me/max.ru — вызывать в onClick, ссылка при этом продолжает работать штатно.
+ */
+export function trackClick(goalName: string) {
+  reachGoal(goalName)
+}
+
+/**
  * Определяет название цели по источнику формы
  */
 function getGoalName(source: string): string {

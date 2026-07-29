@@ -3,7 +3,7 @@ import { useState } from "react"
 import { Input } from "@/components/ui/input"
 import Icon from "@/components/ui/icon"
 import { MessengerIcon } from "@/components/icons/MessengerIcon"
-import { sendLead } from "@/lib/sendLead"
+import { sendLead, trackClick } from "@/lib/sendLead"
 
 const gallery = [
   { src: "/opt/2ad12f49-973d-4ff5-88da-a09246609324.webp", tag: "Сауна" },
@@ -191,18 +191,21 @@ export function Project3DSection() {
                   <div className="flex items-center flex-wrap gap-2 mt-4 pt-4 border-t border-white/15">
                     <span className="text-sm text-white/75">Или напишите нам:</span>
                     <a href="https://wa.me/79602319672" target="_blank" rel="noopener noreferrer"
+                      onClick={() => trackClick("messenger_whatsapp_click")}
                       className="inline-flex items-center gap-1.5 h-9 px-3.5 rounded-lg text-sm font-semibold text-white transition-transform hover:scale-105"
                       style={{ background: '#25D366' }}>
                       <MessengerIcon id="whatsapp" fill className="w-5 h-5 rounded-md" />
                       WhatsApp
                     </a>
                     <a href="https://t.me/+79602319672" target="_blank" rel="noopener noreferrer"
+                      onClick={() => trackClick("messenger_telegram_click")}
                       className="inline-flex items-center gap-1.5 h-9 px-3.5 rounded-lg text-sm font-semibold text-white transition-transform hover:scale-105"
                       style={{ background: '#27A7E7' }}>
                       <MessengerIcon id="telegram" fill className="w-5 h-5 rounded-md" />
                       Telegram
                     </a>
                     <a href="https://max.ru/+79602319672" target="_blank" rel="noopener noreferrer"
+                      onClick={() => trackClick("messenger_max_click")}
                       className="inline-flex items-center gap-1.5 h-9 px-3.5 rounded-lg text-sm font-semibold text-white transition-transform hover:scale-105"
                       style={{ background: 'linear-gradient(135deg, #8B5CF6, #6366F1)' }}>
                       <MessengerIcon id="max" fill className="w-5 h-5 rounded-md" />

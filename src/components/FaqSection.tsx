@@ -7,6 +7,7 @@ import {
 } from "@/components/ui/accordion"
 import Icon from "@/components/ui/icon"
 import { faqSchema } from "@/lib/schema"
+import { trackClick } from "@/lib/sendLead"
 import type { FaqItem } from "@/data/serviceFaq"
 
 const defaultFaqs: FaqItem[] = [
@@ -90,7 +91,7 @@ export function FaqSection({ items }: Props = {}) {
                 <p className="text-white/80 text-sm mb-4">
                   Позвоните — бесплатно ответим на любой вопрос и рассчитаем смету.
                 </p>
-                <a href="tel:+79602319672" className="inline-flex items-center gap-2 bg-white text-primary font-bold px-5 py-2.5 rounded-xl hover:bg-white/90 transition-colors text-sm"
+                <a href="tel:+79602319672" onClick={() => trackClick("phone_click")} className="inline-flex items-center gap-2 bg-white text-primary font-bold px-5 py-2.5 rounded-xl hover:bg-white/90 transition-colors text-sm"
                   style={{ fontFamily: 'Montserrat, sans-serif' }}>
                   <Icon name="Phone" className="w-4 h-4" />
                   8 960 231-96-72
