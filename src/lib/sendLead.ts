@@ -37,6 +37,14 @@ export function trackClick(goalName: string) {
 }
 
 /**
+ * Проверяет, что в телефоне есть хотя бы 10 цифр (защита от пустых и мусорных заявок).
+ */
+export function isValidPhone(phone: string | undefined | null): boolean {
+  const digits = (phone || "").replace(/\D/g, "")
+  return digits.length >= 10
+}
+
+/**
  * Определяет название цели по источнику формы
  */
 function getGoalName(source: string): string {

@@ -3,7 +3,7 @@ import { useState } from "react"
 import { Input } from "@/components/ui/input"
 import Icon from "@/components/ui/icon"
 import { MessengerIcon } from "@/components/icons/MessengerIcon"
-import { sendLead, trackClick } from "@/lib/sendLead"
+import { sendLead, trackClick, isValidPhone } from "@/lib/sendLead"
 
 const gallery = [
   { src: "/opt/2ad12f49-973d-4ff5-88da-a09246609324.webp", tag: "Сауна" },
@@ -28,16 +28,29 @@ const stats = [
 export function Project3DSection() {
   const [formData, setFormData] = useState({ name: "", phone: "" })
   const [sent, setSent] = useState(false)
+  const [error, setError] = useState("")
+  const [sending, setSending] = useState(false)
   const [active, setActive] = useState(0)
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    setSent(true)
-    sendLead({
+    if (!isValidPhone(formData.phone)) {
+      setError("Введите корректный номер телефона")
+      return
+    }
+    setError("")
+    setSending(true)
+    const ok = await sendLead({
       name: formData.name,
       phone: formData.phone,
       source: "Заказ 3D-проекта",
     })
+    setSending(false)
+    if (ok) {
+      setSent(true)
+    } else {
+      setError("Не удалось отправить. Позвоните нам: 8 960 231-96-72")
+    }
   }
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }))
@@ -180,12 +193,15 @@ export function Project3DSection() {
                     <Input name="phone" type="tel" required value={formData.phone} onChange={handleChange}
                       placeholder="Телефон *"
                       className="h-12 rounded-xl bg-white/10 border-white/20 text-white placeholder:text-white/50" />
-                    <button type="submit" className="h-12 px-5 rounded-xl bg-white text-primary font-bold hover:bg-white/90 transition-colors flex items-center justify-center gap-2 whitespace-nowrap flex-shrink-0 shadow-lg"
+                    <button type="submit" disabled={sending} className="h-12 px-5 rounded-xl bg-white text-primary font-bold hover:bg-white/90 transition-colors flex items-center justify-center gap-2 whitespace-nowrap flex-shrink-0 shadow-lg disabled:opacity-60"
                       style={{ fontFamily: 'Montserrat, sans-serif' }}>
                       <Icon name="Send" className="w-5 h-5" fallback="Send" />
-                      Заказать
+                      {sending ? "Отправляем..." : "Заказать"}
                     </button>
                   </form>
+                  {error && (
+                    <p className="text-sm text-red-300 font-medium mt-2">{error}</p>
+                  )}
 
                   {/* Мессенджеры */}
                   <div className="flex items-center flex-wrap gap-2 mt-4 pt-4 border-t border-white/15">

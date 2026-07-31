@@ -13,7 +13,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { sendLead } from "@/lib/sendLead"
+import { sendLead, isValidPhone } from "@/lib/sendLead"
 
 interface QuoteFormDialogProps {
   packageName?: string
@@ -24,6 +24,8 @@ interface QuoteFormDialogProps {
 
 export function QuoteFormDialog({ packageName, variant = "default", className, children }: QuoteFormDialogProps) {
   const [open, setOpen] = useState(false)
+  const [error, setError] = useState("")
+  const [sending, setSending] = useState(false)
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -33,9 +35,16 @@ export function QuoteFormDialog({ packageName, variant = "default", className, c
     message: "",
   })
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    sendLead({
+    const emailOk = /.+@.+\..+/.test(formData.email)
+    if (!isValidPhone(formData.phone) && !emailOk) {
+      setError("Укажите корректный телефон или e-mail")
+      return
+    }
+    setError("")
+    setSending(true)
+    const ok = await sendLead({
       name: formData.name,
       phone: formData.phone,
       email: formData.email,
@@ -46,6 +55,11 @@ export function QuoteFormDialog({ packageName, variant = "default", className, c
       ].filter(Boolean).join("\n"),
       source: "Форма «Запросить расчёт»",
     })
+    setSending(false)
+    if (!ok) {
+      setError("Не удалось отправить. Позвоните нам: 8 960 231-96-72")
+      return
+    }
     setOpen(false)
     // Reset form
     setFormData({
@@ -148,12 +162,15 @@ export function QuoteFormDialog({ packageName, variant = "default", className, c
             />
           </div>
 
+          {error && (
+            <p className="text-sm text-red-600 font-medium">{error}</p>
+          )}
           <div className="flex gap-3 pt-4">
             <Button type="button" variant="outline" onClick={() => setOpen(false)} className="flex-1">
               Отмена
             </Button>
-            <Button type="submit" className="flex-1">
-              Отправить заявку
+            <Button type="submit" disabled={sending} className="flex-1">
+              {sending ? "Отправляем..." : "Отправить заявку"}
             </Button>
           </div>
         </form>

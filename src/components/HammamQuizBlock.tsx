@@ -3,7 +3,7 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import Icon from "@/components/ui/icon"
 import { MessengerPicker, messengerLabel } from "@/components/MessengerPicker"
-import { sendLead } from "@/lib/sendLead"
+import { sendLead, isValidPhone } from "@/lib/sendLead"
 import { CheckCircle, ChevronRight, ChevronLeft, Send } from "lucide-react"
 
 const CDN = "/opt/"
@@ -91,6 +91,8 @@ export function HammamQuizBlock() {
   const [useMessenger, setUseMessenger] = useState(false)
   const [messenger, setMessenger] = useState("telegram")
   const [sent, setSent] = useState(false)
+  const [error, setError] = useState("")
+  const [sending, setSending] = useState(false)
 
   const isContactStep = step === questions.length
   const progress = Math.round(((step) / (questions.length + 1)) * 100)
@@ -110,7 +112,7 @@ export function HammamQuizBlock() {
     ? currentQ.type === "text"
       ? (textAnswers[currentQ.id] ?? "").length >= 2
       : (answers[currentQ.id]?.length ?? 0) > 0
-    : contact.phone.length >= 5
+    : isValidPhone(contact.phone)
 
   const handleNext = () => {
     if (step < questions.length) setStep((s) => s + 1)
@@ -120,7 +122,11 @@ export function HammamQuizBlock() {
     if (step > 0) setStep((s) => s - 1)
   }
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
+    if (!isValidPhone(contact.phone)) {
+      setError("Введите корректный номер телефона")
+      return
+    }
     const summary = questions
       .map((q) => {
         if (q.type === "text") {
@@ -133,14 +139,21 @@ export function HammamQuizBlock() {
       .filter(Boolean)
       .join("\n")
 
-    setSent(true)
-    sendLead({
+    setError("")
+    setSending(true)
+    const ok = await sendLead({
       name: contact.name,
       phone: contact.phone,
       source: "Хаммам — Квиз на странице",
       messenger: useMessenger ? messengerLabel(messenger) : undefined,
       comment: [summary, contact.comment].filter(Boolean).join("\n\n"),
     })
+    setSending(false)
+    if (ok) {
+      setSent(true)
+    } else {
+      setError("Не удалось отправить. Позвоните нам: 8 960 231-96-72")
+    }
   }
 
   return (
@@ -318,13 +331,16 @@ export function HammamQuizBlock() {
                     className="rounded-xl resize-none"
                     rows={2}
                   />
+                  {error && (
+                    <p className="text-sm text-red-600 font-medium text-center">{error}</p>
+                  )}
                   <button
                     onClick={handleSubmit}
-                    disabled={contact.phone.length < 5}
+                    disabled={!isValidPhone(contact.phone) || sending}
                     className="btn-green w-full justify-center text-sm disabled:opacity-40 disabled:cursor-not-allowed mt-auto"
                   >
                     <Send className="w-4 h-4" />
-                    {useMessenger ? `Написать в ${messengerLabel(messenger)}` : "Получить расчёт"}
+                    {sending ? "Отправляем..." : useMessenger ? `Написать в ${messengerLabel(messenger)}` : "Получить расчёт"}
                   </button>
                   <p className="text-[11px] text-muted-foreground text-center">
                     Нажимая кнопку, вы соглашаетесь с обработкой персональных данных

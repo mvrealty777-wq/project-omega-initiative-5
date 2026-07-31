@@ -2,21 +2,34 @@ import type React from "react"
 import { useState } from "react"
 import { Input } from "@/components/ui/input"
 import { Phone, Mail, CheckCircle } from "lucide-react"
-import { sendLead, trackClick } from "@/lib/sendLead"
+import { sendLead, trackClick, isValidPhone } from "@/lib/sendLead"
 import { MessengerIcon } from "@/components/icons/MessengerIcon"
 
 export function ContactSection() {
   const [formData, setFormData] = useState({ name: "", phone: "" })
   const [sent, setSent] = useState(false)
+  const [error, setError] = useState("")
+  const [sending, setSending] = useState(false)
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    setSent(true)
-    sendLead({
+    if (!isValidPhone(formData.phone)) {
+      setError("Введите корректный номер телефона")
+      return
+    }
+    setError("")
+    setSending(true)
+    const ok = await sendLead({
       name: formData.name,
       phone: formData.phone,
       source: "Блок «Контакты» — заказать звонок",
     })
+    setSending(false)
+    if (ok) {
+      setSent(true)
+    } else {
+      setError("Не удалось отправить. Позвоните нам: 8 960 231-96-72")
+    }
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -149,10 +162,13 @@ export function ContactSection() {
                       placeholder="Ваш номер телефона *"
                       className="h-14 rounded-xl bg-white/5 border-white/15 text-white placeholder:text-white/40 focus-visible:ring-primary"
                     />
-                    <button type="submit" className="btn-green h-14 px-8 justify-center whitespace-nowrap text-base flex-shrink-0">
-                      Перезвоните
+                    <button type="submit" disabled={sending} className="btn-green h-14 px-8 justify-center whitespace-nowrap text-base flex-shrink-0 disabled:opacity-60">
+                      {sending ? "Отправляем..." : "Перезвоните"}
                     </button>
                   </form>
+                  {error && (
+                    <p className="text-sm text-red-400 font-medium mt-3">{error}</p>
+                  )}
                   <p className="text-white/40 text-xs mt-3">
                     Вы соглашаетесь с условиями обработки персональных данных
                   </p>

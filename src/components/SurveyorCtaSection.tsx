@@ -2,20 +2,33 @@ import type React from "react"
 import { useState } from "react"
 import { Input } from "@/components/ui/input"
 import { CheckCircle, Ruler } from "lucide-react"
-import { sendLead } from "@/lib/sendLead"
+import { sendLead, isValidPhone } from "@/lib/sendLead"
 
 export function SurveyorCtaSection() {
   const [formData, setFormData] = useState({ name: "", phone: "" })
   const [sent, setSent] = useState(false)
+  const [error, setError] = useState("")
+  const [sending, setSending] = useState(false)
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    setSent(true)
-    sendLead({
+    if (!isValidPhone(formData.phone)) {
+      setError("Введите корректный номер телефона")
+      return
+    }
+    setError("")
+    setSending(true)
+    const ok = await sendLead({
       name: formData.name,
       phone: formData.phone,
       source: "Заявка на выезд замерщика",
     })
+    setSending(false)
+    if (ok) {
+      setSent(true)
+    } else {
+      setError("Не удалось отправить. Позвоните нам: 8 960 231-96-72")
+    }
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -75,8 +88,11 @@ export function SurveyorCtaSection() {
                       placeholder="Ваше имя" className="h-11 rounded-xl border-border" />
                     <Input name="phone" type="tel" required value={formData.phone} onChange={handleChange}
                       placeholder="+7 900 123-45-67" className="h-11 rounded-xl border-border" />
-                    <button type="submit" className="btn-green w-full justify-center text-sm">
-                      Заказать выезд замерщика
+                    {error && (
+                      <p className="text-sm text-red-600 font-medium text-center">{error}</p>
+                    )}
+                    <button type="submit" disabled={sending} className="btn-green w-full justify-center text-sm disabled:opacity-60">
+                      {sending ? "Отправляем..." : "Заказать выезд замерщика"}
                     </button>
                   </form>
                 </>

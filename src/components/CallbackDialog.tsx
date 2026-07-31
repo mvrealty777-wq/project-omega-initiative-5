@@ -2,7 +2,7 @@ import { useState } from "react"
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
 import { Input } from "@/components/ui/input"
 import { CheckCircle, Phone } from "lucide-react"
-import { sendLead } from "@/lib/sendLead"
+import { sendLead, isValidPhone } from "@/lib/sendLead"
 
 interface Props {
   children: React.ReactNode
@@ -14,16 +14,29 @@ export function CallbackDialog({ children, source = "Кнопка «Перезв
   const [phone, setPhone] = useState("")
   const [name, setName] = useState("")
   const [sent, setSent] = useState(false)
+  const [error, setError] = useState("")
+  const [sending, setSending] = useState(false)
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    setSent(true)
-    sendLead({ name, phone, source })
+    if (!isValidPhone(phone)) {
+      setError("Введите корректный номер телефона")
+      return
+    }
+    setError("")
+    setSending(true)
+    const ok = await sendLead({ name, phone, source })
+    setSending(false)
+    if (ok) {
+      setSent(true)
+    } else {
+      setError("Не удалось отправить. Позвоните нам: 8 960 231-96-72")
+    }
   }
 
   const handleOpenChange = (v: boolean) => {
     setOpen(v)
-    if (!v) setTimeout(() => { setSent(false); setPhone(""); setName("") }, 200)
+    if (!v) setTimeout(() => { setSent(false); setPhone(""); setName(""); setError("") }, 200)
   }
 
   return (
@@ -63,9 +76,12 @@ export function CallbackDialog({ children, source = "Кнопка «Перезв
                 placeholder="Телефон *"
                 className="h-12 rounded-xl"
               />
-              <button type="submit" className="btn-green w-full justify-center text-sm">
+              {error && (
+                <p className="text-sm text-red-600 font-medium text-center">{error}</p>
+              )}
+              <button type="submit" disabled={sending} className="btn-green w-full justify-center text-sm disabled:opacity-60">
                 <Phone className="w-4 h-4" />
-                Перезвоните мне
+                {sending ? "Отправляем..." : "Перезвоните мне"}
               </button>
               <p className="text-[11px] text-muted-foreground text-center">
                 Нажимая кнопку, вы соглашаетесь с политикой обработки данных

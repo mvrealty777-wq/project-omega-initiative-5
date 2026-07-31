@@ -4,7 +4,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, Di
 import { Input } from "@/components/ui/input"
 import Icon from "@/components/ui/icon"
 import { CheckCircle, Send, ChevronLeft } from "lucide-react"
-import { sendLead } from "@/lib/sendLead"
+import { sendLead, isValidPhone } from "@/lib/sendLead"
 import { MessengerPicker, messengerLabel } from "@/components/MessengerPicker"
 
 const OBJECT_TYPES = [
@@ -34,6 +34,8 @@ export function LeadDialog({ children, source, title, description, submitText }:
   const [useMessenger, setUseMessenger] = useState(false)
   const [messenger, setMessenger] = useState("telegram")
   const [sent, setSent] = useState(false)
+  const [error, setError] = useState("")
+  const [sending, setSending] = useState(false)
 
   const selectedType = OBJECT_TYPES.find((t) => t.id === objectType)
 
@@ -42,16 +44,27 @@ export function LeadDialog({ children, source, title, description, submitText }:
     setStep("form")
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    setSent(true)
-    sendLead({
+    if (!isValidPhone(data.phone)) {
+      setError("Введите корректный номер телефона")
+      return
+    }
+    setError("")
+    setSending(true)
+    const ok = await sendLead({
       name: data.name,
       phone: data.phone,
       source,
       messenger: useMessenger ? messengerLabel(messenger) : undefined,
       comment: selectedType ? `Тип объекта: ${selectedType.label}` : undefined,
     })
+    setSending(false)
+    if (ok) {
+      setSent(true)
+    } else {
+      setError("Не удалось отправить. Позвоните нам: 8 960 231-96-72")
+    }
   }
 
   const handleOpenChange = (v: boolean) => {
@@ -63,6 +76,7 @@ export function LeadDialog({ children, source, title, description, submitText }:
         setObjectType("")
         setData({ name: "", phone: "" })
         setUseMessenger(false)
+        setError("")
       }, 250)
     }
   }
@@ -184,9 +198,12 @@ export function LeadDialog({ children, source, title, description, submitText }:
                 value={messenger}
                 onValueChange={setMessenger}
               />
-              <button type="submit" className="btn-green w-full justify-center text-sm">
+              {error && (
+                <p className="text-sm text-red-600 font-medium text-center">{error}</p>
+              )}
+              <button type="submit" disabled={sending} className="btn-green w-full justify-center text-sm disabled:opacity-60">
                 <Send className="w-4 h-4" />
-                {useMessenger ? `Написать в ${messengerLabel(messenger)}` : (submitText ?? "Отправить заявку")}
+                {sending ? "Отправляем..." : useMessenger ? `Написать в ${messengerLabel(messenger)}` : (submitText ?? "Отправить заявку")}
               </button>
               <p className="text-[11px] text-muted-foreground text-center">
                 Нажимая кнопку, вы соглашаетесь с политикой обработки данных

@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input"
 import { Venok } from "@/components/icons/Venok"
 import Icon from "@/components/ui/icon"
 import { CheckCircle, Send } from "lucide-react"
-import { sendLead } from "@/lib/sendLead"
+import { sendLead, isValidPhone } from "@/lib/sendLead"
 import { MessengerIcon } from "@/components/icons/MessengerIcon"
 import type { ServiceData } from "@/data/servicesData"
 
@@ -27,18 +27,31 @@ const benefits = [
 export function HammamHeroSection({ service }: { service: ServiceData }) {
   const [formData, setFormData] = useState({ name: "", phone: "" })
   const [sent, setSent] = useState(false)
+  const [error, setError] = useState("")
+  const [sending, setSending] = useState(false)
   const [useMessenger, setUseMessenger] = useState(false)
   const [messenger, setMessenger] = useState("telegram")
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    setSent(true)
-    sendLead({
+    if (!isValidPhone(formData.phone)) {
+      setError("Введите корректный номер телефона")
+      return
+    }
+    setError("")
+    setSending(true)
+    const ok = await sendLead({
       name: formData.name,
       phone: formData.phone,
       source: "Хаммам — Первый экран",
       messenger: useMessenger ? messengers.find((m) => m.id === messenger)?.label : undefined,
     })
+    setSending(false)
+    if (ok) {
+      setSent(true)
+    } else {
+      setError("Не удалось отправить. Позвоните нам: 8 960 231-96-72")
+    }
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -191,9 +204,14 @@ export function HammamHeroSection({ service }: { service: ServiceData }) {
                       </div>
                     )}
 
-                    <button type="submit" className="btn-green w-full justify-center text-sm">
+                    {error && (
+                      <p className="text-sm text-red-600 font-medium text-center">{error}</p>
+                    )}
+                    <button type="submit" disabled={sending} className="btn-green w-full justify-center text-sm disabled:opacity-60">
                       <Send className="w-4 h-4" />
-                      {useMessenger
+                      {sending
+                        ? "Отправляем..."
+                        : useMessenger
                         ? `Написать в ${messengers.find((m) => m.id === messenger)?.label}`
                         : "Отправить заявку и получить смету"}
                     </button>

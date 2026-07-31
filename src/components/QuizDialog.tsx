@@ -3,7 +3,7 @@ import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog"
 import { Input } from "@/components/ui/input"
 import Icon from "@/components/ui/icon"
 import { CheckCircle, ChevronRight, ChevronLeft, Send } from "lucide-react"
-import { sendLead } from "@/lib/sendLead"
+import { sendLead, isValidPhone } from "@/lib/sendLead"
 import { MessengerPicker, messengerLabel } from "@/components/MessengerPicker"
 import type { QuizConfig, QuizOption } from "@/data/quizData"
 
@@ -20,6 +20,8 @@ export function QuizDialog({ quiz, children }: Props) {
   const [useMessenger, setUseMessenger] = useState(false)
   const [messenger, setMessenger] = useState("telegram")
   const [sent, setSent] = useState(false)
+  const [error, setError] = useState("")
+  const [sending, setSending] = useState(false)
 
   const questions = quiz.questions
   const isContactStep = step === questions.length
@@ -44,7 +46,7 @@ export function QuizDialog({ quiz, children }: Props) {
 
   const canNext = currentQ
     ? (answers[currentQ.id]?.length ?? 0) > 0
-    : contact.phone.length >= 5
+    : isValidPhone(contact.phone)
 
   const handleNext = () => {
     if (step < questions.length) setStep((s) => s + 1)
@@ -54,7 +56,11 @@ export function QuizDialog({ quiz, children }: Props) {
     if (step > 0) setStep((s) => s - 1)
   }
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
+    if (!isValidPhone(contact.phone)) {
+      setError("Введите корректный номер телефона")
+      return
+    }
     const summary = questions
       .map((q) => {
         const selected = answers[q.id] ?? []
@@ -64,14 +70,21 @@ export function QuizDialog({ quiz, children }: Props) {
       .filter(Boolean)
       .join("\n")
 
-    setSent(true)
-    sendLead({
+    setError("")
+    setSending(true)
+    const ok = await sendLead({
       name: contact.name,
       phone: contact.phone,
       source: `Квиз — ${quiz.title}`,
       messenger: useMessenger ? messengerLabel(messenger) : undefined,
       comment: summary,
     })
+    setSending(false)
+    if (ok) {
+      setSent(true)
+    } else {
+      setError("Не удалось отправить. Позвоните нам: 8 960 231-96-72")
+    }
   }
 
   const handleOpenChange = (v: boolean) => {
@@ -83,6 +96,7 @@ export function QuizDialog({ quiz, children }: Props) {
         setContact({ name: "", phone: "" })
         setUseMessenger(false)
         setSent(false)
+        setError("")
       }, 300)
     }
   }
@@ -229,13 +243,18 @@ export function QuizDialog({ quiz, children }: Props) {
                     value={messenger}
                     onValueChange={setMessenger}
                   />
+                  {error && (
+                    <p className="text-sm text-red-600 font-medium text-center">{error}</p>
+                  )}
                   <button
                     onClick={handleSubmit}
-                    disabled={contact.phone.length < 5}
+                    disabled={!isValidPhone(contact.phone) || sending}
                     className="btn-green w-full justify-center text-sm disabled:opacity-40 disabled:cursor-not-allowed"
                   >
                     <Send className="w-4 h-4" />
-                    {useMessenger
+                    {sending
+                      ? "Отправляем..."
+                      : useMessenger
                       ? `Написать в ${messengerLabel(messenger)}`
                       : "Получить расчёт"}
                   </button>
