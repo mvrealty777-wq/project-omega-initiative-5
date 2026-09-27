@@ -1,4 +1,5 @@
 import json
+import ssl
 import os
 import urllib.request
 from datetime import datetime
@@ -17,6 +18,52 @@ def _cors_headers() -> dict:
     }
 
 
+# --- МАКС: сертификат НУЦ Минцифры ---
+# Сервера МАКС подписаны российским корневым сертификатом (НУЦ Минцифры), которого нет
+# в стандартном наборе Python. Скачиваем его один раз с официального сайта Госуслуг
+# (по HTTPS с обычной проверкой) и доверяем ему только для запросов к МАКС.
+_MAX_CA_URLS = (
+    'https://gu-st.ru/content/lending/russian_trusted_root_ca_pem.crt',
+    'https://gu-st.ru/content/lending/russian_trusted_sub_ca_pem.crt',
+)
+_MAX_CA_CACHE = '/tmp/russian_trusted_ca.pem'
+_max_ctx = None
+
+
+def _max_ssl_context():
+    global _max_ctx
+    if _max_ctx is not None:
+        return _max_ctx
+    ctx = ssl.create_default_context()
+    pem = os.environ.get('MAX_CA_PEM', '')
+    if not pem:
+        try:
+            with open(_MAX_CA_CACHE) as f:
+                pem = f.read()
+        except OSError:
+            parts = []
+            for url in _MAX_CA_URLS:
+                try:
+                    with urllib.request.urlopen(url, timeout=8) as r:
+                        parts.append(r.read().decode('ascii', 'ignore'))
+                except Exception as e:
+                    print(f"MAX CA DOWNLOAD ERROR {url}: {type(e).__name__}: {e}")
+            pem = '\n'.join(p for p in parts if 'BEGIN CERTIFICATE' in p)
+            if pem:
+                try:
+                    with open(_MAX_CA_CACHE, 'w') as f:
+                        f.write(pem)
+                except OSError:
+                    pass
+    if pem:
+        try:
+            ctx.load_verify_locations(cadata=pem)
+        except Exception as e:
+            print(f"MAX CA LOAD ERROR: {type(e).__name__}: {e}")
+    _max_ctx = ctx
+    return ctx
+
+
 def _max_chats() -> dict:
     token = os.environ.get('MAX_BOT_TOKEN')
     if not token:
@@ -24,7 +71,7 @@ def _max_chats() -> dict:
                 'body': json.dumps({'error': 'Секрет MAX_BOT_TOKEN не задан'}, ensure_ascii=False)}
     try:
         req = urllib.request.Request('https://platform-api2.max.ru/chats?count=50', headers={'Authorization': token})
-        with urllib.request.urlopen(req, timeout=8) as r:
+        with urllib.request.urlopen(req, timeout=8, context=_max_ssl_context()) as r:
             data = json.loads(r.read().decode())
         chats = [{'chat_id': c.get('chat_id'), 'title': c.get('title') or '', 'type': c.get('type') or ''}
                  for c in data.get('chats', [])]
@@ -32,7 +79,7 @@ def _max_chats() -> dict:
         users = []
         try:
             req = urllib.request.Request('https://platform-api2.max.ru/updates?limit=100&timeout=0', headers={'Authorization': token})
-            with urllib.request.urlopen(req, timeout=8) as r:
+            with urllib.request.urlopen(req, timeout=8, context=_max_ssl_context()) as r:
                 upd = json.loads(r.read().decode())
             seen = set()
             for u in upd.get('updates', []):

@@ -1,4 +1,5 @@
 import json
+import ssl
 import os
 import urllib.parse
 import urllib.request
@@ -82,6 +83,52 @@ def _send_telegram(text: str) -> None:
         print(f"TELEGRAM ERROR: {type(e).__name__}: {e}")
 
 
+# --- МАКС: сертификат НУЦ Минцифры ---
+# Сервера МАКС подписаны российским корневым сертификатом (НУЦ Минцифры), которого нет
+# в стандартном наборе Python. Скачиваем его один раз с официального сайта Госуслуг
+# (по HTTPS с обычной проверкой) и доверяем ему только для запросов к МАКС.
+_MAX_CA_URLS = (
+    'https://gu-st.ru/content/lending/russian_trusted_root_ca_pem.crt',
+    'https://gu-st.ru/content/lending/russian_trusted_sub_ca_pem.crt',
+)
+_MAX_CA_CACHE = '/tmp/russian_trusted_ca.pem'
+_max_ctx = None
+
+
+def _max_ssl_context():
+    global _max_ctx
+    if _max_ctx is not None:
+        return _max_ctx
+    ctx = ssl.create_default_context()
+    pem = os.environ.get('MAX_CA_PEM', '')
+    if not pem:
+        try:
+            with open(_MAX_CA_CACHE) as f:
+                pem = f.read()
+        except OSError:
+            parts = []
+            for url in _MAX_CA_URLS:
+                try:
+                    with urllib.request.urlopen(url, timeout=8) as r:
+                        parts.append(r.read().decode('ascii', 'ignore'))
+                except Exception as e:
+                    print(f"MAX CA DOWNLOAD ERROR {url}: {type(e).__name__}: {e}")
+            pem = '\n'.join(p for p in parts if 'BEGIN CERTIFICATE' in p)
+            if pem:
+                try:
+                    with open(_MAX_CA_CACHE, 'w') as f:
+                        f.write(pem)
+                except OSError:
+                    pass
+    if pem:
+        try:
+            ctx.load_verify_locations(cadata=pem)
+        except Exception as e:
+            print(f"MAX CA LOAD ERROR: {type(e).__name__}: {e}")
+    _max_ctx = ctx
+    return ctx
+
+
 def _send_max(text: str) -> None:
     '''Мессенджер МАКС (dev.max.ru). Секрет MAX_BOT_TOKEN и получатели:
     MAX_CHAT_ID — групповой чат и/или MAX_USER_ID — личные диалоги (можно несколько через запятую).
@@ -99,7 +146,7 @@ def _send_max(text: str) -> None:
             method='POST',
         )
         try:
-            urllib.request.urlopen(req, timeout=5)
+            urllib.request.urlopen(req, timeout=5, context=_max_ssl_context())
         except Exception as e:
             print(f"MAX ERROR ({target}): {type(e).__name__}: {e}")
 
