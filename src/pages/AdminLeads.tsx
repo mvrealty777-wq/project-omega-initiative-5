@@ -56,12 +56,12 @@ export default function AdminLeads() {
       const chats = (data.chats || []) as { chat_id: number; title: string; type: string }[]
       const users = (data.users || []) as { user_id: number; name: string }[]
       const lines = [
-        ...chats.map((c) => `Группа «${c.title || "без названия"}» — MAX_CHAT_ID: ${c.chat_id}`),
+        ...chats.map((c) => `Группа «${c.title || "группа"}» — MAX_CHAT_ID: ${c.chat_id}`),
         ...users.map((u) => `Личный диалог: ${u.name || "пользователь"} — MAX_USER_ID: ${u.user_id}`),
       ]
       setMaxInfo(lines.length
         ? lines.join("\n")
-        : "Бот пока не в группе и ему никто не писал. Добавьте его в группу или напишите ему «Привет» и нажмите ещё раз.")
+        : "Событий пока нет. Напишите любое сообщение в группе с ботом (или боту в личку) и нажмите «Чаты МАКС» ещё раз.")
     } catch {
       setMaxInfo("Ошибка соединения")
     }

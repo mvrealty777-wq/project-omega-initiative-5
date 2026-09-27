@@ -65,36 +65,41 @@ def _max_ssl_context():
 
 
 def _max_chats() -> dict:
+    '''Находит chat_id групп и user_id личных диалогов бота по последним событиям (GET /updates).
+    С июня 2026 МАКС убрал GET /chats, поэтому: добавьте бота в группу и напишите в группе
+    любое сообщение (или напишите боту в личку) — потом нажмите «Чаты МАКС» в админке.'''
     token = os.environ.get('MAX_BOT_TOKEN')
     if not token:
         return {'statusCode': 200, 'headers': _cors_headers(),
                 'body': json.dumps({'error': 'Секрет MAX_BOT_TOKEN не задан'}, ensure_ascii=False)}
     try:
-        req = urllib.request.Request('https://platform-api2.max.ru/chats?count=50', headers={'Authorization': token})
+        req = urllib.request.Request('https://platform-api2.max.ru/updates?limit=100&timeout=0',
+                                     headers={'Authorization': token})
         with urllib.request.urlopen(req, timeout=8, context=_max_ssl_context()) as r:
-            data = json.loads(r.read().decode())
-        chats = [{'chat_id': c.get('chat_id'), 'title': c.get('title') or '', 'type': c.get('type') or ''}
-                 for c in data.get('chats', [])]
-        # Личные диалоги в /chats не попадают — берём отправителей из последних апдейтов (для MAX_USER_ID)
-        users = []
-        try:
-            req = urllib.request.Request('https://platform-api2.max.ru/updates?limit=100&timeout=0', headers={'Authorization': token})
-            with urllib.request.urlopen(req, timeout=8, context=_max_ssl_context()) as r:
-                upd = json.loads(r.read().decode())
-            seen = set()
-            for u in upd.get('updates', []):
-                snd = ((u.get('message') or {}).get('sender')) or u.get('user') or {}
-                uid = snd.get('user_id')
-                if uid and uid not in seen and not snd.get('is_bot'):
-                    seen.add(uid)
-                    users.append({'user_id': uid, 'name': snd.get('name') or snd.get('first_name') or ''})
-        except Exception as e:
-            print(f"MAX UPDATES ERROR: {type(e).__name__}: {e}")
-        return {'statusCode': 200, 'headers': _cors_headers(),
-                'body': json.dumps({'chats': chats, 'users': users}, ensure_ascii=False)}
+            upd = json.loads(r.read().decode())
     except Exception as e:
         return {'statusCode': 200, 'headers': _cors_headers(),
                 'body': json.dumps({'error': f'{type(e).__name__}: {e}'}, ensure_ascii=False)}
+
+    chats, users, seen_c, seen_u = [], [], set(), set()
+    for u in upd.get('updates', []):
+        msg = u.get('message') or {}
+        rcp = msg.get('recipient') or {}
+        chat = u.get('chat') or {}
+        chat_id = u.get('chat_id') or rcp.get('chat_id') or chat.get('chat_id')
+        chat_type = rcp.get('chat_type') or chat.get('type') or ('chat' if u.get('update_type') == 'bot_added' else '')
+        if chat_id and chat_type != 'dialog' and chat_id not in seen_c:
+            seen_c.add(chat_id)
+            chats.append({'chat_id': chat_id, 'title': chat.get('title') or u.get('title') or '', 'type': chat_type})
+        snd = msg.get('sender') or u.get('user') or {}
+        uid = snd.get('user_id')
+        if chat_type == 'dialog' and uid and uid not in seen_u and not snd.get('is_bot'):
+            seen_u.add(uid)
+            users.append({'user_id': uid, 'name': snd.get('name') or snd.get('first_name') or ''})
+    return {'statusCode': 200, 'headers': _cors_headers(),
+            'body': json.dumps({'chats': chats, 'users': users,
+                                'types': sorted({x.get('update_type', '') for x in upd.get('updates', [])})},
+                               ensure_ascii=False)}
 
 
 def handler(event: dict, context) -> dict:
