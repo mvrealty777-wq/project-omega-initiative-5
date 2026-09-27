@@ -54,9 +54,14 @@ export default function AdminLeads() {
       const data = await res.json()
       if (data.error) { setMaxInfo(`Ошибка: ${data.error}`); return }
       const chats = (data.chats || []) as { chat_id: number; title: string; type: string }[]
-      setMaxInfo(chats.length
-        ? chats.map((c) => `${c.title || "(без названия)"} — MAX_CHAT_ID: ${c.chat_id}`).join("\n")
-        : "Бот пока не состоит ни в одном чате. Добавьте его в групповой чат и нажмите ещё раз.")
+      const users = (data.users || []) as { user_id: number; name: string }[]
+      const lines = [
+        ...chats.map((c) => `Группа «${c.title || "без названия"}» — MAX_CHAT_ID: ${c.chat_id}`),
+        ...users.map((u) => `Личный диалог: ${u.name || "пользователь"} — MAX_USER_ID: ${u.user_id}`),
+      ]
+      setMaxInfo(lines.length
+        ? lines.join("\n")
+        : "Бот пока не в группе и ему никто не писал. Добавьте его в группу или напишите ему «Привет» и нажмите ещё раз.")
     } catch {
       setMaxInfo("Ошибка соединения")
     }

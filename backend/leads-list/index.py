@@ -28,7 +28,23 @@ def _max_chats() -> dict:
             data = json.loads(r.read().decode())
         chats = [{'chat_id': c.get('chat_id'), 'title': c.get('title') or '', 'type': c.get('type') or ''}
                  for c in data.get('chats', [])]
-        return {'statusCode': 200, 'headers': _cors_headers(), 'body': json.dumps({'chats': chats}, ensure_ascii=False)}
+        # Личные диалоги в /chats не попадают — берём отправителей из последних апдейтов (для MAX_USER_ID)
+        users = []
+        try:
+            req = urllib.request.Request('https://platform-api2.max.ru/updates?limit=100&timeout=0', headers={'Authorization': token})
+            with urllib.request.urlopen(req, timeout=8) as r:
+                upd = json.loads(r.read().decode())
+            seen = set()
+            for u in upd.get('updates', []):
+                snd = ((u.get('message') or {}).get('sender')) or u.get('user') or {}
+                uid = snd.get('user_id')
+                if uid and uid not in seen and not snd.get('is_bot'):
+                    seen.add(uid)
+                    users.append({'user_id': uid, 'name': snd.get('name') or snd.get('first_name') or ''})
+        except Exception as e:
+            print(f"MAX UPDATES ERROR: {type(e).__name__}: {e}")
+        return {'statusCode': 200, 'headers': _cors_headers(),
+                'body': json.dumps({'chats': chats, 'users': users}, ensure_ascii=False)}
     except Exception as e:
         return {'statusCode': 200, 'headers': _cors_headers(),
                 'body': json.dumps({'error': f'{type(e).__name__}: {e}'}, ensure_ascii=False)}
