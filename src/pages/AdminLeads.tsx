@@ -18,7 +18,13 @@ interface Lead {
   comment: string
   created_at: string
   email_sent: boolean
+  utm_source?: string
+  utm_campaign?: string
+  utm_term?: string
+  city?: string
 }
+
+const CITY_NAMES: Record<string, string> = { msk: "Москва", spb: "Санкт-Петербург", sochi: "Сочи" }
 
 function formatDate(iso: string): string {
   const d = new Date(iso)
@@ -206,6 +212,16 @@ export default function AdminLeads() {
                     </span>
                   )}
                 </div>
+
+                {(lead.city || lead.utm_source || lead.utm_campaign) && (
+                  <p className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-muted-foreground">
+                    <Icon name="Megaphone" className="w-3.5 h-3.5 text-primary" fallback="Tag" />
+                    {lead.city && <span>Город: {CITY_NAMES[lead.city] || lead.city}</span>}
+                    {lead.utm_source && <span>Источник: {lead.utm_source}</span>}
+                    {lead.utm_campaign && <span>Кампания: {lead.utm_campaign}</span>}
+                    {lead.utm_term && <span>Фраза: {lead.utm_term}</span>}
+                  </p>
+                )}
 
                 {lead.message && (
                   <p className="mt-3 text-sm text-muted-foreground bg-secondary/50 rounded-xl p-3 whitespace-pre-line">

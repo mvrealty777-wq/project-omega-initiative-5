@@ -17,7 +17,7 @@
       "name": "Accept valid lead",
       "method": "POST",
       "path": "/",
-      "body": {"name": "Иван", "phone": "+79001234567", "source": "Тест", "page_url": "https://geniusspa.ru/"},
+      "body": {"name": "Иван", "phone": "+79001234567", "source": "Тест", "page_url": "https://stroy-vamvdom.ru/"},
       "expectedStatus": 200,
       "expectedBody": {"success": true},
       "bodyMatcher": "partial"

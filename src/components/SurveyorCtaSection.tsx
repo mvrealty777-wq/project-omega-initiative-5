@@ -3,6 +3,7 @@ import { useState } from "react"
 import { Input } from "@/components/ui/input"
 import { CheckCircle, Ruler } from "lucide-react"
 import { sendLead, isValidPhone } from "@/lib/sendLead"
+import { ConsentCheckbox } from "@/components/ConsentCheckbox"
 
 export function SurveyorCtaSection() {
   const [formData, setFormData] = useState({ name: "", phone: "" })
@@ -91,6 +92,7 @@ export function SurveyorCtaSection() {
                     {error && (
                       <p className="text-sm text-red-600 font-medium text-center">{error}</p>
                     )}
+                    <ConsentCheckbox id="consent-surveyor" />
                     <button type="submit" disabled={sending} className="btn-green w-full justify-center text-sm disabled:opacity-60">
                       {sending ? "Отправляем..." : "Заказать выезд замерщика"}
                     </button>

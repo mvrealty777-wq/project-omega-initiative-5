@@ -6,6 +6,7 @@ import { CheckCircle, ChevronRight, ChevronLeft, Send } from "lucide-react"
 import { sendLead, isValidPhone } from "@/lib/sendLead"
 import { MessengerPicker, messengerLabel } from "@/components/MessengerPicker"
 import type { QuizConfig, QuizOption } from "@/data/quizData"
+import { ConsentCheckbox } from "@/components/ConsentCheckbox"
 
 interface Props {
   quiz: QuizConfig
@@ -22,6 +23,7 @@ export function QuizDialog({ quiz, children }: Props) {
   const [sent, setSent] = useState(false)
   const [error, setError] = useState("")
   const [sending, setSending] = useState(false)
+  const [consent, setConsent] = useState(false)
 
   const questions = quiz.questions
   const isContactStep = step === questions.length
@@ -246,9 +248,10 @@ export function QuizDialog({ quiz, children }: Props) {
                   {error && (
                     <p className="text-sm text-red-600 font-medium text-center">{error}</p>
                   )}
+                  <ConsentCheckbox id="consent-quiz" checked={consent} onCheckedChange={setConsent} />
                   <button
                     onClick={handleSubmit}
-                    disabled={!isValidPhone(contact.phone) || sending}
+                    disabled={!isValidPhone(contact.phone) || !consent || sending}
                     className="btn-green w-full justify-center text-sm disabled:opacity-40 disabled:cursor-not-allowed"
                   >
                     <Send className="w-4 h-4" />
@@ -258,9 +261,6 @@ export function QuizDialog({ quiz, children }: Props) {
                       ? `Написать в ${messengerLabel(messenger)}`
                       : "Получить расчёт"}
                   </button>
-                  <p className="text-[11px] text-muted-foreground text-center">
-                    Нажимая кнопку, вы соглашаетесь с политикой обработки данных
-                  </p>
                 </div>
               )}
             </div>

@@ -55,9 +55,6 @@ export function FinalCtaSection() {
           </button>
         </LeadDialog>
 
-        <p className="text-white/40 text-xs mt-5">
-          Нажимая кнопку, вы соглашаетесь с политикой обработки данных
-        </p>
       </div>
     </section>
   )

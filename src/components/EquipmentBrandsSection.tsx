@@ -31,7 +31,7 @@ const defaultCards = [
     image: "/opt/1a3ddb93-6269-4317-9e18-b58d210c901e.webp",
     icon: "Award",
     title: "Премиум оборудование",
-    text: "Официальный партнёр Harvia, TYLÖ, EOS, HygroMatik, ASTRAL. Используем только сертифицированные материалы и оборудование.",
+    text: "Работаем с оборудованием Harvia, TYLÖ, EOS, HygroMatik, ASTRAL. Используем только сертифицированные материалы и оборудование.",
   },
   {
     image: "/opt/d596455c-d3b0-42da-8561-a00382738d8f.webp",
@@ -70,7 +70,7 @@ const hammamCards = [
     image: "/img/29ee3e1d-8698-4c42-91bc-8a93f08eedd7.webp",
     icon: "Award",
     title: "Премиум материалы",
-    text: "Официальный партнёр HygroMatik, TYLÖ, Bisazza. Используем только натуральный мрамор и сертифицированную мозаику.",
+    text: "Работаем с HygroMatik, TYLÖ, Bisazza. Используем натуральный мрамор и сертифицированную мозаику.",
   },
   {
     image: "/img/f93e558e-f553-4625-bcf8-aa84401e6afc.webp",
@@ -97,11 +97,11 @@ export function EquipmentBrandsSection({ slug }: Props = {}) {
             className="text-3xl sm:text-4xl lg:text-5xl font-black text-foreground mb-4"
             style={{ fontFamily: 'Montserrat, sans-serif' }}
           >
-            Гарантируем лучшую цену <br className="hidden sm:block" />
+            Прямые поставки <br className="hidden sm:block" />
             <span className="text-primary">на оборудование</span>
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto text-base sm:text-lg leading-relaxed">
-            Мы не только строим, но и продаём оборудование. Являемся официальными дилерами всех ведущих брендов — поставки напрямую с заводов без посредников и наценок.
+            Мы не только строим, но и продаём оборудование. Работаем напрямую с заводами и официальными дистрибьюторами — без лишних посредников.
           </p>
           <a
             href="https://vam-vdom.ru/"
@@ -170,14 +170,14 @@ export function EquipmentBrandsSection({ slug }: Props = {}) {
             <div className="flex-shrink-0 relative">
               <div className="w-28 h-28 sm:w-32 sm:h-32 rounded-full bg-white flex flex-col items-center justify-center shadow-xl">
                 <Icon name="BadgePercent" className="w-8 h-8 text-primary mb-0.5" fallback="Tag" />
-                <span className="text-primary font-black text-sm leading-none" style={{ fontFamily: 'Montserrat, sans-serif' }}>ЛУЧШАЯ</span>
+                <span className="text-primary font-black text-sm leading-none" style={{ fontFamily: 'Montserrat, sans-serif' }}>ВЫГОДНАЯ</span>
                 <span className="text-primary font-black text-sm leading-none" style={{ fontFamily: 'Montserrat, sans-serif' }}>ЦЕНА</span>
               </div>
             </div>
 
             <div className="flex-1 text-center lg:text-left">
               <p className="text-2xl sm:text-3xl lg:text-4xl font-black mb-2" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                Нашли дешевле? Сделаем ещё выгоднее
+                Нашли дешевле? Пришлите счёт — предложим условия
               </p>
               <p className="text-sm sm:text-base text-white/80 mb-5">
                 Прямые поставки от заводов-производителей по всей России

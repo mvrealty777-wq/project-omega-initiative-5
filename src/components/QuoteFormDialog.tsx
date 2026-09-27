@@ -14,6 +14,7 @@ import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { sendLead, isValidPhone } from "@/lib/sendLead"
+import { ConsentCheckbox } from "@/components/ConsentCheckbox"
 
 interface QuoteFormDialogProps {
   packageName?: string
@@ -165,7 +166,8 @@ export function QuoteFormDialog({ packageName, variant = "default", className, c
           {error && (
             <p className="text-sm text-red-600 font-medium">{error}</p>
           )}
-          <div className="flex gap-3 pt-4">
+          <ConsentCheckbox id="consent-quote" className="pt-2" />
+          <div className="flex gap-3 pt-2">
             <Button type="button" variant="outline" onClick={() => setOpen(false)} className="flex-1">
               Отмена
             </Button>

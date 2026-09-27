@@ -5,6 +5,7 @@ import Icon from "@/components/ui/icon"
 import { MessengerPicker, messengerLabel } from "@/components/MessengerPicker"
 import { sendLead, isValidPhone } from "@/lib/sendLead"
 import { CheckCircle, ChevronRight, ChevronLeft, Send } from "lucide-react"
+import { ConsentCheckbox } from "@/components/ConsentCheckbox"
 
 const CDN = "/opt/"
 
@@ -93,6 +94,7 @@ export function HammamQuizBlock() {
   const [sent, setSent] = useState(false)
   const [error, setError] = useState("")
   const [sending, setSending] = useState(false)
+  const [consent, setConsent] = useState(false)
 
   const isContactStep = step === questions.length
   const progress = Math.round(((step) / (questions.length + 1)) * 100)
@@ -334,17 +336,15 @@ export function HammamQuizBlock() {
                   {error && (
                     <p className="text-sm text-red-600 font-medium text-center">{error}</p>
                   )}
+                  <ConsentCheckbox id="consent-hammam-quiz" checked={consent} onCheckedChange={setConsent} />
                   <button
                     onClick={handleSubmit}
-                    disabled={!isValidPhone(contact.phone) || sending}
+                    disabled={!isValidPhone(contact.phone) || !consent || sending}
                     className="btn-green w-full justify-center text-sm disabled:opacity-40 disabled:cursor-not-allowed mt-auto"
                   >
                     <Send className="w-4 h-4" />
                     {sending ? "Отправляем..." : useMessenger ? `Написать в ${messengerLabel(messenger)}` : "Получить расчёт"}
                   </button>
-                  <p className="text-[11px] text-muted-foreground text-center">
-                    Нажимая кнопку, вы соглашаетесь с обработкой персональных данных
-                  </p>
                   <button onClick={handleBack} className="flex items-center gap-1.5 text-xs text-muted-foreground hover:text-foreground transition-colors mx-auto">
                     <ChevronLeft className="w-3.5 h-3.5" /> Назад
                   </button>

@@ -5,6 +5,7 @@ import { Link } from "react-router-dom"
 import { servicesData } from "@/data/servicesData"
 import { CallbackDialog } from "@/components/CallbackDialog"
 import { trackClick } from "@/lib/sendLead"
+import { company } from "@/data/company"
 
 const navLinks = [
   { href: "/#about", label: "О компании" },
@@ -145,8 +146,14 @@ export function Footer() {
       {/* Bottom bar */}
       <div className="border-t border-white/10">
         <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/40">
-          <p>© 2025 GeniusSPA. Все права защищены.</p>
-          <p>Строительство саун и хамамов под ключ по всей России</p>
+          <div className="space-y-1 text-center sm:text-left">
+            <p>© {new Date().getFullYear()} GeniusSPA. {company.name}, ИНН {company.inn}, ОГРН {company.ogrn}{company.address ? `, ${company.address}` : ""}</p>
+            <p>Работаем: {company.cities}</p>
+          </div>
+          <div className="flex gap-4">
+            <Link to="/privacy" className="hover:text-white transition-colors">Политика конфиденциальности</Link>
+            <Link to="/consent" className="hover:text-white transition-colors">Согласие на обработку данных</Link>
+          </div>
         </div>
       </div>
     </footer>

@@ -8,6 +8,7 @@ import Index from "./pages/Index";
 import ServicePage from "./pages/ServicePage";
 import SubServicePage from "./pages/SubServicePage";
 import AdminLeads from "./pages/AdminLeads";
+import LegalPage from "./pages/LegalPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -24,6 +25,8 @@ const App = () => (
             <Route path="/uslugi/:slug" element={<ServicePage />} />
             <Route path="/uslugi/:slug/:subSlug" element={<SubServicePage />} />
             <Route path="/admin/leads" element={<AdminLeads />} />
+            <Route path="/privacy" element={<LegalPage kind="privacy" />} />
+            <Route path="/consent" element={<LegalPage kind="consent" />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

@@ -2,7 +2,7 @@ const SITE_NAME = "GeniusSPA"
 const PHONE = "+78003023836"
 
 const origin = () =>
-  typeof window !== "undefined" ? window.location.origin : "https://geniusspa.ru"
+  typeof window !== "undefined" ? window.location.origin : "https://stroy-vamvdom.ru"
 
 /** Организация — выводится на всех страницах */
 export function organizationSchema(): Record<string, unknown> {

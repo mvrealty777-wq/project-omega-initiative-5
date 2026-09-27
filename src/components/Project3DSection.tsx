@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input"
 import Icon from "@/components/ui/icon"
 import { MessengerIcon } from "@/components/icons/MessengerIcon"
 import { sendLead, trackClick, isValidPhone } from "@/lib/sendLead"
+import { ConsentCheckbox } from "@/components/ConsentCheckbox"
 
 const gallery = [
   { src: "/opt/2ad12f49-973d-4ff5-88da-a09246609324.webp", tag: "Сауна" },
@@ -186,7 +187,7 @@ export function Project3DSection() {
                     </div>
                   </div>
 
-                  <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-2.5 mt-4">
+                  <form id="project3d-form" onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-2.5 mt-4">
                     <Input name="name" value={formData.name} onChange={handleChange}
                       placeholder="Ваше имя"
                       className="h-12 rounded-xl bg-white/10 border-white/20 text-white placeholder:text-white/50" />
@@ -199,6 +200,7 @@ export function Project3DSection() {
                       {sending ? "Отправляем..." : "Заказать"}
                     </button>
                   </form>
+                  <ConsentCheckbox id="consent-3d" form="project3d-form" dark className="mt-2" />
                   {error && (
                     <p className="text-sm text-red-300 font-medium mt-2">{error}</p>
                   )}

@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input"
 import { Phone, Mail, CheckCircle } from "lucide-react"
 import { sendLead, trackClick, isValidPhone } from "@/lib/sendLead"
 import { MessengerIcon } from "@/components/icons/MessengerIcon"
+import { ConsentCheckbox } from "@/components/ConsentCheckbox"
 
 export function ContactSection() {
   const [formData, setFormData] = useState({ name: "", phone: "" })
@@ -145,7 +146,7 @@ export function ContactSection() {
                   <p className="text-white/85 mb-4 text-base">
                     Или просто введите ваш телефон, мы перезвоним и ответим на все вопросы
                   </p>
-                  <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3">
+                  <form id="contact-form" onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3">
                     <Input
                       name="name"
                       value={formData.name}
@@ -166,12 +167,10 @@ export function ContactSection() {
                       {sending ? "Отправляем..." : "Перезвоните"}
                     </button>
                   </form>
+                  <ConsentCheckbox id="consent-contact" form="contact-form" dark className="mt-3" />
                   {error && (
                     <p className="text-sm text-red-400 font-medium mt-3">{error}</p>
                   )}
-                  <p className="text-white/40 text-xs mt-3">
-                    Вы соглашаетесь с условиями обработки персональных данных
-                  </p>
                 </>
               )}
             </div>

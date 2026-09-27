@@ -3,6 +3,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from 
 import { Input } from "@/components/ui/input"
 import { CheckCircle, Phone } from "lucide-react"
 import { sendLead, isValidPhone } from "@/lib/sendLead"
+import { ConsentCheckbox } from "@/components/ConsentCheckbox"
 
 interface Props {
   children: React.ReactNode
@@ -79,13 +80,11 @@ export function CallbackDialog({ children, source = "Кнопка «Перезв
               {error && (
                 <p className="text-sm text-red-600 font-medium text-center">{error}</p>
               )}
+              <ConsentCheckbox id="consent-callback" />
               <button type="submit" disabled={sending} className="btn-green w-full justify-center text-sm disabled:opacity-60">
                 <Phone className="w-4 h-4" />
                 {sending ? "Отправляем..." : "Перезвоните мне"}
               </button>
-              <p className="text-[11px] text-muted-foreground text-center">
-                Нажимая кнопку, вы соглашаетесь с политикой обработки данных
-              </p>
             </form>
           </>
         )}

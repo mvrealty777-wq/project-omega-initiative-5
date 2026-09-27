@@ -8,6 +8,8 @@ import { CheckCircle, Send } from "lucide-react"
 import { sendLead, isValidPhone } from "@/lib/sendLead"
 import { MessengerIcon } from "@/components/icons/MessengerIcon"
 import type { ServiceData } from "@/data/servicesData"
+import { ConsentCheckbox } from "@/components/ConsentCheckbox"
+import { cityPhrase } from "@/lib/attribution"
 
 const messengers = [
   { id: "max", label: "МАКС", color: "linear-gradient(135deg, #8B5CF6, #6366F1)" },
@@ -66,13 +68,19 @@ export function ServiceHero({ service, titleOverride, subtitleOverride, parentCr
   // Разбиваем заголовок: «... под ключ» → основная часть + зелёный «ПОД КЛЮЧ»
   const renderTitle = () => {
     const raw = titleOverride ?? service.heroTitle
-    const subtitle = subtitleOverride ?? service.heroSubtitle
+    const baseSubtitle = subtitleOverride ?? service.heroSubtitle
+    const city = cityPhrase()
+    // Город из рекламной ссылки (?city=msk|spb|sochi) вместо «по всей России»
+    const subtitle = city && baseSubtitle?.includes("по всей России")
+      ? baseSubtitle.replace("по всей России", city)
+      : baseSubtitle
+    const cityInTitle = city && !baseSubtitle?.includes("по всей России") ? ` ${city.toUpperCase()}` : ""
     const upper = raw.toUpperCase()
     const idx = upper.indexOf("ПОД КЛЮЧ")
     if (idx === -1) {
       return (
         <>
-          {upper}
+          {upper}{cityInTitle}
           {subtitle && <span className="block text-2xl sm:text-3xl lg:text-4xl mt-3 font-bold">{subtitle}</span>}
         </>
       )
@@ -80,7 +88,7 @@ export function ServiceHero({ service, titleOverride, subtitleOverride, parentCr
     return (
       <>
         {upper.slice(0, idx)}
-        <span className="text-green-400">«ПОД КЛЮЧ»</span>
+        <span className="text-green-400">«ПОД КЛЮЧ»</span>{cityInTitle}
         {subtitle && <span className="block text-2xl sm:text-3xl lg:text-4xl mt-3 font-bold">{subtitle}</span>}
       </>
     )
@@ -238,6 +246,7 @@ export function ServiceHero({ service, titleOverride, subtitleOverride, parentCr
                     {error && (
                       <p className="text-sm text-red-600 font-medium text-center">{error}</p>
                     )}
+                    <ConsentCheckbox id="consent-service-hero" />
                     <button type="submit" disabled={sending} className="btn-green w-full justify-center text-sm disabled:opacity-60">
                       <Send className="w-4 h-4" />
                       {sending
@@ -247,9 +256,6 @@ export function ServiceHero({ service, titleOverride, subtitleOverride, parentCr
                         : "Отправить заявку и получить смету"}
                     </button>
                   </form>
-                  <p className="text-[11px] text-muted-foreground text-center mt-3">
-                    Нажимая кнопку, вы соглашаетесь с политикой обработки данных
-                  </p>
                 </>
               )}
             </div>

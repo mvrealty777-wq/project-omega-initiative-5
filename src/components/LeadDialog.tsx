@@ -6,6 +6,7 @@ import Icon from "@/components/ui/icon"
 import { CheckCircle, Send, ChevronLeft } from "lucide-react"
 import { sendLead, isValidPhone } from "@/lib/sendLead"
 import { MessengerPicker, messengerLabel } from "@/components/MessengerPicker"
+import { ConsentCheckbox } from "@/components/ConsentCheckbox"
 
 const OBJECT_TYPES = [
   { id: "hammam", label: "Хаммам", icon: "Landmark", color: "#7C3AED" },
@@ -140,9 +141,6 @@ export function LeadDialog({ children, source, title, description, submitText }:
                 </button>
               ))}
             </div>
-            <p className="text-[11px] text-muted-foreground text-center pb-4">
-              Нажимая кнопку, вы соглашаетесь с политикой обработки данных
-            </p>
           </div>
         ) : (
           /* Шаг 2 — контактная форма */
@@ -201,13 +199,11 @@ export function LeadDialog({ children, source, title, description, submitText }:
               {error && (
                 <p className="text-sm text-red-600 font-medium text-center">{error}</p>
               )}
+              <ConsentCheckbox id="consent-lead-dialog" />
               <button type="submit" disabled={sending} className="btn-green w-full justify-center text-sm disabled:opacity-60">
                 <Send className="w-4 h-4" />
                 {sending ? "Отправляем..." : useMessenger ? `Написать в ${messengerLabel(messenger)}` : (submitText ?? "Отправить заявку")}
               </button>
-              <p className="text-[11px] text-muted-foreground text-center">
-                Нажимая кнопку, вы соглашаетесь с политикой обработки данных
-              </p>
             </form>
           </div>
         )}

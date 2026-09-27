@@ -1,4 +1,5 @@
 import func2url from "../../backend/func2url.json"
+import { getAttribution } from "./attribution"
 
 const LEAD_URL = (func2url as Record<string, string>).lead
 
@@ -63,7 +64,8 @@ function getGoalName(source: string): string {
 }
 
 /**
- * Отправляет заявку с любой формы на backend (почта + сохранение в БД).
+ * Отправляет заявку с любой формы на backend (БД + уведомление в Telegram).
+ * К заявке добавляются рекламные метки (utm_*, yclid) и город из attribution.ts.
  * Автоматически фиксирует цель в Яндекс.Метрике.
  * Возвращает true при успехе.
  */
@@ -78,6 +80,7 @@ export async function sendLead(data: LeadData): Promise<boolean> {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         ...data,
+        ...getAttribution(),
         page_url: typeof window !== "undefined" ? window.location.href : "",
       }),
     })

@@ -10,5 +10,5 @@ Allow: /
 User-agent: Bingbot
 Allow: /
 
-Sitemap: https://geniusspa.ru/sitemap.xml
-Host: https://geniusspa.ru
+Sitemap: https://stroy-vamvdom.ru/sitemap.xml
+Host: https://stroy-vamvdom.ru

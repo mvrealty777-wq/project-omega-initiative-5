@@ -8,6 +8,8 @@ import { CheckCircle, Send } from "lucide-react"
 import { sendLead, isValidPhone } from "@/lib/sendLead"
 import { MessengerIcon } from "@/components/icons/MessengerIcon"
 import type { ServiceData } from "@/data/servicesData"
+import { ConsentCheckbox } from "@/components/ConsentCheckbox"
+import { cityPhrase } from "@/lib/attribution"
 
 const CDN = "/opt/"
 
@@ -82,7 +84,7 @@ export function HammamHeroSection({ service }: { service: ServiceData }) {
               ХАММАМ или САУНА{" "}
               <span className="text-green-400">«ПОД КЛЮЧ»</span>
               <span className="block text-2xl sm:text-3xl lg:text-4xl mt-3 font-bold">
-                Строительство и отделка хаммамов по всей России
+                {cityPhrase() ? `Строительство и отделка хаммамов ${cityPhrase()}` : "Строительство и отделка хаммамов по всей России"}
               </span>
             </h1>
 
@@ -207,6 +209,7 @@ export function HammamHeroSection({ service }: { service: ServiceData }) {
                     {error && (
                       <p className="text-sm text-red-600 font-medium text-center">{error}</p>
                     )}
+                    <ConsentCheckbox id="consent-hammam-hero" />
                     <button type="submit" disabled={sending} className="btn-green w-full justify-center text-sm disabled:opacity-60">
                       <Send className="w-4 h-4" />
                       {sending
@@ -216,9 +219,6 @@ export function HammamHeroSection({ service }: { service: ServiceData }) {
                         : "Отправить заявку и получить смету"}
                     </button>
                   </form>
-                  <p className="text-[11px] text-muted-foreground text-center mt-3">
-                    Нажимая кнопку, вы соглашаетесь с политикой обработки данных
-                  </p>
                 </>
               )}
             </div>
