@@ -3,7 +3,7 @@ import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog"
 import { Input } from "@/components/ui/input"
 import Icon from "@/components/ui/icon"
 import { CheckCircle, ChevronRight, ChevronLeft, Send } from "lucide-react"
-import { sendLead, isValidPhone } from "@/lib/sendLead"
+import { sendLead, isValidPhone, trackMicro } from "@/lib/sendLead"
 import { MessengerPicker, messengerLabel } from "@/components/MessengerPicker"
 import type { QuizConfig, QuizOption } from "@/data/quizData"
 import { ConsentCheckbox } from "@/components/ConsentCheckbox"
@@ -51,6 +51,8 @@ export function QuizDialog({ quiz, children }: Props) {
     : isValidPhone(contact.phone)
 
   const handleNext = () => {
+    if (step === 0) trackMicro("quiz_start")
+    if (step === questions.length - 1) trackMicro("quiz_contacts")
     if (step < questions.length) setStep((s) => s + 1)
   }
 

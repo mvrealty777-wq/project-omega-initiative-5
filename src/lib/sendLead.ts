@@ -59,21 +59,40 @@ export function isValidPhone(phone: string | undefined | null): boolean {
 }
 
 /**
- * Определяет название цели по источнику формы
+ * Цели Яндекс.Метрики по источнику формы.
+ * Порядок важен: первое совпадение побеждает. Список всех целей — в docs/metrika-goals.md.
  */
+const GOAL_RULES: [RegExp, string][] = [
+  [/Квиз/i, "quiz_lead"],
+  [/Шапка/i, "header_callback"],
+  [/Футер/i, "footer_callback"],
+  [/Финальный CTA/i, "final_cta_lead"],
+  [/Первый экран/i, "hero_lead"],
+  [/Заявка с направления/i, "service_hero_lead"],
+  [/Портфолио/i, "portfolio_lead"],
+  [/Цены|Прайс|Запросить расч/i, "pricing_lead"],
+  [/замерщик|Замер/i, "surveyor_lead"],
+  [/3D/i, "project3d_lead"],
+  [/Оборудован|Бренды|Схема оборудования/i, "equipment_lead"],
+  [/Контакт/i, "contact_lead"],
+  [/Готовы реализовать|Процесс|Под ключ/i, "section_lead"],
+  [/Перезвоните/i, "callback_lead"],
+]
+
 function getGoalName(source: string): string {
-  if (source.includes("Квиз")) return "quiz_lead"
-  if (source.includes("Шапка") || source.includes("шапка")) return "header_callback"
-  if (source.includes("Футер") || source.includes("футер")) return "footer_callback"
-  if (source.includes("Первый экран")) return "hero_lead"
-  if (source.includes("Портфолио")) return "portfolio_lead"
-  if (source.includes("Цены") || source.includes("Прайс") || source.includes("Запросить расчёт")) return "pricing_lead"
-  if (source.includes("замерщик") || source.includes("Замер")) return "surveyor_lead"
-  if (source.includes("Контакт")) return "contact_lead"
-  if (source.includes("направления") || source.includes("Хаммам") || source.includes("хаммам")) return "service_hero_lead"
-  if (source.includes("3D")) return "project3d_lead"
-  if (source.includes("Перезвоните") || source.includes("перезвоните")) return "callback_lead"
+  for (const [re, goal] of GOAL_RULES) if (re.test(source)) return goal
   return "form_lead"
+}
+
+/** Микро-цели (открыл форму, начал квиз) — для обучения Директа, пока заявок мало */
+const microSent = new Set<string>()
+export function trackMicro(goalName: "form_open" | "quiz_start" | "quiz_contacts") {
+  // quiz_start и quiz_contacts — не чаще раза за визит, form_open — каждый раз
+  if (goalName !== "form_open") {
+    if (microSent.has(goalName)) return
+    microSent.add(goalName)
+  }
+  reachGoal(goalName)
 }
 
 /**

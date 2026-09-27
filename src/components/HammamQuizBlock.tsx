@@ -3,7 +3,7 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import Icon from "@/components/ui/icon"
 import { MessengerPicker, messengerLabel } from "@/components/MessengerPicker"
-import { sendLead, isValidPhone } from "@/lib/sendLead"
+import { sendLead, isValidPhone, trackMicro } from "@/lib/sendLead"
 import { CheckCircle, ChevronRight, ChevronLeft, Send } from "lucide-react"
 import { ConsentCheckbox } from "@/components/ConsentCheckbox"
 
@@ -117,6 +117,8 @@ export function HammamQuizBlock() {
     : isValidPhone(contact.phone)
 
   const handleNext = () => {
+    if (step === 0) trackMicro("quiz_start")
+    if (step === questions.length - 1) trackMicro("quiz_contacts")
     if (step < questions.length) setStep((s) => s + 1)
   }
 

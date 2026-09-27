@@ -2,7 +2,7 @@ import { useState } from "react"
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
 import { Input } from "@/components/ui/input"
 import { CheckCircle, Phone } from "lucide-react"
-import { sendLead, isValidPhone } from "@/lib/sendLead"
+import { sendLead, isValidPhone, trackMicro } from "@/lib/sendLead"
 import { ConsentCheckbox } from "@/components/ConsentCheckbox"
 
 interface Props {
@@ -37,6 +37,7 @@ export function CallbackDialog({ children, source = "Кнопка «Перезв
 
   const handleOpenChange = (v: boolean) => {
     setOpen(v)
+    if (v) trackMicro("form_open")
     if (!v) setTimeout(() => { setSent(false); setPhone(""); setName(""); setError("") }, 200)
   }
 

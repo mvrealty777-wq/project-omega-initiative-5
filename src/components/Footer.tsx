@@ -53,7 +53,7 @@ export function Footer() {
                 <Phone className="w-4 h-4 text-green-400" />
                 8 960 231-96-72
               </a>
-              <a href="mailto:info@vam-vdom.ru" className="flex items-center gap-2 text-sm text-white/70 hover:text-white transition-colors">
+              <a href="mailto:info@vam-vdom.ru" onClick={() => trackClick("email_click")} className="flex items-center gap-2 text-sm text-white/70 hover:text-white transition-colors">
                 <Mail className="w-4 h-4 text-green-400" />
                 info@vam-vdom.ru
               </a>

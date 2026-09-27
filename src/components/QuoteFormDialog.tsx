@@ -13,7 +13,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { sendLead, isValidPhone } from "@/lib/sendLead"
+import { sendLead, isValidPhone, trackMicro } from "@/lib/sendLead"
 import { ConsentCheckbox } from "@/components/ConsentCheckbox"
 
 interface QuoteFormDialogProps {
@@ -74,7 +74,7 @@ export function QuoteFormDialog({ packageName, variant = "default", className, c
   }
 
   return (
-    <Dialog open={open} onOpenChange={setOpen}>
+    <Dialog open={open} onOpenChange={(v) => { setOpen(v); if (v) trackMicro("form_open") }}>
       <DialogTrigger asChild>
         <Button variant={variant} className={className}>
           {children || "Запросить расчет"}

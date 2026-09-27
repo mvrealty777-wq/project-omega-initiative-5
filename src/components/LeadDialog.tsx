@@ -4,7 +4,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, Di
 import { Input } from "@/components/ui/input"
 import Icon from "@/components/ui/icon"
 import { CheckCircle, Send, ChevronLeft } from "lucide-react"
-import { sendLead, isValidPhone } from "@/lib/sendLead"
+import { sendLead, isValidPhone, trackMicro } from "@/lib/sendLead"
 import { MessengerPicker, messengerLabel } from "@/components/MessengerPicker"
 import { ConsentCheckbox } from "@/components/ConsentCheckbox"
 
@@ -70,6 +70,7 @@ export function LeadDialog({ children, source, title, description, submitText }:
 
   const handleOpenChange = (v: boolean) => {
     setOpen(v)
+    if (v) trackMicro("form_open")
     if (!v) {
       setTimeout(() => {
         setSent(false)
