@@ -35,6 +35,19 @@ function reachGoal(goalName: string) {
  */
 export function trackClick(goalName: string) {
   reachGoal(goalName)
+  // Уведомление в МАКС/Telegram о клике по телефону или мессенджеру
+  if (goalName === "phone_click" || goalName.startsWith("messenger_")) {
+    try {
+      fetch(LEAD_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ event: goalName, ...getAttribution(), page_url: window.location.href }),
+        keepalive: true,
+      }).catch(() => {})
+    } catch {
+      /* не мешаем переходу по ссылке */
+    }
+  }
 }
 
 /**

@@ -1,5 +1,6 @@
 import json
 import os
+import urllib.request
 from datetime import datetime
 
 import psycopg2
@@ -14,6 +15,23 @@ def _cors_headers() -> dict:
         'Access-Control-Max-Age': '86400',
         'Content-Type': 'application/json',
     }
+
+
+def _max_chats() -> dict:
+    token = os.environ.get('MAX_BOT_TOKEN')
+    if not token:
+        return {'statusCode': 200, 'headers': _cors_headers(),
+                'body': json.dumps({'error': 'Секрет MAX_BOT_TOKEN не задан'}, ensure_ascii=False)}
+    try:
+        req = urllib.request.Request('https://platform-api2.max.ru/chats?count=50', headers={'Authorization': token})
+        with urllib.request.urlopen(req, timeout=8) as r:
+            data = json.loads(r.read().decode())
+        chats = [{'chat_id': c.get('chat_id'), 'title': c.get('title') or '', 'type': c.get('type') or ''}
+                 for c in data.get('chats', [])]
+        return {'statusCode': 200, 'headers': _cors_headers(), 'body': json.dumps({'chats': chats}, ensure_ascii=False)}
+    except Exception as e:
+        return {'statusCode': 200, 'headers': _cors_headers(),
+                'body': json.dumps({'error': f'{type(e).__name__}: {e}'}, ensure_ascii=False)}
 
 
 def handler(event: dict, context) -> dict:
@@ -40,6 +58,11 @@ def handler(event: dict, context) -> dict:
             'headers': _cors_headers(),
             'body': json.dumps({'error': 'Неверный пароль'}),
         }
+
+    # Вспомогательный режим: список чатов МАКС-бота, чтобы узнать MAX_CHAT_ID
+    params = event.get('queryStringParameters') or {}
+    if params.get('max_chats'):
+        return _max_chats()
 
     dsn = os.environ.get('DATABASE_URL')
     conn = psycopg2.connect(dsn)

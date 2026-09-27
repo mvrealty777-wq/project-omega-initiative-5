@@ -45,6 +45,22 @@ export default function AdminLeads() {
   const [leads, setLeads] = useState<Lead[]>([])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState("")
+  const [maxInfo, setMaxInfo] = useState<string>("")
+
+  const loadMaxChats = async () => {
+    setMaxInfo("Загружаю чаты МАКС-бота…")
+    try {
+      const res = await fetch(`${LEADS_URL}?max_chats=1`, { headers: { "X-Admin-Password": password } })
+      const data = await res.json()
+      if (data.error) { setMaxInfo(`Ошибка: ${data.error}`); return }
+      const chats = (data.chats || []) as { chat_id: number; title: string; type: string }[]
+      setMaxInfo(chats.length
+        ? chats.map((c) => `${c.title || "(без названия)"} — MAX_CHAT_ID: ${c.chat_id}`).join("\n")
+        : "Бот пока не состоит ни в одном чате. Добавьте его в групповой чат и нажмите ещё раз.")
+    } catch {
+      setMaxInfo("Ошибка соединения")
+    }
+  }
 
   const load = useCallback(async (pwd: string) => {
     setLoading(true)
@@ -144,6 +160,11 @@ export default function AdminLeads() {
               <Icon name="RefreshCw" className={`w-4 h-4 ${loading ? "animate-spin" : ""}`} fallback="RotateCw" />
               Обновить
             </button>
+            <button onClick={loadMaxChats}
+              className="inline-flex items-center gap-1.5 h-9 px-3 rounded-lg border border-border text-sm font-medium hover:bg-secondary transition-colors">
+              <Icon name="MessageCircle" className="w-4 h-4" fallback="MessageCircle" />
+              Чаты МАКС
+            </button>
             <button onClick={handleLogout}
               className="inline-flex items-center gap-1.5 h-9 px-3 rounded-lg border border-border text-sm font-medium text-muted-foreground hover:bg-secondary transition-colors">
               <Icon name="LogOut" className="w-4 h-4" fallback="X" />
@@ -155,6 +176,9 @@ export default function AdminLeads() {
 
       <div className="container mx-auto max-w-5xl px-4 py-6">
         {error && <p className="text-sm text-red-600 mb-4">{error}</p>}
+        {maxInfo && (
+          <pre className="text-sm whitespace-pre-wrap bg-secondary/50 border border-border rounded-xl p-3 mb-4">{maxInfo}</pre>
+        )}
 
         {leads.length === 0 && !loading ? (
           <div className="text-center py-20">

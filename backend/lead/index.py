@@ -23,13 +23,7 @@ def _s(data: dict, key: str, limit: int) -> str:
 CITY_NAMES = {'msk': 'Москва', 'spb': 'Санкт-Петербург', 'sochi': 'Сочи'}
 
 
-def _notify_telegram(data: dict, lead_id) -> None:
-    '''Мгновенное уведомление о заявке в Telegram. Нужны секреты TELEGRAM_BOT_TOKEN и TELEGRAM_CHAT_ID.
-    Если их нет или Telegram недоступен — просто пропускаем (заявка уже сохранена в БД).'''
-    token = os.environ.get('TELEGRAM_BOT_TOKEN')
-    chat_id = os.environ.get('TELEGRAM_CHAT_ID')
-    if not token or not chat_id:
-        return
+def _lead_text(data: dict, lead_id) -> str:
     city = CITY_NAMES.get(_s(data, 'city', 50).lower(), _s(data, 'city', 50))
     lines = [
         f"🔥 Новая заявка #{lead_id}",
@@ -49,7 +43,36 @@ def _notify_telegram(data: dict, lead_id) -> None:
         lines.append(f"Ответы: {_s(data, 'comment', 1500)}")
     if data.get('page_url'):
         lines.append(f"Страница: {_s(data, 'page_url', 500)}")
-    body = urllib.parse.urlencode({'chat_id': chat_id, 'text': '\n'.join(lines)}).encode()
+    return '\n'.join(lines)
+
+
+CLICK_NAMES = {
+    'phone_click': '📞 Нажали «Позвонить»',
+    'messenger_whatsapp_click': '💬 Перешли в WhatsApp',
+    'messenger_telegram_click': '💬 Перешли в Telegram',
+    'messenger_max_click': '💬 Перешли в МАКС',
+}
+
+
+def _click_text(data: dict) -> str:
+    city = CITY_NAMES.get(_s(data, 'city', 50).lower(), _s(data, 'city', 50))
+    lines = [f"{CLICK_NAMES.get(_s(data, 'event', 50), 'Клик')} на сайте — ждите звонка или сообщения"]
+    if city:
+        lines.append(f"Город: {city}")
+    if data.get('utm_source') or data.get('utm_campaign'):
+        lines.append(f"Реклама: {_s(data, 'utm_source', 200)} / {_s(data, 'utm_campaign', 200)} / {_s(data, 'utm_term', 200)}")
+    if data.get('page_url'):
+        lines.append(f"Страница: {_s(data, 'page_url', 500)}")
+    return '\n'.join(lines)
+
+
+def _send_telegram(text: str) -> None:
+    '''Секреты TELEGRAM_BOT_TOKEN и TELEGRAM_CHAT_ID. Нет секретов — пропускаем.'''
+    token = os.environ.get('TELEGRAM_BOT_TOKEN')
+    chat_id = os.environ.get('TELEGRAM_CHAT_ID')
+    if not token or not chat_id:
+        return
+    body = urllib.parse.urlencode({'chat_id': chat_id, 'text': text}).encode()
     try:
         urllib.request.urlopen(
             urllib.request.Request(f"https://api.telegram.org/bot{token}/sendMessage", data=body),
@@ -57,6 +80,32 @@ def _notify_telegram(data: dict, lead_id) -> None:
         )
     except Exception as e:
         print(f"TELEGRAM ERROR: {type(e).__name__}: {e}")
+
+
+def _send_max(text: str) -> None:
+    '''Мессенджер МАКС (dev.max.ru). Секреты MAX_BOT_TOKEN и MAX_CHAT_ID (групповой чат)
+    или MAX_USER_ID (личный диалог с ботом). Нет секретов — пропускаем.'''
+    token = os.environ.get('MAX_BOT_TOKEN')
+    chat_id = os.environ.get('MAX_CHAT_ID')
+    user_id = os.environ.get('MAX_USER_ID')
+    if not token or not (chat_id or user_id):
+        return
+    target = f"chat_id={chat_id}" if chat_id else f"user_id={user_id}"
+    req = urllib.request.Request(
+        f"https://platform-api2.max.ru/messages?{target}",
+        data=json.dumps({'text': text[:4000]}).encode(),
+        headers={'Authorization': token, 'Content-Type': 'application/json'},
+        method='POST',
+    )
+    try:
+        urllib.request.urlopen(req, timeout=5)
+    except Exception as e:
+        print(f"MAX ERROR: {type(e).__name__}: {e}")
+
+
+def _notify(text: str) -> None:
+    _send_max(text)
+    _send_telegram(text)
 
 
 def _save_lead(data: dict, email_sent: bool) -> int:
@@ -122,6 +171,11 @@ def handler(event: dict, context) -> dict:
             'body': json.dumps({'error': 'Invalid JSON'}),
         }
 
+    # Клик по телефону / мессенджеру — только уведомление, в БД не пишем
+    if data.get('event') in CLICK_NAMES:
+        _notify(_click_text(data))
+        return {'statusCode': 200, 'headers': _cors_headers(), 'body': json.dumps({'success': True})}
+
     if not data.get('phone') and not data.get('email'):
         return {
             'statusCode': 400,
@@ -139,7 +193,7 @@ def handler(event: dict, context) -> dict:
         print(f"DB SAVE ERROR: {type(e).__name__}: {e}")
 
     # Уведомление шлём даже если БД недоступна — чтобы заявка не потерялась
-    _notify_telegram(data, lead_id if lead_id is not None else '—')
+    _notify(_lead_text(data, lead_id if lead_id is not None else '—'))
 
     status = 200 if saved else 500
     return {
