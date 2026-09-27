@@ -83,24 +83,25 @@ def _send_telegram(text: str) -> None:
 
 
 def _send_max(text: str) -> None:
-    '''Мессенджер МАКС (dev.max.ru). Секреты MAX_BOT_TOKEN и MAX_CHAT_ID (групповой чат)
-    или MAX_USER_ID (личный диалог с ботом). Нет секретов — пропускаем.'''
+    '''Мессенджер МАКС (dev.max.ru). Секрет MAX_BOT_TOKEN и получатели:
+    MAX_CHAT_ID — групповой чат и/или MAX_USER_ID — личные диалоги (можно несколько через запятую).
+    Нет секретов — пропускаем.'''
     token = os.environ.get('MAX_BOT_TOKEN')
-    chat_id = os.environ.get('MAX_CHAT_ID')
-    user_id = os.environ.get('MAX_USER_ID')
-    if not token or not (chat_id or user_id):
+    if not token:
         return
-    target = f"chat_id={chat_id}" if chat_id else f"user_id={user_id}"
-    req = urllib.request.Request(
-        f"https://platform-api2.max.ru/messages?{target}",
-        data=json.dumps({'text': text[:4000]}).encode(),
-        headers={'Authorization': token, 'Content-Type': 'application/json'},
-        method='POST',
-    )
-    try:
-        urllib.request.urlopen(req, timeout=5)
-    except Exception as e:
-        print(f"MAX ERROR: {type(e).__name__}: {e}")
+    targets = [f"chat_id={c.strip()}" for c in (os.environ.get('MAX_CHAT_ID') or '').split(',') if c.strip()]
+    targets += [f"user_id={u.strip()}" for u in (os.environ.get('MAX_USER_ID') or '').split(',') if u.strip()]
+    for target in targets:
+        req = urllib.request.Request(
+            f"https://platform-api2.max.ru/messages?{target}",
+            data=json.dumps({'text': text[:4000]}).encode(),
+            headers={'Authorization': token, 'Content-Type': 'application/json'},
+            method='POST',
+        )
+        try:
+            urllib.request.urlopen(req, timeout=5)
+        except Exception as e:
+            print(f"MAX ERROR ({target}): {type(e).__name__}: {e}")
 
 
 def _notify(text: str) -> None:
