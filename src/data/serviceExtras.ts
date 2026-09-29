@@ -140,7 +140,7 @@ export const serviceExtras: Record<string, ServiceExtra> = {
   },
   equipment: {
     seoTitle: "Оборудование для бань и саун — печи, парогенераторы | GeniusSPA",
-    seoDescription: "Печи Harvia, EOS, SAWO, парогенераторы, автоматика и аксессуары для саун, бань и хаммамов. Прямые поставки, лучшая цена, монтаж и гарантия. По всей России.",
+    seoDescription: "Печи Harvia, EOS, SAWO, парогенераторы, автоматика и аксессуары для саун, бань и хаммамов. Подбор, поставка, монтаж и гарантия. Москва, Санкт-Петербург, Сочи.",
     testimonialsTitle: "Отзывы об оборудовании",
     testimonialsSubtitle: "Печи, парогенераторы и автоматика",
     testimonials: [

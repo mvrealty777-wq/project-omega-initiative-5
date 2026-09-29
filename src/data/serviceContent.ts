@@ -72,7 +72,7 @@ const commonStats: AboutStat[] = [
 const commonFeatures: ChoiceFeature[] = [
   { icon: "BadgeCheck", text: "Только сертифицированное оборудование" },
   { icon: "Truck", text: "Доставка и монтаж по всей России" },
-  { icon: "Wallet", text: "Прямые поставки — лучшая цена" },
+  { icon: "Wallet", text: "Подбор под объём парной и бюджет" },
 ]
 
 export const serviceContent: Record<string, ServiceContent> = {
@@ -455,7 +455,7 @@ export const serviceContent: Record<string, ServiceContent> = {
       titleAccent: "оборудования — 4 шага",
       steps: [
         { icon: "PhoneCall", number: "01", title: "Заявка и подбор", duration: "15 минут", description: "Перезваниваем за 15 минут. Подбираем оборудование под вашу парную." },
-        { icon: "FileText", number: "02", title: "Расчёт и счёт", duration: "1 день", description: "Считаем стоимость с лучшей ценой, выставляем счёт и согласуем поставку." },
+        { icon: "FileText", number: "02", title: "Расчёт и счёт", duration: "1 день", description: "Считаем стоимость, выставляем счёт и согласуем поставку." },
         { icon: "Truck", number: "03", title: "Доставка", duration: "2–7 дней", description: "Доставляем оборудование напрямую от завода по всей России." },
         { icon: "Wrench", number: "04", title: "Монтаж и запуск", duration: "1 день", description: "Устанавливаем, подключаем, настраиваем и передаём с гарантией." },
       ],
@@ -476,7 +476,7 @@ export const serviceContent: Record<string, ServiceContent> = {
     equipmentChoice: {
       title: "Оборудование для",
       titleAccent: "бань и саун",
-      subtitle: "Печи, парогенераторы, автоматика и аксессуары напрямую от заводов по лучшей цене.",
+      subtitle: "Печи, парогенераторы, автоматика и аксессуары с подбором под объект и монтажом.",
       cta: "Подобрать оборудование",
       products: [
         { image: HARVIA, title: "Электрокаменки", text: "Печи Harvia, EOS, SAWO, TYLÖ с пультом для саун 3–20 м².", badge: "от 28 000 ₽" },
@@ -486,7 +486,7 @@ export const serviceContent: Record<string, ServiceContent> = {
       features: commonFeatures,
     },
     about: {
-      subtitle: "Поставляем оборудование для бань, саун и хаммамов напрямую от заводов 10+ лет — лучшая цена.",
+      subtitle: "Поставляем оборудование для бань, саун и хаммамов с подбором под объект, доставкой и монтажом.",
       values: [
         { icon: "Award", title: "Проверенные бренды", description: "Harvia, EOS, SAWO, TYLÖ, HygroMatik" },
         { icon: "Wallet", title: "Выгодные цены", description: "Прямые поставки без лишних посредников" },

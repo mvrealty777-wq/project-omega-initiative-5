@@ -26,7 +26,7 @@ const defaultProducts: ChoiceProduct[] = [
 const defaultFeatures: ChoiceFeature[] = [
   { icon: "BadgeCheck", text: "Только сертифицированное оборудование" },
   { icon: "Truck", text: "Доставка и монтаж по всей России" },
-  { icon: "Wallet", text: "Прямые поставки — лучшая цена" },
+  { icon: "Wallet", text: "Подбор под объём парной и бюджет" },
 ]
 
 interface Props {

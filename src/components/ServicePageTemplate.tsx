@@ -169,7 +169,7 @@ export function ServicePageTemplate({ service }: Props) {
         values={content?.about.values}
         stats={content?.about.stats}
       />
-      {/* 6 + 7. Лучшая цена + «нашли дешевле» */}
+      {/* 6 + 7. Поставка оборудования + «нашли дешевле» */}
       <EquipmentBrandsSection />
       {/* 8. Выбор оборудования и материалов */}
       <EquipmentChoiceSection
