@@ -196,6 +196,102 @@ def _save_lead(data: dict, email_sent: bool) -> int:
         conn.close()
 
 
+# ---------- Антиспам ----------
+import re
+import time
+
+_SIG_SALT = 'gs-lead-2026'
+_ip_hits: dict = {}
+_URL_RE = re.compile(r'(https?://|www\.|\.(ru|com|net|org|xyz|top|info)\b|<a |\[url)', re.I)
+
+
+def _fnv(s: str) -> str:
+    h = 0x811c9dc5
+    for ch in s:
+        h ^= ord(ch) if ord(ch) < 0x10000 else ord(ch)
+        h = (h * 0x01000193) & 0xFFFFFFFF
+    return format(h, 'x')
+
+
+def _client_ip(event: dict) -> str:
+    hdr = {k.lower(): v for k, v in (event.get('headers') or {}).items()}
+    ip = (hdr.get('x-forwarded-for') or hdr.get('x-real-ip') or '').split(',')[0].strip()
+    return ip or ((event.get('requestContext') or {}).get('identity') or {}).get('sourceIp', '') or 'unknown'
+
+
+def _rate_limited(ip: str, limit: int, window: int) -> bool:
+    now = time.time()
+    hits = [t for t in _ip_hits.get(ip, []) if now - t < window]
+    hits.append(now)
+    _ip_hits[ip] = hits
+    return len(hits) > limit
+
+
+def _valid_ru_phone(phone: str) -> bool:
+    d = re.sub(r'\D', '', phone or '')
+    if len(d) == 11 and d[0] in '78':
+        d = d[1:]
+    if len(d) != 10 or d[0] not in '3489':
+        return False
+    if len(set(d)) <= 2 or d in ('9000000000', '9999999999', '9123456789'):
+        return False
+    return True
+
+
+def _spam_reason(data: dict, is_click: bool) -> str:
+    """Пустая строка — заявка похожа на человека; иначе причина отказа."""
+    try:
+        ts = int(data.get('_ts') or 0)
+        lt = int(data.get('_lt') or 0)
+    except (TypeError, ValueError):
+        return 'bad_ts'
+    if not ts or not lt:
+        return 'no_token'
+    contact = '' if is_click else (data.get('phone') or data.get('email') or '')
+    digits = re.sub(r'\D', '', str(contact))
+    if str(data.get('_sig') or '') != _fnv(f"{ts}|{digits}|{_SIG_SALT}"):
+        return 'bad_sig'
+    now_ms = int(time.time() * 1000)
+    if abs(now_ms - ts) > 15 * 60 * 1000:
+        return 'stale'
+    if ts - lt < 3000:
+        return 'too_fast'
+    if not data.get('_hi'):
+        return 'no_human'
+    if is_click:
+        return ''
+    if data.get('phone') and not _valid_ru_phone(str(data.get('phone'))):
+        return 'bad_phone'
+    blob = ' '.join(str(data.get(k) or '') for k in ('name', 'message', 'comment'))
+    if _URL_RE.search(blob):
+        return 'link'
+    if re.search(r'[A-Za-z]{25,}', blob):
+        return 'gibberish'
+    return ''
+
+
+def _recent_duplicate(phone: str) -> bool:
+    d = re.sub(r'\D', '', phone or '')[-10:]
+    if not d:
+        return False
+    conn = psycopg2.connect(os.environ['DATABASE_URL'])
+    try:
+        cur = conn.cursor()
+        cur.execute(
+            "SELECT COUNT(*) FROM leads WHERE regexp_replace(phone, '\\D', '', 'g') LIKE %s "
+            "AND created_at > NOW() - INTERVAL '30 minutes'",
+            ('%' + d,),
+        )
+        return (cur.fetchone() or [0])[0] > 0
+    finally:
+        conn.close()
+
+
+def _ok() -> dict:
+    # Боту отвечаем «успешно», чтобы он не подбирал обход
+    return {'statusCode': 200, 'headers': _cors_headers(), 'body': json.dumps({'success': True})}
+
+
 def handler(event: dict, context) -> dict:
     '''Принимает заявки со всех форм сайта и сохраняет их в БД (просмотр в /admin/leads).'''
     method = event.get('httpMethod', 'GET')
@@ -220,7 +316,16 @@ def handler(event: dict, context) -> dict:
         }
 
     # Клик по телефону / мессенджеру — только уведомление, в БД не пишем
-    if data.get('event') in CLICK_NAMES:
+    ip = _client_ip(event)
+    is_click = data.get('event') in CLICK_NAMES
+    reason = _spam_reason(data, is_click)
+    if not reason and _rate_limited(ip, 5 if not is_click else 10, 600):
+        reason = 'rate_limit'
+    if reason:
+        print(f"SPAM blocked: {reason} ip={ip} phone={str(data.get('phone') or '')[:20]} src={str(data.get('source') or data.get('event') or '')[:60]}")
+        return _ok()
+
+    if is_click:
         _notify(_click_text(data))
         return {'statusCode': 200, 'headers': _cors_headers(), 'body': json.dumps({'success': True})}
 
@@ -230,6 +335,13 @@ def handler(event: dict, context) -> dict:
             'headers': _cors_headers(),
             'body': json.dumps({'error': 'Укажите телефон или e-mail'}),
         }
+
+    try:
+        if data.get('phone') and _recent_duplicate(str(data.get('phone'))):
+            print(f"DUPLICATE skipped: phone={str(data.get('phone'))[:20]}")
+            return _ok()
+    except Exception as e:
+        print(f"DUP CHECK ERROR: {type(e).__name__}: {e}")
 
     # Сохраняем заявку в БД — единственный и надёжный канал получения заявок.
     saved = False

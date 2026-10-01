@@ -3,6 +3,31 @@ import { getAttribution } from "./attribution"
 
 const LEAD_URL = (func2url as Record<string, string>).lead
 
+/* ---------- Антиспам: время на странице, действия человека, подпись ---------- */
+const LOADED_AT = Date.now()
+let humanSeen = false
+if (typeof window !== "undefined") {
+  const mark = () => { humanSeen = true }
+  ;["pointerdown", "keydown", "touchstart", "scroll"].forEach((e) =>
+    window.addEventListener(e, mark, { once: true, passive: true }),
+  )
+}
+const SIG_SALT = "gs-lead-2026"
+function sig(str: string): string {
+  // FNV-1a 32-bit
+  let h = 0x811c9dc5
+  for (let i = 0; i < str.length; i++) {
+    h ^= str.charCodeAt(i)
+    h = Math.imul(h, 0x01000193) >>> 0
+  }
+  return h.toString(16)
+}
+function antispam(contact: string) {
+  const ts = Date.now()
+  const digits = (contact || "").replace(/\D/g, "")
+  return { _ts: ts, _lt: LOADED_AT, _hi: humanSeen ? 1 : 0, _sig: sig(`${ts}|${digits}|${SIG_SALT}`) }
+}
+
 export interface LeadData {
   name?: string
   phone?: string
@@ -41,7 +66,7 @@ export function trackClick(goalName: string) {
       fetch(LEAD_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ event: goalName, ...getAttribution(), page_url: window.location.href }),
+        body: JSON.stringify({ event: goalName, ...getAttribution(), page_url: window.location.href, ...antispam("") }),
         keepalive: true,
       }).catch(() => {})
     } catch {
@@ -114,6 +139,7 @@ export async function sendLead(data: LeadData): Promise<boolean> {
         ...data,
         ...getAttribution(),
         page_url: typeof window !== "undefined" ? window.location.href : "",
+        ...antispam(data.phone || data.email || ""),
       }),
     })
     return res.ok
