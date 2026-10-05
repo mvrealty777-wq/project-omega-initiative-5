@@ -1,5 +1,6 @@
 import func2url from "../../backend/func2url.json"
 import { getAttribution } from "./attribution"
+import { getCaptchaToken } from "./captcha"
 
 const LEAD_URL = (func2url as Record<string, string>).lead
 
@@ -131,6 +132,7 @@ export async function sendLead(data: LeadData): Promise<boolean> {
   reachGoal(getGoalName(data.source))
   reachGoal("any_lead")
 
+  const captcha = await getCaptchaToken()
   try {
     const res = await fetch(LEAD_URL, {
       method: "POST",
@@ -140,6 +142,7 @@ export async function sendLead(data: LeadData): Promise<boolean> {
         ...getAttribution(),
         page_url: typeof window !== "undefined" ? window.location.href : "",
         ...antispam(data.phone || data.email || ""),
+        _captcha: captcha,
       }),
     })
     return res.ok

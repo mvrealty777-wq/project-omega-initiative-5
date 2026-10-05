@@ -287,6 +287,22 @@ def _recent_duplicate(phone: str) -> bool:
         conn.close()
 
 
+def _captcha_ok(token: str, ip: str) -> bool:
+    """Проверка Яндекс SmartCaptcha. Без секрета SMARTCAPTCHA_SERVER_KEY проверка выключена."""
+    secret = os.environ.get('SMARTCAPTCHA_SERVER_KEY', '')
+    if not secret:
+        return True
+    if not token:
+        return False
+    try:
+        q = urllib.parse.urlencode({'secret': secret, 'token': token, 'ip': ip if ip != 'unknown' else ''})
+        with urllib.request.urlopen('https://smartcaptcha.yandexcloud.net/validate?' + q, timeout=5) as r:
+            return json.loads(r.read().decode()).get('status') == 'ok'
+    except Exception as e:
+        print(f"CAPTCHA CHECK ERROR: {type(e).__name__}: {e}")
+        return True  # сервис капчи недоступен — не теряем заявку
+
+
 def _ok() -> dict:
     # Боту отвечаем «успешно», чтобы он не подбирал обход
     return {'statusCode': 200, 'headers': _cors_headers(), 'body': json.dumps({'success': True})}
@@ -319,6 +335,8 @@ def handler(event: dict, context) -> dict:
     ip = _client_ip(event)
     is_click = data.get('event') in CLICK_NAMES
     reason = _spam_reason(data, is_click)
+    if not reason and not is_click and not _captcha_ok(str(data.get('_captcha') or ''), ip):
+        reason = 'captcha'
     if not reason and _rate_limited(ip, 5 if not is_click else 10, 600):
         reason = 'rate_limit'
     if reason:
